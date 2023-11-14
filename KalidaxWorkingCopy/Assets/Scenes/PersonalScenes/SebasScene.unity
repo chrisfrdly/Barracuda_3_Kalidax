@@ -220,13 +220,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a0c58c1bc485e749a5c3a2da12080fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  followSpeed: 0
+  followSpeed: 7
   playerLocation: {fileID: 1583623983}
-  leftBounds: 12.23
-  rightBounds: -10.33
-  topBounds: 6.29
-  bottomBounds: -6.6
-  offset: {x: 0, y: 0, z: -10}
+  leftBounds: -14.54
+  rightBounds: 15.9
+  topBounds: 6.91
+  bottomBounds: -8.7
+  offset: {x: 0, y: 0, z: 1}
 --- !u!1 &1583623980
 GameObject:
   m_ObjectHideFlags: 0
@@ -263,7 +263,7 @@ Rigidbody2D:
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
