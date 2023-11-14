@@ -74,7 +74,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.35322434, g: 0.7735849, b: 0.28826985, a: 1}
   m_FlipX: 0
@@ -99,6 +99,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grassTileParams: {fileID: 11400000, guid: 5152f242cb409774083e1f0976e1a24a, type: 2}
+  seeds:
+  - {fileID: 1283314283460811411, guid: 366e35356034da84986adee33ba471fa, type: 3}
 --- !u!61 &3192197123404599430
 BoxCollider2D:
   m_ObjectHideFlags: 0
