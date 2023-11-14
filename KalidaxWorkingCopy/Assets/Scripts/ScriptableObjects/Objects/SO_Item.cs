@@ -16,6 +16,7 @@ public class SO_Item : ScriptableObject
 {
     public GameObject prefab;
     public int sellValue;
+    public bool sellable;
     public bool isPlaceable;
     public ItemType type;
 
