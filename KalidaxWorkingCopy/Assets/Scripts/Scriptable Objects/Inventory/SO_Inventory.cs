@@ -3,29 +3,38 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Inventory", menuName = "Inventory System/Inventory")]
-public class SO_Inventory : ScriptableObject
+public class SO_Inventory : ScriptableObject, ISerializationCallbackReceiver
 {
+    public SO_ItemDatabase database;
     public List<InventorySlot> container = new List<InventorySlot> ();
 
     //this will check our list to see if we have an item in our inventory, if not, we can add one
     public void AddItem(SO_Item _item, int _amount)
     {
-        bool hasItem = false;
-        for(int i = 0; i < container.Count; i++)
+        for (int i = 0; i < container.Count; i++)
         {
             //checks if the item is already in our inventory 
-            if(container[i].item == _item)
+            if (container[i].item == _item)
             {
                 container[i].AddAmount(_amount);
-                hasItem = true;
-                break;
+                return;
             }
         }
+        
+        container.Add(new InventorySlot(database.getID[_item], _item, _amount));
+    }
 
-        if(!hasItem)
+    //for Unity to serialize our inventory whenever we change it in editor. Will always match the item id
+    public void OnAfterDeserialize()
+    {
+        for(int i = 0; i < container.Count; i++)
         {
-            container.Add(new InventorySlot(_item, _amount));
+            container[i].item = database.getItem[container[i].id];
         }
+    }
+    public void OnBeforeSerialize()
+    {
+
     }
 }
 /// <summary>
@@ -36,10 +45,11 @@ public class SO_Inventory : ScriptableObject
 [System.Serializable]
 public class InventorySlot
 {
+    public int id;
     public SO_Item item;
     public int amount;
     
-    public InventorySlot(SO_Item _item, int _amount)
+    public InventorySlot(int _id, SO_Item _item, int _amount)
     {
         item = _item;
         amount = _amount;
