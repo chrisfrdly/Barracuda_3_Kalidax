@@ -46,8 +46,6 @@ public class GrassTile : MonoBehaviour
         isCut = true;
         boxCollider.enabled = false;
 
-        
-
         DropSeedChance();
     }
 
@@ -64,12 +62,17 @@ public class GrassTile : MonoBehaviour
         if(randomNumber > successThreshold)
         {
             gaveSeed = true;
+
+            SpawnSeed();
+
             spriteRenderer.color = grassTileParams.grassColours[1];
+
             Debug.Log("Dropped Seed");
         }
         else
         {
             spriteRenderer.color = grassTileParams.grassColours[2];
+
             Debug.Log("Didn't Drop Seed");
         }
     }
