@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using System;
 
 public class GrassTile : MonoBehaviour
 {
     //References
     [SerializeField] private SO_GrassTileParameters SO_grassTileParams;
+    [SerializeField] private SO_Data_DayCycle SO_Data_dayCycle;
+
     [SerializeField] private List<GameObject> seeds = new List<GameObject>();
 
     //Components
@@ -15,10 +18,10 @@ public class GrassTile : MonoBehaviour
 
     //Variables
     private bool isCut;
-    private bool gaveSeed;
+    private bool droppedSeed;
 
     public bool m_IsCut { get => isCut; set => isCut = value; }
-    public bool m_GaveSeed { get => gaveSeed; set => gaveSeed = value; }
+    public bool m_DroppedSeed { get => droppedSeed; set => droppedSeed = value; }
 
     private void Awake()
     {
@@ -28,28 +31,18 @@ public class GrassTile : MonoBehaviour
         //listen for the event when the player clicks the mouse button on grass
         SO_grassTileParams.breakGrassEvent.AddListener(CutTheGrass);
     }
-
     private void Start()
     {
-        spriteRenderer.color = SO_grassTileParams.grassColours[0];
-
-        //check to see if we're already added to the DayManager List. If not, add this tile
-        bool alreadyInList = DayManager.Instance.m_GrassTiles.Contains(this);
-        if (alreadyInList)
-        {
-            //Get Data from the scriptable Object on if it is cut or not (since at the end-
-            //of the day there's a chance for it to grow back for the next day)
-        }
-        else
-            DayManager.Instance.m_GrassTiles.Add(this);
+        //change colour of grass tile depending on state
+        UpdateTile();
     }
 
-    private void CutTheGrass(Transform grassTransform)
+    private void CutTheGrass(Transform _grassTransform)
     {
         if (isCut)
             return;
 
-        if (grassTransform != this.transform)
+        if (_grassTransform != this.transform)
             return;
 
         isCut = true;
@@ -66,23 +59,35 @@ public class GrassTile : MonoBehaviour
 
         float successThreshold = 1 - chancePercent;
 
-        float randomNumber = Random.Range(0.00f, 1.00f);
+        float randomNumber = UnityEngine.Random.Range(0.00f, 1.00f);
 
-        if(randomNumber > successThreshold)
+        if (randomNumber > successThreshold)
         {
-            gaveSeed = true;
+            droppedSeed = true;
 
             SpawnSeed();
-
-            spriteRenderer.color = SO_grassTileParams.grassColours[1];
         }
-        else
-            spriteRenderer.color = SO_grassTileParams.grassColours[2];
 
+        UpdateTile();
     }
 
     private void SpawnSeed()
     {
         Instantiate(seeds[0], transform.position, Quaternion.identity);
     }
+
+    private void UpdateTile()
+    {
+        if(!isCut)
+        {
+            spriteRenderer.color = SO_grassTileParams.grassColours[0];
+            boxCollider.enabled = true;
+        }
+        else
+        {
+            boxCollider.enabled = false;
+            spriteRenderer.color = SO_grassTileParams.grassColours[1];
+        }
+    }
+
 }

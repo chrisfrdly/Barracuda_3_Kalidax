@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SO_grassTileParams: {fileID: 11400000, guid: 5152f242cb409774083e1f0976e1a24a, type: 2}
+  SO_Data_dayCycle: {fileID: 11400000, guid: 208eef33a987f0e4bb799b003df00a94, type: 2}
   seeds:
   - {fileID: 1283314283460811411, guid: 366e35356034da84986adee33ba471fa, type: 3}
 --- !u!61 &3192197123404599430

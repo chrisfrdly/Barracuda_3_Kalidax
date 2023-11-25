@@ -1,8 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Linq;
+using System;
 
 public class DayManager : MonoBehaviour
 {
@@ -13,7 +12,7 @@ public class DayManager : MonoBehaviour
 
     //Variables
     [SerializeField] private SO_GrassTileParameters SO_grassTileParams; //so we can access the respawn rate of broken grass
-    private List<GrassTile> grassTiles = new List<GrassTile>(); //keep track of all grass tiles in scene so we can alter them
+    public GrassTile[] grassTiles; //keep track of all grass tiles in scene so we can alter them
 
     //Tracked Variables for each day
     private int currentDay = 1;
@@ -21,44 +20,70 @@ public class DayManager : MonoBehaviour
 
     //Property
     public int m_CurrentDay { get => currentDay; set => currentDay = value; }
-    public List<GrassTile> m_GrassTiles { get => grassTiles; set => grassTiles = value; }
     public float m_CurrentMoney { get => currentMoney; set => currentMoney = value; }
 
     private void Awake()
     {
-        //Singleton Pattern 
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-            Destroy(gameObject);
-
+        Instance = this;
+    }
+    private void Start()
+    {
+        LoadGrassStates();
     }
 
+    private void LoadGrassStates()
+    {
+        grassTiles = FindObjectsOfType<GrassTile>();
+
+        //Order the grass tiles based on position in the world. Without this order, saving and loading the grass tiles
+        //ends up going to a different tile instead of the one we want
+        grassTiles = grassTiles.OrderBy(tile => tile.transform.position.x)
+                               .ThenBy(tile => tile.transform.position.y)
+                               .ToArray();
+
+        bool firstTimeLoading = SO_Data_dayCycle.grassTilesList.Length <= 0;
+        if (firstTimeLoading)
+            return;
+
+        //Load in the previous day's grassTile parameters into this day's grass tile's parameters
+        for (int i = 0; i < SO_Data_dayCycle.grassTilesList.Length; i++)
+        {
+            grassTiles[i].m_IsCut = SO_Data_dayCycle.grassTilesList[i];
+        }
+    }
 
     public void NewDay()
     {
-        RandomizeGrassRegrowth();
-    }
+        SO_Data_dayCycle.grassTilesList = new bool[grassTiles.Length];
 
+        RandomizeGrassRegrowth();
+
+        //Saving cut data into the scriptable object
+        for (int i = 0; i < SO_Data_dayCycle.grassTilesList.Length; i++)
+        {
+            SO_Data_dayCycle.grassTilesList[i] = grassTiles[i].m_IsCut;
+        }
+
+        SceneManager.LoadScene("LucasScene");
+    }
+ 
     private void RandomizeGrassRegrowth()
     {
-        foreach(GrassTile tile in m_GrassTiles)
+   
+        foreach (GrassTile tile in grassTiles)
         {
             //check to see which tiles are broken
             if (!tile.m_IsCut)
                 continue;
 
             //now do the random chance for the tiles that are cut
-            float chanceToRegrowSeed = SO_grassTileParams.chanceToGetSeed;
+            float chanceToRegrowSeed = SO_grassTileParams.chanceToRegrow_EndOfDay;
 
             float chancePercent = chanceToRegrowSeed / 100;
 
             float successThreshold = 1 - chancePercent;
 
-            float random = Random.Range(0.0f, 1.0f);
+            float random = UnityEngine.Random.Range(0.0f, 1.0f);
 
             //if this tile won the chance to regrow, regrow
             if(random >= successThreshold)
@@ -67,25 +92,8 @@ public class DayManager : MonoBehaviour
                 tile.m_IsCut = false;
             }
         }
-        Debug.Log(grassTiles.Count);
-        //Send data to the Scriptable Object
 
-        //Wipe out List
-        grassTiles.Clear();
-
-        //Load New Scene
-        SceneManager.LoadScene("LucasScene");
         
     }
 
-    //will be called from the "GrassTile.cs" script in Start to check if the cut tile is regrown for the new day
-    public bool GetIsRegrown(GrassTile _grassTile)
-    {
-        //Get the specific element in the List from the Scriptable Object
-        bool isCut = SO_Data_dayCycle.grassTilesList.Find(tile => grassTiles.Contains(_grassTile));
-
-        //Check to see if it is a bool true or false
-
-        return isCut;
-    }
 }

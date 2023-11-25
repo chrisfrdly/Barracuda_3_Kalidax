@@ -22,8 +22,8 @@ public abstract class InteractableObject : MonoBehaviour
     /// <summary>
     /// In the "PlayerInteractWithObjects.cs" script, it checks if the player clicked the "E" button on Update
     /// If they did click the E Button, we send off an event through the "SO_InteractableObject.cs" scriptable Object
-    ///And ALL interactable objects receive the event, however the listener calls a method that checks to see if THIS OBJECT 
-    ///is the one the player wants to interact with (by seeing if it's UI is enabled) and if so, then we run the OnInteract method.
+    /// And ALL interactable objects receive the event, however the listener calls a method that checks to see if THIS OBJECT 
+    /// is the one the player wants to interact with (by seeing if it's UI is enabled) and if so, then we run the OnInteract method.
     /// </summary>
     
     private void Awake()
@@ -41,7 +41,7 @@ public abstract class InteractableObject : MonoBehaviour
 
     protected abstract void OnInteract();
 
-     /// <summary>
+    /// <summary>
     /// Through the PlayerInteractScript.cs, the ShowUI() and HideUI() methods are called if the object is in range of the player
     /// </summary>
     public void ShowUI()

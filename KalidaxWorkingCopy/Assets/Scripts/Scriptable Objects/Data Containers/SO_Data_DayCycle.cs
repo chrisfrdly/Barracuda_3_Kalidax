@@ -6,5 +6,11 @@ using UnityEngine;
 public class SO_Data_DayCycle : ScriptableObject
 {
     //Grass Tiles if they are cut or not
-    public List<GrassTile> grassTilesList = new List<GrassTile>();
+    public bool[] grassTilesList;
+
+    private void OnDisable()
+    {
+        //reset the tile list when exit the editor (FOR NOW)
+        grassTilesList = new bool[0];
+    }
 }

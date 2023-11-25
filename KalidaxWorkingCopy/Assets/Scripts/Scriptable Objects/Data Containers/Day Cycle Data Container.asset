@@ -9,11 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df262f62f0578244d83e0de772234051, type: 3}
-  m_Name: Grass Tile Parameters
+  m_Script: {fileID: 11500000, guid: e011676a973e4644f804c0904e2a95fc, type: 3}
+  m_Name: Day Cycle Data Container
   m_EditorClassIdentifier: 
-  chanceToRegrow_EndOfDay: 50
-  chanceToGetSeed: 80
-  grassColours:
-  - {r: 0.3529412, g: 0.7725491, b: 0.2901961, a: 1}
-  - {r: 0.07609471, g: 0.3584906, b: 0.19205372, a: 1}
+  grassTilesList: 0000000000000000000101000101010001010101010101010101010101010101010101010101010101
