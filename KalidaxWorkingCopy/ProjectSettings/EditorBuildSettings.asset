@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PersonalScenes/LucasScene.unity
     guid: deba0f761337d834ca82cd9caeb22b68
+  - enabled: 1
+    path: Assets/Scenes/EndOfDayScene.unity
+    guid: 35a0528ea894ff64d9d5e2332b46f574
   m_configObjects: {}

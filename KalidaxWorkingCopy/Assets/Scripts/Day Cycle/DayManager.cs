@@ -64,7 +64,7 @@ public class DayManager : MonoBehaviour
             SO_Data_dayCycle.grassTilesList[i] = grassTiles[i].m_IsCut;
         }
 
-        SceneManager.LoadScene("LucasScene");
+        SceneManager.LoadScene("EndOfDayScene");
     }
  
     private void RandomizeGrassRegrowth()
