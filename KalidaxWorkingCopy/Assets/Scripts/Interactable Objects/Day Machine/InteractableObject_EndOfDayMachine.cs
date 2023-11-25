@@ -12,9 +12,9 @@ public class InteractableObject_EndOfDayMachine : InteractableObject
     private void PromptDayReset()
     {
         //Are you sure you want to go to the next day?
-        //Yes
-        //No
 
-        Debug.Log("Perform Day Cycle. 'NOT IMPLEMENTED YET'");
+        //Calls on the UI Controller to reveal the UI of the End of day Confirmation
+
+        UIController.Instance.ShowEndOfDayConfirmationUI();
     }
 }

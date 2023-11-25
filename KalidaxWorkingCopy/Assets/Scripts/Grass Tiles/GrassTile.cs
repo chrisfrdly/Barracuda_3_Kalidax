@@ -52,8 +52,6 @@ public class GrassTile : MonoBehaviour
         if (grassTransform != this.transform)
             return;
 
-        Debug.Log("The Grass is Broken");
-
         isCut = true;
         boxCollider.enabled = false;
 
@@ -77,15 +75,10 @@ public class GrassTile : MonoBehaviour
             SpawnSeed();
 
             spriteRenderer.color = SO_grassTileParams.grassColours[1];
-
-            Debug.Log("Dropped Seed");
         }
         else
-        {
             spriteRenderer.color = SO_grassTileParams.grassColours[2];
 
-            Debug.Log("Didn't Drop Seed");
-        }
     }
 
     private void SpawnSeed()
