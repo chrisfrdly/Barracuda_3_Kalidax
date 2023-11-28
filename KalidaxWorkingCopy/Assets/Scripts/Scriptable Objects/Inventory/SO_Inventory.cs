@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
 
 [CreateAssetMenu(fileName = "New Inventory", menuName = "Inventory System/Inventory")]
 public class SO_Inventory : ScriptableObject, ISerializationCallbackReceiver
@@ -26,6 +28,27 @@ public class SO_Inventory : ScriptableObject, ISerializationCallbackReceiver
     }
 
     //turns our scriptable object into a string and then will convert it into a .Json file
+    public void Save()
+    {
+        string saveData = JsonUtility.ToJson(this, true);
+        BinaryFormatter bf = new BinaryFormatter();
+        FileStream file = File.Create(string.Concat(Application.persistentDataPath, savePath));
+        bf.Serialize(file, saveData);
+        file.Close();
+    }
+    
+    //this loads our file back onto our scene and converts it back into a scriptable object with the data filled in
+    public void Load()
+    {
+        if(File.Exists(string.Concat(Application.persistentDataPath, savePath)))
+        {
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream file = File.Open(string.Concat(Application.persistentDataPath, savePath), FileMode.Open);
+            JsonUtility.FromJsonOverwrite(bf.Deserialize(file).ToString(), this);
+            file.Close();
+        }
+    }
+
 
     //for Unity to serialize our inventory whenever we change it in editor. Will always match the item id
     public void OnAfterDeserialize()

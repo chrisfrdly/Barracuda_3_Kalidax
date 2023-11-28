@@ -6,6 +6,18 @@ public class PlayerInventoryManager : MonoBehaviour
 {
     public SO_Inventory inventory;
 
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            inventory.Save();
+        }
+        if(Input.GetKeyDown(KeyCode.KeypadEnter))
+        {
+            inventory.Load();
+        }
+    }
+
     //will pick up any item that is on the ground and add it to the inventory 
     public void OnTriggerEnter2D(Collider2D collision)
     {
