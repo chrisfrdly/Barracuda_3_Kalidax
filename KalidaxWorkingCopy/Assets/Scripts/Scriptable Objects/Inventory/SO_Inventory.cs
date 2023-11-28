@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Inventory", menuName = "Inventory System/Inventory")]
 public class SO_Inventory : ScriptableObject, ISerializationCallbackReceiver
 {
+    public string savePath;
     public SO_ItemDatabase database;
     public List<InventorySlot> container = new List<InventorySlot> ();
 
@@ -23,6 +24,8 @@ public class SO_Inventory : ScriptableObject, ISerializationCallbackReceiver
         
         container.Add(new InventorySlot(database.getID[_item], _item, _amount));
     }
+
+    //turns our scriptable object into a string and then will convert it into a .Json file
 
     //for Unity to serialize our inventory whenever we change it in editor. Will always match the item id
     public void OnAfterDeserialize()
