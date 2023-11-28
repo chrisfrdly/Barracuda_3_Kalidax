@@ -21,7 +21,7 @@ public class SO_Inventory : ScriptableObject, ISerializationCallbackReceiver
                 return;
             }
         }
-        
+        Debug.Log(container.Count);
         container.Add(new InventorySlot(database.getID[_item], _item, _amount));
     }
 
