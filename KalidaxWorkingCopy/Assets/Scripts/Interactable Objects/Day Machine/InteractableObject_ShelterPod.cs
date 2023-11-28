@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InteractableObject_EndOfDayMachine : InteractableObject
+public class InteractableObject_ShelterPod : InteractableObject
 {
     protected override void OnInteract()
     {

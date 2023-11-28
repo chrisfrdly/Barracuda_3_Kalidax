@@ -7,6 +7,7 @@ public class DayManager : MonoBehaviour
 {
     public static DayManager Instance;
 
+    [Header("GRASS TILES")]
     //References
     [SerializeField] private SO_Data_DayCycle SO_Data_dayCycle;
 
@@ -14,9 +15,11 @@ public class DayManager : MonoBehaviour
     [SerializeField] private SO_GrassTileParameters SO_grassTileParams; //so we can access the respawn rate of broken grass
     public GrassTile[] grassTiles; //keep track of all grass tiles in scene so we can alter them
 
+    [Header("CURRENT DAY")]
+
     //Tracked Variables for each day
-    private int currentDay = 1;
-    private float currentMoney = 0;
+    private int currentDay;
+    private float currentMoney;
 
     //Property
     public int m_CurrentDay { get => currentDay; set => currentDay = value; }
