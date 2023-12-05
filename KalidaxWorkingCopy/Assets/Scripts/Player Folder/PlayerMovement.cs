@@ -30,6 +30,8 @@ public class PlayerMovement : MonoBehaviour
         if (horizontalInput != 0 || verticalInput != 0)
             directionFacing = new Vector2(horizontalInput, verticalInput).normalized;
 
+        GetMovementInputs();
+
         if (canControl)
         {
             Vector2 direction = new Vector2(horizontalInput, verticalInput).normalized;
