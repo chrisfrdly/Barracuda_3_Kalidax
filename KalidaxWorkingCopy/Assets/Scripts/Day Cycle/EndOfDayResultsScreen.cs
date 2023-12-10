@@ -8,6 +8,7 @@ public class EndOfDayResultsScreen : MonoBehaviour
     [SerializeField] private GameObject verticalLayoutGroupGO;
 
     private List<GameObject> rewardPanels = new List<GameObject>();
+    public string sceneToTransitionTo;
 
     private void Awake()
     {
@@ -37,6 +38,6 @@ public class EndOfDayResultsScreen : MonoBehaviour
 
         yield return new WaitForSeconds(1);
 
-        SceneManager.LoadScene("LucasScene");
+        SceneManager.LoadScene(sceneToTransitionTo);
     }
 }
