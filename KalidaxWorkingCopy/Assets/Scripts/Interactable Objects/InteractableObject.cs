@@ -12,12 +12,13 @@ public abstract class InteractableObject : MonoBehaviour
     /// </summary>
 
     //References
-    [SerializeField] private SO_InteractableObject interactableObject;
+    [SerializeField] private SO_InteractableObject SO_interactableObject;
 
     //Variables
     [Header("Variables")]
-    [SerializeField] private GameObject interactUIPanel;
     [SerializeField] protected float tweenTime = 0.5f;
+    [SerializeField] private GameObject interactUIPanel; //The "Click E" button
+    protected bool inPlayerRange;
 
     /// <summary>
     /// In the "PlayerInteractWithObjects.cs" script, it checks if the player clicked the "E" button on Update
@@ -25,10 +26,10 @@ public abstract class InteractableObject : MonoBehaviour
     /// And ALL interactable objects receive the event, however the listener calls a method that checks to see if THIS OBJECT 
     /// is the one the player wants to interact with (by seeing if it's UI is enabled) and if so, then we run the OnInteract method.
     /// </summary>
-    
-    private void Awake()
+
+    virtual protected void Awake()
     {
-        interactableObject.clickedInteractButtonEvent.AddListener(CheckIfUIActive);
+        SO_interactableObject.clickedInteractButtonEvent.AddListener(CheckIfUIActive);
     }
 
     private void CheckIfUIActive()
@@ -39,6 +40,7 @@ public abstract class InteractableObject : MonoBehaviour
         }
     }
 
+    //abstract function so ALL scripts that inherit from InteractableObject require this function
     protected abstract void OnInteract();
 
     /// <summary>
@@ -56,6 +58,7 @@ public abstract class InteractableObject : MonoBehaviour
     public void HideUI()
     {
         interactUIPanel.SetActive(false);
+
         interactUIPanel.transform.localScale = Vector3.one;
     }
 
