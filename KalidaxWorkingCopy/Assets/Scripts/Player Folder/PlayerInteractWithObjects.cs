@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using System.Linq;
+using System.Security.Cryptography;
+using UnityEngine.InputSystem;
 
 public class PlayerInteractWithObjects : MonoBehaviour
 {
@@ -15,6 +17,7 @@ public class PlayerInteractWithObjects : MonoBehaviour
     [SerializeField] private SO_InteractableObject interactableObject;
 
     private PlayerMovement playerMovement;
+    private PlayerInputHandler playerInputHandler;
 
     //Variables
     [Header("Interaction Variables")]
@@ -27,15 +30,18 @@ public class PlayerInteractWithObjects : MonoBehaviour
 
     private float closestDistance = Mathf.Infinity;
     private float currentClosestColliderDistance;
+    private Transform objTransform;
 
     private void Awake()
     {
         playerMovement = GetComponent<PlayerMovement>();
+        playerInputHandler = PlayerInputHandler.Instance;
+        objTransform = transform;
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (playerInputHandler.m_PlayerInput.actions["Interact"].WasPressedThisFrame())
             interactableObject.ClickedInteractButtonEventSend();
 
         InteractObjects();
@@ -49,38 +55,51 @@ public class PlayerInteractWithObjects : MonoBehaviour
         Collider2D[] collider = Physics2D.OverlapCircleAll(transform.position, interactRadius, interactableMask);
         Collider2D[] hideCollider = Physics2D.OverlapCircleAll(transform.position, interactRadius + 0.3f, interactableMask);
 
+        //To save computational power, just don't do anything if there's nothing to detect
+        if (collider.Length == 0 && hideCollider.Length == 0) return;
+
         // SHOW UI WHEN ENTER THE RADIUS//
        
         //for each collider detected, check to see which one is closest and then show that UI
         foreach (Collider2D col in collider)
         {
-            Debug.DrawLine(transform.position, col.transform.position);
+            Debug.DrawLine(objTransform.position, col.transform.position);
 
-            Vector3 directionToTarget = col.transform.position - transform.position;
+            InteractableObject io = col.GetComponent<InteractableObject>();
+
+            Vector3 directionToTarget = col.transform.position - objTransform.position;
             float distanceFromPlayer = directionToTarget.sqrMagnitude;
 
             //if we have an object that is closest to the player
-            if(distanceFromPlayer < closestDistance || distanceFromPlayer < currentClosestColliderDistance)
+   
+            if (distanceFromPlayer < closestDistance || distanceFromPlayer < currentClosestColliderDistance)
             {
-                if(col != closestCollider)
+                if (col != closestCollider)
                 {
                     closestCollider = col;
                     closestDistance = distanceFromPlayer;
-                    closestCollider.GetComponent<InteractableObject>().ShowUI();
+                    io.PlayerInRange(0);
+
                 }
             }
-
             //For any other collider, OR any collider that exits the interaction Radius, HIDE their UI
             if (col != closestCollider)
             {
-                //Hide UI
-                col.GetComponent<InteractableObject>().HideUI();
+                if(io.InPlayerRange)
+                {
+                    //Hide UI
+                    io.PlayerOutOfRange();
+                }
+                
             }
             //Get the current closest collider's distance from the player, and if the distance is < than that, we switch it.
             //Without this variable, the closestDistance keeps getting smaller and smaller, and only resets when the current-
             //closest collider exits the interact radius
             else
+            {
                 currentClosestColliderDistance = distanceFromPlayer;
+            }
+                
 
         }
 
@@ -91,8 +110,13 @@ public class PlayerInteractWithObjects : MonoBehaviour
             //If they are outside the collider array, Hide the UI
             if (!collider.Contains(col))
             {
-                //Hide UI
-                col.GetComponent<InteractableObject>().HideUI();
+                InteractableObject io = col.GetComponent<InteractableObject>();
+
+                if (io.InPlayerRange)
+                {
+                    //Hide UI
+                    io.PlayerOutOfRange();
+                }
 
                 //if it's the current closest collider, we have to reset the variables or else when we enter the radius again-
                 //the UI won't show again since it's the same object
@@ -127,7 +151,8 @@ public class PlayerInteractWithObjects : MonoBehaviour
             return;
 
         //check to see if the player clicked the mouse button. Update with new input system
-        if (Input.GetMouseButtonDown(0))
+        if (playerInputHandler.m_PlayerInput.actions["BreakGrass"].WasPressedThisFrame() || 
+            Mouse.current.leftButton.wasPressedThisFrame)
         {
             //Get the transform that we interacted with
             Transform grassTransform = hit.transform;
@@ -151,6 +176,13 @@ public class PlayerInteractWithObjects : MonoBehaviour
         Gizmos.color = Color.white;
         if (hit.collider != null)
             Gizmos.DrawWireCube(hit.collider.transform.position, Vector3.one);
+
+        //make closest collider white
+        if (closestCollider != null)
+        {
+            Gizmos.color = Color.white;
+            Gizmos.DrawSphere(closestCollider.transform.position, 0.6f);
+        }
 
         //Displays object interaction showing and hiding UI
         Gizmos.color = new Color(0, 0, 25, 0.1f);

@@ -7,6 +7,7 @@ public class InteractableObject_ShelterPod : InteractableObject
     protected override void OnInteract()
     {
         PromptDayReset();
+        HideInteractionPromptUI();
     }
 
     private void PromptDayReset()
@@ -17,4 +18,5 @@ public class InteractableObject_ShelterPod : InteractableObject
 
         UIController.Instance.ShowEndOfDayConfirmationUI();
     }
+
 }
