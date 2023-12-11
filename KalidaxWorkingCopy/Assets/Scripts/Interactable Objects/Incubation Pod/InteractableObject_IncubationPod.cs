@@ -7,6 +7,16 @@ using System;
 
 public class InteractableObject_IncubationPod : InteractableObject
 {
+    private enum IncubationState
+    {
+        OBJ_AddSeed,
+        OBJ_Incubating,
+        OBJ_RemoveSeed
+    }
+
+    private IncubationState incubationState = IncubationState.OBJ_AddSeed;
+
+
 
     [Header("Panel")]
     [SerializeField] private GameObject incubationPodHUDPanel;
@@ -19,6 +29,13 @@ public class InteractableObject_IncubationPod : InteractableObject
     [SerializeField] private TextMeshProUGUI daysRemainingText;
     [SerializeField] private Image seedImage;
 
+    [Header("Incubation Parameters")]
+    [SerializeField] private int daysToIncubate = 7;
+    private int daysLeft;
+
+    //Properties
+    public int m_DaysLeft { get => daysLeft; set => daysLeft = value; }
+
     /// <summary>
     /// The way the incubation works is that at the beginning you must add a seed into it,
     /// Then it starts the incubation process. You cannot take out the seed from it
@@ -30,29 +47,21 @@ public class InteractableObject_IncubationPod : InteractableObject
     {
         base.Awake();
         SO_interactableObject.clickedCancelButtonEvent.AddListener(CloseInteractionPrompt);
+        daysLeft = daysToIncubate;
     }
-    private enum IncubationState
-    {
-        OBJ_AddSeed,
-        OBJ_Incubating,
-        OBJ_RemoveSeed
-    }
-
-    private IncubationState incubationState = IncubationState.OBJ_AddSeed;
-
+  
     protected override void OnInteract()
     {
-        OpenInteractionPrompt();
+        OpenInteractionPanel();
         HideInteractionPromptUI();
     }
-
-
 
 
     //------------------
     //Open and Close HUD
     //------------------
-    private void OpenInteractionPrompt()
+
+    private void OpenInteractionPanel()
     {
         if(PlayerInputHandler.Instance.GetCurrentControlScheme() == "Controller")
         {
@@ -60,9 +69,21 @@ public class InteractableObject_IncubationPod : InteractableObject
             addSeedButton.Select();
         }
 
+        //Activate the panel and make it the currentVisible UI
         incubationPodHUDPanel.SetActive(true);
         UIController.Instance.m_CurrentUIVisible = incubationPodHUDPanel;
+
+
         DisplayIncubationHUDContents();
+
+        //Set the text for the amount of days left
+        daysRemainingText.text = daysLeft.ToString();
+
+        //If we started incubating, set the state to the incubating state
+        if(daysLeft != daysToIncubate)
+        {
+            incubationState = IncubationState.OBJ_Incubating;
+        }
 
     }
     private void CloseInteractionPrompt()
@@ -71,7 +92,7 @@ public class InteractableObject_IncubationPod : InteractableObject
 
     }
 
-
+    //This function is called on the button in the inspector
     public void ChangeState()
     {
         
@@ -117,9 +138,12 @@ public class InteractableObject_IncubationPod : InteractableObject
 
         seedImage.gameObject.SetActive(false);
         daysRemainingText.gameObject.SetActive(false);
+
     }
     private void ShowIncubatingUI()
     {
+
+
         incubationState = IncubationState.OBJ_Incubating;
 
         addSeedButton.gameObject.SetActive(false);

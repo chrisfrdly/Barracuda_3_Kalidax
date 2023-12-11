@@ -594,6 +594,28 @@
                 },
                 {
                     "name": "",
+                    "id": "42f72715-d7ea-40bc-b9f4-cff5bd600f66",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Cancel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b9734deb-ecf4-4e9e-b3b7-6aefee5501ea",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Cancel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "d28c0211-5bf5-4d01-96b5-fe2a4a4b9459",
                     "path": "<Mouse>/position",
                     "interactions": "",

@@ -8,7 +8,6 @@ public class GrassTile : MonoBehaviour
 {
     //References
     [SerializeField] private SO_GrassTileParameters SO_grassTileParams;
-    [SerializeField] private SO_Data_DayCycle SO_Data_dayCycle;
 
     [SerializeField] private List<GameObject> seeds = new List<GameObject>();
 

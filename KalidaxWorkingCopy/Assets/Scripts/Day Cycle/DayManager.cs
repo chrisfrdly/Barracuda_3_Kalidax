@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Linq;
 using System;
+using UnityEngine.UI;
 
 public class DayManager : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class DayManager : MonoBehaviour
     //Variables
     [SerializeField] private SO_GrassTileParameters SO_grassTileParams; //so we can access the respawn rate of broken grass
     public GrassTile[] grassTiles; //keep track of all grass tiles in scene so we can alter them
+
 
     [Header("CURRENT DAY")]
 
@@ -32,6 +34,7 @@ public class DayManager : MonoBehaviour
     private void Start()
     {
         LoadGrassStates();
+
     }
 
     private void LoadGrassStates()
@@ -44,9 +47,7 @@ public class DayManager : MonoBehaviour
                                .ThenBy(tile => tile.transform.position.y)
                                .ToArray();
 
-        bool firstTimeLoading = SO_Data_dayCycle.grassTilesList.Length <= 0;
-        if (firstTimeLoading)
-            return;
+      
 
         //Load in the previous day's grassTile parameters into this day's grass tile's parameters
         for (int i = 0; i < SO_Data_dayCycle.grassTilesList.Length; i++)
@@ -57,9 +58,15 @@ public class DayManager : MonoBehaviour
 
     public void NewDay()
     {
+        //Increase the day counter
+        SO_Data_dayCycle.currentDay++;
+        currentDay = SO_Data_dayCycle.currentDay;
+
+        //Update Grass Tiles
         SO_Data_dayCycle.grassTilesList = new bool[grassTiles.Length];
 
         RandomizeGrassRegrowth();
+
 
         //Saving cut data into the scriptable object
         for (int i = 0; i < SO_Data_dayCycle.grassTilesList.Length; i++)
@@ -67,9 +74,11 @@ public class DayManager : MonoBehaviour
             SO_Data_dayCycle.grassTilesList[i] = grassTiles[i].m_IsCut;
         }
 
+
         SceneManager.LoadScene("EndOfDayScene");
     }
- 
+
+
     private void RandomizeGrassRegrowth()
     {
    
@@ -95,8 +104,12 @@ public class DayManager : MonoBehaviour
                 tile.m_IsCut = false;
             }
         }
+    }
 
-        
+
+    public int GetCurrentDay()
+    {
+        return SO_Data_dayCycle.currentDay;
     }
 
 }
