@@ -7,11 +7,12 @@ using System;
 
 public class InteractableObject_IncubationPod : InteractableObject
 {
+
     [Header("Panel")]
     [SerializeField] private GameObject incubationPodHUDPanel;
 
     [Header("Button")]
-    [SerializeField] private GameObject addSeedButton;
+    [SerializeField] private Button addSeedButton;
     [SerializeField] private TextMeshProUGUI buttonText;
 
     [Header("Other Contents")]
@@ -24,7 +25,12 @@ public class InteractableObject_IncubationPod : InteractableObject
     /// Then when it's done incubating (remaining days = 0), the player can remove the seed. 
     /// Once removed we go back to the add seed state
     /// </summary>
-   
+
+    protected override void Awake()
+    {
+        base.Awake();
+        SO_interactableObject.clickedCancelButtonEvent.AddListener(CloseInteractionPrompt);
+    }
     private enum IncubationState
     {
         OBJ_AddSeed,
@@ -37,15 +43,35 @@ public class InteractableObject_IncubationPod : InteractableObject
     protected override void OnInteract()
     {
         OpenInteractionPrompt();
-    
+        HideInteractionPromptUI();
     }
 
 
+
+
+    //------------------
+    //Open and Close HUD
+    //------------------
     private void OpenInteractionPrompt()
     {
+        if(PlayerInputHandler.Instance.GetCurrentControlScheme() == "Controller")
+        {
+            PlayerInputHandler.Instance.SwitchActionMap(true);
+            addSeedButton.Select();
+        }
+
         incubationPodHUDPanel.SetActive(true);
+        UIController.Instance.m_CurrentUIVisible = incubationPodHUDPanel;
         DisplayIncubationHUDContents();
+
     }
+    private void CloseInteractionPrompt()
+    {
+        incubationPodHUDPanel.SetActive(false);
+
+    }
+
+
     public void ChangeState()
     {
         

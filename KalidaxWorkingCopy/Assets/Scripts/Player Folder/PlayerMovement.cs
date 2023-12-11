@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    //References
+    private PlayerInputHandler inputHandler;
+
     //Components
     private Rigidbody2D rb;
 
@@ -21,16 +24,19 @@ public class PlayerMovement : MonoBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        inputHandler = FindObjectOfType<PlayerInputHandler>();
+
     }
 
 
     void Update()
     {
+        horizontalInput = inputHandler.m_MoveInput.x;
+        verticalInput = inputHandler.m_MoveInput.y;
+
         //Get the Last direction the player was facing
         if (horizontalInput != 0 || verticalInput != 0)
             directionFacing = new Vector2(horizontalInput, verticalInput).normalized;
-
-        GetMovementInputs();
 
         if (canControl)
         {
@@ -39,16 +45,13 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = direction * speed;
         }
         else
+        {
             rb.velocity = Vector2.zero;
+        }
+            
 
     }
 
-    //this will get both the vertical and horizontal inputs
-    void GetMovementInputs()
-    {
-        horizontalInput = Input.GetAxisRaw("Horizontal");
-        verticalInput = Input.GetAxisRaw("Vertical");
-    }
 
 
 }

@@ -13,4 +13,6 @@ public class SO_Data_DayCycle : ScriptableObject
         //reset the tile list when exit the editor (FOR NOW)
         grassTilesList = new bool[0];
     }
+
+
 }
