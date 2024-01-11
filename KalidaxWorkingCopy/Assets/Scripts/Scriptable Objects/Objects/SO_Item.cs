@@ -14,7 +14,9 @@ public enum ItemType
 //holding our data for other stuff
 public class SO_Item : ScriptableObject
 {
-    public GameObject prefab;
+    public int Id;
+
+    public Sprite uiDisplay;
     public int sellValue;
     public bool sellable;
     public bool isPlaceable;
@@ -23,4 +25,16 @@ public class SO_Item : ScriptableObject
     //this is gonna include the description of our objects
     [TextArea(15,20)]
     public string description;
+}
+
+[System.Serializable]
+public class Item
+{
+    public string name;
+    public int id;
+    public Item(SO_Item item)
+    {
+        name = item.name;
+        id = item.Id;
+    }
 }

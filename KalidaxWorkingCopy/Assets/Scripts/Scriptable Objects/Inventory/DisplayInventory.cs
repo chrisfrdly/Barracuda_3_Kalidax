@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class DisplayInventory : MonoBehaviour
 {
+/*    public GameObject inventoryPrefab;
+
     public SO_Inventory inventory;
 
+    // this is where the item will be displayed on the UI
     public int startPosition_x;
     public int startPosition_y;
 
@@ -36,8 +40,9 @@ public class DisplayInventory : MonoBehaviour
         for(int i = 0; i < inventory.container.Count; i++)
         {
             //creates the object using the item prefab
-            var obj = Instantiate(inventory.container[i].item.prefab, Vector3.zero, Quaternion.identity, transform);
-
+            var obj = Instantiate(inventoryPrefab, Vector3.zero, Quaternion.identity, transform);
+            //changes the sprite of the object within the inventory
+            obj.transform.GetChild(0).GetComponentInChildren<Image>().sprite;
             //this spaces the stuff in the inventory around and also shows the number
             obj.GetComponent<RectTransform>().localPosition = GetPosition(i);
             obj.GetComponentInChildren<TextMeshProUGUI>().text = inventory.container[i].amount.ToString("n0");
@@ -76,5 +81,5 @@ public class DisplayInventory : MonoBehaviour
     public Vector3 GetPosition(int i)
     {
         return new Vector3(startPosition_x + (spaceBetweenItem_x * (i % numberOfColumn)),startPosition_y + (-spaceBetweenItem_y * (i / numberOfColumn)), 0f);
-    }
+    }*/
 }
