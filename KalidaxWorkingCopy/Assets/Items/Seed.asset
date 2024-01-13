@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 998f90381012433418968f5f0f4b0212, type: 3}
   m_Name: Seed
   m_EditorClassIdentifier: 
-  prefab: {fileID: 3961428849817538016, guid: 5ffcb801871e954479027db974f82ed6, type: 3}
+  Id: 0
+  uiDisplay: {fileID: 21300000, guid: dbc863030a0157044adbc4c6516d1c4d, type: 3}
   sellValue: 0
   sellable: 0
   isPlaceable: 0
   type: 0
+  buffs: []
   description: 

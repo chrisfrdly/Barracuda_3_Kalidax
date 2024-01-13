@@ -33,6 +33,6 @@ public class PlayerInventoryManager : MonoBehaviour
     //this resets the inventory when you stop playing the game
     private void OnApplicationQuit()
     {
-        inventory.container.items.Clear();
+        inventory.container.items = new InventorySlot[24];
     }
 }

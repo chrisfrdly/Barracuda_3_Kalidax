@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8aba14e7e2285334b8df4e1c76d9c762, type: 3}
   m_Name: Equip
   m_EditorClassIdentifier: 
-  prefab: {fileID: 6446328564819402429, guid: 27ac2b783c1873e4cb3dabd3d5d8b2f2, type: 3}
+  Id: 2
+  uiDisplay: {fileID: 21300000, guid: 65126ef445bddd646876f1c7942a01ab, type: 3}
   sellValue: 0
   sellable: 0
   isPlaceable: 0
   type: 1
+  buffs: []
   description: 

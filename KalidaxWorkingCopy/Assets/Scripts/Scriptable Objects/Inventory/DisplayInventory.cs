@@ -6,6 +6,12 @@ using TMPro;
 
 public class DisplayInventory : MonoBehaviour
 {
+    /// <summary>
+    /// this script is just a visual representation of what is happening in the backend with our SO_Inventory Script
+    /// this is what updates the UI display for the player
+    /// it is not responsible for any inventory calculation, all of that can be found in SO_Inventory
+    /// </summary>
+    
     public GameObject inventoryPrefab;
 
     public SO_Inventory inventory;
@@ -20,67 +26,60 @@ public class DisplayInventory : MonoBehaviour
     public int spaceBetweenItem_y;
 
     //Dictionary that has all the items within the Inventory Slot
-    private Dictionary<InventorySlot, GameObject> itemsDisplayed = new Dictionary<InventorySlot, GameObject>();
+    private Dictionary<GameObject , InventorySlot> itemsDisplayed = new Dictionary<GameObject, InventorySlot>();
 
     // Start is called before the first frame update
     void Start()
     {
-        CreateDisplay();
+        CreateSlots();
     }
 
     // Update is called once per frame
     void Update()
     {
-        UpdateDisplay();
+        UpdateSlots();
     }
 
-    public void CreateDisplay()
+    //this will spawn in all of the slots without objects in them
+    public void CreateSlots()
     {
-        //this creates our little inventory menu based on how many objects we are holding
-        for (int i = 0; i < inventory.container.items.Count; i++)
+        itemsDisplayed = new Dictionary<GameObject, InventorySlot>();
+        for (int i = 0; i < inventory.container.items.Length; i++)
         {
-            InventorySlot slot = inventory.container.items[i];
-
-            //creates the object using the item prefab
             var obj = Instantiate(inventoryPrefab, Vector3.zero, Quaternion.identity, transform);
-            //changes the sprite of the object within the inventory
-            obj.transform.GetChild(0).GetComponentInChildren<Image>().sprite = inventory.database.getItem[slot.item.id].uiDisplay;
-            //this spaces the stuff in the inventory around and also shows the number
             obj.GetComponent<RectTransform>().localPosition = GetPosition(i);
-            obj.GetComponentInChildren<TextMeshProUGUI>().text = slot.amount.ToString("n0");
-            itemsDisplayed.Add(slot, obj); //saves this object into the dictionary
+
+            itemsDisplayed.Add(obj, inventory.container.items[i]);
         }
     }
 
-    //this method updates the values of your items and adds new items to your inventory when you pick them up
-    public void UpdateDisplay()
+    public void UpdateSlots()
     {
-        for (int i = 0; i < inventory.container.items.Count; i++)
+        //loops through our dictionary to find any changes within the obejct and updates the graphic to the appropriate sprite
+        foreach(KeyValuePair<GameObject , InventorySlot> _slot in itemsDisplayed)
         {
-            InventorySlot slot = inventory.container.items[i];
-
-            ///
-            /// this checks if your item is in your inventory already
-            /// if it is, it displays the value in whatever slot your item is in
-            /// if it is not, it will create a new space for you to hold your item, assuming the inventory is not full
-            ///
-            if (itemsDisplayed.ContainsKey(slot))
+            //this checks if there is an item within our slot
+            if(_slot.Value.id >= 0)
             {
-                itemsDisplayed[slot].GetComponentInChildren<TextMeshProUGUI>().text = inventory.container.items[i].amount.ToString("n0");
+                //if this looks weird it's because of the way that we save our inventory when the application is closed
+                //we don't need to care about saving the sprite because those are updated at runtime
+                _slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().sprite = inventory.database.getItem[_slot.Value.id].uiDisplay;
+                //setting the color ourselves cuz I there's no need to render the slot if the item is gonna be in it 
+                _slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 1);
+                //if we only have one of the item in our inventory slot, it will display no text, else it will display the amount
+                _slot.Key.GetComponentInChildren<TextMeshProUGUI>().text = _slot.Value.amount == 1 ? "" : _slot.Value.amount.ToString("n0");
             }
             else
             {
-                //creates the object using the item prefab
-                var obj = Instantiate(inventoryPrefab, Vector3.zero, Quaternion.identity, transform);
-
-                obj.transform.GetChild(0).GetComponentInChildren<Image>().sprite = inventory.database.getItem[slot.item.id].uiDisplay;
-                //this spaces the stuff in the inventory around and also shows the number
-                obj.GetComponent<RectTransform>().localPosition = GetPosition(i);
-                obj.GetComponentInChildren<TextMeshProUGUI>().text = inventory.container.items[i].amount.ToString("n0");
-                itemsDisplayed.Add(slot, obj); //saves this object into the dictionary
+                _slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().sprite = null;
+                //Making this transparent cuz we don't need to render it rn
+                _slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 0);
+                //if we only have one of the item in our inventory slot, it will display no text, else it will display the amount
+                _slot.Key.GetComponentInChildren<TextMeshProUGUI>().text = "";
             }
         }
     }
+
 
     //this function returns positions for our items as a grid
     public Vector3 GetPosition(int i)

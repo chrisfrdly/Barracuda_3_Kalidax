@@ -17,25 +17,39 @@ public class SO_Inventory : ScriptableObject, ISerializationCallbackReceiver
     {
         //this is the buffs section again
         //additionally this will help for non-stackable items. They don't need to give a buff, but if it has the attribute, it will not stack
-        if(_item.buffs.Length > 0)
+        if (_item.buffs.Length > 0)
         {
-            container.items.Add(new InventorySlot(_item.id, _item, _amount));
+            SetEmptySlot(_item, _amount);
             return;
         }
 
-        for (int i = 0; i < container.items.Count; i++)
+        for (int i = 0; i < container.items.Length; i++)
         {
             //checks if the item is already in our inventory 
-            if (container.items[i].item.id == _item.id)
+            if (container.items[i].id == _item.id)
             {
                 container.items[i].AddAmount(_amount);
                 return;
             }
         }
-        Debug.Log(container.items.Count);
-        container.items.Add(new InventorySlot(_item.id, _item, _amount));
+        SetEmptySlot(_item, _amount);
+ 
     }
 
+    //finds and returns the first empty inventory slot
+    public InventorySlot SetEmptySlot(Item _item, int _amount)
+    {
+        for (int i = 0; i < container.items.Length; i++)
+        {
+            if(container.items[i].id <= -1)
+            {
+                container.items[i].UpdateSlot(_item.id, _item, _amount);
+                return container.items[i];
+            }
+        }
+        //set up what happens when inventory is full
+        return null;
+    }
     //turns our scriptable object into a string and then will convert it into a .Json file
     [ContextMenu("Save")]
     public void Save()
@@ -70,7 +84,7 @@ public class SO_Inventory : ScriptableObject, ISerializationCallbackReceiver
     //for Unity to serialize our inventory whenever we change it in editor. Will always match the item id
     public void OnAfterDeserialize()
     {
-        for(int i = 0; i < container.items.Count; i++)
+        for(int i = 0; i < container.items.Length; i++)
         {
             container.items[i].item = container.items[i].item;
             //database.getItem[container.items[i].id]
@@ -85,7 +99,7 @@ public class SO_Inventory : ScriptableObject, ISerializationCallbackReceiver
 [System.Serializable]
 public class Inventory
 {
-    public List<InventorySlot> items = new List<InventorySlot>();
+    public InventorySlot[] items = new InventorySlot[24];
 }
 /// <summary>
 /// Each of these classes are gonna be a container for our in game items
@@ -95,11 +109,25 @@ public class Inventory
 [System.Serializable]
 public class InventorySlot
 {
-    public int id;
+    public int id = -1;
     public Item item;
     public int amount;
-    
+
+    //default constructor 
+    public InventorySlot()
+    {
+        id = -1;
+        item = null;
+        amount = 0;
+    }
     public InventorySlot(int _id, Item _item, int _amount)
+    {
+        id = _id;
+        item = _item;
+        amount = _amount;
+    }
+
+    public void UpdateSlot(int _id, Item _item, int _amount)
     {
         id = _id;
         item = _item;
