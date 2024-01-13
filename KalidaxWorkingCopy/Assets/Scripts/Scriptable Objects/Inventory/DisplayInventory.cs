@@ -6,7 +6,7 @@ using TMPro;
 
 public class DisplayInventory : MonoBehaviour
 {
-/*    public GameObject inventoryPrefab;
+    public GameObject inventoryPrefab;
 
     public SO_Inventory inventory;
 
@@ -20,7 +20,7 @@ public class DisplayInventory : MonoBehaviour
     public int spaceBetweenItem_y;
 
     //Dictionary that has all the items within the Inventory Slot
-    private Dictionary<InventorySlot, GameObject> itemsDisplayed = new Dictionary<InventorySlot, GameObject> ();
+    private Dictionary<InventorySlot, GameObject> itemsDisplayed = new Dictionary<InventorySlot, GameObject>();
 
     // Start is called before the first frame update
     void Start()
@@ -37,42 +37,47 @@ public class DisplayInventory : MonoBehaviour
     public void CreateDisplay()
     {
         //this creates our little inventory menu based on how many objects we are holding
-        for(int i = 0; i < inventory.container.Count; i++)
+        for (int i = 0; i < inventory.container.items.Count; i++)
         {
+            InventorySlot slot = inventory.container.items[i];
+
             //creates the object using the item prefab
             var obj = Instantiate(inventoryPrefab, Vector3.zero, Quaternion.identity, transform);
             //changes the sprite of the object within the inventory
-            obj.transform.GetChild(0).GetComponentInChildren<Image>().sprite;
+            obj.transform.GetChild(0).GetComponentInChildren<Image>().sprite = inventory.database.getItem[slot.item.id].uiDisplay;
             //this spaces the stuff in the inventory around and also shows the number
             obj.GetComponent<RectTransform>().localPosition = GetPosition(i);
-            obj.GetComponentInChildren<TextMeshProUGUI>().text = inventory.container[i].amount.ToString("n0");
-            itemsDisplayed.Add(inventory.container[i], obj); //saves this object into the dictionary
+            obj.GetComponentInChildren<TextMeshProUGUI>().text = slot.amount.ToString("n0");
+            itemsDisplayed.Add(slot, obj); //saves this object into the dictionary
         }
     }
 
     //this method updates the values of your items and adds new items to your inventory when you pick them up
     public void UpdateDisplay()
     {
-       for(int i = 0; i < inventory.container.Count;i++)
+        for (int i = 0; i < inventory.container.items.Count; i++)
         {
+            InventorySlot slot = inventory.container.items[i];
+
             ///
             /// this checks if your item is in your inventory already
             /// if it is, it displays the value in whatever slot your item is in
             /// if it is not, it will create a new space for you to hold your item, assuming the inventory is not full
             ///
-            if(itemsDisplayed.ContainsKey(inventory.container[i]))
+            if (itemsDisplayed.ContainsKey(slot))
             {
-                itemsDisplayed[inventory.container[i]].GetComponentInChildren<TextMeshProUGUI>().text = inventory.container[i].amount.ToString("n0");
+                itemsDisplayed[slot].GetComponentInChildren<TextMeshProUGUI>().text = inventory.container.items[i].amount.ToString("n0");
             }
             else
             {
                 //creates the object using the item prefab
-                var obj = Instantiate(inventory.container[i].item.prefab, Vector3.zero, Quaternion.identity, transform);
+                var obj = Instantiate(inventoryPrefab, Vector3.zero, Quaternion.identity, transform);
 
+                obj.transform.GetChild(0).GetComponentInChildren<Image>().sprite = inventory.database.getItem[slot.item.id].uiDisplay;
                 //this spaces the stuff in the inventory around and also shows the number
                 obj.GetComponent<RectTransform>().localPosition = GetPosition(i);
-                obj.GetComponentInChildren<TextMeshProUGUI>().text = inventory.container[i].amount.ToString("n0");
-                itemsDisplayed.Add(inventory.container[i], obj); //saves this object into the dictionary
+                obj.GetComponentInChildren<TextMeshProUGUI>().text = inventory.container.items[i].amount.ToString("n0");
+                itemsDisplayed.Add(slot, obj); //saves this object into the dictionary
             }
         }
     }
@@ -80,6 +85,6 @@ public class DisplayInventory : MonoBehaviour
     //this function returns positions for our items as a grid
     public Vector3 GetPosition(int i)
     {
-        return new Vector3(startPosition_x + (spaceBetweenItem_x * (i % numberOfColumn)),startPosition_y + (-spaceBetweenItem_y * (i / numberOfColumn)), 0f);
-    }*/
+        return new Vector3(startPosition_x + (spaceBetweenItem_x * (i % numberOfColumn)), startPosition_y + (-spaceBetweenItem_y * (i / numberOfColumn)), 0f);
+    }
 }

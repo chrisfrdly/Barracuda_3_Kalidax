@@ -15,10 +15,18 @@ public class SO_Inventory : ScriptableObject, ISerializationCallbackReceiver
     //this will check our list to see if we have an item in our inventory, if not, we can add one
     public void AddItem(Item _item, int _amount)
     {
+        //this is the buffs section again
+        //additionally this will help for non-stackable items. They don't need to give a buff, but if it has the attribute, it will not stack
+        if(_item.buffs.Length > 0)
+        {
+            container.items.Add(new InventorySlot(_item.id, _item, _amount));
+            return;
+        }
+
         for (int i = 0; i < container.items.Count; i++)
         {
             //checks if the item is already in our inventory 
-            if (container.items[i].item == _item)
+            if (container.items[i].item.id == _item.id)
             {
                 container.items[i].AddAmount(_amount);
                 return;
