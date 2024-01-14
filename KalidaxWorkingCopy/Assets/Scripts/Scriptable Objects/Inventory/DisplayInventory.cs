@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using TMPro;
+using UnityEngine.Events;
 
 public class DisplayInventory : MonoBehaviour
 {
@@ -11,7 +13,9 @@ public class DisplayInventory : MonoBehaviour
     /// this is what updates the UI display for the player
     /// it is not responsible for any inventory calculation, all of that can be found in SO_Inventory
     /// </summary>
-    
+
+    public MouseItem mouseItem = new MouseItem();
+
     public GameObject inventoryPrefab;
 
     public SO_Inventory inventory;
@@ -49,6 +53,15 @@ public class DisplayInventory : MonoBehaviour
             var obj = Instantiate(inventoryPrefab, Vector3.zero, Quaternion.identity, transform);
             obj.GetComponent<RectTransform>().localPosition = GetPosition(i);
 
+            //Adding all the events required to move stuff around
+            //we're adding these so we can click and drag the objects in the slot
+            AddEvent(obj, EventTriggerType.PointerEnter, delegate { OnEnter(obj); });
+            AddEvent(obj, EventTriggerType.PointerExit, delegate { OnExit(obj); });
+            AddEvent(obj, EventTriggerType.BeginDrag, delegate { OnDragStart(obj); });
+            AddEvent(obj, EventTriggerType.EndDrag, delegate { OnDragEnd(obj); });
+            AddEvent(obj, EventTriggerType.Drag, delegate { OnDrag(obj); });
+
+
             itemsDisplayed.Add(obj, inventory.container.items[i]);
         }
     }
@@ -80,10 +93,91 @@ public class DisplayInventory : MonoBehaviour
         }
     }
 
+    //this is gonna add events to our button and make it real easy for us to move them around in the space
+    private void AddEvent(GameObject obj, EventTriggerType type, UnityAction<BaseEventData> action)
+    {
+        EventTrigger trigger = obj.GetComponent<EventTrigger>();
+        var eventTrigger = new EventTrigger.Entry();
+        eventTrigger.eventID = type;
+        eventTrigger.callback.AddListener(action);
+        trigger.triggers.Add(eventTrigger);
+
+    }
+
+    /// <summary>
+    /// Just to reiterate this is a visual representation of what is happening with our system
+    /// these events are just for the players to be able to move things around and will not mess with any calculations
+    /// These events will make life easier when we deal with moving the buttons around
+    /// </summary>
+    
+    //checks if this is an actual display item
+    public void OnEnter(GameObject obj)
+    {
+       mouseItem.hoverObj = obj;
+        if(itemsDisplayed.ContainsKey(obj))
+        {
+            mouseItem.hoverItem = itemsDisplayed[obj];
+        }
+    }
+    public void OnExit(GameObject obj)
+    {
+        mouseItem.hoverObj = null;
+        mouseItem.hoverItem = null;
+        
+    }
+    // this function creates a temporary object that is a representation of the object that the player is holding
+    public void OnDragStart(GameObject obj)
+    {
+        var mouseObject = new GameObject();
+        var rt = mouseObject.AddComponent<RectTransform>();
+        rt.sizeDelta = new Vector2(40, 40);
+        mouseObject.transform.SetParent(transform.parent);
+        //checks if there is actually an item to drag
+        if(itemsDisplayed[obj].id >= 0)
+        {
+            var img = mouseObject.AddComponent<Image>();
+            img.sprite = inventory.database.getItem[itemsDisplayed[obj].id].uiDisplay;
+            img.raycastTarget = false;
+        }
+        mouseItem.selectedObj = mouseObject;
+        mouseItem.item = itemsDisplayed[obj];
+
+    }
+    public void OnDragEnd(GameObject obj)
+    {
+        if(mouseItem.hoverObj)
+        {
+            inventory.MoveItem(itemsDisplayed[obj], itemsDisplayed[mouseItem.hoverObj]);
+        }
+        else
+        {
+
+        }
+        Destroy(mouseItem.selectedObj);
+        mouseItem.item = null;
+    }
+    public void OnDrag(GameObject obj)
+    {
+        if (mouseItem.selectedObj != null)
+        {
+            mouseItem.selectedObj.GetComponent<RectTransform>().position = Input.mousePosition;
+        }
+
+        else
+            return;
+    }
 
     //this function returns positions for our items as a grid
     public Vector3 GetPosition(int i)
     {
         return new Vector3(startPosition_x + (spaceBetweenItem_x * (i % numberOfColumn)), startPosition_y + (-spaceBetweenItem_y * (i / numberOfColumn)), 0f);
     }
+}
+
+public class MouseItem
+{
+    public GameObject selectedObj;
+    public InventorySlot item;
+    public InventorySlot hoverItem;
+    public GameObject hoverObj;
 }

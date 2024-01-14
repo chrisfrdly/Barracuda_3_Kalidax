@@ -50,6 +50,13 @@ public class SO_Inventory : ScriptableObject, ISerializationCallbackReceiver
         //set up what happens when inventory is full
         return null;
     }
+
+    public void MoveItem(InventorySlot item1, InventorySlot item2)
+    {
+        InventorySlot temp = new InventorySlot(item2.id, item2.item, item2.amount);
+        item2.UpdateSlot(item1.id, item1.item, item1.amount);
+        item1.UpdateSlot(temp.id, temp.item, temp.amount);
+    }
     //turns our scriptable object into a string and then will convert it into a .Json file
     [ContextMenu("Save")]
     public void Save()
