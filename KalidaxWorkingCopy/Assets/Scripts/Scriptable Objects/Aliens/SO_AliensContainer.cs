@@ -8,7 +8,7 @@ using Unity.VisualScripting;
 using UnityEditor;
 #endif
 
-[CreateAssetMenu(fileName = "Aliens Container", menuName = "Data Containers/Aliens Container")]
+[CreateAssetMenu(fileName = "Aliens Container", menuName = "Aliens/Aliens Container")]
 public class SO_AliensContainer : ScriptableObject
 {
 
@@ -46,7 +46,7 @@ public class SO_AliensContainer : ScriptableObject
     {
         //Initialize
         thisContainer = this;
-        filePath = $"Assets/Scripts/Scriptable Objects/Aliens/{this.name}.asset";
+        filePath = AssetDatabase.GetAssetPath(this);
     }
 
 
@@ -86,6 +86,8 @@ public class SO_AliensContainerEditor : Editor
         alienName = serializedObject.FindProperty("alienName");
         alienTier = serializedObject.FindProperty("alienTier");
         aliensInDatabase = serializedObject.FindProperty("aliensInDatabase");
+
+        
     }
     public override void OnInspectorGUI()
     {
@@ -99,7 +101,11 @@ public class SO_AliensContainerEditor : Editor
         if (aliens == null) return;
 
         GUILayout.Space(30f);
+
         //base.OnInspectorGUI();
+
+
+        //-- Adding A Custom Title --//
         GUIStyle headStyle = new GUIStyle();
         headStyle.fontSize = 30;
         headStyle.normal.textColor = Color.white;
@@ -109,11 +115,17 @@ public class SO_AliensContainerEditor : Editor
         EditorGUILayout.LabelField("Alien Creation \n Machine", headStyle);
 
         GUILayout.Space(40f);
+
+
+
+        //-- Alien Information --//
         EditorGUILayout.PropertyField(alienName);
         EditorGUILayout.PropertyField(alienTier);
 
         GUILayout.Space(10f);
 
+
+        //-- Create Alien Button --//
         var style1 = new GUIStyle(GUI.skin.button);
         style1.normal.textColor = Color.green;
         style1.active.textColor = Color.green;
@@ -124,12 +136,12 @@ public class SO_AliensContainerEditor : Editor
             CreateNewAlien(aliens);
         }
 
-
         GUILayout.Space(10f);
 
         EditorGUILayout.PropertyField(aliensInDatabase);
 
 
+        //-- Delete All ALiens Button --//
         var style = new GUIStyle(EditorStyles.toolbarButton);
         style.normal.textColor = Color.red;
         style.active.textColor = Color.red;
@@ -139,6 +151,7 @@ public class SO_AliensContainerEditor : Editor
         {
             DeleteAllAliens(aliens);
         }
+
 
 
         //If we made a change, apply it

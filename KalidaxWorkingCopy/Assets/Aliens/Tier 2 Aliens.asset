@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: The Trello
   _alienTier: 1
-  alien1: {fileID: 0}
-  alien2: {fileID: 0}
+  alien1: {fileID: -2809655147040883975, guid: c5184fa4d3a7c4d40a419acbd5ea6e83, type: 2}
+  alien2: {fileID: -2012485351473323766, guid: c5184fa4d3a7c4d40a419acbd5ea6e83, type: 2}
   sellingPrice: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   alienArt:
     idleAnim: {fileID: 0}
@@ -37,8 +37,8 @@ MonoBehaviour:
   alienName: The Trello
   alienTier: 1
   aliensInDatabase:
-  - '[Tier_2] The Combo'
   - '[Tier_2] The Wumbo'
+  - '[Tier_2] The Combos'
   - '[Tier_2] The Trello'
 --- !u!114 &976101997046042313
 MonoBehaviour:
@@ -50,12 +50,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 16ea780a6e7e52e4790b222f05ac24e5, type: 3}
-  m_Name: '[Tier_2] The Combo'
+  m_Name: '[Tier_2] The Combos'
   m_EditorClassIdentifier: 
-  _name: The Combo
+  _name: The Combos
   _alienTier: 1
-  alien1: {fileID: 636911643353479877, guid: c5184fa4d3a7c4d40a419acbd5ea6e83, type: 2}
-  alien2: {fileID: -5390814573054406613, guid: c5184fa4d3a7c4d40a419acbd5ea6e83, type: 2}
+  alien1: {fileID: 964074943835393750, guid: c5184fa4d3a7c4d40a419acbd5ea6e83, type: 2}
+  alien2: {fileID: -2809655147040883975, guid: c5184fa4d3a7c4d40a419acbd5ea6e83, type: 2}
   sellingPrice: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   alienArt:
     idleAnim: {fileID: 0}
@@ -76,8 +76,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: The Wumbo
   _alienTier: 1
-  alien1: {fileID: 0}
-  alien2: {fileID: 0}
+  alien1: {fileID: 964074943835393750, guid: c5184fa4d3a7c4d40a419acbd5ea6e83, type: 2}
+  alien2: {fileID: -2012485351473323766, guid: c5184fa4d3a7c4d40a419acbd5ea6e83, type: 2}
   sellingPrice: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   alienArt:
     idleAnim: {fileID: 0}

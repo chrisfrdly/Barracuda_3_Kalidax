@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-3444407857049547909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16ea780a6e7e52e4790b222f05ac24e5, type: 3}
+  m_Name: '[Tier_3] Avatar Aang'
+  m_EditorClassIdentifier: 
+  _name: Avatar Aang
+  _alienTier: 2
+  alien1: {fileID: -8688336413176254943, guid: c5184fa4d3a7c4d40a419acbd5ea6e83, type: 2}
+  alien2: {fileID: 0}
+  sellingPrice: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  alienArt:
+    idleAnim: {fileID: 0}
+    wallkingAnim: {fileID: 0}
+  alienSprite: {fileID: 0}
+  alienTexture: {fileID: 0}
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 186670bb6c47acc41a667bf475ea57fa, type: 3}
+  m_Name: Tier 3 Aliens
+  m_EditorClassIdentifier: 
+  alienName: Zuko
+  alienTier: 2
+  aliensInDatabase:
+  - '[Tier_3] Avatar Aang'
+  - '[Tier_3] Zuko'
+--- !u!114 &2116017291354919995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16ea780a6e7e52e4790b222f05ac24e5, type: 3}
+  m_Name: '[Tier_3] Zuko'
+  m_EditorClassIdentifier: 
+  _name: Zuko
+  _alienTier: 2
+  alien1: {fileID: 0}
+  alien2: {fileID: 0}
+  sellingPrice: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  alienArt:
+    idleAnim: {fileID: 0}
+    wallkingAnim: {fileID: 0}
+  alienSprite: {fileID: 0}
+  alienTexture: {fileID: 0}

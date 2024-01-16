@@ -35,7 +35,7 @@ public class SO_Alien : ScriptableObject
     [SerializeField] private Texture2D alienTexture;
 
     //Properties
-    public SO_AliensContainer m_Container { get => _container; }
+    public SO_AliensContainer m_Container { get => _container; set => _container = value; }
     public SO_Alien m_ThisAlien { get => _thisAlien;}
     public string m_Name { get => _name; set => _name = value; }
     public AlienTierType m_AlienTier { get => _alienTier; set => _alienTier = value; }
@@ -47,6 +47,7 @@ public class SO_Alien : ScriptableObject
     public void Initialize(SO_AliensContainer _alienContainer)
     {
         _container = _alienContainer;
+
         _thisAlien = this;
         
         //Adding the days to the list
@@ -56,6 +57,12 @@ public class SO_Alien : ScriptableObject
         }
     }
 #endif
+
+    private void OnEnable()
+    {
+        //need to set this every time or else we get a nullreference error
+        _thisAlien = this;
+    }
 }
 
 [System.Serializable]
@@ -94,6 +101,22 @@ public class SO_AlienEditor : Editor
         alienArt = serializedObject.FindProperty("alienArt");
         alienSprite = serializedObject.FindProperty("alienSprite");
         alienTexture = serializedObject.FindProperty("alienTexture");
+
+        //Without this code, we would get null reference errors since the SO_Aliens's reference to the parent's container was null
+        //when opening the project again, so we need to make sure to get the parent asset and set this script's container to it.
+
+        //Get this asset
+        SO_Alien alien = (SO_Alien)target;
+
+        //Get the Parent
+        var a = AssetDatabase.LoadMainAssetAtPath(AssetDatabase.GetAssetPath(alien));
+
+        //Convert the Parent into a variable so we can get the variable from the script
+        SO_AliensContainer aliens = (SO_AliensContainer)a;
+
+        //Set this container to the parent's container
+        alien.m_Container = aliens.m_ThisContainer;
+        
     }
 
     public override void OnInspectorGUI()
@@ -108,7 +131,6 @@ public class SO_AlienEditor : Editor
         if (alien.IsDestroyed()) return;
         if (alien == null) return;
         //base.OnInspectorGUI();
-
 
 
         //-- ALIEN Information Title --//
@@ -162,13 +184,38 @@ public class SO_AlienEditor : Editor
 
 
         //-- ALIEN RENAME BUTTONS --//
+        if (alien.IsDestroyed()) return;
+        if (alien == null) return;
+
+        GUIStyle deleteStyle = new GUIStyle(EditorStyles.toolbarButton);
+        deleteStyle.normal.textColor = Color.red;
+        deleteStyle.active.textColor = Color.red;
+        deleteStyle.hover.textColor = new Color(0.7f, 0 , 0);
+
+        bool shouldRename = !alienName.Equals(alien.m_ThisAlien.name);
+        GUIStyle renameStyle = new GUIStyle(GUI.skin.button);
+
+        if(!shouldRename)
+        {
+            renameStyle.normal.textColor = Color.white;
+            renameStyle.active.textColor = Color.white;
+            renameStyle.hover.textColor = Color.white;
+        }
+        else
+        {
+            renameStyle.normal.textColor = Color.yellow;
+            renameStyle.active.textColor = Color.yellow;
+            renameStyle.hover.textColor = new Color(255f/255f, 215f / 255f, 0);
+        }
+        
 
         GUILayout.BeginHorizontal();
-        if(GUILayout.Button("Rename Alien"))
+
+        if (GUILayout.Button("Rename Alien", renameStyle))
         {
             RenameAlien(alien);
         }
-        if (GUILayout.Button("Delete Alien"))
+        if (GUILayout.Button("Delete Alien", deleteStyle))
         {
             DeleteAlien(alien);
         }
@@ -180,8 +227,11 @@ public class SO_AlienEditor : Editor
         //-- HERLPER BOX TO SUGGEST THAT THE NAMES OF THE ALIEN AND ASSET SHOULD BE THE SAME--//
         if (alien.IsDestroyed()) return;
         if (alien == null) return;
-        if (!alienName.Equals(alien.m_ThisAlien.name))
+        if (shouldRename)
         {
+            renameStyle.normal.textColor = Color.yellow;
+            renameStyle.active.textColor = Color.yellow;
+            renameStyle.hover.textColor = new Color(255f / 255f, 215 / 255f, 0);
             EditorGUILayout.HelpBox("The name of the Alien and the Asset do not match. " +
                 "Please Press the 'Rename Alien' Button, or Update the 'name' and 'tier' fields " +
                 "above to match them!", MessageType.Warning);
@@ -194,6 +244,24 @@ public class SO_AlienEditor : Editor
         {
             EditorGUILayout.PropertyField(alien1);
             EditorGUILayout.PropertyField(alien2);
+
+            //Check to see if the alien's tiers are the same
+            if(alien1.objectReferenceValue != null && alien2.objectReferenceValue != null)
+            {
+                SO_Alien a1 = (SO_Alien)alien1.objectReferenceValue;
+                SO_Alien a2 = (SO_Alien)alien2.objectReferenceValue;
+
+                int tier1 = (int)a1.m_AlienTier;
+                int tier2 = (int)a2.m_AlienTier;
+
+                if (tier1 != tier2)
+                {
+                    EditorGUILayout.HelpBox("The Parent Aliens are not of the same Tier. " +
+                                            "Please make sure they are the same Tier. ", MessageType.Warning);
+                }
+            }
+            
+
         }
 
 
