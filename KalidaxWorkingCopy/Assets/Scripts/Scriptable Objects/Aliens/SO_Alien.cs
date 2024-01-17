@@ -27,7 +27,13 @@ public class SO_Alien : ScriptableObject
     [SerializeField] private SO_Alien alien2;
 
     [Separator(1, 10)]
-    [SerializeField] private List<int> sellingPrice = new List<int>();
+    [Header("Cost and Sell Values")]
+    [SerializeField] private int costValue;
+    [SerializeField] private int sellValue;
+
+    [Header("Days to Grow Alien")]
+    [SerializeField] private int minDaysToGrow;
+    [SerializeField] private int maxDaysToGrow;
 
     [Separator(1, 10)]
     [SerializeField] private AlienArt alienArt;
@@ -49,12 +55,7 @@ public class SO_Alien : ScriptableObject
         _container = _alienContainer;
 
         _thisAlien = this;
-        
-        //Adding the days to the list
-        for(int i = 0; i < 15; i++)
-        {
-            sellingPrice.Add(0);
-        }
+      
     }
 #endif
 
@@ -81,10 +82,14 @@ public class SO_AlienEditor : Editor
     private SerializedProperty _name;
     private SerializedProperty _alienTier;
 
+    private SerializedProperty minDaysToGrow;
+    private SerializedProperty maxDaysToGrow;
+
     private SerializedProperty alien1;
     private SerializedProperty alien2;
 
-    private SerializedProperty sellingPrice;
+    private SerializedProperty costValue;
+    private SerializedProperty sellValue;
     private SerializedProperty alienArt;
     private SerializedProperty alienSprite;
     private SerializedProperty alienTexture;
@@ -94,10 +99,15 @@ public class SO_AlienEditor : Editor
         _name = serializedObject.FindProperty("_name");
         _alienTier = serializedObject.FindProperty("_alienTier");
 
+        minDaysToGrow = serializedObject.FindProperty("minDaysToGrow");
+        maxDaysToGrow = serializedObject.FindProperty("maxDaysToGrow");
+
         alien1 = serializedObject.FindProperty("alien1");
         alien2 = serializedObject.FindProperty("alien2");
 
-        sellingPrice = serializedObject.FindProperty("sellingPrice");
+        costValue = serializedObject.FindProperty("costValue");
+        sellValue = serializedObject.FindProperty("sellValue");
+
         alienArt = serializedObject.FindProperty("alienArt");
         alienSprite = serializedObject.FindProperty("alienSprite");
         alienTexture = serializedObject.FindProperty("alienTexture");
@@ -173,14 +183,15 @@ public class SO_AlienEditor : Editor
                     EditorGUILayout.PropertyField(_alienTier, new GUIContent("Tier  "));
                     EditorGUILayout.PropertyField(alienSprite, new GUIContent("Sprite  "));
                     EditorStyles.label.alignment = TextAnchor.MiddleLeft;
- 
-            GUILayout.EndVertical();
 
+     
+            GUILayout.EndVertical();
+      
         GUILayout.EndHorizontal();
 
         GUILayout.Space(40f);
 
-
+      
 
 
         //-- ALIEN RENAME BUTTONS --//
@@ -267,7 +278,19 @@ public class SO_AlienEditor : Editor
 
 
         //-- OTHER FIELDS --//
-        EditorGUILayout.PropertyField(sellingPrice);
+
+
+
+
+        EditorGUILayout.PropertyField(costValue, new GUIContent("Cost Value ($)"));
+        EditorGUILayout.PropertyField(sellValue, new GUIContent("Sell Value ($)"));
+
+
+        EditorGUILayout.PropertyField(minDaysToGrow, new GUIContent("Min Days"));
+        EditorGUILayout.PropertyField(maxDaysToGrow, new GUIContent("Max Days"));
+
+        EditorGUILayout.Space(10);
+
         EditorGUILayout.PropertyField(alienArt);
 
 

@@ -13,10 +13,8 @@ public class TitleAttribute : PropertyAttribute
     public TitleAttribute(string _text,
                           TextAlignment _alignment = TextAlignment.Left,
                           TextColour _colour = TextColour.White,
-                          bool _underlined = true,
                           int _fontSize = 30)
     {
-        titleUnderline = _underlined;
         titleColour = _colour;
         titleAlignment = _alignment;
         titleText = _text;

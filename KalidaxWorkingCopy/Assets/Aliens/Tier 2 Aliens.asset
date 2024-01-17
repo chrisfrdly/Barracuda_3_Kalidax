@@ -1,27 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-5048292239803791806
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16ea780a6e7e52e4790b222f05ac24e5, type: 3}
-  m_Name: '[Tier_2] The Trello'
-  m_EditorClassIdentifier: 
-  _name: The Trello
-  _alienTier: 1
-  alien1: {fileID: -2809655147040883975, guid: c5184fa4d3a7c4d40a419acbd5ea6e83, type: 2}
-  alien2: {fileID: -2012485351473323766, guid: c5184fa4d3a7c4d40a419acbd5ea6e83, type: 2}
-  sellingPrice: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-  alienArt:
-    idleAnim: {fileID: 0}
-    wallkingAnim: {fileID: 0}
-  alienSprite: {fileID: 21300000, guid: f09eae8c0ea04254b90c5386a034a225, type: 3}
-  alienTexture: {fileID: 2800000, guid: f09eae8c0ea04254b90c5386a034a225, type: 3}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38,8 +16,7 @@ MonoBehaviour:
   alienTier: 1
   aliensInDatabase:
   - '[Tier_2] The Wumbo'
-  - '[Tier_2] The Combos'
-  - '[Tier_2] The Trello'
+  - '[Tier_2] The Combo'
 --- !u!114 &976101997046042313
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50,13 +27,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 16ea780a6e7e52e4790b222f05ac24e5, type: 3}
-  m_Name: '[Tier_2] The Combos'
+  m_Name: '[Tier_2] The Combo'
   m_EditorClassIdentifier: 
-  _name: The Combos
+  _name: The Combo
   _alienTier: 1
   alien1: {fileID: 964074943835393750, guid: c5184fa4d3a7c4d40a419acbd5ea6e83, type: 2}
-  alien2: {fileID: -2809655147040883975, guid: c5184fa4d3a7c4d40a419acbd5ea6e83, type: 2}
-  sellingPrice: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  alien2: {fileID: 0}
+  costValue: 0
+  sellValue: 0
+  minDaysToGrow: 0
+  maxDaysToGrow: 0
   alienArt:
     idleAnim: {fileID: 0}
     wallkingAnim: {fileID: 0}
@@ -78,7 +58,10 @@ MonoBehaviour:
   _alienTier: 1
   alien1: {fileID: 964074943835393750, guid: c5184fa4d3a7c4d40a419acbd5ea6e83, type: 2}
   alien2: {fileID: -2012485351473323766, guid: c5184fa4d3a7c4d40a419acbd5ea6e83, type: 2}
-  sellingPrice: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  costValue: 0
+  sellValue: 0
+  minDaysToGrow: 0
+  maxDaysToGrow: 0
   alienArt:
     idleAnim: {fileID: 0}
     wallkingAnim: {fileID: 0}

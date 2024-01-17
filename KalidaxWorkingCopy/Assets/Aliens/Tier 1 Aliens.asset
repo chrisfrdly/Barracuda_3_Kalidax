@@ -16,12 +16,40 @@ MonoBehaviour:
   _alienTier: 0
   alien1: {fileID: 0}
   alien2: {fileID: 0}
-  sellingPrice: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  costValue: 0
+  sellValue: 0
+  minDaysToGrow: 0
+  maxDaysToGrow: 0
   alienArt:
     idleAnim: {fileID: 0}
     wallkingAnim: {fileID: 0}
   alienSprite: {fileID: 21300000, guid: 17035c204825f6340a252046ab6476fd, type: 3}
   alienTexture: {fileID: 2800000, guid: 17035c204825f6340a252046ab6476fd, type: 3}
+--- !u!114 &-2792530730457353341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16ea780a6e7e52e4790b222f05ac24e5, type: 3}
+  m_Name: '[Tier_1] Anything'
+  m_EditorClassIdentifier: 
+  _name: Anything
+  _alienTier: 0
+  alien1: {fileID: 0}
+  alien2: {fileID: 0}
+  costValue: 0
+  sellValue: 0
+  minDaysToGrow: 0
+  maxDaysToGrow: 0
+  alienArt:
+    idleAnim: {fileID: 0}
+    wallkingAnim: {fileID: 0}
+  alienSprite: {fileID: 21300000, guid: 0779ad3feec52124e97114bcbb12ef13, type: 3}
+  alienTexture: {fileID: 2800000, guid: 0779ad3feec52124e97114bcbb12ef13, type: 3}
 --- !u!114 &-2012485351473323766
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32,13 +60,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 16ea780a6e7e52e4790b222f05ac24e5, type: 3}
-  m_Name: '[Tier_1] The Wah'
+  m_Name: '[Tier_1] The Epic'
   m_EditorClassIdentifier: 
-  _name: The Wah
+  _name: The Epic
   _alienTier: 0
   alien1: {fileID: 0}
   alien2: {fileID: 0}
-  sellingPrice: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  costValue: 0
+  sellValue: 0
+  minDaysToGrow: 0
+  maxDaysToGrow: 0
   alienArt:
     idleAnim: {fileID: 0}
     wallkingAnim: {fileID: 0}
@@ -56,12 +87,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 186670bb6c47acc41a667bf475ea57fa, type: 3}
   m_Name: Tier 1 Aliens
   m_EditorClassIdentifier: 
-  alienName: The Ah
+  alienName: Anything
   alienTier: 0
   aliensInDatabase:
   - '[Tier_1] The Cool'
-  - '[Tier_1] The Wah'
   - '[Tier_1] The Baulder'
+  - '[Tier_1] The Epic'
+  - '[Tier_1] Anything'
 --- !u!114 &964074943835393750
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -78,7 +110,10 @@ MonoBehaviour:
   _alienTier: 0
   alien1: {fileID: 0}
   alien2: {fileID: 0}
-  sellingPrice: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  costValue: 0
+  sellValue: 0
+  minDaysToGrow: 0
+  maxDaysToGrow: 0
   alienArt:
     idleAnim: {fileID: 0}
     wallkingAnim: {fileID: 0}

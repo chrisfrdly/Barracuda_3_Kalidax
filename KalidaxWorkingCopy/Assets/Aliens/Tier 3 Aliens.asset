@@ -38,7 +38,7 @@ MonoBehaviour:
   alienTier: 2
   aliensInDatabase:
   - '[Tier_3] Avatar Aang'
-  - '[Tier_3] Zuko'
+  - '[Tier_3] Fire Bender Zuko'
 --- !u!114 &2116017291354919995
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -49,9 +49,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 16ea780a6e7e52e4790b222f05ac24e5, type: 3}
-  m_Name: '[Tier_3] Zuko'
+  m_Name: '[Tier_3] Fire Bender Zuko'
   m_EditorClassIdentifier: 
-  _name: Zuko
+  _name: Fire Bender Zuko
   _alienTier: 2
   alien1: {fileID: 0}
   alien2: {fileID: 0}

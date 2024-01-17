@@ -14,7 +14,8 @@ public class SO_ControlSchemeHUD : ScriptableObject
     }
 
 
-
+    [Title("Input HUD Icons",TextAlignment.Center,TextColour.Aqua,30)]
+    [Separator(5,10)]
     public List<ControlSchemeHUD> controlSchemes;
 
     public Sprite UpdateSpriteHUD(string _controlScheme, SpriteType spriteType)
