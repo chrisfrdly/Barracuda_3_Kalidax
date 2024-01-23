@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using System;
 
-public class InteractableObject_IncubationPod : InteractableObject
+public class InteractableObject_SeedPod : InteractableObject
 {
     private enum IncubationState
     {
@@ -53,7 +53,9 @@ public class InteractableObject_IncubationPod : InteractableObject
     protected override void OnInteract()
     {
         OpenInteractionPanel();
-        HideInteractionPromptUI();
+
+        HideUI();
+
     }
 
 
@@ -162,5 +164,10 @@ public class InteractableObject_IncubationPod : InteractableObject
         seedImage.gameObject.SetActive(false);
         daysRemainingText.gameObject.SetActive(false);
     }
+
+    protected override bool IsInteractable() { return isInteractable; }
+    protected override bool IsTargetPointVisible() { return isInteractPointVisible; }
+    protected override bool FreezePlayerMovement() { return freezePlayerMovement; }
+    public override bool IsRequiredToLookAtTarget() { return isRequiredToLookAtTarget; }
 
 }

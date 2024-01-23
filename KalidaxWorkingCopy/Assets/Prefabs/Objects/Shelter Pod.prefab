@@ -162,6 +162,10 @@ MonoBehaviour:
   tweenTime: 0.2
   interactPromptPanel: {fileID: 8436313112901680733}
   interactButtonSprite: {fileID: 8436313113819507248}
+  isInteractable: 1
+  isInteractPointVisible: 1
+  isRequiredToLookAtTarget: 0
+  freezePlayerMovement: 0
 --- !u!1001 &4249006845355427522
 PrefabInstance:
   m_ObjectHideFlags: 0
