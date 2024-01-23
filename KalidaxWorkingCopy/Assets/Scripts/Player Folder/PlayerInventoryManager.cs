@@ -21,11 +21,11 @@ public class PlayerInventoryManager : MonoBehaviour
     //will pick up any item that is on the ground and add it to the inventory 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        var item = collision.GetComponent<Item>();
+        var item = collision.GetComponent<GroundItem>();
         //checks if this item does not return null
         if(item)
         {
-            inventory.AddItem(item.item, 1);
+            inventory.AddItem(new Item(item.item), 1);
             Destroy(collision.gameObject);
         }
     }
@@ -33,6 +33,6 @@ public class PlayerInventoryManager : MonoBehaviour
     //this resets the inventory when you stop playing the game
     private void OnApplicationQuit()
     {
-        inventory.container.Clear();
+        inventory.container.items = new InventorySlot[24];
     }
 }
