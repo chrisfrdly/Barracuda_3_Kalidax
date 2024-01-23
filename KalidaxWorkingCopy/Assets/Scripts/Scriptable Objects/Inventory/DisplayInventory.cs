@@ -143,6 +143,9 @@ public class DisplayInventory : MonoBehaviour
         mouseItem.item = itemsDisplayed[obj];
 
     }
+
+    //actually takes the item and puts it in the new slot. Calls this from the inventory class
+    //this only workks if you are currently holding on to an item 
     public void OnDragEnd(GameObject obj)
     {
         if(mouseItem.hoverObj)
@@ -151,7 +154,7 @@ public class DisplayInventory : MonoBehaviour
         }
         else
         {
-
+            inventory.RemoveItem(itemsDisplayed[obj].item);
         }
         Destroy(mouseItem.selectedObj);
         mouseItem.item = null;

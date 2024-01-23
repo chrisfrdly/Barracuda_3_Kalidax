@@ -4632,7 +4632,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4075410610440543763, guid: 601ed4e6eb6ba0046a87845146fdcb1e, type: 3}
       propertyPath: numberOfColumn
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4075410610440543763, guid: 601ed4e6eb6ba0046a87845146fdcb1e, type: 3}
       propertyPath: startPosition_x
@@ -4644,11 +4644,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4075410610440543763, guid: 601ed4e6eb6ba0046a87845146fdcb1e, type: 3}
       propertyPath: spaceBetweenItem_x
-      value: 75
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 4075410610440543763, guid: 601ed4e6eb6ba0046a87845146fdcb1e, type: 3}
       propertyPath: spaceBetweenItem_y
-      value: 75
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 4075410612173051810, guid: 601ed4e6eb6ba0046a87845146fdcb1e, type: 3}
       propertyPath: m_Name

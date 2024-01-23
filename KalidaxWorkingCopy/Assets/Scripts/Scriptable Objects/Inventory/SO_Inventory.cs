@@ -57,6 +57,19 @@ public class SO_Inventory : ScriptableObject, ISerializationCallbackReceiver
         item2.UpdateSlot(item1.id, item1.item, item1.amount);
         item1.UpdateSlot(temp.id, temp.item, temp.amount);
     }
+
+    //this will take an item out of the inventory
+    public void RemoveItem(Item _item)
+    {
+        for(int i = 0; i < container.items.Length; i++)
+        {
+            if(container.items[i].item == _item)
+            {
+                container.items[i].UpdateSlot(-1, null, 0);
+            }
+        }
+    }
+
     //turns our scriptable object into a string and then will convert it into a .Json file
     [ContextMenu("Save")]
     public void Save()
