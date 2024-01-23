@@ -3995,11 +3995,11 @@ PrefabInstance:
     - target: {fileID: 8750283390089401222, guid: 580e9ffe46e90a940bc7503137eef5ae, type: 3}
       propertyPath: alienContainer
       value: 
-      objectReference: {fileID: -2792530730457353341, guid: c5184fa4d3a7c4d40a419acbd5ea6e83, type: 2}
+      objectReference: {fileID: 8214189601345680040, guid: e2744f484ee07b846bd5ec7bf3a3ebb8, type: 2}
     - target: {fileID: 8750283390089401223, guid: 580e9ffe46e90a940bc7503137eef5ae, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: a04ecc9d5e12d5d449077414eb86635e, type: 3}
+      objectReference: {fileID: 21300000, guid: 13e7e6fe43a8aa049bcd610bbc1f5ff8, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 580e9ffe46e90a940bc7503137eef5ae, type: 3}
 --- !u!4 &1208629937 stripped
@@ -6284,7 +6284,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7376599304375814043, guid: 05fd7c1bb2d9ace419a141ea8994eeb9, type: 3}
       propertyPath: m_Name
-      value: Incubation Pod (3)
+      value: Gene Splicing Pod
       objectReference: {fileID: 0}
     - target: {fileID: 7376599304840943977, guid: 05fd7c1bb2d9ace419a141ea8994eeb9, type: 3}
       propertyPath: m_IsActive

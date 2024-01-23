@@ -6,7 +6,7 @@ using TMPro;
 
 
 
-public class InteractableObject_IncubationPod : InteractableObject
+public class InteractableObject_GeneSplicingPod : InteractableObject
 {
     [Separator()]
     [SerializeField] private SO_AliensInWorld aliens;

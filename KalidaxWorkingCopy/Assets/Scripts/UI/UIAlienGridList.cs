@@ -68,7 +68,7 @@ public class UIAlienGridList : MonoBehaviour
     {
         //Set the logic. Basically we'll set the button pressed 
         //Get the incubation pod root
-        InteractableObject_IncubationPod i = transform.root.GetComponent<InteractableObject_IncubationPod>();
+        InteractableObject_GeneSplicingPod i = transform.root.GetComponent<InteractableObject_GeneSplicingPod>();
 
         i.SetAlien(_alien);
         gameObject.SetActive(false);
