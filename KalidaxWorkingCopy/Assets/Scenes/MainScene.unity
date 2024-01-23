@@ -4752,6 +4752,46 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 123.999985
       objectReference: {fileID: 0}
+    - target: {fileID: 4075410610440543760, guid: 601ed4e6eb6ba0046a87845146fdcb1e, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -1344.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4075410610440543760, guid: 601ed4e6eb6ba0046a87845146fdcb1e, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -739.94
+      objectReference: {fileID: 0}
+    - target: {fileID: 4075410610440543760, guid: 601ed4e6eb6ba0046a87845146fdcb1e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 672.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 4075410610440543760, guid: 601ed4e6eb6ba0046a87845146fdcb1e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 369.97
+      objectReference: {fileID: 0}
+    - target: {fileID: 4075410610440543763, guid: 601ed4e6eb6ba0046a87845146fdcb1e, type: 3}
+      propertyPath: numberOfColumn
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4075410610440543763, guid: 601ed4e6eb6ba0046a87845146fdcb1e, type: 3}
+      propertyPath: startPosition_x
+      value: -245
+      objectReference: {fileID: 0}
+    - target: {fileID: 4075410610440543763, guid: 601ed4e6eb6ba0046a87845146fdcb1e, type: 3}
+      propertyPath: startPosition_y
+      value: 95
+      objectReference: {fileID: 0}
+    - target: {fileID: 4075410610440543763, guid: 601ed4e6eb6ba0046a87845146fdcb1e, type: 3}
+      propertyPath: spaceBetweenItem_x
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 4075410610440543763, guid: 601ed4e6eb6ba0046a87845146fdcb1e, type: 3}
+      propertyPath: spaceBetweenItem_y
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 4075410610750858666, guid: 601ed4e6eb6ba0046a87845146fdcb1e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -369.35
+      objectReference: {fileID: 0}
     - target: {fileID: 4075410611424517987, guid: 601ed4e6eb6ba0046a87845146fdcb1e, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 123.999985
@@ -5480,7 +5520,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 200
-  m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bab328aa2cf4ea74e98baf65c37e3876, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -5540,8 +5580,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.41423106}
-  m_Size: {x: 1, y: 1.1715379}
+  m_Offset: {x: 0, y: -0.06039393}
+  m_Size: {x: 1, y: 1.8792121}
   m_Direction: 0
 --- !u!1 &1783410872
 GameObject:
