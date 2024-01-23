@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class InteractableObject_ShelterPod : InteractableObject
 {
+
     protected override void OnInteract()
     {
         PromptDayReset();
-        HideInteractionPromptUI();
+
+        HideUI();
     }
 
     private void PromptDayReset()
@@ -18,5 +20,11 @@ public class InteractableObject_ShelterPod : InteractableObject
 
         UIController.Instance.ShowEndOfDayConfirmationUI();
     }
+
+    protected override bool IsInteractable() { return isInteractable; }
+    protected override bool IsTargetPointVisible() { return isInteractPointVisible; }
+    protected override bool FreezePlayerMovement() { return freezePlayerMovement; }
+    public override bool IsRequiredToLookAtTarget() { return isRequiredToLookAtTarget; }
+
 
 }

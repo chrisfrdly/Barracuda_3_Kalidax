@@ -3,38 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using System;
+
+
 
 public class InteractableObject_IncubationPod : InteractableObject
 {
-    private enum IncubationState
-    {
-        OBJ_AddSeed,
-        OBJ_Incubating,
-        OBJ_RemoveSeed
-    }
+    [Separator()]
+    [SerializeField] private SO_AliensInWorld aliens;
+    [SerializeField] private UIAlienGridList UIalienGridList;
 
-    private IncubationState incubationState = IncubationState.OBJ_AddSeed;
-
-
-
-    [Header("Panel")]
+    [Header("Incubation Pod HUD Panel")]
     [SerializeField] private GameObject incubationPodHUDPanel;
+    [SerializeField] private GameObject alienGridPanel;
 
-    [Header("Button")]
-    [SerializeField] private Button addSeedButton;
-    [SerializeField] private TextMeshProUGUI buttonText;
+    [Header("Incubation Pod Buttons")]
+    [SerializeField] private Button[] addAlienButton = new Button[2];
+    private int buttonModified;
 
-    [Header("Other Contents")]
-    [SerializeField] private TextMeshProUGUI daysRemainingText;
-    [SerializeField] private Image seedImage;
+    //aliens that are assigned to the buttons
+    [SerializeField] private SO_Alien[] aliensAdded = new SO_Alien[2];
 
-    [Header("Incubation Parameters")]
-    [SerializeField] private int daysToIncubate = 7;
-    private int daysLeft;
 
-    //Properties
-    public int m_DaysLeft { get => daysLeft; set => daysLeft = value; }
 
     /// <summary>
     /// The way the incubation works is that at the beginning you must add a seed into it,
@@ -46,14 +35,25 @@ public class InteractableObject_IncubationPod : InteractableObject
     protected override void Awake()
     {
         base.Awake();
+
         SO_interactableObject.clickedCancelButtonEvent.AddListener(CloseInteractionPrompt);
-        daysLeft = daysToIncubate;
+
+        addAlienButton[0].onClick.AddListener(() => ButtonClicked(0));
+        addAlienButton[1].onClick.AddListener(() => ButtonClicked(1));
+
+        //Need to clear the List every awake or else will stack with every play.
+        //Cannot clear in the "UIAlienGrisList" since it's awake is called after
+        //the aliens are added to the list, so they will be removed
+        aliens.worldAliens.Clear();
+
     }
-  
+
     protected override void OnInteract()
     {
         OpenInteractionPanel();
-        HideInteractionPromptUI();
+
+        HideUI();
+
     }
 
 
@@ -63,27 +63,18 @@ public class InteractableObject_IncubationPod : InteractableObject
 
     private void OpenInteractionPanel()
     {
-        if(PlayerInputHandler.Instance.GetCurrentControlScheme() == "Controller")
+        if (PlayerInputHandler.Instance.GetCurrentControlScheme() == "Controller")
         {
             PlayerInputHandler.Instance.SwitchActionMap(true);
-            addSeedButton.Select();
+            addAlienButton[0].Select();
         }
 
         //Activate the panel and make it the currentVisible UI
         incubationPodHUDPanel.SetActive(true);
         UIController.Instance.m_CurrentUIVisible = incubationPodHUDPanel;
 
+        //set an event for the buttons. If a button is clicked, reveal the grid panel
 
-        DisplayIncubationHUDContents();
-
-        //Set the text for the amount of days left
-        daysRemainingText.text = daysLeft.ToString();
-
-        //If we started incubating, set the state to the incubating state
-        if(daysLeft != daysToIncubate)
-        {
-            incubationState = IncubationState.OBJ_Incubating;
-        }
 
     }
     private void CloseInteractionPrompt()
@@ -92,75 +83,36 @@ public class InteractableObject_IncubationPod : InteractableObject
 
     }
 
-    //This function is called on the button in the inspector
-    public void ChangeState()
+    //passing in an int value so we can do more than just modify the button
+    private void ButtonClicked(int _button)
     {
-        
-        //when the button is pressed, change the state to the next state and then display the new contents
-        int i = (int)incubationState;
-        i++;
-        i %= 3;
-
-        incubationState = (IncubationState)i;
-        
-        DisplayIncubationHUDContents();
+        alienGridPanel.SetActive(true);
+        buttonModified = _button;
     }
-
-    private void DisplayIncubationHUDContents()
+    
+    //Called from the UIAlienGridList.cs
+    public void SetAlien(SO_Alien a)
     {
-        //Hide Button
-        switch(incubationState)
+        //Change the button to the sprite of the alien
+        addAlienButton[buttonModified].GetComponent<Image>().sprite = a.m_AlienSprite;
+        aliensAdded[buttonModified] = a;
+
+
+        if (aliensAdded[0] != null && aliensAdded[1] != null)
         {
-            case IncubationState.OBJ_AddSeed:
-                
-                ShowAddSeedUI();
-                break;
-
-            case IncubationState.OBJ_Incubating:
-                ShowIncubatingUI();
-                break;
-
-            case IncubationState.OBJ_RemoveSeed:
-                ShowRemoveSeedUI();
-                break;
-
-            default:
-                throw new NotImplementedException();
+            CheckPossibleCombos();
         }
     }
 
-    private void ShowAddSeedUI()
+    private void CheckPossibleCombos()
     {
-        incubationState = IncubationState.OBJ_AddSeed;
-
-        addSeedButton.gameObject.SetActive(true);
-        buttonText.text = "Add Seed";
-
-        seedImage.gameObject.SetActive(false);
-        daysRemainingText.gameObject.SetActive(false);
-
-    }
-    private void ShowIncubatingUI()
-    {
-
-
-        incubationState = IncubationState.OBJ_Incubating;
-
-        addSeedButton.gameObject.SetActive(false);
-
-        seedImage.gameObject.SetActive(true);
-        daysRemainingText.gameObject.SetActive(true);
+        //Check through all tier 2, 3, and 4
+        
     }
 
-    private void ShowRemoveSeedUI()
-    {
-        incubationState = IncubationState.OBJ_RemoveSeed;
-
-        addSeedButton.gameObject.SetActive(true);
-        buttonText.text = "Remove Seed";
-
-        seedImage.gameObject.SetActive(false);
-        daysRemainingText.gameObject.SetActive(false);
-    }
+    protected override bool IsInteractable() { return isInteractable; }
+    protected override bool IsTargetPointVisible() { return isInteractPointVisible; }
+    protected override bool FreezePlayerMovement() { return freezePlayerMovement; }
+    public override bool IsRequiredToLookAtTarget() { return isRequiredToLookAtTarget; }
 
 }

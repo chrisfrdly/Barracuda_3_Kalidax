@@ -24,12 +24,18 @@ public class PlayerInteractWithObjects : MonoBehaviour
     [SerializeField] private float interactRadius;
     [SerializeField] private LayerMask grassMask;
     [SerializeField] private LayerMask interactableMask;
+    [SerializeField] private float angleToLookAtTarget = 50f;
 
     private RaycastHit2D hit;
     private Collider2D closestCollider = null;
 
+
+
     private float closestDistance = Mathf.Infinity;
     private float currentClosestColliderDistance;
+    private float closestAngle = 180;
+    private float currentClosestColliderAngle;
+
     private Transform objTransform;
 
     private void Awake()
@@ -58,39 +64,80 @@ public class PlayerInteractWithObjects : MonoBehaviour
         //To save computational power, just don't do anything if there's nothing to detect
         if (collider.Length == 0 && hideCollider.Length == 0) return;
 
-        // SHOW UI WHEN ENTER THE RADIUS//
-       
         //for each collider detected, check to see which one is closest and then show that UI
         foreach (Collider2D col in collider)
         {
-            Debug.DrawLine(objTransform.position, col.transform.position);
-
             InteractableObject io = col.GetComponent<InteractableObject>();
-
-            Vector3 directionToTarget = col.transform.position - objTransform.position;
-            float distanceFromPlayer = directionToTarget.sqrMagnitude;
+            Vector3 colPos = col.transform.position;
 
             //if we have an object that is closest to the player
-   
-            if (distanceFromPlayer < closestDistance || distanceFromPlayer < currentClosestColliderDistance)
+            Vector3 directionToTarget = colPos - objTransform.position;
+            float distanceFromPlayer = directionToTarget.sqrMagnitude;
+
+            // COLLIDER WITH CLOSEST ANGLE //
+            if (io.IsRequiredToLookAtTarget())
             {
-                if (col != closestCollider)
+
+                float a = GetAngleBetweenObjects(colPos);
+
+                if (a < angleToLookAtTarget)
                 {
-                    closestCollider = col;
-                    closestDistance = distanceFromPlayer;
-                    io.PlayerInRange(0);
+                    if (a < closestAngle || a < currentClosestColliderAngle)
+                    {
+
+                        if (col != closestCollider)
+                        {
+                            closestCollider = col;
+                            closestAngle = a;
+                            io.PlayerInRange(a);
+                        }
+                    }
+                }
+                else
+                {
+                    //If it's still the closest collider BUT the angle isn't in threshold anymore, HIDE UI
+                    //Without this code the panel will still be shown since they are still in the interaction sphere and the UI isn't hidden until they leave it
+                    if (col == closestCollider)
+                    {
+                        closestDistance = Mathf.Infinity;
+                        closestCollider = null;
+                        closestAngle = 180;
+                        io.PlayerOutOfRange();
+
+                    }
+
 
                 }
             }
+
+            // COLLIDER WITH CLOSEST DISTANCE //
+            else
+            {
+                if (distanceFromPlayer < closestDistance || distanceFromPlayer < currentClosestColliderDistance)
+                {
+                    if (col != closestCollider)
+                    {
+                        closestCollider = col;
+                        closestDistance = distanceFromPlayer;
+                        io.PlayerInRange(0);
+
+                    }
+                }
+
+            }
+
+
+
             //For any other collider, OR any collider that exits the interaction Radius, HIDE their UI
             if (col != closestCollider)
             {
-                if(io.InPlayerRange)
+                if (io.InPlayerRange)
                 {
                     //Hide UI
                     io.PlayerOutOfRange();
+
                 }
-                
+
             }
             //Get the current closest collider's distance from the player, and if the distance is < than that, we switch it.
             //Without this variable, the closestDistance keeps getting smaller and smaller, and only resets when the current-
@@ -98,8 +145,9 @@ public class PlayerInteractWithObjects : MonoBehaviour
             else
             {
                 currentClosestColliderDistance = distanceFromPlayer;
+                currentClosestColliderAngle = GetAngleBetweenObjects(colPos);
+
             }
-                
 
         }
 
@@ -110,13 +158,11 @@ public class PlayerInteractWithObjects : MonoBehaviour
             //If they are outside the collider array, Hide the UI
             if (!collider.Contains(col))
             {
+                //Hide UI
                 InteractableObject io = col.GetComponent<InteractableObject>();
 
                 if (io.InPlayerRange)
-                {
-                    //Hide UI
                     io.PlayerOutOfRange();
-                }
 
                 //if it's the current closest collider, we have to reset the variables or else when we enter the radius again-
                 //the UI won't show again since it's the same object
@@ -124,11 +170,31 @@ public class PlayerInteractWithObjects : MonoBehaviour
                 {
                     closestDistance = Mathf.Infinity;
                     closestCollider = null;
+                    closestAngle = 180;
                 }
 
             }
         }
 
+    }
+
+
+    private float GetAngleBetweenObjects(Vector3 otherPos)
+    {
+        //Help from this post https://forum.unity.com/threads/finding-the-angle-between-a-direction-and-a-point.30639/
+        Vector3 targetDir = otherPos - objTransform.position;
+        Vector3 forwards = objTransform.forward;
+
+        targetDir.Normalize();
+        forwards.Normalize();
+
+        Debug.DrawLine(objTransform.position, objTransform.position + targetDir * 5); //player to target line
+        Debug.DrawLine(objTransform.position, objTransform.position + forwards * 5, Color.red); //player look ahead line
+
+        float dot = Vector3.Dot(targetDir, forwards);
+        float angleXZ = Mathf.Acos(dot) * Mathf.Rad2Deg;
+
+        return angleXZ;
     }
 
     #endregion
