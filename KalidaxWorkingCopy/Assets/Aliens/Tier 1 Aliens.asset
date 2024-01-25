@@ -90,10 +90,10 @@ MonoBehaviour:
   alienName: Anything
   alienTier: 0
   aliensInDatabase:
-  - '[Tier_1] The Baulder'
   - '[Tier_1] The Epic'
   - '[Tier_1] The Cool'
   - '[Tier_1] Peace'
+  - '[Tier_1] The Baulder'
 --- !u!114 &964074943835393750
 MonoBehaviour:
   m_ObjectHideFlags: 0

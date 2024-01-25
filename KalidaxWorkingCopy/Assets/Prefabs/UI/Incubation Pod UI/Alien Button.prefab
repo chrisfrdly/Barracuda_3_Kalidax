@@ -101,10 +101,10 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_HighlightedColor: {r: 0.5896226, g: 0.8556508, b: 1, a: 1}
+    m_PressedColor: {r: 0.36538804, g: 0.38500953, b: 0.6509434, a: 1}
+    m_SelectedColor: {r: 0.58431375, g: 0.85098046, b: 0.9960785, a: 1}
+    m_DisabledColor: {r: 1, g: 1, b: 1, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -147,6 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b35b75127d15b28468e2d5494fa4d503, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  thisButtonAlien: {fileID: 0}
   aliensInWorldSO: {fileID: 11400000, guid: 72364da5f673e9e40a6c8574ac06e771, type: 2}
 --- !u!1 &7991295635520639226
 GameObject:
