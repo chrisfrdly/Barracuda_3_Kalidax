@@ -346,6 +346,7 @@ MonoBehaviour:
   SO_interactableObject: {fileID: 11400000, guid: 240158fe63e954d4987742c9255c4afb, type: 2}
   SO_controlSchemeHUD: {fileID: 11400000, guid: c96593ae77af13148925d72ab4bf9b19, type: 2}
   interactPromptPanel: {fileID: 7376599305240077197}
+  interactButtonSprite: {fileID: 7376599305528637408}
   isInteractable: 1
   isInteractPointVisible: 1
   isRequiredToLookAtTarget: 0
@@ -1260,3 +1261,14 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5756813233648597151, guid: b10b55b7ab927774fa80119f35f32cfb, type: 3}
   m_PrefabInstance: {fileID: 3006925564647709458}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7376599305528637408 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5756813235071446258, guid: b10b55b7ab927774fa80119f35f32cfb, type: 3}
+  m_PrefabInstance: {fileID: 3006925564647709458}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

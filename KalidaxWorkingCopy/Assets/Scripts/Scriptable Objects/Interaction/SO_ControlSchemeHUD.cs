@@ -25,7 +25,7 @@ public class SO_ControlSchemeHUD : ScriptableObject
         {
             if (controlScheme.controlSchemeName != _controlScheme)
                 continue;
-
+            
             switch(spriteType)
             {
                 case SpriteType.Img_Interact:

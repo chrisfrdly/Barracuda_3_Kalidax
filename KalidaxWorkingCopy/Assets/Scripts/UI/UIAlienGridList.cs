@@ -47,8 +47,14 @@ public class UIAlienGridList : MonoBehaviour
 
         for (int i = 0; i < aliensInWorldSO.worldAliens.Count; i++)
         {
+           
+
             //Spawn button object
             buttonList.Add(Instantiate(alienButtonPrefab, gridParent));
+
+            //Select the first alien in the list for controllers
+            if (i == 0 && PlayerInputHandler.Instance.GetCurrentControlScheme() == "Controller")
+                buttonList[i].GetComponent<Button>().Select();
 
             //Get the button image and set it to the Alien's profile image
             Image buttonImg = buttonList[i].GetComponentInChildren<Image>();
@@ -72,7 +78,7 @@ public class UIAlienGridList : MonoBehaviour
 
         i.SetAlien(_alien);
         gameObject.SetActive(false);
-
+        
         //When we click on the button, return the alien
     }
 }

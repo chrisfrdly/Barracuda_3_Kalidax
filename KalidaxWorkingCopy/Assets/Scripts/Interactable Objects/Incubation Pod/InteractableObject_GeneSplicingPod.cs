@@ -97,6 +97,8 @@ public class InteractableObject_GeneSplicingPod : InteractableObject
         addAlienButton[buttonModified].GetComponent<Image>().sprite = a.m_AlienSprite;
         aliensAdded[buttonModified] = a;
 
+        //For controllers, we have to re-select the + button that they previously clicked
+        addAlienButton[buttonModified].Select();
 
         if (aliensAdded[0] != null && aliensAdded[1] != null)
         {

@@ -19,7 +19,7 @@ public abstract class InteractableObject : MonoBehaviour
     //Variables
     [Header("Variables")]
     [SerializeField] private GameObject interactPromptPanel; //The "Click E" panel
-    private Image interactButtonSprite;
+    [SerializeField] private Image interactButtonSprite;
     protected float tweenTime = 0.2f;
 
     protected bool inPlayerRange;

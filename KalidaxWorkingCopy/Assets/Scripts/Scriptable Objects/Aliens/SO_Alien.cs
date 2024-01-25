@@ -1,9 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
+using Object = UnityEngine.Object;
 using UnityEngine;
-using Unity.VisualScripting.Dependencies.Sqlite;
-using UnityEngine.UIElements;
 using Unity.VisualScripting;
+using System;
+using System.Reflection;
+using UnityEditor.PackageManager.UI;
+using UnityEngine.UIElements;
 
 
 #if UNITY_EDITOR
@@ -75,6 +76,7 @@ public class AlienArt
 }
 
 [CustomEditor(typeof(SO_Alien))]
+[CanEditMultipleObjects]
 public class SO_AlienEditor : Editor
 {
     //instead of accessing variables through target, we want to access their serialize properties
@@ -129,12 +131,13 @@ public class SO_AlienEditor : Editor
         
     }
 
+
     public override void OnInspectorGUI()
     {
-
+        
         SO_Alien alien = (SO_Alien)target;
-
-       
+        
+        
         //Updates the Inspector if we make a change
         serializedObject.UpdateIfRequiredOrScript();
 
@@ -278,10 +281,6 @@ public class SO_AlienEditor : Editor
 
 
         //-- OTHER FIELDS --//
-
-
-
-
         EditorGUILayout.PropertyField(costValue, new GUIContent("Cost Value ($)"));
         EditorGUILayout.PropertyField(sellValue, new GUIContent("Sell Value ($)"));
 
@@ -346,5 +345,22 @@ public class SO_AlienEditor : Editor
             }
         }
     }
-   
+
+    //Change the Icon preview for the Alien!
+    public override Texture2D RenderStaticPreview(string assetPath, Object[] subAssets, int width, int height)
+    {
+        SO_Alien alien = (SO_Alien)target;
+
+        if (alien == null || alien.m_AlienTexture == null)
+            return null;
+
+        // example.PreviewIcon must be a supported format: ARGB32, RGBA32, RGB24,
+        // Alpha8 or one of float formats
+        Texture2D tex = new Texture2D(width, height, TextureFormat.RGBA32, false);
+
+        EditorUtility.CopySerialized(alien.m_AlienTexture, tex);
+
+        return tex;
+    }
+
 }
