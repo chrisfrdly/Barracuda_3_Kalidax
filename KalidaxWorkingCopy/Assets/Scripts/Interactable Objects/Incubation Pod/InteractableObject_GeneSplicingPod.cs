@@ -100,6 +100,10 @@ public class InteractableObject_GeneSplicingPod : InteractableObject
         //For controllers, we have to re-select the + button that they previously clicked
         addAlienButton[buttonModified].Select();
 
+        //Remove the "+" Text on the button if an alien is already slotted 
+        addAlienButton[buttonModified].GetComponentInChildren<TextMeshProUGUI>().text = "";
+
+
         if (aliensAdded[0] != null && aliensAdded[1] != null)
         {
             CheckPossibleCombos();

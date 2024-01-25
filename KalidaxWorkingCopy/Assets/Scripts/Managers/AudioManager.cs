@@ -3,6 +3,7 @@ using System;
 using UnityEngine;
 using Random = UnityEngine.Random;
 using Unity.VisualScripting;
+using System.Collections;
 
 public class AudioManager : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class AudioManager : MonoBehaviour
 
     //a reference to the current instance of the audio manager we have in our scene
     public static AudioManager instance;
+    private IEnumerator coroutine;
 
     private void Awake()
     {
@@ -94,6 +96,7 @@ public class AudioManager : MonoBehaviour
             foreach(BgSounds bg in bgSounds)
             {
                 bg.source.Stop();
+
             }
 
             s.source.Play();
@@ -102,6 +105,9 @@ public class AudioManager : MonoBehaviour
     }
 
 }
+
+
+
 [System.Serializable]
 public class Sounds
 {

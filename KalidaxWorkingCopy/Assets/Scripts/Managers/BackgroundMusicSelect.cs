@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 public enum BackgroundMusicSelector
 {
-    TitleTheme, GameTheme
+    None, TitleTheme, GameTheme
 }
 public class BackgroundMusicSelect : MonoBehaviour
 {
@@ -12,7 +12,11 @@ public class BackgroundMusicSelect : MonoBehaviour
 
     private void Start()
     {
+
         AudioManager[] audioManager = FindObjectsOfType<AudioManager>();
+
+        if (audioManager.Length == 0)
+            return;
 
         if(audioManager.Length>1)
         {
