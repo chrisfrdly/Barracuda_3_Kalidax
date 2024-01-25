@@ -28,7 +28,7 @@ RectTransform:
   m_GameObject: {fileID: 1837463793463038111}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.6983, y: 1.6983, z: 1.6983}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3990807434199280118}
@@ -37,7 +37,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 211, y: 89}
+  m_AnchoredPosition: {x: 211, y: 41.000004}
   m_SizeDelta: {x: 120.98, y: 119.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1637483619663052173
@@ -99,7 +99,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0.32156864, g: 0.38039216, b: 0.5568628, a: 1}
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.41960785, g: 0.83137256, b: 0.8117647, a: 1}
     m_PressedColor: {r: 0.39215687, g: 0.6784314, b: 0.69803923, a: 1}
     m_SelectedColor: {r: 0.41960785, g: 0.83137256, b: 0.8117647, a: 1}
@@ -209,8 +209,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -654,7 +654,7 @@ RectTransform:
   m_GameObject: {fileID: 7376599304987843842}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.6983, y: 1.6983, z: 1.6983}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7376599305193620954}
@@ -663,7 +663,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -218, y: 88.999985}
+  m_AnchoredPosition: {x: -218, y: 41}
   m_SizeDelta: {x: 120.98, y: 119.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7376599304987843846
@@ -725,7 +725,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0.32156864, g: 0.38039216, b: 0.5568628, a: 1}
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.41960785, g: 0.83137256, b: 0.8117647, a: 1}
     m_PressedColor: {r: 0.39215687, g: 0.6784314, b: 0.69803923, a: 1}
     m_SelectedColor: {r: 0.41960785, g: 0.83137256, b: 0.8117647, a: 1}
@@ -835,8 +835,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -932,8 +932,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0, y: -128.135}
-  m_SizeDelta: {x: -209.99995, y: -256.27}
+  m_AnchoredPosition: {x: 0, y: -462.35248}
+  m_SizeDelta: {x: 0, y: -121.56491}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7376599305741144357
 CanvasRenderer:
@@ -993,7 +993,7 @@ MonoBehaviour:
   m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 100, y: 100}
+  m_CellSize: {x: 150, y: 150}
   m_Spacing: {x: 8.1, y: 8.1}
   m_Constraint: 0
   m_ConstraintCount: 2
