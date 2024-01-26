@@ -35,9 +35,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 16ea780a6e7e52e4790b222f05ac24e5, type: 3}
-  m_Name: '[Tier_1] Anything'
+  m_Name: '[Tier_1] Peace'
   m_EditorClassIdentifier: 
-  _name: Anything
+  _name: Peace
   _alienTier: 0
   alien1: {fileID: 0}
   alien2: {fileID: 0}
@@ -48,8 +48,8 @@ MonoBehaviour:
   alienArt:
     idleAnim: {fileID: 0}
     wallkingAnim: {fileID: 0}
-  alienSprite: {fileID: 21300000, guid: 0779ad3feec52124e97114bcbb12ef13, type: 3}
-  alienTexture: {fileID: 2800000, guid: 0779ad3feec52124e97114bcbb12ef13, type: 3}
+  alienSprite: {fileID: 21300000, guid: ec03f79379868c642b48ae5ddc821b6d, type: 3}
+  alienTexture: {fileID: 2800000, guid: ec03f79379868c642b48ae5ddc821b6d, type: 3}
 --- !u!114 &-2012485351473323766
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73,8 +73,8 @@ MonoBehaviour:
   alienArt:
     idleAnim: {fileID: 0}
     wallkingAnim: {fileID: 0}
-  alienSprite: {fileID: 21300000, guid: fd098fb4cf57bad419701c802e442b7e, type: 3}
-  alienTexture: {fileID: 2800000, guid: fd098fb4cf57bad419701c802e442b7e, type: 3}
+  alienSprite: {fileID: 21300000, guid: d98fbe17966d8ef449b25b99024bf36f, type: 3}
+  alienTexture: {fileID: 2800000, guid: d98fbe17966d8ef449b25b99024bf36f, type: 3}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -90,10 +90,10 @@ MonoBehaviour:
   alienName: Anything
   alienTier: 0
   aliensInDatabase:
-  - '[Tier_1] The Cool'
-  - '[Tier_1] The Baulder'
   - '[Tier_1] The Epic'
-  - '[Tier_1] Anything'
+  - '[Tier_1] The Cool'
+  - '[Tier_1] Peace'
+  - '[Tier_1] The Baulder'
 --- !u!114 &964074943835393750
 MonoBehaviour:
   m_ObjectHideFlags: 0

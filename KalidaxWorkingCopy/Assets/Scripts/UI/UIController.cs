@@ -6,6 +6,10 @@ using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
 {
+    /// <summary>
+    /// This UI Controller houses logic for the End of Day UI but also
+    /// holds the necessary information for the current UI being displayed for any HUD
+    /// </summary>
     [Header("Event Sender")]
     [SerializeField] private SO_InteractableObject SO_interactObject;
     public static UIController Instance;

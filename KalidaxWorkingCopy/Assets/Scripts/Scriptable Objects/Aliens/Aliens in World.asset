@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb7625ae2d134884fb18c35e00e876f8, type: 3}
+  m_Name: Aliens in World
+  m_EditorClassIdentifier: 
+  worldAliens:
+  - {fileID: -6494128603159192624, guid: b9c2b5f4ffacfd14f931c0990484ba66, type: 2}
+  - {fileID: 8214189601345680040, guid: e2744f484ee07b846bd5ec7bf3a3ebb8, type: 2}
+  - {fileID: 8214189601345680040, guid: e2744f484ee07b846bd5ec7bf3a3ebb8, type: 2}
+  - {fileID: -2809655147040883975, guid: c5184fa4d3a7c4d40a419acbd5ea6e83, type: 2}
+  - {fileID: -2012485351473323766, guid: c5184fa4d3a7c4d40a419acbd5ea6e83, type: 2}

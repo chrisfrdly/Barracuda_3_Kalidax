@@ -16,7 +16,7 @@ public class GrassTile : MonoBehaviour
     private BoxCollider2D boxCollider;
 
     //Variables
-    private bool isCut;
+    [SerializeField] private bool isCut;
     private bool droppedSeed;
 
     public bool m_IsCut { get => isCut; set => isCut = value; }
@@ -33,7 +33,7 @@ public class GrassTile : MonoBehaviour
     private void Start()
     {
         //change colour of grass tile depending on state
-        UpdateTile();
+        Invoke("UpdateTile",0.05f);
     }
 
     private void CutTheGrass(Transform _grassTransform)
@@ -84,8 +84,9 @@ public class GrassTile : MonoBehaviour
         }
         else
         {
-            boxCollider.enabled = false;
             spriteRenderer.color = SO_grassTileParams.grassColours[1];
+            boxCollider.enabled = false;
+            
         }
     }
 
