@@ -9,25 +9,25 @@ public class ButtonManager : MonoBehaviour
 
     public void QuitGame()
     {
-        AudioManager.instance.Play("ClickButton");
+        //AudioManager.instance.Play("ClickButton");
         Application.Quit();
     }
 
 
     public void Options()
     {
-        AudioManager.instance.Play("ClickButton");
+        //AudioManager.instance.Play("ClickButton");
     }
 
     public void Back()
     {
         SceneManager.LoadScene("MenuScreen");
-        AudioManager.instance.Play("ClickButton");
+        //AudioManager.instance.Play("ClickButton");
     }
 
     public void HowToPlay()
     {
-        AudioManager.instance.Play("ClickButton");
+        //AudioManager.instance.Play("ClickButton");
         SceneManager.LoadScene("HowToScreen");
     }
 

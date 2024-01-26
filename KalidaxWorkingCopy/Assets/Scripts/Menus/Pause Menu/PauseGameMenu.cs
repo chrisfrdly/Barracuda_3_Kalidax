@@ -36,7 +36,7 @@ public class PauseGameMenu : MonoBehaviour
 
     public void ResumeGameButton()
     {
-        AudioManager.instance.Play("ClickButton");
+        //AudioManager.instance.Play("ClickButton");
 
         //Send event to the game manager to resume the game
         pauseMenuEvent.ResumeGameEventSend();
@@ -48,7 +48,7 @@ public class PauseGameMenu : MonoBehaviour
 
     public void PauseMenu_TitleScreen()
     {
-        AudioManager.instance.Play("ClickButton");
+        //AudioManager.instance.Play("ClickButton");
 
         //Send event to the game manager to resume the game
         pauseMenuEvent.ResumeGameEventSend();
