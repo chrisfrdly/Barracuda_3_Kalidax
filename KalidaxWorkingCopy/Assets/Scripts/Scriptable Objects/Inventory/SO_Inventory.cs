@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
+using System;
 
 [CreateAssetMenu(fileName = "New Inventory", menuName = "Inventory System/Inventory")]
 public class SO_Inventory : ScriptableObject, ISerializationCallbackReceiver
@@ -76,23 +77,49 @@ public class SO_Inventory : ScriptableObject, ISerializationCallbackReceiver
     {
         string saveData = JsonUtility.ToJson(this, true);
         BinaryFormatter bf = new BinaryFormatter();
-        FileStream file = File.Create(string.Concat(Application.persistentDataPath, savePath));
-        bf.Serialize(file, saveData);
-        file.Close();
+
+        try
+        {
+            string filePath = Path.Combine(Application.persistentDataPath, savePath);
+            FileStream file = File.Create(filePath);
+            bf.Serialize(file, saveData);
+            file.Close();
+            Debug.Log("Save successful at: " + filePath);
+        }
+        catch (Exception e)
+        {
+            Debug.LogError("Save error: " + e.Message);
+        }
     }
 
     //this loads our file back onto our scene and converts it back into a scriptable object with the data filled in
     [ContextMenu("Load")]
     public void Load()
     {
-        if (File.Exists(string.Concat(Application.persistentDataPath, savePath)))
+        string filePath = Path.Combine(Application.persistentDataPath, savePath);
+
+        if (File.Exists(filePath))
         {
             BinaryFormatter bf = new BinaryFormatter();
-            FileStream file = File.Open(string.Concat(Application.persistentDataPath, savePath), FileMode.Open);
-            JsonUtility.FromJsonOverwrite(bf.Deserialize(file).ToString(), this);
-            file.Close();
+
+            try
+            {
+                FileStream file = File.Open(filePath, FileMode.Open);
+                JsonUtility.FromJsonOverwrite(bf.Deserialize(file).ToString(), this);
+                file.Close();
+                Debug.Log("Load successful from: " + filePath);
+            }
+            catch (Exception e)
+            {
+                Debug.LogError("Load error: " + e.Message);
+            }
+        }
+        else
+        {
+            Debug.LogWarning("Save file does not exist at: " + filePath);
         }
     }
+
 
     [ContextMenu("Clear")]
     public void Clear()
