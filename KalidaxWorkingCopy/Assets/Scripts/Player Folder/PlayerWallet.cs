@@ -13,7 +13,7 @@ public class PlayerWallet : MonoBehaviour
     private void Awake()
     {
         //Turning this script into a singleton
-        if(instance == null)
+        if (instance == null)
         {
             instance = this;
             walletAmount = 0;
@@ -27,7 +27,7 @@ public class PlayerWallet : MonoBehaviour
 
     private void Update()
     {
-        UpdateValue();   
+        UpdateValue();
     }
 
     //this is how you put more money into the wallet
@@ -41,9 +41,9 @@ public class PlayerWallet : MonoBehaviour
     {
         walletAmount -= amount;
     }
-
+    
     private void UpdateValue()
     {
-        walletAmountText.text = walletAmount.ToString();
+        walletAmountText.text = "Current Funds: " + walletAmount.ToString();
     }
 }

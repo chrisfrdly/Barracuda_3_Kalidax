@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7376599304375814047}
   m_Layer: 6
   m_Name: Incubation Pod
-  m_TagString: Untagged
+  m_TagString: Seedpod
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
