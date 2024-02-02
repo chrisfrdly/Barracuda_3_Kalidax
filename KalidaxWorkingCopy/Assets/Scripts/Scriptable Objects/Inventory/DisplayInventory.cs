@@ -30,7 +30,7 @@ public class DisplayInventory : MonoBehaviour
     public int spaceBetweenItem_y;
 
     //Dictionary that has all the items within the Inventory Slot
-    private Dictionary<GameObject , InventorySlot> itemsDisplayed = new Dictionary<GameObject, InventorySlot>();
+    public Dictionary<GameObject , InventorySlot> itemsDisplayed = new Dictionary<GameObject, InventorySlot>();
 
     // Start is called before the first frame update
     void Start()
