@@ -66,7 +66,7 @@ public class DayManager : MonoBehaviour
         SO_Data_dayCycle.grassTilesList = new bool[grassTiles.Length];
 
         RandomizeGrassRegrowth();
-
+        PlayerWallet.instance.PutValueInWallet(PlayerWallet.instance.amountToPutInWallet);
 
         //Saving cut data into the scriptable object
         for (int i = 0; i < SO_Data_dayCycle.grassTilesList.Length; i++)
