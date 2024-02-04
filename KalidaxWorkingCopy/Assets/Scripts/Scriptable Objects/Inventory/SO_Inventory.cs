@@ -70,6 +70,20 @@ public class SO_Inventory : ScriptableObject, ISerializationCallbackReceiver
         }
     }
 
+    public void SellItem(Item _item, int amount)
+    {
+        if(_item.sellable)
+        {
+            PlayerWallet.instance.amountToPutInWallet += _item.sellValue * amount;
+            RemoveItem(_item);
+        }
+        else
+        {
+            Debug.Log("This Item is not Sellable");
+            return;
+        }
+    }
+
     //turns our scriptable object into a string and then will convert it into a .Json file
     [ContextMenu("Save")]
     public void Save()

@@ -1,18 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class WalletDisplay : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public TextMeshProUGUI walletAmountText;
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        UpdateDisplayValue();
+    }
+    private void UpdateDisplayValue()
+    {
+        walletAmountText.text = PlayerWallet.instance.walletAmount.ToString();
     }
 }

@@ -1,13 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
+
 
 public class PlayerWallet : MonoBehaviour
 {
     public int walletAmount; //how much money you got
-    public GameObject UI_Display;
-    public TextMeshProUGUI walletAmountText;
     public static PlayerWallet instance;
 
     public int amountToPutInWallet; // this is the total amount of money that the player will make in a day we will use this amount in the PutValueInWallet here
@@ -28,11 +26,6 @@ public class PlayerWallet : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        UpdateDisplayValue();   
-    }
-
     //this is how you put more money into the wallet
     public void PutValueInWallet(int amount)
     {
@@ -46,8 +39,5 @@ public class PlayerWallet : MonoBehaviour
         walletAmount -= amount;
     }
 
-    private void UpdateDisplayValue()
-    {
-        walletAmountText.text = walletAmount.ToString();
-    }
+
 }

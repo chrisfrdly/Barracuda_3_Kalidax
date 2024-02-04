@@ -49,13 +49,17 @@ public class Item
 {
     public string name;
     public int id;
+    public int sellValue;
+    public bool sellable;
     //this section is if we want to buff our players
     public ItemBuff[] buffs;
     public Item(SO_Item item)
     {
         name = item.name;
         id = item.Id;
-        buffs = new ItemBuff[item.buffs.Length];    
+        buffs = new ItemBuff[item.buffs.Length];   
+        sellValue = item.sellValue;
+        sellable = item.sellable;
 
         for(int i = 0; i < buffs.Length; i++)
         {
