@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 
@@ -7,7 +8,7 @@ public class PlayerWallet : MonoBehaviour
 {
     public int walletAmount; //how much money you got
     public static PlayerWallet instance;
-
+    public TextMeshProUGUI walletAmountText;
     public int amountToPutInWallet; // this is the total amount of money that the player will make in a day we will use this amount in the PutValueInWallet here
 
     private void Awake()

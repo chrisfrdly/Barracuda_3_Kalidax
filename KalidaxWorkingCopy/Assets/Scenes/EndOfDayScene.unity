@@ -985,7 +985,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   verticalLayoutGroupGO: {fileID: 549264485}
-  sceneToTransitionTo: MainScene-Playtest 1
+  sceneToTransitionTo: LucasScene
 --- !u!1001 &1732037851
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class UpgradeCheck : MonoBehaviour
 {
+    [SerializeField] private SO_Data_DayCycle dataDayCycle; //for saving information
+
     public GameObject[] upgradeObjects; // Reference to the GameObjects with the half-transparent sprite
     public int upgradeCost = 150; // Cost of the upgrade
     public Transform playerTransform; // Reference to the player's Transform
@@ -10,14 +12,57 @@ public class UpgradeCheck : MonoBehaviour
     private Collider2D[] colliders; // Array to hold the colliders of the upgrade objects
     private PlayerWallet playerWallet;
     private bool[] isBought;
-    private int nextToBuyIndex = 1; // Start interaction from the second object
+    private int nextToBuyIndex = 0; // Start interaction from the second object
     private Color[] originalColors;
 
+    private void Awake()
+    {
+        //set the indexes of the Incubation Pods for saving and loading.
+        //For the InteractableObject_SeedPod Script
+
+        for (int i = 0; i < upgradeObjects.Length; i++)
+        {
+            InteractableObject_SeedPod seedPod = upgradeObjects[i].GetComponent<InteractableObject_SeedPod>();
+            seedPod.m_ThisIndex = i;
+
+            //we already purchased the first incubation pod
+            if (i == 0)
+            {
+                dataDayCycle.incubationPodPurchased[i] = true;
+            }
+            else
+            {
+                //only make the others false if they're not already true
+                if (!dataDayCycle.incubationPodPurchased[i])
+                {
+                    
+                    dataDayCycle.incubationPodPurchased[i] = false;
+                }
+                
+            }
+
+
+        }
+
+        //update NextIndex to buy. Loop through all upgrade objects again 
+        for (int i = 0; i < upgradeObjects.Length; i++)
+        {
+            if (dataDayCycle.incubationPodPurchased[i] == false)
+            {
+                nextToBuyIndex = i;
+                break;
+            }
+        }
+
+        isBought = dataDayCycle.incubationPodPurchased;
+
+
+    }
     private void Start()
     {
         spriteRenderers = new SpriteRenderer[upgradeObjects.Length];
         colliders = new Collider2D[upgradeObjects.Length]; // Initialize the colliders array
-        isBought = new bool[upgradeObjects.Length];
+
         originalColors = new Color[upgradeObjects.Length];
 
         for (int i = 0; i < upgradeObjects.Length; i++)
@@ -25,8 +70,9 @@ public class UpgradeCheck : MonoBehaviour
             spriteRenderers[i] = upgradeObjects[i].GetComponentInChildren<SpriteRenderer>();
             colliders[i] = upgradeObjects[i].GetComponentInChildren<Collider2D>(); // Get the collider component
             originalColors[i] = spriteRenderers[i].color; // Save the original color of each object
-            isBought[i] = (i == 0); // The first object is already bought
+
             ResetColorAndCollider(i);
+
         }
 
         playerWallet = PlayerWallet.instance;
@@ -65,8 +111,21 @@ public class UpgradeCheck : MonoBehaviour
         {
             playerWallet.SubtractValue(upgradeCost); // Subtract the cost from the player's wallet
             isBought[index] = true; // Mark the object as bought
-            ResetColorAndCollider(index);
+            
             nextToBuyIndex = Mathf.Min(nextToBuyIndex + 1, upgradeObjects.Length - 1); // Move to the next object in the list
+
+            //Save the data when we purchased one
+            dataDayCycle.incubationPodPurchased[index] = true;
+
+            //Set isBought based on the save state
+            isBought[index] = true;
+
+            InteractableObject_SeedPod seedPod = upgradeObjects[index].GetComponent<InteractableObject_SeedPod>();
+            seedPod.m_IncubationState = IncubationState.OBJ_AddSeed;
+            dataDayCycle.incubationPodData[index].incubationState = IncubationState.OBJ_AddSeed;
+            seedPod.SetColourOfPodLight();
+
+            ResetColorAndCollider(index);
         }
     }
 
@@ -103,7 +162,7 @@ public class UpgradeCheck : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F))
         {
-            playerWallet.Addvalue(100); // Add 100 money to the player's wallet
+            playerWallet.PutValueInWallet(100); // Add 100 money to the player's wallet
         }
         else if (Input.GetKeyDown(KeyCode.G))
         {

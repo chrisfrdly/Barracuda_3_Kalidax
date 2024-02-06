@@ -83,6 +83,7 @@ MonoBehaviour:
   isInteractPointVisible: 1
   isRequiredToLookAtTarget: 0
   freezePlayerMovement: 0
+  dataDayCycle: {fileID: 11400000, guid: 208eef33a987f0e4bb799b003df00a94, type: 2}
   incubationPodHUDPanel: {fileID: 7376599304840943977}
   addSeedButton: {fileID: 7376599304987843840}
   buttonText: {fileID: 7376599305193620953}
@@ -90,6 +91,10 @@ MonoBehaviour:
   seedImage: {fileID: 7376599304557431232}
   incubationLight: {fileID: 4866254346615901721}
   daysToIncubate: 7
+  incubationColour_AddSeed: {r: 0.10136587, g: 1, b: 0.0047169924, a: 1}
+  incubationColour_Incubating: {r: 1, g: 0.2216981, b: 0.22982088, a: 1}
+  incubationColour_RemoveSeed: {r: 0.1728818, g: 0.31167355, b: 0.990566, a: 1}
+  incubationColour_NotPurchased: {r: 0.2264151, g: 0.19330722, b: 0.19330722, a: 1}
 --- !u!1 &7376599304557431234
 GameObject:
   m_ObjectHideFlags: 0
