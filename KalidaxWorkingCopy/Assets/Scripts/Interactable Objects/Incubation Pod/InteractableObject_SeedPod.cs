@@ -28,6 +28,7 @@ public class InteractableObject_SeedPod : InteractableObject
     [Header("Other Contents")]
     [SerializeField] private TextMeshProUGUI daysRemainingText;
     [SerializeField] private Image seedImage;
+    [SerializeField] private SpriteRenderer incubationLight;
 
     [Header("Incubation Parameters")]
     [SerializeField] private int daysToIncubate = 7;
@@ -141,6 +142,7 @@ public class InteractableObject_SeedPod : InteractableObject
         seedImage.gameObject.SetActive(false);
         daysRemainingText.gameObject.SetActive(false);
 
+        incubationLight.color = new Color(0, 1, 0);
     }
     private void ShowIncubatingUI()
     {
@@ -152,6 +154,7 @@ public class InteractableObject_SeedPod : InteractableObject
 
         seedImage.gameObject.SetActive(true);
         daysRemainingText.gameObject.SetActive(true);
+        incubationLight.color = new Color(1, 0, 0);
     }
 
     private void ShowRemoveSeedUI()
@@ -163,6 +166,8 @@ public class InteractableObject_SeedPod : InteractableObject
 
         seedImage.gameObject.SetActive(false);
         daysRemainingText.gameObject.SetActive(false);
+
+        incubationLight.color = new Color(0, 0, 1);
     }
 
     protected override bool IsInteractable() { return isInteractable; }
