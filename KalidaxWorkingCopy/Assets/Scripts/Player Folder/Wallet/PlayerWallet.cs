@@ -12,8 +12,8 @@ public class PlayerWallet : MonoBehaviour
 
     private void Awake()
     {
-        //Turning this script into a singleton this will only be on the initial creation of this object
-        if(instance == null)
+        //Turning this script into a singleton
+        if (instance == null)
         {
             instance = this;
             walletAmount = 0;
@@ -24,6 +24,11 @@ public class PlayerWallet : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    private void Update()
+    {
+        UpdateValue();
     }
 
     //this is how you put more money into the wallet
@@ -38,6 +43,9 @@ public class PlayerWallet : MonoBehaviour
     {
         walletAmount -= amount;
     }
-
-
+    
+    private void UpdateValue()
+    {
+        walletAmountText.text = "Current Funds: " + walletAmount.ToString();
+    }
 }

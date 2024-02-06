@@ -71,6 +71,7 @@ public abstract class InteractableObject : MonoBehaviour
     {
         
     }
+
     private void CheckIfUTargetctive()
     {
         if (!inPlayerRange) return;

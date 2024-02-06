@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7376599304375814047}
   m_Layer: 6
   m_Name: Incubation Pod
-  m_TagString: Untagged
+  m_TagString: Seedpod
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -371,7 +371,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7376599304946522097}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.060213275}
+  m_LocalPosition: {x: -0.02, y: 0, z: 0.060213275}
   m_LocalScale: {x: 1.9192, y: 0.69571, z: 1.9192}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -418,7 +418,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.030037368, g: 0.63055754, b: 0.7075472, a: 1}
   m_FlipX: 0

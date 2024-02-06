@@ -59,6 +59,11 @@ public class InteractableObject_SeedPod : InteractableObject
 
     }
 
+    public void SetInteractable(bool canInteract)
+    {
+        isInteractable = canInteract; // This should be a field controlling interactability, ensure it exists and is used appropriately
+    }
+
 
     //------------------
     //Open and Close HUD
