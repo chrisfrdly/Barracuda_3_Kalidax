@@ -27,4 +27,4 @@ MonoBehaviour:
   - index: -1
     incubationState: 0
     daysLeft: 0
-  incubationPodPurchased: 00000000
+  incubationPodPurchased: 01000000

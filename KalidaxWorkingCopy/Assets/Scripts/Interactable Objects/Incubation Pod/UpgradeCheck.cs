@@ -19,11 +19,15 @@ public class UpgradeCheck : MonoBehaviour
     {
         //set the indexes of the Incubation Pods for saving and loading.
         //For the InteractableObject_SeedPod Script
-
+        
         for (int i = 0; i < upgradeObjects.Length; i++)
         {
             InteractableObject_SeedPod seedPod = upgradeObjects[i].GetComponent<InteractableObject_SeedPod>();
             seedPod.m_ThisIndex = i;
+
+            //Initialize the data if not already initialized to avoid errors
+            //Used to be just OnEnable, but onEnable is only true if the user has the SO selected in the Assets
+            if (dataDayCycle.incubationPodPurchased == null) dataDayCycle.Initialize();
 
             //we already purchased the first incubation pod
             if (i == 0)

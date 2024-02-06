@@ -62,16 +62,18 @@ public class InteractableObject_SeedPod : InteractableObject
         base.Awake();
         SO_interactableObject.clickedCancelButtonEvent.AddListener(CloseInteractionPrompt);
         daysLeft = daysToIncubate;
+        
 
     }
     private void Start()
     {
-        Invoke("UpdateData", 0.2f);
+
+        UpdateData();
     }
     private void UpdateData()
     {
         //Now update the pod with the new Day's Data
-
+        
         if (dataDayCycle.incubationPodData[thisIndex].index == -1)
         {
             //add this object to that list if it's not already in the list
@@ -98,20 +100,21 @@ public class InteractableObject_SeedPod : InteractableObject
        
             incubationState = dataDayCycle.incubationPodData[thisIndex].incubationState;
 
+
+            if (incubationState == IncubationState.OBJ_Incubating)
+            {
+                daysLeft = dataDayCycle.incubationPodData[thisIndex].daysLeft - 1;
+                dataDayCycle.incubationPodData[thisIndex].daysLeft = daysLeft;
+            }
+
             //Check to see if the days left <= 1 and if so, se the incubation state to Complete
-            if (daysLeft <= 1)
+            if (daysLeft <= 0)
             {
                 incubationState = IncubationState.OBJ_RemoveSeed;
                 dataDayCycle.incubationPodData[thisIndex].incubationState = incubationState;
             }
 
 
-            if (incubationState == IncubationState.OBJ_Incubating)
-            {
-
-                daysLeft = dataDayCycle.incubationPodData[thisIndex].daysLeft - 1;
-                dataDayCycle.incubationPodData[thisIndex].daysLeft = daysLeft;
-            }
 
             //now we check to see if this incubation pod has been purchased and if so, then set the state to green
         }
@@ -192,20 +195,25 @@ public class InteractableObject_SeedPod : InteractableObject
     //This function is called on the button in the inspector
     public void ChangeState()
     {
-        
+        incubationState = dataDayCycle.incubationPodData[thisIndex].incubationState;
+        daysLeft = dataDayCycle.incubationPodData[thisIndex].daysLeft;
         //when the button is pressed, change the state to the next state and then display the new contents
         int i = (int)incubationState;
         i++;
         i %= 3;
 
+     
         incubationState = (IncubationState)i;
-        
+      
         DisplayIncubationHUDContents();
+        if (i == 0) daysLeft = daysToIncubate;
 
 
         //Update the data
+        Debug.Log("Updating Data");
         dataDayCycle.incubationPodData[thisIndex].incubationState = incubationState;
-
+        dataDayCycle.incubationPodData[thisIndex].daysLeft = daysLeft;
+        
     }
 
 
