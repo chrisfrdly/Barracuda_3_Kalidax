@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PersonalScenes/LucasScene.unity
     guid: dc336a5fb630e16418a8103044bda1a7
+  - enabled: 1
+    path: Assets/Scenes/MENU/MainMenu.unity
+    guid: ac8fa9157bf2126458af3fe2bc1fc7ff
   m_configObjects: {}

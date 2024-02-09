@@ -20,6 +20,11 @@ public class PauseGameMenu : MonoBehaviour
 
     [SerializeField] private Button resumeButton;
 
+
+    [SerializeField] private RectTransform controlsPanelRect;
+    private float minPosY;
+    private float maxPosY;
+
     private void Awake()
     {
         //hover over the 'resume button' on startup
@@ -59,6 +64,37 @@ public class PauseGameMenu : MonoBehaviour
 
     }
 
+    // CONTROLS SCREEN IN THE PAUSE MENU //
+
+    //Called from the button in the inspector
+    public void ControlsButton()
+    {
+        //Leen Tween from top of frame to bottom
+        LeanTween.value(1080f, 0, 0.5f).setOnUpdate(UpdatePanelMinY).setEaseOutQuad().setIgnoreTimeScale(true);
+        LeanTween.value(1080f, 0, 0.5f).setOnUpdate(UpdatePanelMaxY).setEaseOutQuad().setIgnoreTimeScale(true);
+
+
+    }
+
+    //Called from the button in the inspector
+    public void ControlsBackButton()
+    {
+        //Lean tween from the bottom to the top
+        LeanTween.value(0, 1080, 0.5f).setOnUpdate(UpdatePanelMinY).setEaseInQuad().setIgnoreTimeScale(true);
+        LeanTween.value(0, 1080, 0.5f).setOnUpdate(UpdatePanelMaxY).setEaseInQuad().setIgnoreTimeScale(true);
+
+    }
+
+    private void UpdatePanelMinY(float _value)
+    {
+        minPosY = _value;
+        controlsPanelRect.offsetMin = new Vector2(controlsPanelRect.offsetMin.x, minPosY);
+    }
+    private void UpdatePanelMaxY(float _value)
+    {
+        maxPosY = _value;
+        controlsPanelRect.offsetMax = new Vector2(controlsPanelRect.offsetMax.x, maxPosY);
+    }
 }
 
 
