@@ -12,8 +12,13 @@ public class WorldAlien : MonoBehaviour
     //References
     [SerializeField] private SO_Alien alienContainer;
     [SerializeField] private SO_AliensInWorld aliensInWorldListSO;
+    public GameObject provisionDroneObject;
     private int alienInList; //mainly for OnValidate to remove the previous one no-longer there
 
+    //the variables here are going to help get our alien to the provisions drone and sell it once in range
+    [SerializeField] private float moveSpeed; // this is gonna be so that the alien can move towards the provisions drone
+    private float distanceToDrone = 0.1f;
+    public bool isBeingSold;
     //Components
     private SpriteRenderer sr;
     private Animator a;
@@ -23,6 +28,7 @@ public class WorldAlien : MonoBehaviour
 
     private void Awake()
     {
+        isBeingSold = false;
         sr = GetComponent<SpriteRenderer>();
         a = GetComponent<Animator>();
     }
@@ -30,6 +36,14 @@ public class WorldAlien : MonoBehaviour
     private void Start()
     {
         AddAlienToList();
+    }
+
+    private void Update()
+    {
+        if (isBeingSold)
+        {
+            MoveToProvisionsDrone();
+        }
     }
 
 #if UNITY_EDITOR
@@ -56,5 +70,29 @@ public class WorldAlien : MonoBehaviour
         alienInList = aliensInWorldListSO.worldAliens.Count - 1;
 
 
+    }
+
+    //this method gets the allien close to the drone and sells it after
+    private void MoveToProvisionsDrone()
+    {
+        transform.position = Vector3.MoveTowards(transform.position, provisionDroneObject.transform.position, moveSpeed);
+
+        if(Vector3.Distance(provisionDroneObject.transform.position, transform.position) < distanceToDrone)
+        {
+            SellAlien();
+        }
+    }
+
+    private void SellAlien()
+    {
+        PlayerWallet.instance.amountToPutInWallet += alienContainer.sellValue;
+        aliensInWorldListSO.worldAliens.Remove(alienContainer);
+        Destroy(gameObject);
+    }
+
+    //this is just so we can call this method on a button press we'll do this when we make the aliens interactable
+    public void SetSellToTrue()
+    {
+        isBeingSold = true;
     }
 }

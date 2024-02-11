@@ -5,12 +5,18 @@ using UnityEngine;
 public class TemporarySellingScript : MonoBehaviour
 {
     public SO_Inventory inventoryScript;
+    public WorldAlien alienToSell;
     public int amount;
     private void Update()
     {
         if (Input.GetKeyUp(KeyCode.L))
         {
             inventoryScript.SellItem(FindFirstSellableItem(), amount);
+        }
+
+        if(Input.GetKeyDown(KeyCode.B))
+        {
+            alienToSell.isBeingSold = true;
         }
     }
 

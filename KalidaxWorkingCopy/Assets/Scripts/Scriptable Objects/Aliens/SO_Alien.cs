@@ -20,7 +20,7 @@ public class SO_Alien : ScriptableObject
     [Separator(1, 10)]
     [Header("Cost and Sell Values")]
     [SerializeField] private int costValue;
-    [SerializeField] private int sellValue;
+    public int sellValue;
 
     [Header("Days to Grow Alien")]
     [SerializeField] private int minDaysToGrow;

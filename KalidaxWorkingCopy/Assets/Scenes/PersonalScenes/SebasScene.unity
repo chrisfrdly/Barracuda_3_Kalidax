@@ -1651,6 +1651,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8750283390089401222, guid: 580e9ffe46e90a940bc7503137eef5ae, type: 3}
+      propertyPath: moveSpeed
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8750283390089401222, guid: 580e9ffe46e90a940bc7503137eef5ae, type: 3}
+      propertyPath: provisionDroneObject
+      value: 
+      objectReference: {fileID: 842847044}
     - target: {fileID: 8750283390089401223, guid: 580e9ffe46e90a940bc7503137eef5ae, type: 3}
       propertyPath: m_SortingOrder
       value: 2
@@ -2717,6 +2725,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6fb02f626fe3aa54183d87ea74a7919b, type: 3}
+--- !u!1 &842847044 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4249006845786934356, guid: 56899cbd369115c4b8e39c879e3c2e04, type: 3}
+  m_PrefabInstance: {fileID: 1431038818}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &855666519
 GameObject:
   m_ObjectHideFlags: 0
@@ -4868,6 +4881,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8075052001810662464, guid: 6fb02f626fe3aa54183d87ea74a7919b, type: 3}
   m_PrefabInstance: {fileID: 497859929}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1304448933 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8750283390089401222, guid: 580e9ffe46e90a940bc7503137eef5ae, type: 3}
+  m_PrefabInstance: {fileID: 568571377}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d3578ab145dfd4409c58193fef3ad03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1326350567
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5532,7 +5556,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4075410610750858666, guid: 601ed4e6eb6ba0046a87845146fdcb1e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -369.34998
+      value: -369.34995
       objectReference: {fileID: 0}
     - target: {fileID: 4075410611424517987, guid: 601ed4e6eb6ba0046a87845146fdcb1e, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -7427,6 +7451,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventoryScript: {fileID: 11400000, guid: aa44c2eee6c76bd438666289c0763e1a, type: 2}
+  alienToSell: {fileID: 1304448933}
   amount: 0
 --- !u!1001 &2050170462
 PrefabInstance:
@@ -7874,6 +7899,10 @@ PrefabInstance:
       propertyPath: alienContainer
       value: 
       objectReference: {fileID: -6494128603159192624, guid: b9c2b5f4ffacfd14f931c0990484ba66, type: 2}
+    - target: {fileID: 8750283390089401222, guid: 580e9ffe46e90a940bc7503137eef5ae, type: 3}
+      propertyPath: provisionDroneObject
+      value: 
+      objectReference: {fileID: 842847044}
     - target: {fileID: 8750283390089401223, guid: 580e9ffe46e90a940bc7503137eef5ae, type: 3}
       propertyPath: m_Sprite
       value: 
