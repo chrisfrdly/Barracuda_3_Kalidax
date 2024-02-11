@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 
@@ -7,13 +8,13 @@ public class PlayerWallet : MonoBehaviour
 {
     public int walletAmount; //how much money you got
     public static PlayerWallet instance;
-
+    public TextMeshProUGUI walletAmountText;
     public int amountToPutInWallet; // this is the total amount of money that the player will make in a day we will use this amount in the PutValueInWallet here
 
     private void Awake()
     {
-        //Turning this script into a singleton this will only be on the initial creation of this object
-        if(instance == null)
+        //Turning this script into a singleton
+        if (instance == null)
         {
             instance = this;
             walletAmount = 0;
@@ -24,6 +25,11 @@ public class PlayerWallet : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    private void Update()
+    {
+        UpdateValue();
     }
 
     //this is how you put more money into the wallet
@@ -38,6 +44,9 @@ public class PlayerWallet : MonoBehaviour
     {
         walletAmount -= amount;
     }
-
-
+    
+    private void UpdateValue()
+    {
+        walletAmountText.text = "Current Funds: " + walletAmount.ToString();
+    }
 }

@@ -12,4 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e011676a973e4644f804c0904e2a95fc, type: 3}
   m_Name: Day Cycle Data Container
   m_EditorClassIdentifier: 
-  grassTilesList: 0000000000000000000101000101010001010101010101010101010101010101010101010101010101
+  currentDay: 0
+  grassTilesList: 
+  incubationPodData:
+  - index: -1
+    incubationState: 0
+    daysLeft: 0
+  - index: -1
+    incubationState: 0
+    daysLeft: 0
+  - index: -1
+    incubationState: 0
+    daysLeft: 0
+  - index: -1
+    incubationState: 0
+    daysLeft: 0
+  incubationPodPurchased: 01000000
