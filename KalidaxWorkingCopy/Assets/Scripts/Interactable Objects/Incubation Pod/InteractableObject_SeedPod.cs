@@ -33,15 +33,20 @@ public class InteractableObject_SeedPod : InteractableObject
     [SerializeField] private TextMeshProUGUI daysRemainingText;
     [SerializeField] private Image seedImage;
     [SerializeField] private SpriteRenderer incubationLight;
+    [SerializeField] private Vector3 spawnLocation;
 
     [Header("Incubation Parameters")]
     [SerializeField] private int daysToIncubate = 7;
     private int daysLeft;
 
+    [Header("Prefab Instantiation")]
+    [SerializeField] private List<GameObject> T1alienPrefabs; 
+
     [SerializeField] private Color incubationColour_AddSeed;
     [SerializeField] private Color incubationColour_Incubating;
     [SerializeField] private Color incubationColour_RemoveSeed;
     [SerializeField] private Color incubationColour_NotPurchased;
+    //serialized array
 
     private int thisIndex;
 
@@ -183,7 +188,7 @@ public class InteractableObject_SeedPod : InteractableObject
         DisplayIncubationHUDContents();
 
         //Set the text for the amount of days left
-        daysRemainingText.text = daysLeft.ToString();
+        daysRemainingText.text = daysLeft.ToString() + " days left \n to incubate";
 
     }
     private void CloseInteractionPrompt()
@@ -201,6 +206,10 @@ public class InteractableObject_SeedPod : InteractableObject
         int i = (int)incubationState;
         i++;
         i %= 3;
+        if (incubationState == IncubationState.OBJ_RemoveSeed)
+        {
+            InstantiateRandomPrefab();
+        }
 
      
         incubationState = (IncubationState)i;
@@ -216,6 +225,17 @@ public class InteractableObject_SeedPod : InteractableObject
         
     }
 
+    private void InstantiateRandomPrefab()
+    {
+        if (T1alienPrefabs.Count > 0)
+        {
+            int index = UnityEngine.Random.Range(0, T1alienPrefabs.Count); // Select a random index
+            GameObject prefabToInstantiate = T1alienPrefabs[index]; // Get the prefab at the random index
+
+            // Instantiate the prefab at a desired location and rotation
+            Instantiate(prefabToInstantiate, spawnLocation, Quaternion.identity);
+        }
+    }
 
     private void DisplayIncubationHUDContents()
     {
