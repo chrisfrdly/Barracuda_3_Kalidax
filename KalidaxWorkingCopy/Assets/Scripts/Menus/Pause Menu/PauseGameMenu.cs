@@ -20,11 +20,17 @@ public class PauseGameMenu : MonoBehaviour
 
     [SerializeField] private Button resumeButton;
 
+    //Create a reference to Sound Manager script
+    SoundManager soundManager;
+
     private void Awake()
     {
         //hover over the 'resume button' on startup
         if (PlayerInputHandler.Instance.GetCurrentControlScheme() == "Controller")
             resumeButton.Select();
+
+        //Find Sound Manager script object
+        soundManager = FindObjectOfType<SoundManager>();
     }
 
     public void ConnectControllersToPauseMenu(PlayerInput player)
@@ -38,6 +44,10 @@ public class PauseGameMenu : MonoBehaviour
     {
         //AudioManager.instance.Play("ClickButton");
 
+        //Call confirm sound class
+        soundManager.PlayUIConfirmSound();
+
+
         //Send event to the game manager to resume the game
         pauseMenuEvent.ResumeGameEventSend();
 
@@ -49,6 +59,9 @@ public class PauseGameMenu : MonoBehaviour
     public void PauseMenu_TitleScreen()
     {
         //AudioManager.instance.Play("ClickButton");
+
+        //Call confirm sound class
+        soundManager.PlayUIConfirmSound();
 
         //Send event to the game manager to resume the game
         pauseMenuEvent.ResumeGameEventSend();

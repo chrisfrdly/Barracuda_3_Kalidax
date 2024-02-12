@@ -24,6 +24,10 @@ public class UIController : MonoBehaviour
 
     public GameObject m_CurrentUIVisible { get => currentUIVisible; set => currentUIVisible = value; }
 
+    //Create a reference to Sound Manager script
+    SoundManager soundManager;
+
+
     private void Awake()
     {
         if(Instance == null)
@@ -35,6 +39,9 @@ public class UIController : MonoBehaviour
         yesButton.onClick.AddListener(() => ConfirmedDayReset());
         noButton.onClick.AddListener(() => CancelDayReset());
         SO_interactObject.clickedCancelButtonEvent.AddListener(CancelButtonPressed);
+        
+        //Find Sound Manager script object
+        soundManager = FindObjectOfType<SoundManager>();
 
     }
 
@@ -60,11 +67,15 @@ public class UIController : MonoBehaviour
     private void ConfirmedDayReset()
     {
         //Now the Day Manager class will handle switching to the new day!
+
         DayManager.Instance.NewDay();
     }
 
     public void CancelDayReset()
     {
+        //Call deny sound class
+        soundManager.PlayUIDenySound();
+
         SetActionMapInGame();
         endOfDayConfirmationUI.SetActive(false);
     }
