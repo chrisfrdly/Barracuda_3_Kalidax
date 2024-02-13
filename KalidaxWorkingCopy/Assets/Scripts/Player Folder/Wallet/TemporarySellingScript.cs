@@ -14,7 +14,7 @@ public class TemporarySellingScript : MonoBehaviour
             inventoryScript.SellItem(FindFirstSellableItem(), amount);
         }
 
-        if(Input.GetKeyDown(KeyCode.B))
+        if(Input.GetKeyDown(KeyCode.N))
         {
             alienToSell.isBeingSold = true;
         }
