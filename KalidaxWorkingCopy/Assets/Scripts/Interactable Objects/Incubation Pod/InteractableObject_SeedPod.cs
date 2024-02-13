@@ -61,6 +61,11 @@ public class InteractableObject_SeedPod : InteractableObject
     /// Then when it's done incubating (remaining days = 0), the player can remove the seed. 
     /// Once removed we go back to the add seed state
     /// </summary>
+    /// 
+
+
+    //Create a reference to Sound Manager script
+    SoundManager soundManager;
 
     protected override void Awake()
     {
@@ -153,6 +158,9 @@ public class InteractableObject_SeedPod : InteractableObject
                 break;
 
         }
+
+        //Find Sound Manager script object
+        soundManager = FindObjectOfType<SoundManager>();
     }
     protected override void OnInteract()
     {
@@ -160,6 +168,8 @@ public class InteractableObject_SeedPod : InteractableObject
 
         HideUI();
 
+        //Call confirm sound class
+        soundManager.PlayUIConfirmSound();
     }
 
     public void SetInteractable(bool canInteract)
@@ -184,7 +194,6 @@ public class InteractableObject_SeedPod : InteractableObject
         incubationPodHUDPanel.SetActive(true);
         UIController.Instance.m_CurrentUIVisible = incubationPodHUDPanel;
 
-
         DisplayIncubationHUDContents();
 
         //Set the text for the amount of days left
@@ -193,6 +202,7 @@ public class InteractableObject_SeedPod : InteractableObject
     }
     private void CloseInteractionPrompt()
     {
+
         incubationPodHUDPanel.SetActive(false);
 
     }
@@ -202,6 +212,9 @@ public class InteractableObject_SeedPod : InteractableObject
     {
         incubationState = dataDayCycle.incubationPodData[thisIndex].incubationState;
         daysLeft = dataDayCycle.incubationPodData[thisIndex].daysLeft;
+        //Call item sound class
+        soundManager.PlayItemSelectSound();
+
         //when the button is pressed, change the state to the next state and then display the new contents
         int i = (int)incubationState;
         i++;
@@ -243,7 +256,6 @@ public class InteractableObject_SeedPod : InteractableObject
         switch(incubationState)
         {
             case IncubationState.OBJ_AddSeed:
-                
                 ShowAddSeedUI();
                 break;
 
@@ -262,6 +274,7 @@ public class InteractableObject_SeedPod : InteractableObject
 
     private void ShowAddSeedUI()
     {
+
         incubationState = IncubationState.OBJ_AddSeed;
 
         addSeedButton.gameObject.SetActive(true);
