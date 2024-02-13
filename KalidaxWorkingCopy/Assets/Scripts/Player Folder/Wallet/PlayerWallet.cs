@@ -27,11 +27,6 @@ public class PlayerWallet : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        UpdateValue();
-    }
-
     //this is how you put more money into the wallet
     public void PutValueInWallet(int amount)
     {
@@ -45,8 +40,5 @@ public class PlayerWallet : MonoBehaviour
         walletAmount -= amount;
     }
     
-    private void UpdateValue()
-    {
-        walletAmountText.text = "Current Funds: " + walletAmount.ToString();
-    }
+
 }

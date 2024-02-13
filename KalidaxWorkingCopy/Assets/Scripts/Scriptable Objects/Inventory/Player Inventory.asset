@@ -20,143 +20,23 @@ MonoBehaviour:
       item:
         name: 
         id: 0
+        sellValue: 0
+        sellable: 0
         buffs: []
       amount: 0
     - id: -1
       item:
         name: 
         id: 0
+        sellValue: 0
+        sellable: 0
         buffs: []
       amount: 0
     - id: -1
       item:
         name: 
         id: 0
-        buffs: []
-      amount: 0
-    - id: -1
-      item:
-        name: 
-        id: 0
-        buffs: []
-      amount: 0
-    - id: -1
-      item:
-        name: 
-        id: 0
-        buffs: []
-      amount: 0
-    - id: -1
-      item:
-        name: 
-        id: 0
-        buffs: []
-      amount: 0
-    - id: -1
-      item:
-        name: 
-        id: 0
-        buffs: []
-      amount: 0
-    - id: -1
-      item:
-        name: 
-        id: 0
-        buffs: []
-      amount: 0
-    - id: -1
-      item:
-        name: 
-        id: 0
-        buffs: []
-      amount: 0
-    - id: -1
-      item:
-        name: 
-        id: 0
-        buffs: []
-      amount: 0
-    - id: -1
-      item:
-        name: 
-        id: 0
-        buffs: []
-      amount: 0
-    - id: -1
-      item:
-        name: 
-        id: 0
-        buffs: []
-      amount: 0
-    - id: -1
-      item:
-        name: 
-        id: 0
-        buffs: []
-      amount: 0
-    - id: -1
-      item:
-        name: 
-        id: 0
-        buffs: []
-      amount: 0
-    - id: -1
-      item:
-        name: 
-        id: 0
-        buffs: []
-      amount: 0
-    - id: -1
-      item:
-        name: 
-        id: 0
-        buffs: []
-      amount: 0
-    - id: -1
-      item:
-        name: 
-        id: 0
-        buffs: []
-      amount: 0
-    - id: -1
-      item:
-        name: 
-        id: 0
-        buffs: []
-      amount: 0
-    - id: -1
-      item:
-        name: 
-        id: 0
-        buffs: []
-      amount: 0
-    - id: -1
-      item:
-        name: 
-        id: 0
-        buffs: []
-      amount: 0
-    - id: -1
-      item:
-        name: 
-        id: 0
-        buffs: []
-      amount: 0
-    - id: -1
-      item:
-        name: 
-        id: 0
-        buffs: []
-      amount: 0
-    - id: -1
-      item:
-        name: 
-        id: 0
-        buffs: []
-      amount: 0
-    - id: -1
-      item:
-        name: 
-        id: 0
+        sellValue: 0
+        sellable: 0
         buffs: []
       amount: 0

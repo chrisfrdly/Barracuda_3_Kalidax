@@ -28,6 +28,8 @@ public class WorldAlien : MonoBehaviour
 
     private void Awake()
     {
+        provisionDroneObject = FindObjectOfType<InteractableObject_Provisions_Drone>().gameObject;
+        moveSpeed = 0.01f;
         isBeingSold = false;
         sr = GetComponent<SpriteRenderer>();
         a = GetComponent<Animator>();

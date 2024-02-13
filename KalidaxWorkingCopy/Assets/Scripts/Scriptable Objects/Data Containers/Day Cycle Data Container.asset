@@ -19,12 +19,12 @@ MonoBehaviour:
     incubationState: 0
     daysLeft: 7
   - index: 1
-    incubationState: 0
+    incubationState: 3
     daysLeft: 7
   - index: 2
-    incubationState: 0
+    incubationState: 3
     daysLeft: 7
   - index: 3
     incubationState: 3
-    daysLeft: 7
-  incubationPodPurchased: 01010100
+    daysLeft: 2
+  incubationPodPurchased: 01000000

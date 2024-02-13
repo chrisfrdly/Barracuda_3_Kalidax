@@ -73,6 +73,11 @@ public class SO_Inventory : ScriptableObject, ISerializationCallbackReceiver
 
     public void SellItem(Item _item, int amount)
     {
+        if(_item == null)
+        {
+            return;
+        }
+
         if(_item.sellable)
         {
             PlayerWallet.instance.amountToPutInWallet += _item.sellValue * amount;
@@ -160,7 +165,7 @@ public class SO_Inventory : ScriptableObject, ISerializationCallbackReceiver
 [System.Serializable]
 public class Inventory
 {
-    public InventorySlot[] items = new InventorySlot[24];
+    public InventorySlot[] items = new InventorySlot[3];
 }
 /// <summary>
 /// Each of these classes are gonna be a container for our in game items

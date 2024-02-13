@@ -6,13 +6,14 @@ using TMPro;
 public class WalletDisplay : MonoBehaviour
 {
     public TextMeshProUGUI walletAmountText;
-
+    
     private void Update()
     {
         UpdateDisplayValue();
     }
     private void UpdateDisplayValue()
     {
-        walletAmountText.text = PlayerWallet.instance.walletAmount.ToString();
+        walletAmountText.text = "Current Funds: " + PlayerWallet.instance.walletAmount.ToString();
     }
+
 }
