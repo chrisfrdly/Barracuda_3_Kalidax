@@ -45,17 +45,13 @@ public class InteractableObject_SeedPod : InteractableObject
     /// 
 
 
-    //Create a reference to Sound Manager script
-    SoundManager soundManager;
-
     protected override void Awake()
     {
         base.Awake();
         SO_interactableObject.clickedCancelButtonEvent.AddListener(CloseInteractionPrompt);
         daysLeft = daysToIncubate;
 
-        //Find Sound Manager script object
-        soundManager = FindObjectOfType<SoundManager>();
+
     }
   
     protected override void OnInteract()
@@ -64,8 +60,8 @@ public class InteractableObject_SeedPod : InteractableObject
 
         HideUI();
 
-        //Call confirm sound class
-        soundManager.PlayUIConfirmSound();
+        AudioManager.instance.Play("Positive Interact");
+
     }
 
 
@@ -107,8 +103,7 @@ public class InteractableObject_SeedPod : InteractableObject
     //This function is called on the button in the inspector
     public void ChangeState()
     {
-        //Call item sound class
-        soundManager.PlayItemSelectSound();
+        AudioManager.instance.Play("Insert 2");
 
         //when the button is pressed, change the state to the next state and then display the new contents
         int i = (int)incubationState;

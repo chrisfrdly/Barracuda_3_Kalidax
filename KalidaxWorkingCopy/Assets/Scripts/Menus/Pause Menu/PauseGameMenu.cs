@@ -20,8 +20,6 @@ public class PauseGameMenu : MonoBehaviour
 
     [SerializeField] private Button resumeButton;
 
-    //Create a reference to Sound Manager script
-    SoundManager soundManager;
 
     private void Awake()
     {
@@ -29,12 +27,12 @@ public class PauseGameMenu : MonoBehaviour
         if (PlayerInputHandler.Instance.GetCurrentControlScheme() == "Controller")
             resumeButton.Select();
 
-        //Find Sound Manager script object
-        soundManager = FindObjectOfType<SoundManager>();
     }
 
     public void ConnectControllersToPauseMenu(PlayerInput player)
     {
+        AudioManager.instance.Play("Positive Interact");
+
         //Get all the playuer's inputUI Modules and connect them to this UI input module in child
         player.uiInputModule = GetComponentInChildren<InputSystemUIInputModule>();
   
@@ -43,9 +41,7 @@ public class PauseGameMenu : MonoBehaviour
     public void ResumeGameButton()
     {
         //AudioManager.instance.Play("ClickButton");
-
-        //Call confirm sound class
-        soundManager.PlayUIConfirmSound();
+        AudioManager.instance.Play("Negative Interact");
 
 
         //Send event to the game manager to resume the game
@@ -58,10 +54,8 @@ public class PauseGameMenu : MonoBehaviour
 
     public void PauseMenu_TitleScreen()
     {
-        //AudioManager.instance.Play("ClickButton");
+        AudioManager.instance.Play("Negative Interact");
 
-        //Call confirm sound class
-        soundManager.PlayUIConfirmSound();
 
         //Send event to the game manager to resume the game
         pauseMenuEvent.ResumeGameEventSend();
