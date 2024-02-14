@@ -36,6 +36,9 @@ public class InteractableObject_Provisions_Drone : InteractableObject
     {
         OpenInteractionPanel();
         HideUI();
+
+        AudioManager.instance.Play("Positive Interact");
+
     }
 
     //------------------
