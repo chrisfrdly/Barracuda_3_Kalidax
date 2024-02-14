@@ -17,6 +17,9 @@ public class InteractableObject_Provisions_Drone : InteractableObject
     [Header("Other Contents")]
     [SerializeField] private Image itemImage;
 
+    public SO_Inventory inventory; //this is so you can sell your seeds
+    [SerializeField] private int sellAmount; //this is how many seeds you will sell
+
 
     // Start is called before the first frame update
     void Start()
@@ -38,6 +41,21 @@ public class InteractableObject_Provisions_Drone : InteractableObject
         HideUI();
     }
 
+    //This is temporary but it will make you sell all your seeds we can UX the shit out of this so the player knows they're selling all of them
+    public void SellAllSeeds()
+    {
+        for (int i = 0; i < inventory.container.items.Length; i++)
+        {
+            if (inventory.container.items[i].id > -1)
+            {
+                sellAmount += inventory.container.items[i].amount;
+                inventory.SellItem(inventory.container.items[i].item, sellAmount);
+                sellAmount = 0;
+            }
+        }
+    }
+
+
     //------------------
     //Open and Close HUD
     //------------------
@@ -53,10 +71,8 @@ public class InteractableObject_Provisions_Drone : InteractableObject
         //Activate the panel and make it the currentVisible UI
         pDroneHUDPanel.SetActive(true);
         UIController.Instance.m_CurrentUIVisible = pDroneHUDPanel;
-
-
-
     }
+
     private void CloseInteractionPrompt()
     {
         pDroneHUDPanel.SetActive(false);

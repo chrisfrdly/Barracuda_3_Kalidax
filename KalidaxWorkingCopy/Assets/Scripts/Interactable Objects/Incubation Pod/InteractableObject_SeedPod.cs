@@ -36,7 +36,7 @@ public class InteractableObject_SeedPod : InteractableObject
     [SerializeField] private Vector3 spawnLocation;
 
     [Header("Incubation Parameters")]
-    [SerializeField] private int daysToIncubate = 7;
+    [SerializeField] private int daysToIncubate = 2;
     private int daysLeft;
 
     [Header("Prefab Instantiation")]

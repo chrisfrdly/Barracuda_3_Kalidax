@@ -315,6 +315,8 @@ MonoBehaviour:
   sellButton: {fileID: 5823475596309172752}
   buttonText: {fileID: 5823475596649171657}
   itemImage: {fileID: 0}
+  inventory: {fileID: 11400000, guid: aa44c2eee6c76bd438666289c0763e1a, type: 2}
+  sellAmount: 0
 --- !u!1 &5823475596028253817
 GameObject:
   m_ObjectHideFlags: 0
@@ -515,9 +517,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: InteractableObject_IncubationPod, Assembly-CSharp
-        m_MethodName: ChangeState
+      - m_Target: {fileID: 5823475595965450378}
+        m_TargetAssemblyTypeName: InteractableObject_Provisions_Drone, Assembly-CSharp
+        m_MethodName: SellAllSeeds
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
