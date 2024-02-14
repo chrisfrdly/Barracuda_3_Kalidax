@@ -42,6 +42,7 @@ public class InteractableObject_Provisions_Drone : InteractableObject
     }
 
     //This is temporary but it will make you sell all your seeds we can UX the shit out of this so the player knows they're selling all of them
+    //eventually we want the player to select how many seeds they sell but we can backlog all of this for now 
     public void SellAllSeeds()
     {
         for (int i = 0; i < inventory.container.items.Length; i++)

@@ -18,6 +18,7 @@ public class InteractableObject_SeedPod : InteractableObject
     
     private IncubationState incubationState = IncubationState.OBJ_NotPurchased;
 
+    public SO_Inventory inventory; //reference to the inventory 
 
     [Separator()]
     [SerializeField] private SO_Data_DayCycle dataDayCycle;
@@ -208,6 +209,26 @@ public class InteractableObject_SeedPod : InteractableObject
     }
 
     //This function is called on the button in the inspector
+    public void CheckIfSeedInInventory()
+    {
+        for (int i = 0; i < inventory.container.items.Length; i++)
+        {
+            if (inventory.container.items[i].id > -1 && inventory.container.items[i].amount > 1)
+            {
+                inventory.container.items[i].AddAmount(-1);
+                ChangeState();          
+            }
+            else if(inventory.container.items[i].id > -1 && inventory.container.items[i].amount == 1)
+            {
+                inventory.RemoveItem(inventory.container.items[i].item);
+                ChangeState();
+            }
+            
+        }
+    }
+
+
+    //this method will be called within another method. This is so that we can remove one seed from the inventory
     public void ChangeState()
     {
         incubationState = dataDayCycle.incubationPodData[thisIndex].incubationState;

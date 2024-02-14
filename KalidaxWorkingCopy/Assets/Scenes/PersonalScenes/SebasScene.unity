@@ -7673,6 +7673,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Provisions Drone
       objectReference: {fileID: 0}
+    - target: {fileID: 5823475596309172752, guid: 4e17ce1dd8d39534c8581acb2ba4936c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5823475596309172752, guid: 4e17ce1dd8d39534c8581acb2ba4936c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5823475596309172752, guid: 4e17ce1dd8d39534c8581acb2ba4936c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: InteractableObject_IncubationPod, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e17ce1dd8d39534c8581acb2ba4936c, type: 3}
 --- !u!1 &1669869760 stripped
@@ -10126,6 +10138,14 @@ PrefabInstance:
       propertyPath: T1alienPrefabs.Array.data[3]
       value: 
       objectReference: {fileID: 528095055722476609, guid: c014f222d4fda9243bcc4a9cb727b4c3, type: 3}
+    - target: {fileID: 7376599304840943977, guid: 5acdf902b2155e441a573cb0942e0362, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7376599305741144352, guid: 5acdf902b2155e441a573cb0942e0362, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7376599305794949624, guid: 5acdf902b2155e441a573cb0942e0362, type: 3}
       propertyPath: m_fontSize
       value: 12

@@ -83,6 +83,7 @@ MonoBehaviour:
   isInteractPointVisible: 1
   isRequiredToLookAtTarget: 0
   freezePlayerMovement: 0
+  inventory: {fileID: 11400000, guid: aa44c2eee6c76bd438666289c0763e1a, type: 2}
   dataDayCycle: {fileID: 11400000, guid: 208eef33a987f0e4bb799b003df00a94, type: 2}
   incubationPodHUDPanel: {fileID: 7376599304840943977}
   addSeedButton: {fileID: 7376599304987843840}
@@ -90,7 +91,9 @@ MonoBehaviour:
   daysRemainingText: {fileID: 7376599305794949624}
   seedImage: {fileID: 7376599304557431232}
   incubationLight: {fileID: 4866254346615901721}
+  spawnLocation: {x: 0, y: 0, z: 0}
   daysToIncubate: 7
+  T1alienPrefabs: []
   incubationColour_AddSeed: {r: 0.10136587, g: 1, b: 0.0047169924, a: 1}
   incubationColour_Incubating: {r: 1, g: 0.2216981, b: 0.22982088, a: 1}
   incubationColour_RemoveSeed: {r: 0.1728818, g: 0.31167355, b: 0.990566, a: 1}
@@ -558,8 +561,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 7376599304375814047}
-        m_TargetAssemblyTypeName: InteractableObject_IncubationPod, Assembly-CSharp
-        m_MethodName: ChangeState
+        m_TargetAssemblyTypeName: InteractableObject_SeedPod, Assembly-CSharp
+        m_MethodName: CheckIfSeedInInventory
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
