@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class InteractableObject_ShelterPod : InteractableObject
 {
-    //Create a reference to Sound Manager script
-    SoundManager soundManager;
 
     protected override void OnInteract()
     {
@@ -14,11 +12,8 @@ public class InteractableObject_ShelterPod : InteractableObject
 
         HideUI();
 
-        //Find Sound Manager script object
-        soundManager = FindObjectOfType<SoundManager>();
+        AudioManager.instance.Play("Positive Interact");
 
-        //Call confirm sound class
-        soundManager.PlayUIConfirmSound();
     }
 
     private void PromptDayReset()
