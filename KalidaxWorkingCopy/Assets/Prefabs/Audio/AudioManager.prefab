@@ -44,7 +44,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e65405adf9ff4684c96168b18e926ffd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sounds: []
+  sounds:
+  - name: Negative Interact
+    clip:
+    - {fileID: 8300000, guid: eab8d0c948f62104bbf53fd563ddcfbc, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Positive Interact
+    clip:
+    - {fileID: 8300000, guid: 6d832c45977f8fc41beb4902a51d1476, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Insert 1
+    clip:
+    - {fileID: 8300000, guid: 9dce7b2d7224b3e48b7dccdf7bf34cbb, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Insert 2
+    clip:
+    - {fileID: 8300000, guid: 4f873f8bf936408418d4cdbdfe96b943, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
   bgSounds:
   - backgroundMusic: 1
     clip: {fileID: 8300000, guid: cd93747adb68fd54b851437e7e14feaa, type: 3}

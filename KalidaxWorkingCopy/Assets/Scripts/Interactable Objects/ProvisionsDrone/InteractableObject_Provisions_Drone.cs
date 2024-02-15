@@ -39,6 +39,9 @@ public class InteractableObject_Provisions_Drone : InteractableObject
     {
         OpenInteractionPanel();
         HideUI();
+
+        AudioManager.instance.Play("Positive Interact");
+
     }
 
     //This is temporary but it will make you sell all your seeds we can UX the shit out of this so the player knows they're selling all of them

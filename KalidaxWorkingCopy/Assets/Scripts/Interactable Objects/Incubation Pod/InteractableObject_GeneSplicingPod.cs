@@ -24,9 +24,6 @@ public class InteractableObject_GeneSplicingPod : InteractableObject
     [SerializeField] private SO_Alien[] aliensAdded = new SO_Alien[2];
 
 
-    //Create a reference to Sound Manager script
-    SoundManager soundManager;
-
     /// <summary>
     /// The way the incubation works is that at the beginning you must add a seed into it,
     /// Then it starts the incubation process. You cannot take out the seed from it
@@ -48,9 +45,6 @@ public class InteractableObject_GeneSplicingPod : InteractableObject
         //the aliens are added to the list, so they will be removed
         aliens.worldAliens.Clear();
 
-        //Find Sound Manager script object
-        soundManager = FindObjectOfType<SoundManager>();
-
     }
 
     protected override void OnInteract()
@@ -59,8 +53,7 @@ public class InteractableObject_GeneSplicingPod : InteractableObject
 
         HideUI();
 
-        //Call confirm sound class
-        soundManager.PlayUIConfirmSound();
+        AudioManager.instance.Play("Positive Interact");
     }
 
 
@@ -93,8 +86,7 @@ public class InteractableObject_GeneSplicingPod : InteractableObject
     //passing in an int value so we can do more than just modify the button
     private void ButtonClicked(int _button)
     {
-        //Call pod plus click sound class
-        soundManager.PlayPodClickSound();
+        AudioManager.instance.Play("Insert 1");
 
         alienGridPanel.SetActive(true);
         buttonModified = _button;
@@ -104,7 +96,7 @@ public class InteractableObject_GeneSplicingPod : InteractableObject
     public void SetAlien(SO_Alien a)
     {
         //Call item select sound class
-        soundManager.PlayItemSelectSound();
+        AudioManager.instance.Play("Insert 2");
 
         //Change the button to the sprite of the alien
         addAlienButton[buttonModified].GetComponent<Image>().sprite = a.m_AlienSprite;

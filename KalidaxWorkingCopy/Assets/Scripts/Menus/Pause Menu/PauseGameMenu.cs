@@ -24,8 +24,6 @@ public class PauseGameMenu : MonoBehaviour
     [SerializeField] private RectTransform controlsPanelRect;
     private float minPosY;
     private float maxPosY;
-    //Create a reference to Sound Manager script
-    SoundManager soundManager;
 
     private void Awake()
     {
@@ -33,12 +31,12 @@ public class PauseGameMenu : MonoBehaviour
         if (PlayerInputHandler.Instance.GetCurrentControlScheme() == "Controller")
             resumeButton.Select();
 
-        //Find Sound Manager script object
-        soundManager = FindObjectOfType<SoundManager>();
     }
 
     public void ConnectControllersToPauseMenu(PlayerInput player)
     {
+        AudioManager.instance.Play("Positive Interact");
+
         //Get all the playuer's inputUI Modules and connect them to this UI input module in child
         player.uiInputModule = GetComponentInChildren<InputSystemUIInputModule>();
   
@@ -48,8 +46,7 @@ public class PauseGameMenu : MonoBehaviour
     {
         //AudioManager.instance.Play("ClickButton");
 
-        //Call confirm sound class
-        soundManager.PlayUIConfirmSound();
+        AudioManager.instance.Play("Negative Interact");
 
 
         //Send event to the game manager to resume the game
@@ -64,8 +61,7 @@ public class PauseGameMenu : MonoBehaviour
     {
         //AudioManager.instance.Play("ClickButton");
 
-        //Call confirm sound class
-        soundManager.PlayUIConfirmSound();
+        AudioManager.instance.Play("Negative Interact");
 
         //Send event to the game manager to resume the game
         pauseMenuEvent.ResumeGameEventSend();
@@ -85,6 +81,7 @@ public class PauseGameMenu : MonoBehaviour
         LeanTween.value(1080f, 0, 0.5f).setOnUpdate(UpdatePanelMinY).setEaseOutQuad().setIgnoreTimeScale(true);
         LeanTween.value(1080f, 0, 0.5f).setOnUpdate(UpdatePanelMaxY).setEaseOutQuad().setIgnoreTimeScale(true);
 
+        AudioManager.instance.Play("Positive Interact");
 
     }
 
@@ -94,6 +91,8 @@ public class PauseGameMenu : MonoBehaviour
         //Lean tween from the bottom to the top
         LeanTween.value(0, 1080, 0.5f).setOnUpdate(UpdatePanelMinY).setEaseInQuad().setIgnoreTimeScale(true);
         LeanTween.value(0, 1080, 0.5f).setOnUpdate(UpdatePanelMaxY).setEaseInQuad().setIgnoreTimeScale(true);
+
+        AudioManager.instance.Play("Negative Interact");
 
     }
 
