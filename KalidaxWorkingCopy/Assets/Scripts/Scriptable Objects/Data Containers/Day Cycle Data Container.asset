@@ -15,16 +15,16 @@ MonoBehaviour:
   currentDay: 0
   grassTilesList: 
   incubationPodData:
-  - index: 0
+  - index: -1
     incubationState: 0
-    daysLeft: 7
-  - index: 1
-    incubationState: 3
-    daysLeft: 7
-  - index: 2
-    incubationState: 3
-    daysLeft: 7
-  - index: 3
-    incubationState: 3
-    daysLeft: 2
+    daysLeft: 0
+  - index: -1
+    incubationState: 0
+    daysLeft: 0
+  - index: -1
+    incubationState: 0
+    daysLeft: 0
+  - index: -1
+    incubationState: 0
+    daysLeft: 0
   incubationPodPurchased: 01000000

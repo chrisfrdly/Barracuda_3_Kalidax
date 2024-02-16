@@ -57,8 +57,13 @@ public class SpriteOutlineGenerator : MonoBehaviour
         //now loop through the positions inputting the vertex data from the collider
         for (int i = 0; i < physicsShapeGroup.vertexCount; i++)
         {
-            Vector2 vertexData = physicsShapeGroup.GetShapeVertex(0, i);
-            lr.SetPosition(i, vertexData);
+            for(int j = 0; j < physicsShapeGroup.shapeCount; j++)
+            {
+                Vector2 vertexData = physicsShapeGroup.GetShapeVertex(j, i);
+                lr.SetPosition(i, vertexData);
+            }
+            
+            
         }
 
         //now tell Unity to save the prefab once complete
