@@ -7374,54 +7374,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1800930824}
     m_Modifications:
-    - target: {fileID: 4075410610309600277, guid: 601ed4e6eb6ba0046a87845146fdcb1e, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 124
-      objectReference: {fileID: 0}
-    - target: {fileID: 4075410610440543760, guid: 601ed4e6eb6ba0046a87845146fdcb1e, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: -1344.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 4075410610440543760, guid: 601ed4e6eb6ba0046a87845146fdcb1e, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: -739.94
-      objectReference: {fileID: 0}
-    - target: {fileID: 4075410610440543760, guid: 601ed4e6eb6ba0046a87845146fdcb1e, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 672.45
-      objectReference: {fileID: 0}
-    - target: {fileID: 4075410610440543760, guid: 601ed4e6eb6ba0046a87845146fdcb1e, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 369.97
-      objectReference: {fileID: 0}
-    - target: {fileID: 4075410610440543763, guid: 601ed4e6eb6ba0046a87845146fdcb1e, type: 3}
-      propertyPath: numberOfColumn
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4075410610440543763, guid: 601ed4e6eb6ba0046a87845146fdcb1e, type: 3}
-      propertyPath: startPosition_x
-      value: -245
-      objectReference: {fileID: 0}
-    - target: {fileID: 4075410610440543763, guid: 601ed4e6eb6ba0046a87845146fdcb1e, type: 3}
-      propertyPath: startPosition_y
-      value: 95
-      objectReference: {fileID: 0}
-    - target: {fileID: 4075410610440543763, guid: 601ed4e6eb6ba0046a87845146fdcb1e, type: 3}
-      propertyPath: spaceBetweenItem_x
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 4075410610440543763, guid: 601ed4e6eb6ba0046a87845146fdcb1e, type: 3}
-      propertyPath: spaceBetweenItem_y
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 4075410610750858666, guid: 601ed4e6eb6ba0046a87845146fdcb1e, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -369.34998
-      objectReference: {fileID: 0}
-    - target: {fileID: 4075410611424517987, guid: 601ed4e6eb6ba0046a87845146fdcb1e, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 124
-      objectReference: {fileID: 0}
     - target: {fileID: 4075410612173051810, guid: 601ed4e6eb6ba0046a87845146fdcb1e, type: 3}
       propertyPath: m_Name
       value: UI Controller

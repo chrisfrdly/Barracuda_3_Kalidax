@@ -38,6 +38,7 @@ public class WorldAlien : MonoBehaviour
     private void Start()
     {
         AddAlienToList();
+        UpdateAlienInGame();
     }
 
     private void Update()
@@ -62,8 +63,18 @@ public class WorldAlien : MonoBehaviour
             AddAlienToList();
         }
     }
-    
+
 #endif
+
+    private void UpdateAlienInGame()
+    {
+        sr = GetComponent<SpriteRenderer>();
+        sr.sprite = alienContainer.m_AlienSprite;
+
+        aliensInWorldListSO.worldAliens.RemoveAt(alienInList);
+        AddAlienToList();
+       
+    }
 
     private void AddAlienToList()
     {

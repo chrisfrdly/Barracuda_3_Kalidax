@@ -202,7 +202,6 @@ public class InteractableObject_SeedPod : InteractableObject
 
         //Set the text for the amount of days left
         daysRemainingText.text = daysLeft.ToString() + " days left \n to incubate";
-        Debug.Log(incubationState);
 
     }
     private void CloseInteractionPrompt()
@@ -261,7 +260,6 @@ public class InteractableObject_SeedPod : InteractableObject
         if (incubationState == IncubationState.OBJ_RemoveSeed)
         {
             InstantiateRandomPrefab();
-            Debug.Log("Random");
         }
 
         //when the button is pressed, change the state to the next state and then display the new contents

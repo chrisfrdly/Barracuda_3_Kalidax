@@ -1,8 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
+#if UNITY_EDITOR
 using UnityEditor;
-using Unity.VisualScripting;
+#endif
 
 public class SpriteOutlineGenerator : MonoBehaviour
 {
@@ -71,7 +71,7 @@ public class SpriteOutlineGenerator : MonoBehaviour
     }
 
 }
-
+#if UNITY_EDITOR
 [CustomEditor(typeof(SpriteOutlineGenerator))]  
 public class SpriteOutlineGeneratorEditor : Editor
 {
@@ -87,3 +87,4 @@ public class SpriteOutlineGeneratorEditor : Editor
         }
     }
 }
+#endif
