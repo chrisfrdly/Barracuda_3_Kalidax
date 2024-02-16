@@ -41,7 +41,9 @@ public class InteractableObject_SeedPod : InteractableObject
     private int daysLeft;
 
     [Header("Prefab Instantiation")]
-    [SerializeField] private List<GameObject> T1alienPrefabs; 
+    [SerializeField] private List<GameObject> T1alienPrefabs;
+    [SerializeField] private GameObject needSeedText;
+    [SerializeField] private Transform needSeedSpawnLocation;
 
     [SerializeField] private Color incubationColour_AddSeed;
     [SerializeField] private Color incubationColour_Incubating;
@@ -123,6 +125,7 @@ public class InteractableObject_SeedPod : InteractableObject
             {
                 incubationState = IncubationState.OBJ_RemoveSeed;
                 dataDayCycle.incubationPodData[thisIndex].incubationState = incubationState;
+                
             }
 
 
@@ -199,6 +202,7 @@ public class InteractableObject_SeedPod : InteractableObject
 
         //Set the text for the amount of days left
         daysRemainingText.text = daysLeft.ToString() + " days left \n to incubate";
+        Debug.Log(incubationState);
 
     }
     private void CloseInteractionPrompt()
@@ -211,6 +215,14 @@ public class InteractableObject_SeedPod : InteractableObject
     //This function is called on the button in the inspector
     public void CheckIfSeedInInventory()
     {
+        //only check if we have seeds if we are on the "Add Seed" State
+        if (incubationState == IncubationState.OBJ_RemoveSeed)
+        {
+            ChangeState();
+            return;
+        }
+
+        bool noSeeds = false;
         for (int i = 0; i < inventory.container.items.Length; i++)
         {
             if (inventory.container.items[i].id > -1 && inventory.container.items[i].amount > 1)
@@ -223,7 +235,15 @@ public class InteractableObject_SeedPod : InteractableObject
                 inventory.RemoveItem(inventory.container.items[i].item);
                 ChangeState();
             }
-            
+            else if(i == 0 && incubationState == IncubationState.OBJ_AddSeed)
+            {
+                noSeeds = true;
+            }
+        }
+
+        if(noSeeds)
+        {
+            Instantiate(needSeedText, needSeedSpawnLocation.position,Quaternion.identity,needSeedSpawnLocation);
         }
     }
 
@@ -231,32 +251,50 @@ public class InteractableObject_SeedPod : InteractableObject
     //this method will be called within another method. This is so that we can remove one seed from the inventory
     public void ChangeState()
     {
+        //Get the data
         incubationState = dataDayCycle.incubationPodData[thisIndex].incubationState;
         daysLeft = dataDayCycle.incubationPodData[thisIndex].daysLeft;
+
         //Call item sound class
         soundManager.PlayItemSelectSound();
+
+        if (incubationState == IncubationState.OBJ_RemoveSeed)
+        {
+            InstantiateRandomPrefab();
+            Debug.Log("Random");
+        }
 
         //when the button is pressed, change the state to the next state and then display the new contents
         int i = (int)incubationState;
         i++;
-        i %= 3;
-        if (incubationState == IncubationState.OBJ_RemoveSeed)
+        
+        //reset state
+        if((IncubationState)i == IncubationState.OBJ_NotPurchased)
         {
-            InstantiateRandomPrefab();
+            i = 0;
         }
 
-     
+        //set the state to the new state
         incubationState = (IncubationState)i;
-      
+
+
+
         DisplayIncubationHUDContents();
-        if (i == 0) daysLeft = daysToIncubate;
+
+
+
+        if (i == (int)IncubationState.OBJ_AddSeed)
+        {
+            daysLeft = daysToIncubate;
+        }
 
 
         //Update the data
-        Debug.Log("Updating Data");
         dataDayCycle.incubationPodData[thisIndex].incubationState = incubationState;
         dataDayCycle.incubationPodData[thisIndex].daysLeft = daysLeft;
+
         
+
     }
 
     private void InstantiateRandomPrefab()
@@ -306,9 +344,6 @@ public class InteractableObject_SeedPod : InteractableObject
 
         incubationLight.color = new Color(0, 1, 0);
 
-        //Update the data
-        incubationState = dataDayCycle.incubationPodData[thisIndex].incubationState;
-        daysLeft = dataDayCycle.incubationPodData[thisIndex].daysLeft;
     }
     private void ShowIncubatingUI()
     {

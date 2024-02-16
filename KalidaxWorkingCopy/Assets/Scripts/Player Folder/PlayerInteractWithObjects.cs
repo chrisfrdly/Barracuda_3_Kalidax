@@ -28,7 +28,7 @@ public class PlayerInteractWithObjects : MonoBehaviour
 
     private RaycastHit2D hit;
     private Collider2D closestCollider = null;
-
+    private GameObject prevGrassTile = null;
 
 
     private float closestDistance = Mathf.Infinity;
@@ -210,11 +210,21 @@ public class PlayerInteractWithObjects : MonoBehaviour
         hit = Physics2D.CircleCast(transform.position, 0.5f, directionFacing, interactRadius - 0.5f, grassMask);
 
         if(hit.collider != null)
+        {
             Debug.DrawLine(transform.position, hit.transform.position, Color.blue);
+            if (prevGrassTile != null) prevGrassTile.SetActive(false);
+            prevGrassTile = hit.transform.GetChild(0).transform.gameObject;
+            prevGrassTile.SetActive(true);
+        }
+            
 
         //if we did NOT detect a grass tile, return
         if (!hit)
+        {
+            if(prevGrassTile != null) prevGrassTile.SetActive(false);
             return;
+        }
+            
 
         //check to see if the player clicked the mouse button. Update with new input system
         if (playerInputHandler.m_PlayerInput.actions["BreakGrass"].WasPressedThisFrame() || 
