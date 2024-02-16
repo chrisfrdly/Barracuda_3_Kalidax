@@ -5,7 +5,8 @@ using UnityEngine;
 public class TemporarySellingScript : MonoBehaviour
 {
     public SO_Inventory inventoryScript;
-    public WorldAlien alienToSell;
+    public WorldAlien[] alienToSell;
+    private int alienIndex = 0;
     [SerializeField]private int amount;
 
     private void Update()
@@ -19,7 +20,11 @@ public class TemporarySellingScript : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.N))
         {
-            alienToSell.isBeingSold = true;
+            if(alienIndex < alienToSell.Length)
+            {
+                alienToSell[alienIndex].isBeingSold = true;
+                alienIndex++;
+            }
         }
     }
 

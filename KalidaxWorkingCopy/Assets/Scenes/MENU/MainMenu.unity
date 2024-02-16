@@ -1417,7 +1417,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Protocol
+  m_text: Program
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 65d54449cb01762439f8072a3943ea84, type: 2}
   m_sharedMaterial: {fileID: -2652143214804661206, guid: 65d54449cb01762439f8072a3943ea84, type: 2}

@@ -3146,6 +3146,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8750283390089401221, guid: 580e9ffe46e90a940bc7503137eef5ae, type: 3}
   m_PrefabInstance: {fileID: 910960831}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &803719721 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8750283390089401222, guid: 580e9ffe46e90a940bc7503137eef5ae, type: 3}
+  m_PrefabInstance: {fileID: 910960831}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d3578ab145dfd4409c58193fef3ad03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &815706389
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3732,6 +3743,10 @@ PrefabInstance:
       propertyPath: alienContainer
       value: 
       objectReference: {fileID: -2809655147040883975, guid: c5184fa4d3a7c4d40a419acbd5ea6e83, type: 2}
+    - target: {fileID: 8750283390089401222, guid: 580e9ffe46e90a940bc7503137eef5ae, type: 3}
+      propertyPath: provisionDroneObject
+      value: 
+      objectReference: {fileID: 1794004101}
     - target: {fileID: 8750283390089401223, guid: 580e9ffe46e90a940bc7503137eef5ae, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -6885,12 +6900,9 @@ MonoBehaviour:
 
     DEBUG TOOLS:
 
-    f: add money
+    b: buy object
 
-    g: subtract money
-
-    b:
-    buy object
+    n: Sell an alien
 
 '
   m_isRightToLeft: 0
@@ -7374,6 +7386,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1800930824}
     m_Modifications:
+    - target: {fileID: 4075410610750858666, guid: 601ed4e6eb6ba0046a87845146fdcb1e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -369.34995
+      objectReference: {fileID: 0}
     - target: {fileID: 4075410612173051810, guid: 601ed4e6eb6ba0046a87845146fdcb1e, type: 3}
       propertyPath: m_Name
       value: UI Controller
@@ -7544,6 +7560,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8750283390089401221, guid: 580e9ffe46e90a940bc7503137eef5ae, type: 3}
   m_PrefabInstance: {fileID: 1950327616}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1504749795 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8750283390089401222, guid: 580e9ffe46e90a940bc7503137eef5ae, type: 3}
+  m_PrefabInstance: {fileID: 1950327616}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d3578ab145dfd4409c58193fef3ad03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1505569683 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8075052001810662464, guid: 6fb02f626fe3aa54183d87ea74a7919b, type: 3}
@@ -8450,6 +8477,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6fb02f626fe3aa54183d87ea74a7919b, type: 3}
+--- !u!1 &1794004101 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5823475595965450379, guid: 4e17ce1dd8d39534c8581acb2ba4936c, type: 3}
+  m_PrefabInstance: {fileID: 1655716595}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1800930820
 GameObject:
   m_ObjectHideFlags: 0
@@ -8796,7 +8828,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventoryScript: {fileID: 11400000, guid: aa44c2eee6c76bd438666289c0763e1a, type: 2}
-  alienToSell: {fileID: 8750283390649116279}
+  alienToSell:
+  - {fileID: 803719721}
+  - {fileID: 1504749795}
+  - {fileID: 8750283390649116279}
+  - {fileID: 8750283389076224471}
+  - {fileID: 8750283390500140484}
+  - {fileID: 8750283388930487575}
   amount: 0
 --- !u!4 &1899897662
 Transform:
@@ -9047,6 +9085,10 @@ PrefabInstance:
       propertyPath: alienContainer
       value: 
       objectReference: {fileID: -1955636680933398788, guid: b9c2b5f4ffacfd14f931c0990484ba66, type: 2}
+    - target: {fileID: 8750283390089401222, guid: 580e9ffe46e90a940bc7503137eef5ae, type: 3}
+      propertyPath: provisionDroneObject
+      value: 
+      objectReference: {fileID: 1794004101}
     - target: {fileID: 8750283390089401223, guid: 580e9ffe46e90a940bc7503137eef5ae, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -10247,6 +10289,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1925895957}
     m_Modifications:
+    - target: {fileID: 4730028499782846424, guid: ab37647a73e3a2447bef6909cbb5ebc3, type: 3}
+      propertyPath: provisionDroneObject
+      value: 
+      objectReference: {fileID: 1794004101}
     - target: {fileID: 4730028499782846427, guid: ab37647a73e3a2447bef6909cbb5ebc3, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -10304,6 +10350,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1925895957}
     m_Modifications:
+    - target: {fileID: 2857581740749572264, guid: 2f75f3b2b85c1aa488e6a1b9e81935ff, type: 3}
+      propertyPath: provisionDroneObject
+      value: 
+      objectReference: {fileID: 1794004101}
     - target: {fileID: 2857581740749572267, guid: 2f75f3b2b85c1aa488e6a1b9e81935ff, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -10359,16 +10409,49 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4730028499782846427, guid: ab37647a73e3a2447bef6909cbb5ebc3, type: 3}
   m_PrefabInstance: {fileID: 4092417177376010957}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8750283388930487575 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4730028499782846424, guid: ab37647a73e3a2447bef6909cbb5ebc3, type: 3}
+  m_PrefabInstance: {fileID: 4092417177376010957}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d3578ab145dfd4409c58193fef3ad03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &8750283389076224468 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2857581740749572267, guid: 2f75f3b2b85c1aa488e6a1b9e81935ff, type: 3}
   m_PrefabInstance: {fileID: 6829545086593200511}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8750283389076224471 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2857581740749572264, guid: 2f75f3b2b85c1aa488e6a1b9e81935ff, type: 3}
+  m_PrefabInstance: {fileID: 6829545086593200511}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d3578ab145dfd4409c58193fef3ad03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &8750283390500140481 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 560959319018150194, guid: 899237517ce93074899ed8b06dde3b9c, type: 3}
   m_PrefabInstance: {fileID: 9126454376352148723}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8750283390500140484 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 560959319018150193, guid: 899237517ce93074899ed8b06dde3b9c, type: 3}
+  m_PrefabInstance: {fileID: 9126454376352148723}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d3578ab145dfd4409c58193fef3ad03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &8750283390649116276 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 528095055722476613, guid: 43d50266dfb98a146aefd71188ec2292, type: 3}
@@ -10440,6 +10523,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 528095055722476614, guid: 43d50266dfb98a146aefd71188ec2292, type: 3}
+      propertyPath: provisionDroneObject
+      value: 
+      objectReference: {fileID: 1794004101}
     - target: {fileID: 528095055722476615, guid: 43d50266dfb98a146aefd71188ec2292, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -10453,6 +10540,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1925895957}
     m_Modifications:
+    - target: {fileID: 560959319018150193, guid: 899237517ce93074899ed8b06dde3b9c, type: 3}
+      propertyPath: provisionDroneObject
+      value: 
+      objectReference: {fileID: 1794004101}
     - target: {fileID: 560959319018150194, guid: 899237517ce93074899ed8b06dde3b9c, type: 3}
       propertyPath: m_RootOrder
       value: 7

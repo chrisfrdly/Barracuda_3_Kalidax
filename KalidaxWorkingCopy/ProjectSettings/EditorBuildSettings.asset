@@ -8,12 +8,15 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MainScene-Playtest 1.unity
     guid: a4caa8fc69c4f874783ece26e83d9add
   - enabled: 1
     path: Assets/Scenes/EndOfDayScene.unity
     guid: 35a0528ea894ff64d9d5e2332b46f574
+  - enabled: 1
+    path: Assets/Scenes/MainScenePlaytest2.unity
+    guid: 9b9f7b15ada8a3047b6c63c9f975da9a
   - enabled: 1
     path: Assets/Scenes/MENU/About.unity
     guid: d51ff8153403f0b4a800a9f7b133a72b
@@ -23,7 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainScene.unity
     guid: 1e7e5899eb1f0dc459facde9b7c3f511
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/PersonalScenes/LucasScene.unity
     guid: dc336a5fb630e16418a8103044bda1a7
   - enabled: 1
