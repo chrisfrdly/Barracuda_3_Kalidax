@@ -29,6 +29,9 @@ public class InteractableObject_SeedPod : InteractableObject
     [SerializeField] private Button addSeedButton;
     [SerializeField] private TextMeshProUGUI buttonText;
 
+    [Header("Player Progress")]
+    [SerializeField] private PlayerProgress playerProgress;
+
     [Header("Other Contents")]
     [SerializeField] private TextMeshProUGUI daysRemainingText;
     [SerializeField] private Image seedImage;
@@ -67,7 +70,12 @@ public class InteractableObject_SeedPod : InteractableObject
         base.Awake();
         SO_interactableObject.clickedCancelButtonEvent.AddListener(CloseInteractionPrompt);
         daysLeft = daysToIncubate;
-        
+
+        // Initialize player progress with seed collection 
+        if (playerProgress != null)
+        {
+            playerProgress.OnSeedCollected();
+        }
 
     }
     private void Start()
@@ -97,6 +105,25 @@ public class InteractableObject_SeedPod : InteractableObject
 
             dataDayCycle.incubationPodData[thisIndex].incubationState = incubationState;
             dataDayCycle.incubationPodData[thisIndex].daysLeft = daysLeft;
+
+            if (playerProgress != null)
+            {
+                switch (incubationState)
+                {
+                    case IncubationState.OBJ_AddSeed:
+                        // The player has collected a seed and is ready to add it
+                        playerProgress.OnSeedCollected();
+                        break;
+                    case IncubationState.OBJ_Incubating:
+                        // The player has placed the seed, and it is now incubating
+                        playerProgress.OnSeedPlaced();
+                        break;
+                    case IncubationState.OBJ_RemoveSeed:
+                        // Incubation is complete, and the player can remove the seed
+                        playerProgress.OnIncubationComplete();
+                        break;
+                }
+            }
         }
 
         //If we already have this object's data stored, retrieve the data
@@ -223,6 +250,8 @@ public class InteractableObject_SeedPod : InteractableObject
         dataDayCycle.incubationPodData[thisIndex].incubationState = incubationState;
         dataDayCycle.incubationPodData[thisIndex].daysLeft = daysLeft;
         
+        // Ensure the player progress is updated based on the new state
+        UpdateData();
     }
 
     private void InstantiateRandomPrefab()
