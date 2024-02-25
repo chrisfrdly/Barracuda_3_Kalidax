@@ -14,11 +14,20 @@ public class GameManager : MonoBehaviour
     public static bool isGamePaused;
 
     private PlayerInput playerInput;
-
+    public static GameManager Instance;
     private GameObject pauseMenu;
 
     private void Awake()
     {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+
         if (!isGameInitialized)
         {
             //persistence (oops I made a dependancy)
@@ -45,7 +54,7 @@ public class GameManager : MonoBehaviour
 
     private void InitializeGame()
     {
-        gameEvent.RaiseOnGameStart(ProgressState.None); // Signal the game start event
+        gameEvent.RaiseProgressChanged(ProgressState.None); // Signal the game start event
     }
 
     private void PauseTheGame()

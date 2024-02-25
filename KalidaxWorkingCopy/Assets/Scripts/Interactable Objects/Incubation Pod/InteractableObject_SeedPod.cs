@@ -117,7 +117,7 @@ public class InteractableObject_SeedPod : InteractableObject
             if (incubationState == IncubationState.OBJ_Incubating && daysLeft > 0)
             {
                 // If still incubating, raise the "Seed Placed" event
-                gameEvent.RaiseOnSeedIncubating(ProgressState.Incubating);
+                gameEvent.RaiseProgressChanged(ProgressState.Incubating);
             }
 
             //Check to see if the days left <= 1 and if so, se the incubation state to Complete
@@ -125,7 +125,7 @@ public class InteractableObject_SeedPod : InteractableObject
             {
                 incubationState = IncubationState.OBJ_RemoveSeed;
                 dataDayCycle.incubationPodData[thisIndex].incubationState = incubationState;
-                gameEvent.RaiseOnIncubationComplete(ProgressState.IncubationComplete);
+                gameEvent.RaiseProgressChanged(ProgressState.IncubationComplete);
             }
 
 
@@ -288,7 +288,7 @@ public class InteractableObject_SeedPod : InteractableObject
     private void ShowIncubatingUI()
     {
         incubationState = IncubationState.OBJ_Incubating;
-        gameEvent.RaiseOnSeedPlaced(ProgressState.SeedPlaced);
+        gameEvent.RaiseProgressChanged(ProgressState.SeedPlaced);
         addSeedButton.gameObject.SetActive(false);
 
         seedImage.gameObject.SetActive(true);

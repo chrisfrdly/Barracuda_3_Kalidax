@@ -1,49 +1,62 @@
 using UnityEngine;
 using UnityEngine.Events;
 
+// Define a UnityEvent type that can take a ProgressState as a parameter
+[System.Serializable]
+public class ProgressEvent : UnityEvent<ProgressState> { }
+[System.Serializable]
+public class ProgressChangedEvent : UnityEvent<ProgressState> { }
+
 [CreateAssetMenu(fileName = "GameEvent", menuName = "Game Events/New Game Event")]
 public class SO_GameEvent : ScriptableObject
 {
+    // Define events for each game progress state
     [System.NonSerialized]
-    public GameProgressEvent onGameStartEvent = new GameProgressEvent();
+    public ProgressEvent onGameStart = new ProgressEvent();
     [System.NonSerialized]
-    public GameProgressEvent onSeedCollectedEvent = new GameProgressEvent();
+    public ProgressEvent onSeedCollected = new ProgressEvent();
     [System.NonSerialized]
-    public GameProgressEvent onSeedPlacedEvent = new GameProgressEvent();
+    public ProgressEvent onSeedPlaced = new ProgressEvent();
     [System.NonSerialized]
-    public GameProgressEvent onIncubatingEvent = new GameProgressEvent();
+    public ProgressEvent onIncubating = new ProgressEvent();
     [System.NonSerialized]
-    public GameProgressEvent onIncubationCompleteEvent = new GameProgressEvent();
+    public ProgressEvent onIncubationComplete = new ProgressEvent();
+    [System.NonSerialized]
+    public ProgressChangedEvent onProgressChanged = new ProgressChangedEvent();
 
-    public void RaiseOnGameStart(ProgressState state)
+
+    public void RaiseProgressChanged(ProgressState state)
     {
-        onGameStartEvent.Invoke(state);
+        onProgressChanged.Invoke(state);
     }
 
-    public void RaiseOnSeedCollected(ProgressState state)
+    // Generic method to raise an event based on the provided ProgressState
+    public void RaiseEvent(ProgressState state)
     {
-        onSeedCollectedEvent.Invoke(state);
-    }
-
-    public void RaiseOnSeedPlaced(ProgressState state)
-    {
-        onSeedPlacedEvent.Invoke(state);
-    }
-
-    public void RaiseOnSeedIncubating(ProgressState state)
-    {
-        onIncubatingEvent.Invoke(state);
-    }
-
-    public void RaiseOnIncubationComplete(ProgressState state)
-    {
-        onIncubationCompleteEvent.Invoke(state);
+        switch (state)
+        {
+            case ProgressState.None:
+                break;
+            case ProgressState.SeedCollected:
+                onSeedCollected.Invoke(state);
+                break;
+            case ProgressState.SeedPlaced:
+                onSeedPlaced.Invoke(state);
+                break;
+            case ProgressState.Incubating:
+                onIncubating.Invoke(state);
+                break;
+            case ProgressState.IncubationComplete:
+                onIncubationComplete.Invoke(state);
+                break;
+            default:
+                Debug.LogWarning("Unhandled ProgressState: " + state);
+                break;
+        }
     }
 }
 
-[System.Serializable]
-public class GameProgressEvent : UnityEvent<ProgressState> {}
-
+// Ensure this enum is accessible by including it in a relevant namespace or making it public
 public enum ProgressState
 {
     None = 0,

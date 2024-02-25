@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
@@ -6,79 +7,48 @@ public class PlayerProgressUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI messageText;
     [SerializeField] private SO_GameEvent gameEvents;
 
-    // Flags to check if the message has been shown
-    private bool gameStartMessageShown = false;
-    private bool seedCollectedMessageShown = false;
-    private bool seedPlacedMessageShown = false;
-    private bool incubationCompleteMessageShown = false;
-    private bool seedIncubatingMessageShown = false;
+    private Dictionary<ProgressState, string> stateMessages = new Dictionary<ProgressState, string>();
+    private static HashSet<ProgressState> shownMessages = new HashSet<ProgressState>(); 
+
+    private void Awake()
+    {
+        InitializeStateMessages();
+    }
+
+    // Call this method to reset progress flags when starting a new game session
+    public static void ResetProgressFlags()
+    {
+        shownMessages.Clear();
+    }
+
+    private void InitializeStateMessages()
+    {
+        stateMessages[ProgressState.None] = "Let's Collect a seed, go over to the grass on the left side of the map";
+        stateMessages[ProgressState.SeedCollected] = "Good work on those fields! You should have one pod functional, Place the seed in the pod, wait for incubation.";
+        stateMessages[ProgressState.SeedPlaced] = "Wait for incubation to complete. Should take 7 days, pass some time in the shelter pod";
+        stateMessages[ProgressState.Incubating] = "It's still got some time in the oven, in the meantime; you can either farm or keep waiting. Don't forget to get some rest in the pod.";
+        stateMessages[ProgressState.IncubationComplete] = "Take the seed out of the pod! Let's see what you've accomplished.";
+    }
 
     private void OnEnable()
     {
-        // Subscribe to the events
-        gameEvents.onGameStartEvent.AddListener(HandleGameStart);
-        gameEvents.onSeedCollectedEvent.AddListener(HandleSeedCollected);
-        gameEvents.onSeedPlacedEvent.AddListener(HandleSeedPlaced);
-        gameEvents.onIncubatingEvent.AddListener(HandleSeedIncubating);
-        gameEvents.onIncubationCompleteEvent.AddListener(HandleIncubationComplete);
+        gameEvents.onProgressChanged.AddListener(HandleProgressChange);
     }
 
     private void OnDisable()
     {
-        // Unsubscribe from the events
-        gameEvents.onGameStartEvent.RemoveListener(HandleGameStart);
-        gameEvents.onSeedCollectedEvent.RemoveListener(HandleSeedCollected);
-        gameEvents.onSeedPlacedEvent.RemoveListener(HandleSeedPlaced);
-        gameEvents.onIncubatingEvent.RemoveListener(HandleSeedIncubating);
-        gameEvents.onIncubationCompleteEvent.RemoveListener(HandleIncubationComplete);
+        gameEvents.onProgressChanged.RemoveListener(HandleProgressChange);
     }
 
-    // Event Handlers
-    private void HandleGameStart(ProgressState state)
+    private void HandleProgressChange(ProgressState state)
     {
-        if (!gameStartMessageShown)
+        if (!shownMessages.Contains(state) && stateMessages.ContainsKey(state))
         {
-            UpdateMessage("Let's Collect a seed, go over to the grass on the left side of the map");
-            gameStartMessageShown = true;
+            UpdateMessage(stateMessages[state]);
+            shownMessages.Add(state); // Ensure this change is reflected across scenes by making 'shownMessages' static
         }
     }
 
-    private void HandleSeedCollected(ProgressState state)
-    {
-        if (!seedCollectedMessageShown)
-        {
-            UpdateMessage("Good work on those fields! You should have one pod functional, Place the seed in the pod, wait for incubation.");
-            seedCollectedMessageShown = true;
-        }
-    }
-
-    private void HandleSeedPlaced(ProgressState state)
-    {
-        if (!seedPlacedMessageShown)
-        {
-            UpdateMessage("Wait for incubation to complete. Should take 7 days, pass some time in the shelter pod");
-            seedPlacedMessageShown = true;
-        }
-    }
-    private void HandleSeedIncubating(ProgressState state)
-    {
-        if (!seedIncubatingMessageShown)
-        {
-            UpdateMessage("It's still got some time in the oven, in the meantime; you can either farm or keep waiting. Don't forget to get some rest in the pod.");
-            seedIncubatingMessageShown = true;
-        }
-    }
-
-    private void HandleIncubationComplete(ProgressState state)
-    {
-        if (!incubationCompleteMessageShown)
-        {
-            UpdateMessage("Take the seed out of the pod! Let's see what you've accomplished.");
-            incubationCompleteMessageShown = true;
-        }
-    }
-
-    // Utility method to update message text
     private void UpdateMessage(string message)
     {
         if (messageText != null)

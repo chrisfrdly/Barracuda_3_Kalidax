@@ -27,7 +27,7 @@ public class PlayerInventoryManager : MonoBehaviour
         if(item)
         {
             inventory.AddItem(new Item(item.item), 1);
-            gameEvent.RaiseOnSeedCollected(ProgressState.SeedCollected);
+            gameEvent.RaiseProgressChanged(ProgressState.SeedCollected);
             Destroy(collision.gameObject);
         }
     }
