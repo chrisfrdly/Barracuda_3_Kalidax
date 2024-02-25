@@ -18,7 +18,8 @@ public class InteractableObject_SeedPod : InteractableObject
     
     private IncubationState incubationState = IncubationState.OBJ_NotPurchased;
 
-
+    [Separator()]
+    [SerializeField] private SO_GameEvent gameEvent;
     [Separator()]
     [SerializeField] private SO_Data_DayCycle dataDayCycle;
 
@@ -28,9 +29,6 @@ public class InteractableObject_SeedPod : InteractableObject
     [Header("Button")]
     [SerializeField] private Button addSeedButton;
     [SerializeField] private TextMeshProUGUI buttonText;
-
-    [Header("Player Progress")]
-    [SerializeField] private PlayerProgress playerProgress;
 
     [Header("Other Contents")]
     [SerializeField] private TextMeshProUGUI daysRemainingText;
@@ -70,12 +68,7 @@ public class InteractableObject_SeedPod : InteractableObject
         base.Awake();
         SO_interactableObject.clickedCancelButtonEvent.AddListener(CloseInteractionPrompt);
         daysLeft = daysToIncubate;
-
-        // Initialize player progress with seed collection 
-        if (playerProgress != null)
-        {
-            playerProgress.OnSeedCollected();
-        }
+        
 
     }
     private void Start()
@@ -105,25 +98,6 @@ public class InteractableObject_SeedPod : InteractableObject
 
             dataDayCycle.incubationPodData[thisIndex].incubationState = incubationState;
             dataDayCycle.incubationPodData[thisIndex].daysLeft = daysLeft;
-
-            if (playerProgress != null)
-            {
-                switch (incubationState)
-                {
-                    case IncubationState.OBJ_AddSeed:
-                        // The player has collected a seed and is ready to add it
-                        playerProgress.OnSeedCollected();
-                        break;
-                    case IncubationState.OBJ_Incubating:
-                        // The player has placed the seed, and it is now incubating
-                        playerProgress.OnSeedPlaced();
-                        break;
-                    case IncubationState.OBJ_RemoveSeed:
-                        // Incubation is complete, and the player can remove the seed
-                        playerProgress.OnIncubationComplete();
-                        break;
-                }
-            }
         }
 
         //If we already have this object's data stored, retrieve the data
@@ -139,11 +113,19 @@ public class InteractableObject_SeedPod : InteractableObject
                 dataDayCycle.incubationPodData[thisIndex].daysLeft = daysLeft;
             }
 
+            // Check if still incubating
+            if (incubationState == IncubationState.OBJ_Incubating && daysLeft > 0)
+            {
+                // If still incubating, raise the "Seed Placed" event
+                gameEvent.RaiseOnSeedIncubating(ProgressState.Incubating);
+            }
+
             //Check to see if the days left <= 1 and if so, se the incubation state to Complete
             if (daysLeft <= 0)
             {
                 incubationState = IncubationState.OBJ_RemoveSeed;
                 dataDayCycle.incubationPodData[thisIndex].incubationState = incubationState;
+                gameEvent.RaiseOnIncubationComplete(ProgressState.IncubationComplete);
             }
 
 
@@ -250,8 +232,6 @@ public class InteractableObject_SeedPod : InteractableObject
         dataDayCycle.incubationPodData[thisIndex].incubationState = incubationState;
         dataDayCycle.incubationPodData[thisIndex].daysLeft = daysLeft;
         
-        // Ensure the player progress is updated based on the new state
-        UpdateData();
     }
 
     private void InstantiateRandomPrefab()
@@ -308,7 +288,7 @@ public class InteractableObject_SeedPod : InteractableObject
     private void ShowIncubatingUI()
     {
         incubationState = IncubationState.OBJ_Incubating;
-
+        gameEvent.RaiseOnSeedPlaced(ProgressState.SeedPlaced);
         addSeedButton.gameObject.SetActive(false);
 
         seedImage.gameObject.SetActive(true);
@@ -320,7 +300,6 @@ public class InteractableObject_SeedPod : InteractableObject
     private void ShowRemoveSeedUI()
     {
         incubationState = IncubationState.OBJ_RemoveSeed;
-
         addSeedButton.gameObject.SetActive(true);
         buttonText.text = "Remove Seed";
 

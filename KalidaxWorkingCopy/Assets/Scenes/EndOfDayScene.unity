@@ -1033,7 +1033,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   verticalLayoutGroupGO: {fileID: 549264485}
-  sceneToTransitionTo: LucasScene
+  sceneToTransitionTo: AshtonScene_Update
 --- !u!1001 &1732037851
 PrefabInstance:
   m_ObjectHideFlags: 0

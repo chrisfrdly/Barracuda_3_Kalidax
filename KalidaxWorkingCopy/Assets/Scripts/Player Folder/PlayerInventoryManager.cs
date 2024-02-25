@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerInventoryManager : MonoBehaviour
 {
     public SO_Inventory inventory;
+    public SO_GameEvent gameEvent;
 
     private void Update()
     {
@@ -26,6 +27,7 @@ public class PlayerInventoryManager : MonoBehaviour
         if(item)
         {
             inventory.AddItem(new Item(item.item), 1);
+            gameEvent.RaiseOnSeedCollected(ProgressState.SeedCollected);
             Destroy(collision.gameObject);
         }
     }
