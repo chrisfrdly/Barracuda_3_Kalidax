@@ -282,8 +282,7 @@ public class SO_AlienEditor : Editor
         if (alien == null || alien.m_AlienTexture == null)
             return null;
 
-        // example.PreviewIcon must be a supported format: ARGB32, RGBA32, RGB24,
-        // Alpha8 or one of float formats
+        // The texture we create must be a supported format: ARGB32, RGBA32, RGB24
         Texture2D tex = new Texture2D(width, height, TextureFormat.RGBA32, false);
 
         EditorUtility.CopySerialized(alien.m_AlienTexture, tex);
