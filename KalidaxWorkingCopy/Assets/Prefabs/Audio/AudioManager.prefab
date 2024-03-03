@@ -44,6 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e65405adf9ff4684c96168b18e926ffd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioMixer: {fileID: 24100000, guid: 2c6c62f5feb37ea44b1b9cdac92f88a7, type: 2}
+  sfxMixerGroup: {fileID: 4278654887805117937, guid: 2c6c62f5feb37ea44b1b9cdac92f88a7, type: 2}
+  musicMixerGroup: {fileID: 7846752738204503339, guid: 2c6c62f5feb37ea44b1b9cdac92f88a7, type: 2}
   sounds:
   - name: Negative Interact
     clip:
@@ -81,8 +84,8 @@ MonoBehaviour:
     loop: 1
     source: {fileID: 0}
   - backgroundMusic: 2
-    clip: {fileID: 0}
-    volume: 0.422
+    clip: {fileID: 8300000, guid: 27a45b8e84bc56d459ba7febf53f5a9d, type: 3}
+    volume: 0.165
     pitch: 1
     loop: 0
     source: {fileID: 0}

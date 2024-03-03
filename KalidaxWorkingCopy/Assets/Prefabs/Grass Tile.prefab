@@ -138,7 +138,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6080771741819451396}
-  - component: {fileID: 543802575327431609}
+  - component: {fileID: 7057977574734925063}
   - component: {fileID: 6755295554916624485}
   m_Layer: 3
   m_Name: Outline
@@ -162,7 +162,7 @@ Transform:
   m_Father: {fileID: 8075052001810662464}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &543802575327431609
+--- !u!114 &7057977574734925063
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -175,7 +175,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectToOutline: {fileID: 3192197123404599430}
-  outlineMaterial: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+  outlineMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!120 &6755295554916624485
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -196,7 +196,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

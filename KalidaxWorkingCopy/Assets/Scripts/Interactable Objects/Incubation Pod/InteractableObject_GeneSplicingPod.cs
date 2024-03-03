@@ -23,6 +23,9 @@ public class InteractableObject_GeneSplicingPod : InteractableObject
     //aliens that are assigned to the buttons
     [SerializeField] private SO_Alien[] aliensAdded = new SO_Alien[2];
 
+    //Properties
+    public SO_Alien[] m_AliensAdded { get => aliensAdded;}
+
 
     /// <summary>
     /// The way the incubation works is that at the beginning you must add a seed into it,

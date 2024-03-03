@@ -1,7 +1,7 @@
-using System.Collections;
+
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
+
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,6 +18,7 @@ public class UIAlienGridList : MonoBehaviour
     //we need to store all the buttons created in the grid in a list so we can delete them onEnable every time
     private List<GameObject> buttonList = new List<GameObject>();
 
+    private InteractableObject_GeneSplicingPod io;
 
     //Properties
 
@@ -28,6 +29,10 @@ public class UIAlienGridList : MonoBehaviour
 
         //Sent from the UIAlienButton.cs
         aliensInWorldSO.alienInGridClickedEvent.AddListener(HideAlienGridPanel);
+        
+        //Get the incubation pod root
+        io = transform.GetComponentInParent<InteractableObject_GeneSplicingPod>();
+
     }
 
     private void OnEnable()
@@ -48,7 +53,7 @@ public class UIAlienGridList : MonoBehaviour
         for (int i = 0; i < aliensInWorldSO.worldAliens.Count; i++)
         {
            
-
+            
             //Spawn button object
             buttonList.Add(Instantiate(alienButtonPrefab, gridParent));
 
@@ -66,6 +71,18 @@ public class UIAlienGridList : MonoBehaviour
 
             buttonList[i].GetComponent<UIAlienButton>().m_ThisButtonAlien = aliensInWorldSO.worldAliens[i];
 
+
+            //Check to see if this alien is selected already. If so, then colour it darker
+            SO_Alien worldAlien = aliensInWorldSO.worldAliens[i].m_ThisAlien;
+
+            for(int j = 0; j < io.m_AliensAdded.Length; j++)
+            {
+                if (io.m_AliensAdded[j] == worldAlien)
+                {
+                    buttonImg.color = new Color(0.4f, 0.4f, 0.4f);
+                }
+            }
+
         }
     }
 
@@ -73,11 +90,8 @@ public class UIAlienGridList : MonoBehaviour
     public void HideAlienGridPanel(SO_Alien _alien)
     {
         //Set the logic. Basically we'll set the button pressed 
-        //Get the incubation pod root
-        InteractableObject_GeneSplicingPod i = transform.GetComponentInParent<InteractableObject_GeneSplicingPod>();
-
-        Debug.Log(i);
-        i.SetAlien(_alien);
+       
+        io.SetAlien(_alien);
         gameObject.SetActive(false);
         
         //When we click on the button, return the alien

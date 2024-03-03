@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.InputSystem.UI;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -20,6 +17,12 @@ public class PauseGameMenu : MonoBehaviour
 
     [SerializeField] private Button resumeButton;
 
+    //FOr the Settings menu
+    //have access to the currently active menu so we can setActive False on button click
+    private GameObject activeSettingsButton;
+    [SerializeField] private Button videoButton; //for controls to set it on startup
+    [SerializeField] private GameObject videoPanel, audioPanel, controlsPanel;
+
 
     [SerializeField] private RectTransform controlsPanelRect;
     private float minPosY;
@@ -30,6 +33,9 @@ public class PauseGameMenu : MonoBehaviour
         //hover over the 'resume button' on startup
         if (PlayerInputHandler.Instance.GetCurrentControlScheme() == "Controller")
             resumeButton.Select();
+
+        //Setting the button to the video from the beginning
+        activeSettingsButton = videoPanel;
 
     }
 
@@ -44,8 +50,7 @@ public class PauseGameMenu : MonoBehaviour
 
     public void ResumeGameButton()
     {
-        //AudioManager.instance.Play("ClickButton");
-
+       
         AudioManager.instance.Play("Negative Interact");
 
 
@@ -59,15 +64,14 @@ public class PauseGameMenu : MonoBehaviour
 
     public void PauseMenu_TitleScreen()
     {
-        //AudioManager.instance.Play("ClickButton");
-
+       
         AudioManager.instance.Play("Negative Interact");
 
         //Send event to the game manager to resume the game
         pauseMenuEvent.ResumeGameEventSend();
 
         //Load Scene
-        //SceneManager.LoadScene("");
+        SceneManager.LoadScene("MainMenu");
 
 
     }
@@ -75,7 +79,7 @@ public class PauseGameMenu : MonoBehaviour
     // CONTROLS SCREEN IN THE PAUSE MENU //
 
     //Called from the button in the inspector
-    public void ControlsButton()
+    public void SettingsButton()
     {
         //Leen Tween from top of frame to bottom
         LeanTween.value(1080f, 0, 0.5f).setOnUpdate(UpdatePanelMinY).setEaseOutQuad().setIgnoreTimeScale(true);
@@ -83,6 +87,9 @@ public class PauseGameMenu : MonoBehaviour
 
         AudioManager.instance.Play("Positive Interact");
 
+        //Connect to the Video button on startup
+        if (PlayerInputHandler.Instance.GetCurrentControlScheme() == "Controller")
+            videoButton.Select();
     }
 
     //Called from the button in the inspector
@@ -95,6 +102,42 @@ public class PauseGameMenu : MonoBehaviour
         AudioManager.instance.Play("Negative Interact");
 
     }
+
+
+    // SETTINGS MENU BUTTONS //
+    public void Settings_VideoButton()
+    {
+        //hide previously active button contents and reveal this one's
+        if (activeSettingsButton != null) activeSettingsButton.SetActive(false);
+
+        activeSettingsButton = videoPanel;
+        activeSettingsButton.SetActive(true);
+    }
+
+    public void Settings_AudioButton()
+    {
+        //hide previously active button contents and reveal this one's
+        
+        if(activeSettingsButton != null) activeSettingsButton.SetActive(false);
+
+        activeSettingsButton = audioPanel;
+        activeSettingsButton.SetActive(true);
+    }
+
+    public void Settings_ControlsButton()
+    {
+        //hide previously active button contents and reveal this one's
+        if (activeSettingsButton != null) activeSettingsButton.SetActive(false);
+        activeSettingsButton = controlsPanel;
+        activeSettingsButton.SetActive(true);
+    }
+
+    public void Settings_BackButton()
+    {
+        ControlsBackButton();
+    }
+
+
 
     private void UpdatePanelMinY(float _value)
     {

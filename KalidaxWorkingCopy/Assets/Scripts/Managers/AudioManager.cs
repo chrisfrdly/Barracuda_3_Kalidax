@@ -7,12 +7,22 @@ using System.Collections;
 
 public class AudioManager : MonoBehaviour
 {
+    [Header("Audio Mixer Groups")]
+    [SerializeField] private AudioMixer audioMixer;
+    [SerializeField] private AudioMixerGroup sfxMixerGroup;
+    [SerializeField] private AudioMixerGroup musicMixerGroup;
+
+    [Space()]
     public Sounds[] sounds;
     public BgSounds[] bgSounds;
 
+   
     //a reference to the current instance of the audio manager we have in our scene
     public static AudioManager instance;
     private IEnumerator coroutine;
+
+    //Properties
+    public AudioMixer m_AudioMixer { get => audioMixer;}
 
     private void Awake()
     {
@@ -36,6 +46,7 @@ public class AudioManager : MonoBehaviour
             s.source.pitch = s.pitch;
             s.source.loop = s.loop;
             s.source.clip = s.clip[Random.Range(0, s.clip.Length)];
+            s.source.outputAudioMixerGroup = sfxMixerGroup;
         }
 
         //set up audio managers so we can play them in the start
@@ -47,6 +58,7 @@ public class AudioManager : MonoBehaviour
             s.source.pitch = s.pitch;
             s.source.loop = s.loop;
             s.source.clip = s.clip;
+            s.source.outputAudioMixerGroup = musicMixerGroup;
         }
 
     }
