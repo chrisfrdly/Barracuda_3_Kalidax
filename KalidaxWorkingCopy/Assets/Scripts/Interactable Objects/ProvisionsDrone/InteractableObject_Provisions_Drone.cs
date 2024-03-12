@@ -35,10 +35,10 @@ public class InteractableObject_Provisions_Drone : InteractableObject
     }
 
     //this will run when the player interacts with this object
-    protected override void OnInteract()
+    public override void OnInteract(GameObject _interactedActor)
     {
         OpenInteractionPanel();
-        HideUI();
+        OnPlayerExitRange();
 
         AudioManager.instance.Play("Positive Interact");
 
@@ -85,8 +85,8 @@ public class InteractableObject_Provisions_Drone : InteractableObject
 
 
 
-    protected override bool IsInteractable() { return isInteractable; }
-    protected override bool IsTargetPointVisible() { return isInteractPointVisible; }
-    protected override bool FreezePlayerMovement() { return freezePlayerMovement; }
+    public override bool IsInteractable() { return isInteractable; }
+    public override bool IsTargetPointVisible() { return isInteractPointVisible; }
+    public override bool FreezePlayerMovement() { return freezePlayerMovement; }
     public override bool IsRequiredToLookAtTarget() { return isRequiredToLookAtTarget; }
 }

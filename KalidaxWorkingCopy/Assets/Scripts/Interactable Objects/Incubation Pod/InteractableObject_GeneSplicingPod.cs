@@ -50,11 +50,11 @@ public class InteractableObject_GeneSplicingPod : InteractableObject
 
     }
 
-    protected override void OnInteract()
+    public override void OnInteract(GameObject _interactedActor)
     {
         OpenInteractionPanel();
 
-        HideUI();
+        OnPlayerExitRange();
 
         AudioManager.instance.Play("Positive Interact");
     }
@@ -124,9 +124,9 @@ public class InteractableObject_GeneSplicingPod : InteractableObject
         
     }
 
-    protected override bool IsInteractable() { return isInteractable; }
-    protected override bool IsTargetPointVisible() { return isInteractPointVisible; }
-    protected override bool FreezePlayerMovement() { return freezePlayerMovement; }
+    public override bool IsInteractable() { return isInteractable; }
+    public override bool IsTargetPointVisible() { return isInteractPointVisible; }
+    public override bool FreezePlayerMovement() { return freezePlayerMovement; }
     public override bool IsRequiredToLookAtTarget() { return isRequiredToLookAtTarget; }
 
 }

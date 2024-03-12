@@ -5,6 +5,7 @@ using UnityEngine;
 using System.Linq;
 using System.Security.Cryptography;
 using UnityEngine.InputSystem;
+using UnityEngine.Windows;
 
 public class PlayerInteractWithObjects : MonoBehaviour
 {
@@ -31,12 +32,13 @@ public class PlayerInteractWithObjects : MonoBehaviour
     private GameObject prevGrassTile = null;
 
 
-    private float closestDistance = Mathf.Infinity;
-    private float currentClosestColliderDistance;
-    private float closestAngle = 180;
-    private float currentClosestColliderAngle;
+    private Collider2D[] colliders = new Collider2D[5];
+    private int numOfColliders;
 
+    private InteractableObject closestIO;
     private Transform objTransform;
+    private float closestDistance = Mathf.Infinity;
+
 
     private void Awake()
     {
@@ -47,8 +49,18 @@ public class PlayerInteractWithObjects : MonoBehaviour
 
     private void Update()
     {
-        if (playerInputHandler.m_PlayerInput.actions["Interact"].WasPressedThisFrame())
-            interactableObject.ClickedInteractButtonEventSend();
+        //if (playerInputHandler.m_PlayerInput.actions["Interact"].WasPressedThisFrame())
+        //    interactableObject.ClickedInteractButtonEventSend();
+
+        //InteractObjects();
+
+        bool pressedInteract = playerInputHandler.m_PlayerInput.actions["Interact"].WasPressedThisFrame();
+
+        if (pressedInteract && closestIO != null)
+        {
+            closestIO.OnInteract(gameObject);
+        }
+
 
         InteractObjects();
         RaycastGrassTile();
@@ -58,144 +70,82 @@ public class PlayerInteractWithObjects : MonoBehaviour
     private void InteractObjects()
     {
         //overlap sphere around player, 1 for showing the UI, and the other to Hide it after it left the interaction radius
-        Collider2D[] collider = Physics2D.OverlapCircleAll(transform.position, interactRadius, interactableMask);
-        Collider2D[] hideCollider = Physics2D.OverlapCircleAll(transform.position, interactRadius + 0.3f, interactableMask);
+        numOfColliders = Physics2D.OverlapCircleNonAlloc(objTransform.position, interactRadius, colliders, interactableMask);
 
-        //To save computational power, just don't do anything if there's nothing to detect
-        if (collider.Length == 0 && hideCollider.Length == 0) return;
+        if (numOfColliders == 0)
+        {
+            if (closestIO != null)
+            {
+                closestIO.OnPlayerExitRange();
+
+                closestIO = null;
+                closestCollider = null;
+                closestDistance = Mathf.Infinity;
+            }
+            return;
+        }
+
+        Debug.DrawLine(transform.position, colliders[0].transform.position, Color.blue);
+
+        // -- GET THE CLOSEST COLLIDER -- //
 
         //for each collider detected, check to see which one is closest and then show that UI
-        foreach (Collider2D col in collider)
+        for (int i = 0; i < numOfColliders; i++)
         {
+            Collider2D col = colliders[i];
             InteractableObject io = col.GetComponent<InteractableObject>();
-            Vector3 colPos = col.transform.position;
 
-            //if we have an object that is closest to the player
+            //Getting distance to player
+            Vector3 colPos = col.transform.position;
             Vector3 directionToTarget = colPos - objTransform.position;
             float distanceFromPlayer = directionToTarget.sqrMagnitude;
 
-            // COLLIDER WITH CLOSEST ANGLE //
-            if (io.IsRequiredToLookAtTarget())
+          
+            //if this collider is the closest one to the player AND it's not already the closest...
+            if (distanceFromPlayer < closestDistance - 0.1f && closestCollider != col)
             {
 
-                float a = GetAngleBetweenObjects(colPos);
-
-                if (a < angleToLookAtTarget)
+                //if there was a collider before, then Hide it's UI and say it's out of range
+                if (closestCollider != null && closestIO != null)
                 {
-                    if (a < closestAngle || a < currentClosestColliderAngle)
-                    {
-
-                        if (col != closestCollider)
-                        {
-                            closestCollider = col;
-                            closestAngle = a;
-                            io.PlayerInRange(a);
-                        }
-                    }
-                }
-                else
-                {
-                    //If it's still the closest collider BUT the angle isn't in threshold anymore, HIDE UI
-                    //Without this code the panel will still be shown since they are still in the interaction sphere and the UI isn't hidden until they leave it
-                    if (col == closestCollider)
-                    {
-                        closestDistance = Mathf.Infinity;
-                        closestCollider = null;
-                        closestAngle = 180;
-                        io.PlayerOutOfRange();
-
-                    }
-
-
-                }
-            }
-
-            // COLLIDER WITH CLOSEST DISTANCE //
-            else
-            {
-                if (distanceFromPlayer < closestDistance || distanceFromPlayer < currentClosestColliderDistance)
-                {
-                    if (col != closestCollider)
-                    {
-                        closestCollider = col;
-                        closestDistance = distanceFromPlayer;
-                        io.PlayerInRange(0);
-
-                    }
+                    closestIO.OnPlayerExitRange();
                 }
 
+                //then set this collider as the closest
+                closestCollider = col;
             }
-
-
-
-            //For any other collider, OR any collider that exits the interaction Radius, HIDE their UI
-            if (col != closestCollider)
-            {
-                if (io.InPlayerRange)
-                {
-                    //Hide UI
-                    io.PlayerOutOfRange();
-
-                }
-
-            }
-            //Get the current closest collider's distance from the player, and if the distance is < than that, we switch it.
-            //Without this variable, the closestDistance keeps getting smaller and smaller, and only resets when the current-
-            //closest collider exits the interact radius
-            else
-            {
-                currentClosestColliderDistance = distanceFromPlayer;
-                currentClosestColliderAngle = GetAngleBetweenObjects(colPos);
-
-            }
-
+            
         }
 
-        // HIDE UI WHEN LEAVE RADIUS//
 
-        foreach (Collider2D col in hideCollider)
+
+        if (closestCollider == null) return;
+
+
+
+        // -- NOW ACTIVATE THE CLOSEST COLLIDER -- //
+
+        //Get distance to closest collider
+        Vector3 directionToClosest = closestCollider.transform.position - objTransform.position;
+        float distanceFromClosest = directionToClosest.sqrMagnitude;
+
+        //Now update the closest Distance for the closest collider's distance
+
+        closestDistance = distanceFromClosest;
+
+        //Get the Script from the closest collider so we can have reference to it
+        closestIO = closestCollider.GetComponent<InteractableObject>();
+
+       
+        //Check to see if we're already showing the UI and if not, then show it
+        if (closestIO != null && !closestIO.InPlayerRange)
         {
-            //If they are outside the collider array, Hide the UI
-            if (!collider.Contains(col))
-            {
-                //Hide UI
-                InteractableObject io = col.GetComponent<InteractableObject>();
-
-                if (io.InPlayerRange)
-                    io.PlayerOutOfRange();
-
-                //if it's the current closest collider, we have to reset the variables or else when we enter the radius again-
-                //the UI won't show again since it's the same object
-                if (col == closestCollider)
-                {
-                    closestDistance = Mathf.Infinity;
-                    closestCollider = null;
-                    closestAngle = 180;
-                }
-
-            }
+            closestIO.OnPlayerEnterRange(0);
         }
 
     }
 
 
-    private float GetAngleBetweenObjects(Vector3 otherPos)
-    {
-        //Help from this post https://forum.unity.com/threads/finding-the-angle-between-a-direction-and-a-point.30639/
-        Vector3 targetDir = otherPos - objTransform.position;
-        Vector3 forwards = objTransform.forward;
-
-        targetDir.Normalize();
-        forwards.Normalize();
-
-        Debug.DrawLine(objTransform.position, objTransform.position + targetDir * 5); //player to target line
-        Debug.DrawLine(objTransform.position, objTransform.position + forwards * 5, Color.red); //player look ahead line
-
-        float dot = Vector3.Dot(targetDir, forwards);
-        float angleXZ = Mathf.Acos(dot) * Mathf.Rad2Deg;
-
-        return angleXZ;
-    }
 
     #endregion
 

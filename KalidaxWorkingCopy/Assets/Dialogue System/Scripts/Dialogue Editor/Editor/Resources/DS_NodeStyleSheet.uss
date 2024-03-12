@@ -1,0 +1,66 @@
+:root
+{
+	border-radius: 5px;
+}
+
+.node #title-label
+{
+	
+	color: rgb(0,0,0);
+}
+#node-border
+{
+	background-color: rgb(37,37,37)
+}
+
+.title
+{
+	color: rgb(0,0,0);
+}
+
+.spriteImagePreview
+{
+	height: 100px;
+	width: 100px;
+	
+}
+.spriteImage{
+	width:100px;
+}
+
+.startNode
+{
+	background-color: rgb(58, 126, 37);
+}
+.startNode #title
+{
+	background-color: rgb(118, 255, 76);
+}
+
+
+.dialogueNode
+{
+	background-color: rgb(57, 119, 98);
+}
+.dialogueNode #title
+{
+	background-color: rgb(94, 196, 162);
+}
+
+.eventNode
+{
+	background-color: rgb(0, 73, 126);
+}
+.eventNode #title
+{
+	background-color: rgb(0, 148, 255);
+}
+
+.endNode
+{
+	background-color: rgb(77, 0, 0);
+}
+.endNode #title
+{
+	background-color: rgb(205, 0, 0);
+}
