@@ -23,6 +23,9 @@ public class GameManager : MonoBehaviour
 
         //Calls whenever a player presses the resume button
         pauseMenuEvent.resumeGameEvent.AddListener(ResumeTheGame);
+
+        //Set Audio
+
     }
 
     private void Start()
@@ -45,6 +48,8 @@ public class GameManager : MonoBehaviour
         pauseMenu.GetComponent<PauseGameMenu>().ConnectControllersToPauseMenu(playerInput);
 
         Time.timeScale = 0;
+
+        AudioManager.instance.LerpAudioToLevel(0.2f);
     }
 
     private void ResumeTheGame()
@@ -53,9 +58,15 @@ public class GameManager : MonoBehaviour
 
         isGamePaused = false;
 
-        if(pauseMenu != null)
+
+        if (pauseMenu != null)
             Destroy(pauseMenu);
 
         Time.timeScale = 1;
+
+
+
+        AudioManager.instance.LerpAudioToPrevLevel();
+
     }
 }

@@ -57,6 +57,7 @@ public class PauseGameMenu : MonoBehaviour
         //Send event to the game manager to resume the game
         pauseMenuEvent.ResumeGameEventSend();
 
+
         //remove this pause menu
         Destroy(transform.root.gameObject);
 
@@ -141,11 +142,15 @@ public class PauseGameMenu : MonoBehaviour
 
     private void UpdatePanelMinY(float _value)
     {
+        if (controlsPanelRect == null) return;
+
         minPosY = _value;
         controlsPanelRect.offsetMin = new Vector2(controlsPanelRect.offsetMin.x, minPosY);
     }
     private void UpdatePanelMaxY(float _value)
     {
+        if (controlsPanelRect == null) return;
+
         maxPosY = _value;
         controlsPanelRect.offsetMax = new Vector2(controlsPanelRect.offsetMax.x, maxPosY);
     }

@@ -54,6 +54,14 @@ public class SO_AliensContainer : ScriptableObject
         thisContainer = this;
         #if UNITY_EDITOR
         filePath = AssetDatabase.GetAssetPath(this);
+
+        //Set the currentID to the length of the database
+        if(currentAlienID == 0 && alienDatabase.Count > 0)
+        {
+            currentAlienID = alienDatabase.Count;
+
+        }
+        
         #endif
     }
 

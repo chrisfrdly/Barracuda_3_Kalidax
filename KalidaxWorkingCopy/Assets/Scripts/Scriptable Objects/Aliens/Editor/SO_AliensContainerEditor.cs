@@ -2,8 +2,7 @@
 
 using UnityEditor;
 using UnityEngine;
-using System.Linq;
-using JetBrains.Annotations;
+
 
 [CustomEditor(typeof(SO_AliensContainer))]
 public class SO_AliensContainerEditor : Editor
@@ -18,15 +17,17 @@ public class SO_AliensContainerEditor : Editor
 
     Vector2 scrollPos;
     SO_Alien a;
+    float extraYLogWarning = 0; //if there's a warning, I want to draw the AlienDatabase line lower, so this
+                                //value will be added to the Y if there's a warning
 
     //Taken From the AlienTierTypeDrawer
     Color32[] tierTypeColours = new Color32[]
-   {
+    {
         new Color32(220,220,240,255),   //Tier 1
         new Color32(51,153,255,255),    //Tier 2
         new Color32(0, 255, 153, 255),  //Tier 3
         new Color32(255,204,0,255)      //Tier 4
-   };
+    };
 
     private void OnEnable()
     {
@@ -71,17 +72,48 @@ public class SO_AliensContainerEditor : Editor
 
         GUILayout.Space(10f);
 
+        //loop through the database and see if there's an alien with the same name and tier
+        //If so, then log a warning
+        for (int i = 0; i < aliens.m_AlienDatabase.Count; i++)
+        {
+            a = aliens.m_AlienDatabase[i].db_SO_Alien;
+
+            if (a.name == $"[{(AlienTierType)alienTier.enumValueIndex}] {alienName.stringValue}")
+            {
+
+                EditorGUILayout.HelpBox($"An alien named {a.name} already exists.", MessageType.Warning);
+                extraYLogWarning = 40;
+            }
+            else
+            {
+                extraYLogWarning = 0;
+            }
+
+        }
 
         //-- Create Alien Button --//
         var style1 = new GUIStyle(GUI.skin.button);
-        style1.normal.textColor = Color.green;
-        style1.active.textColor = Color.green;
-        style1.hover.textColor = new Color(0, 0.8f, 0);
+        if(extraYLogWarning > 0)
+        {
+            style1.normal.textColor = Color.yellow;
+            style1.active.textColor = Color.yellow;
+            style1.hover.textColor = new Color(1, 0.756f, 0.027f);
+        }
+        else
+        {
+            style1.normal.textColor = Color.green;
+            style1.active.textColor = Color.green;
+            style1.hover.textColor = new Color(0, 0.8f, 0);
+        }
+        
+        
 
         if (GUILayout.Button("Create New Alien", style1, GUILayout.Height(40)))
         {
             CreateNewAlien(aliens);
         }
+
+        
 
         GUILayout.Space(10f);
 
@@ -97,7 +129,7 @@ public class SO_AliensContainerEditor : Editor
         GUILayout.Label("Alien Database", header);
 
         //Separator Line
-        Rect separatorLine = new Rect((Screen.width / 2) - (width / 2), 220, width, 1);
+        Rect separatorLine = new Rect((Screen.width / 2) - (width / 2), 220 + extraYLogWarning, width, 1);
         EditorGUI.DrawRect(separatorLine, Color.white);
 
 

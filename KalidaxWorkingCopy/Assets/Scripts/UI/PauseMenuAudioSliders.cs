@@ -21,32 +21,9 @@ public class PauseMenuAudioSliders : MonoBehaviour
 
     private void Start()
     {
-        if(PlayerPrefs.HasKey("MasterVolume") &&
-           PlayerPrefs.HasKey("SFXVolume") &&
-           PlayerPrefs.HasKey("MusicVolume"))
-        {
-            Debug.Log("Loading");
-            LoadVolume();
-        }
-        else
-        {
-            Debug.Log("Making");
-            float startingVolume = 0.5f;
-            masterVolumeSlider.value = startingVolume;
-            sfxSlider.value = startingVolume;
-            musicSlider.value = startingVolume;
-
-            Slider_MasterVolume(startingVolume);
-            Slider_SFXVolume(startingVolume);
-            Slider_MusicVolume(startingVolume);
-
-            float scaledVolume = startingVolume * 100; //now it's between 0-100 instead of 0-1
-            masterValue.text = scaledVolume.ToString("00");
-            sfxValue.text = scaledVolume.ToString("00");
-            musicValue.text = scaledVolume.ToString("00");
-        }
-        
+        LoadVolume();
     }
+
     //called from inspector on the slider
     public void Slider_MasterVolume(float _volume)
     {
@@ -83,14 +60,16 @@ public class PauseMenuAudioSliders : MonoBehaviour
         float masterSliderValue = PlayerPrefs.GetFloat("MasterVolume");
         float sfxSliderValue = PlayerPrefs.GetFloat("SFXVolume");
         float musicSliderValue = PlayerPrefs.GetFloat("MusicVolume");
-        Debug.Log(masterSliderValue + " " +  sfxSliderValue + " " + musicSliderValue);
+        Debug.Log(masterSliderValue);
+        
         masterVolumeSlider.value = masterSliderValue;
         sfxSlider.value = sfxSliderValue;
         musicSlider.value = musicSliderValue;
 
-        Slider_MasterVolume(masterSliderValue);
-        Slider_SFXVolume(sfxSliderValue);
-        Slider_MusicVolume(musicSliderValue);
+        masterValue.text = (masterSliderValue * 100).ToString("00");
+        musicValue.text = (sfxSliderValue * 100).ToString("00");
+        sfxValue.text = (musicSliderValue * 100).ToString("00");
+
     }
 
    
