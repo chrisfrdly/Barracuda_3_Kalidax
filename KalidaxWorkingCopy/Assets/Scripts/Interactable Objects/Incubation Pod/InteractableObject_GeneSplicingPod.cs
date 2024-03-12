@@ -120,15 +120,18 @@ public class InteractableObject_GeneSplicingPod : InteractableObject
             
         }
     }
-    
-    public void GeneSplice()
+
+    private GameObject[] AlienArrayToReturn(int tier)
     {
-        List<WorldAlien> worldAliens = new List<WorldAlien>();
-
-        for(int i = 0; i > aliensAdded.Length; i++)
+        switch(tier)
         {
+            case 0:
+                return alienPrefabs_Tier2;
+            case 1:
+                return alienPrefabs_Tier3;
+        }
 
-        }    
+        return null;
     }
 
     public override bool IsInteractable() { return isInteractable; }
