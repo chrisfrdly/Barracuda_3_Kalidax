@@ -54,8 +54,6 @@ public class InteractableObject_GeneSplicingPod : InteractableObject
     {
         OpenInteractionPanel();
 
-        OnPlayerExitRange();
-
         AudioManager.instance.Play("Positive Interact");
     }
 

@@ -10,8 +10,6 @@ public class InteractableObject_ShelterPod : InteractableObject
 
         PromptDayReset();
 
-        OnPlayerExitRange();
-
         AudioManager.instance.Play("Positive Interact");
 
     }

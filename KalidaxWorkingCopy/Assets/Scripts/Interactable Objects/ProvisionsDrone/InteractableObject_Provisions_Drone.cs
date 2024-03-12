@@ -38,7 +38,6 @@ public class InteractableObject_Provisions_Drone : InteractableObject
     public override void OnInteract(GameObject _interactedActor)
     {
         OpenInteractionPanel();
-        OnPlayerExitRange();
 
         AudioManager.instance.Play("Positive Interact");
 

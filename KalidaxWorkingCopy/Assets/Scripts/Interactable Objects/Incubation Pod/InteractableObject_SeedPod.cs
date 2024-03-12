@@ -170,8 +170,6 @@ public class InteractableObject_SeedPod : InteractableObject
     {
         OpenInteractionPanel();
 
-        OnPlayerExitRange();
-
         //Call confirm sound class
         soundManager.PlayUIConfirmSound();
     }
@@ -196,6 +194,7 @@ public class InteractableObject_SeedPod : InteractableObject
 
         //Activate the panel and make it the currentVisible UI
         incubationPodHUDPanel.SetActive(true);
+       
         UIController.Instance.m_CurrentUIVisible = incubationPodHUDPanel;
 
         DisplayIncubationHUDContents();

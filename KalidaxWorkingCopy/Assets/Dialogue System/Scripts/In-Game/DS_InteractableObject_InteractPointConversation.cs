@@ -1,3 +1,4 @@
+
 using UnityEngine;
 
 public class DS_InteractableObject_InteractPointConversation : InteractableObject
@@ -13,6 +14,11 @@ public class DS_InteractableObject_InteractPointConversation : InteractableObjec
     {
         base.Awake();
         dialogueTalk = GetComponent<DS_DialogueTalk>();
+
+        if(dialogueTalk == null )
+        {
+            dialogueTalk = gameObject.AddComponent<DS_DialogueTalk>();
+        }
     }
 
 
@@ -23,6 +29,7 @@ public class DS_InteractableObject_InteractPointConversation : InteractableObjec
             Debug.LogError("This Interaction Point doesn't have a conversation attached to it! Please attach one for the interaction to work");
             return;
         }
+        
         dialogueTalk.StartDialogue(conversation,freezePlayerMovement);
     }
 

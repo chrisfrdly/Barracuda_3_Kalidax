@@ -58,7 +58,9 @@ public class PlayerInteractWithObjects : MonoBehaviour
 
         if (pressedInteract && closestIO != null)
         {
+            interactableObject.ClickedInteractButtonEventSend();
             closestIO.OnInteract(gameObject);
+            
         }
 
 
@@ -210,9 +212,6 @@ public class PlayerInteractWithObjects : MonoBehaviour
             Gizmos.DrawSphere(closestCollider.transform.position, 0.6f);
         }
 
-        //Displays object interaction showing and hiding UI
-        Gizmos.color = new Color(0, 0, 25, 0.1f);
-        Gizmos.DrawWireSphere(transform.position, interactRadius + 0.3f);
             
     }
 }

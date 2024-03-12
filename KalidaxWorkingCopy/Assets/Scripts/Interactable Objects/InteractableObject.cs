@@ -115,7 +115,7 @@ public abstract class InteractableObject : MonoBehaviour
     public virtual void OnPlayerExitRange()
     {
         inPlayerRange = false;
-
+        UIController.Instance.HideCurrentUI();
         if (IsTargetPointVisible())
         {
             //Play Animation
