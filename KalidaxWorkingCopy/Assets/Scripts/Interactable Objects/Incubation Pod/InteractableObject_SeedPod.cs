@@ -18,8 +18,8 @@ public class InteractableObject_SeedPod : InteractableObject
     
     private IncubationState incubationState = IncubationState.OBJ_NotPurchased;
 
-    public SO_Inventory inventory; //reference to the inventory 
-
+    [Separator()]
+    [SerializeField] private SO_GameEvent gameEvent;
     [Separator()]
     [SerializeField] private SO_Data_DayCycle dataDayCycle;
 
@@ -37,13 +37,11 @@ public class InteractableObject_SeedPod : InteractableObject
     [SerializeField] private Vector3 spawnLocation;
 
     [Header("Incubation Parameters")]
-    [SerializeField] private int daysToIncubate = 2;
+    [SerializeField] private int daysToIncubate = 7;
     private int daysLeft;
 
     [Header("Prefab Instantiation")]
-    [SerializeField] private List<GameObject> T1alienPrefabs;
-    [SerializeField] private GameObject needSeedText;
-    [SerializeField] private Transform needSeedSpawnLocation;
+    [SerializeField] private List<GameObject> T1alienPrefabs; 
 
     [SerializeField] private Color incubationColour_AddSeed;
     [SerializeField] private Color incubationColour_Incubating;
@@ -64,11 +62,6 @@ public class InteractableObject_SeedPod : InteractableObject
     /// Then when it's done incubating (remaining days = 0), the player can remove the seed. 
     /// Once removed we go back to the add seed state
     /// </summary>
-    /// 
-
-
-    //Create a reference to Sound Manager script
-    SoundManager soundManager;
 
     protected override void Awake()
     {
@@ -120,12 +113,19 @@ public class InteractableObject_SeedPod : InteractableObject
                 dataDayCycle.incubationPodData[thisIndex].daysLeft = daysLeft;
             }
 
+            // Check if still incubating
+            if (incubationState == IncubationState.OBJ_Incubating && daysLeft > 0)
+            {
+                // If still incubating, raise the "Seed Placed" event
+                gameEvent.RaiseProgressChanged(ProgressState.Incubating);
+            }
+
             //Check to see if the days left <= 1 and if so, se the incubation state to Complete
             if (daysLeft <= 0)
             {
                 incubationState = IncubationState.OBJ_RemoveSeed;
                 dataDayCycle.incubationPodData[thisIndex].incubationState = incubationState;
-                
+                gameEvent.RaiseProgressChanged(ProgressState.IncubationComplete);
             }
 
 
@@ -162,16 +162,13 @@ public class InteractableObject_SeedPod : InteractableObject
                 break;
 
         }
-
-        //Find Sound Manager script object
-        soundManager = FindObjectOfType<SoundManager>();
     }
-    public override void OnInteract(GameObject _interactedActor)
+    protected override void OnInteract()
     {
         OpenInteractionPanel();
 
-        //Call confirm sound class
-        soundManager.PlayUIConfirmSound();
+        HideUI();
+
     }
 
     public void SetInteractable(bool canInteract)
@@ -194,8 +191,8 @@ public class InteractableObject_SeedPod : InteractableObject
 
         //Activate the panel and make it the currentVisible UI
         incubationPodHUDPanel.SetActive(true);
-       
         UIController.Instance.m_CurrentUIVisible = incubationPodHUDPanel;
+
 
         DisplayIncubationHUDContents();
 
@@ -205,93 +202,36 @@ public class InteractableObject_SeedPod : InteractableObject
     }
     private void CloseInteractionPrompt()
     {
-
         incubationPodHUDPanel.SetActive(false);
 
     }
 
     //This function is called on the button in the inspector
-    public void CheckIfSeedInInventory()
-    {
-        //only check if we have seeds if we are on the "Add Seed" State
-        if (incubationState == IncubationState.OBJ_RemoveSeed)
-        {
-            ChangeState();
-            return;
-        }
-
-        bool noSeeds = false;
-        for (int i = 0; i < inventory.container.items.Length; i++)
-        {
-            if (inventory.container.items[i].id > -1 && inventory.container.items[i].amount > 1)
-            {
-                inventory.container.items[i].AddAmount(-1);
-                ChangeState();          
-            }
-            else if(inventory.container.items[i].id > -1 && inventory.container.items[i].amount == 1)
-            {
-                inventory.RemoveItem(inventory.container.items[i].item);
-                ChangeState();
-            }
-            else if(i == 0 && incubationState == IncubationState.OBJ_AddSeed)
-            {
-                noSeeds = true;
-            }
-        }
-
-        if(noSeeds)
-        {
-            Instantiate(needSeedText, needSeedSpawnLocation.position,Quaternion.identity,needSeedSpawnLocation);
-        }
-    }
-
-
-    //this method will be called within another method. This is so that we can remove one seed from the inventory
     public void ChangeState()
     {
-        //Get the data
         incubationState = dataDayCycle.incubationPodData[thisIndex].incubationState;
         daysLeft = dataDayCycle.incubationPodData[thisIndex].daysLeft;
-
-        //Call item sound class
-        soundManager.PlayItemSelectSound();
-
+        //when the button is pressed, change the state to the next state and then display the new contents
+        int i = (int)incubationState;
+        i++;
+        i %= 3;
         if (incubationState == IncubationState.OBJ_RemoveSeed)
         {
             InstantiateRandomPrefab();
         }
 
-        //when the button is pressed, change the state to the next state and then display the new contents
-        int i = (int)incubationState;
-        i++;
-        
-        //reset state
-        if((IncubationState)i == IncubationState.OBJ_NotPurchased)
-        {
-            i = 0;
-        }
-
-        //set the state to the new state
+     
         incubationState = (IncubationState)i;
-
-
-
+      
         DisplayIncubationHUDContents();
-
-
-
-        if (i == (int)IncubationState.OBJ_AddSeed)
-        {
-            daysLeft = daysToIncubate;
-        }
+        if (i == 0) daysLeft = daysToIncubate;
 
 
         //Update the data
+        Debug.Log("Updating Data");
         dataDayCycle.incubationPodData[thisIndex].incubationState = incubationState;
         dataDayCycle.incubationPodData[thisIndex].daysLeft = daysLeft;
-
         
-
     }
 
     private void InstantiateRandomPrefab()
@@ -312,6 +252,7 @@ public class InteractableObject_SeedPod : InteractableObject
         switch(incubationState)
         {
             case IncubationState.OBJ_AddSeed:
+                
                 ShowAddSeedUI();
                 break;
 
@@ -330,7 +271,6 @@ public class InteractableObject_SeedPod : InteractableObject
 
     private void ShowAddSeedUI()
     {
-
         incubationState = IncubationState.OBJ_AddSeed;
 
         addSeedButton.gameObject.SetActive(true);
@@ -341,11 +281,14 @@ public class InteractableObject_SeedPod : InteractableObject
 
         incubationLight.color = new Color(0, 1, 0);
 
+        //Update the data
+        incubationState = dataDayCycle.incubationPodData[thisIndex].incubationState;
+        daysLeft = dataDayCycle.incubationPodData[thisIndex].daysLeft;
     }
     private void ShowIncubatingUI()
     {
         incubationState = IncubationState.OBJ_Incubating;
-
+        gameEvent.RaiseProgressChanged(ProgressState.SeedPlaced);
         addSeedButton.gameObject.SetActive(false);
 
         seedImage.gameObject.SetActive(true);
@@ -357,7 +300,6 @@ public class InteractableObject_SeedPod : InteractableObject
     private void ShowRemoveSeedUI()
     {
         incubationState = IncubationState.OBJ_RemoveSeed;
-
         addSeedButton.gameObject.SetActive(true);
         buttonText.text = "Remove Seed";
 
@@ -367,9 +309,9 @@ public class InteractableObject_SeedPod : InteractableObject
         incubationLight.color = new Color(0, 0, 1);
     }
 
-    public override bool IsInteractable() { return isInteractable; }
-    public override bool IsTargetPointVisible() { return isInteractPointVisible; }
-    public override bool FreezePlayerMovement() { return freezePlayerMovement; }
+    protected override bool IsInteractable() { return isInteractable; }
+    protected override bool IsTargetPointVisible() { return isInteractPointVisible; }
+    protected override bool FreezePlayerMovement() { return freezePlayerMovement; }
     public override bool IsRequiredToLookAtTarget() { return isRequiredToLookAtTarget; }
 
 }

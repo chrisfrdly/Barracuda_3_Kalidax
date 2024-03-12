@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MENU/MainMenu.unity
     guid: ac8fa9157bf2126458af3fe2bc1fc7ff
+  - enabled: 1
+    path: Assets/Scenes/PersonalScenes/AshtonScene_Update.unity
+    guid: 9361a22bd0d844f429f3f3f050e80b5a
   m_configObjects: {}

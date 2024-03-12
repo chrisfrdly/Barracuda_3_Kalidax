@@ -6,17 +6,37 @@ using UnityEngine.Windows;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] private SO_GameEvent gameEvent;
     [SerializeField] private SO_PauseMenuEventSender pauseMenuEvent;
     [SerializeField] private GameObject pauseMenuPrefab;
+    public static bool isGameInitialized = false;
 
     public static bool isGamePaused;
 
     private PlayerInput playerInput;
-
+    public static GameManager Instance;
     private GameObject pauseMenu;
 
     private void Awake()
     {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+
+        if (!isGameInitialized)
+        {
+            //persistence (oops I made a dependancy)
+            DontDestroyOnLoad(gameObject);
+
+            // Initialize the game for the first time
+            InitializeGame();
+            isGameInitialized = true; // Set the flag to true to avoid re-initialization
+        }
 
         //Calls when a player presses the pause button
         pauseMenuEvent.pauseGameEvent.AddListener(PauseTheGame);
@@ -34,6 +54,12 @@ public class GameManager : MonoBehaviour
         //May need to move inside function if errors when someone unpluggs controller
         playerInput = GameObject.FindObjectOfType<PlayerInput>();
     }
+
+    private void InitializeGame()
+    {
+        gameEvent.RaiseProgressChanged(ProgressState.None); // Signal the game start event
+    }
+
     private void PauseTheGame()
     {
         playerInput.SwitchCurrentActionMap("Menu");
