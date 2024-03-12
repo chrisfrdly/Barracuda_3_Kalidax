@@ -163,7 +163,7 @@ public class InteractableObject_SeedPod : InteractableObject
 
         }
     }
-    protected override void OnInteract()
+    public override void OnInteract(GameObject _interactedActo)
     {
         OpenInteractionPanel();
 
@@ -309,9 +309,9 @@ public class InteractableObject_SeedPod : InteractableObject
         incubationLight.color = new Color(0, 0, 1);
     }
 
-    protected override bool IsInteractable() { return isInteractable; }
-    protected override bool IsTargetPointVisible() { return isInteractPointVisible; }
-    protected override bool FreezePlayerMovement() { return freezePlayerMovement; }
+    public override bool IsInteractable() { return isInteractable; }
+    public override bool IsTargetPointVisible() { return isInteractPointVisible; }
+    public override bool FreezePlayerMovement() { return freezePlayerMovement; }
     public override bool IsRequiredToLookAtTarget() { return isRequiredToLookAtTarget; }
 
 }

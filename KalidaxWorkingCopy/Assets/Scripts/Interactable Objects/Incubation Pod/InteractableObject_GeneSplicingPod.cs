@@ -23,6 +23,11 @@ public class InteractableObject_GeneSplicingPod : InteractableObject
     //aliens that are assigned to the buttons
     [SerializeField] private SO_Alien[] aliensAdded = new SO_Alien[2];
 
+    [Header("Alien Prefabs")]
+    public GameObject[] alienPrefabs_Tier2;
+    public GameObject[] alienPrefabs_Tier3;
+
+
     //Properties
     public SO_Alien[] m_AliensAdded { get => aliensAdded;}
 
@@ -112,14 +117,18 @@ public class InteractableObject_GeneSplicingPod : InteractableObject
 
         if (aliensAdded[0] != null && aliensAdded[1] != null)
         {
-            CheckPossibleCombos();
+            
         }
     }
-
-    private void CheckPossibleCombos()
+    
+    public void GeneSplice()
     {
-        //Check through all tier 2, 3, and 4
-        
+        List<WorldAlien> worldAliens = new List<WorldAlien>();
+
+        for(int i = 0; i > aliensAdded.Length; i++)
+        {
+
+        }    
     }
 
     public override bool IsInteractable() { return isInteractable; }

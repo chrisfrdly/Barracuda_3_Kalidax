@@ -123,7 +123,7 @@ public abstract class InteractableObject : MonoBehaviour
         }
     }
 
-    private void HideUI()
+    public void HideUI()
     {
         interactPromptPanel.SetActive(false);
     }

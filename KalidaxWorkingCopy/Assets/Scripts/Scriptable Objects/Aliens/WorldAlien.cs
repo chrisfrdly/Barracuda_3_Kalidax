@@ -99,8 +99,7 @@ public class WorldAlien : MonoBehaviour
     private void SellAlien()
     {
         PlayerWallet.instance.amountToPutInWallet += alienContainer.sellValue;
-        aliensInWorldListSO.worldAliens.Remove(alienContainer);
-        Destroy(gameObject);
+        DestroyAlien();
     }
 
     //this is just so we can call this method on a button press we'll do this when we make the aliens interactable
@@ -108,4 +107,12 @@ public class WorldAlien : MonoBehaviour
     {
         isBeingSold = true;
     }
+
+    //this destroys the aliens at any point, can be called from other scripts. This is made so that we can destroy the alien without necessarily selling it
+    public void DestroyAlien()
+    {
+        aliensInWorldListSO.worldAliens.Remove(alienContainer);
+        Destroy(gameObject);
+    }
+
 }

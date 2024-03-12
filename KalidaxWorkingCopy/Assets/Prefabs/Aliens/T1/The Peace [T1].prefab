@@ -46,8 +46,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d3578ab145dfd4409c58193fef3ad03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  alienContainer: {fileID: -2792530730457353341, guid: c5184fa4d3a7c4d40a419acbd5ea6e83, type: 2}
+  alienContainer: {fileID: -8740800442844138521, guid: d307c286794932149ba0597d57085900, type: 2}
   aliensInWorldListSO: {fileID: 11400000, guid: 72364da5f673e9e40a6c8574ac06e771, type: 2}
+  provisionDroneObject: {fileID: 0}
+  moveSpeed: 0
+  isBeingSold: 0
 --- !u!212 &528095055722476615
 SpriteRenderer:
   m_ObjectHideFlags: 0
