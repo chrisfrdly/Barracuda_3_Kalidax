@@ -17,30 +17,37 @@ MonoBehaviour:
     TargetNodeGUID: 06a951bf-c07a-49d5-aa8c-c0c1b4b734f6
   - BaseNodeGUID: 06a951bf-c07a-49d5-aa8c-c0c1b4b734f6
     TargetNodeGUID: 9ec6059c-0447-4cc0-9738-a93f68196f4a
+  - BaseNodeGUID: 06a951bf-c07a-49d5-aa8c-c0c1b4b734f6
+    TargetNodeGUID: 9ec6059c-0447-4cc0-9738-a93f68196f4a
   DialogueNodeDatas:
   - NodeGUID: 06a951bf-c07a-49d5-aa8c-c0c1b4b734f6
     Pos: {x: 332, y: 214}
     TextType:
     - LanguageType: 0
-      LanguageGenericType: Hi
+      LanguageGenericType: I SURE LOVE BEING ALIVE...
     DialogueNodePorts:
     - InputGUID: 9ec6059c-0447-4cc0-9738-a93f68196f4a
       OutputGUID: 06a951bf-c07a-49d5-aa8c-c0c1b4b734f6
       TextLanguages:
       - LanguageType: 0
-        LanguageGenericType: Hi
+        LanguageGenericType: Yes
+    - InputGUID: 9ec6059c-0447-4cc0-9738-a93f68196f4a
+      OutputGUID: 06a951bf-c07a-49d5-aa8c-c0c1b4b734f6
+      TextLanguages:
+      - LanguageType: 0
+        LanguageGenericType: No
     Sprite: {fileID: 21300000, guid: 848813b79e2935a488f4a76c8de691e3, type: 3}
     DialogueSpriteImageType: 0
     AudioClips:
     - LanguageType: 0
       LanguageGenericType: {fileID: 0}
-    Name: Hi
+    Name: 'SPROG: '
   EndNodeDatas:
   - NodeGUID: b5a356e9-ad44-42c3-8637-effffcebdfae
     Pos: {x: 2848, y: 289}
     EndNodeType: 0
   - NodeGUID: 9ec6059c-0447-4cc0-9738-a93f68196f4a
-    Pos: {x: 656, y: 214}
+    Pos: {x: 673, y: 291}
     EndNodeType: 0
   StartNodeDatas:
   - NodeGUID: a07bcab9-d45a-4b9b-9194-05bd2d286e88
