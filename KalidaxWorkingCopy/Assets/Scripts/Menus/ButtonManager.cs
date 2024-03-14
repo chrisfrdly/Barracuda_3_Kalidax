@@ -16,7 +16,7 @@ public class ButtonManager : MonoBehaviour
 
     public void Options()
     {
-        //AudioManager.instance.Play("ClickButton");
+        //AudioManager.instance.Play("TestSound");
     }
 
     public void Back()

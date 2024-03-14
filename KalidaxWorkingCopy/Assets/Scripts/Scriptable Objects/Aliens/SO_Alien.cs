@@ -11,6 +11,7 @@ public class SO_Alien : ScriptableObject
     //[Title("Alien Information",TextAlignment.Center)]
     [SerializeField] private string _name;
     [SerializeField] private AlienTierType _alienTier;
+    [SerializeField] private int _alienID;
 
     [Separator(1, 10)]
     [Header("Parent Aliens")]
@@ -20,7 +21,7 @@ public class SO_Alien : ScriptableObject
     [Separator(1, 10)]
     [Header("Cost and Sell Values")]
     [SerializeField] private int costValue;
-    [SerializeField] private int sellValue;
+    public int sellValue;
 
     [Header("Days to Grow Alien")]
     [SerializeField] private int minDaysToGrow;
@@ -38,8 +39,9 @@ public class SO_Alien : ScriptableObject
     public AlienTierType m_AlienTier { get => _alienTier; set => _alienTier = value; }
     public Sprite m_AlienSprite { get => alienSprite;}
     public Texture2D m_AlienTexture { get => alienTexture; set => alienTexture = value; }
+    public int m_AlienID { get => _alienID; set => _alienID = value; }
 
-
+    //
 #if UNITY_EDITOR
     public void Initialize(SO_AliensContainer _alienContainer)
     {

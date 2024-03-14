@@ -7,12 +7,28 @@ using System.Collections;
 
 public class AudioManager : MonoBehaviour
 {
+    [Header("Audio Mixer Groups")]
+    [SerializeField] private AudioMixer audioMixer;
+    [SerializeField] private AudioMixerGroup sfxMixerGroup;
+    [SerializeField] private AudioMixerGroup musicMixerGroup;
+    [SerializeField] private readonly float startingVolume = 0.5f;
+    private float prevMusicVolume;
+
+
+    [Space()]
     public Sounds[] sounds;
     public BgSounds[] bgSounds;
 
     //a reference to the current instance of the audio manager we have in our scene
     public static AudioManager instance;
-    private IEnumerator coroutine;
+    private IEnumerator musicCoroutine;
+    private IEnumerator musicCoroutine2;
+
+
+    //Properties
+    public AudioMixer m_AudioMixer { get => audioMixer;}
+
+    public float m_StartingVolume => startingVolume;
 
     private void Awake()
     {
@@ -36,6 +52,7 @@ public class AudioManager : MonoBehaviour
             s.source.pitch = s.pitch;
             s.source.loop = s.loop;
             s.source.clip = s.clip[Random.Range(0, s.clip.Length)];
+            s.source.outputAudioMixerGroup = sfxMixerGroup;
         }
 
         //set up audio managers so we can play them in the start
@@ -47,9 +64,30 @@ public class AudioManager : MonoBehaviour
             s.source.pitch = s.pitch;
             s.source.loop = s.loop;
             s.source.clip = s.clip;
+            s.source.outputAudioMixerGroup = musicMixerGroup;
         }
 
     }
+
+    private void Start()
+    {
+        if (PlayerPrefs.HasKey("Master")) return;
+        
+        SetAudioMixer();
+    }
+
+    private void SetAudioMixer()
+    {
+        audioMixer.SetFloat("Master", Mathf.Log10(startingVolume) * 20);
+        audioMixer.SetFloat("SFX",  Mathf.Log10(startingVolume) * 20);
+        audioMixer.SetFloat("Music", Mathf.Log10(startingVolume) * 20);
+
+        //Saving the value
+        PlayerPrefs.SetFloat("MasterVolume", startingVolume);
+        PlayerPrefs.SetFloat("SFXVolume", startingVolume);
+        PlayerPrefs.SetFloat("MusicVolume", startingVolume);
+    }
+
 
     public void Play(string name)
     {
@@ -104,6 +142,88 @@ public class AudioManager : MonoBehaviour
         
     }
 
+    public void LerpAudioToLevel(float _targetLevel)
+    {
+        musicCoroutine = IEChangeAudio(_targetLevel);
+        StartCoroutine(musicCoroutine);
+    }
+
+
+    private IEnumerator IEChangeAudio(float _targetLevel)
+    {
+        //It can't be set to 0 for this math equation or else we'll get infinity
+        _targetLevel = Mathf.Clamp(_targetLevel, 0.0001f, 1f);
+        float waitTime = 0.5f;
+        float currentTime = 0;
+   
+        float currentLevel = GetMusicVolume();
+
+        prevMusicVolume = currentLevel;
+
+        while (currentTime < waitTime)
+        {
+           
+            float newVol = Mathf.Lerp(currentLevel, _targetLevel, currentTime / waitTime);
+
+            audioMixer.SetFloat("MusicLowered", Mathf.Log10(newVol) * 20);
+
+            currentTime += Time.unscaledDeltaTime;
+
+            yield return null;
+        }
+
+        yield break;
+
+    }
+
+    public void LerpAudioToPrevLevel()
+    {
+        musicCoroutine2 = IERevertAudio();
+        StartCoroutine(musicCoroutine2);
+    }
+
+    private IEnumerator IERevertAudio()
+    {
+        yield return new WaitForSeconds(0.1f);
+        //It can't be set to 0 for this math equation or else we'll get infinity
+    
+        prevMusicVolume = Mathf.Clamp(prevMusicVolume, 0.0001f, 1f);
+
+        float waitTime = 0.5f;
+        float currentTime = 0;
+
+        float currentLevel = GetMusicVolume();
+
+        while (currentTime < waitTime)
+        {
+
+            float newVol = Mathf.Lerp(currentLevel, prevMusicVolume, currentTime / waitTime);
+
+            audioMixer.SetFloat("MusicLowered", Mathf.Log10(newVol) * 20);
+
+            currentTime += Time.deltaTime;
+
+            yield return null;
+        }
+
+        yield break;
+
+    }
+
+    private float GetMusicVolume()
+    {
+        float currentLevel;
+        bool result = m_AudioMixer.GetFloat("MusicLowered", out currentLevel);
+      
+        if (result)
+        {
+            return Mathf.Pow(10, currentLevel / 20);
+        }
+        else
+        {
+            return 0;
+        }
+    }
 }
 
 

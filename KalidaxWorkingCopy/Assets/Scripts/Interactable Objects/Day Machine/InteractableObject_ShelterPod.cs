@@ -5,11 +5,13 @@ using UnityEngine;
 public class InteractableObject_ShelterPod : InteractableObject
 {
 
-    protected override void OnInteract()
+    public override void OnInteract(GameObject _interactedActor)
     {
+
         PromptDayReset();
 
-        HideUI();
+        AudioManager.instance.Play("Positive Interact");
+
     }
 
     private void PromptDayReset()
@@ -21,9 +23,9 @@ public class InteractableObject_ShelterPod : InteractableObject
         UIController.Instance.ShowEndOfDayConfirmationUI();
     }
 
-    protected override bool IsInteractable() { return isInteractable; }
-    protected override bool IsTargetPointVisible() { return isInteractPointVisible; }
-    protected override bool FreezePlayerMovement() { return freezePlayerMovement; }
+    public override bool IsInteractable() { return isInteractable; }
+    public override bool IsTargetPointVisible() { return isInteractPointVisible; }
+    public override bool FreezePlayerMovement() { return freezePlayerMovement; }
     public override bool IsRequiredToLookAtTarget() { return isRequiredToLookAtTarget; }
 
 

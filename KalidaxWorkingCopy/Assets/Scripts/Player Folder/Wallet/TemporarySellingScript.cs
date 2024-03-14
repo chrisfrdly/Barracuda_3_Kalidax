@@ -5,12 +5,26 @@ using UnityEngine;
 public class TemporarySellingScript : MonoBehaviour
 {
     public SO_Inventory inventoryScript;
-    public int amount;
+    public WorldAlien[] alienToSell;
+    private int alienIndex = 0;
+    [SerializeField]private int amount;
+
     private void Update()
     {
         if (Input.GetKeyUp(KeyCode.L))
         {
-            inventoryScript.SellItem(FindFirstSellableItem(), amount);
+            Item itemToSell = FindFirstSellableItem();
+            inventoryScript.SellItem(itemToSell, amount);
+            amount = 0;
+        }
+
+        if(Input.GetKeyDown(KeyCode.N))
+        {
+            if(alienIndex < alienToSell.Length)
+            {
+                alienToSell[alienIndex].isBeingSold = true;
+                alienIndex++;
+            }
         }
     }
 
@@ -20,7 +34,7 @@ public class TemporarySellingScript : MonoBehaviour
         {
             if (inventoryScript.container.items[i].id > -1)
             {
-                amount = inventoryScript.container.items[i].amount;
+                amount += inventoryScript.container.items[i].amount;
                 return inventoryScript.container.items[i].item;
             }
         }

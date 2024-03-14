@@ -2,6 +2,7 @@
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 [CustomEditor(typeof(SO_Alien))]
 [CanEditMultipleObjects]
@@ -11,6 +12,7 @@ public class SO_AlienEditor : Editor
 
     private SerializedProperty _name;
     private SerializedProperty _alienTier;
+    private SerializedProperty _alienID;
 
     private SerializedProperty minDaysToGrow;
     private SerializedProperty maxDaysToGrow;
@@ -28,6 +30,7 @@ public class SO_AlienEditor : Editor
     {
         _name = serializedObject.FindProperty("_name");
         _alienTier = serializedObject.FindProperty("_alienTier");
+        _alienID = serializedObject.FindProperty("_alienID");
 
         minDaysToGrow = serializedObject.FindProperty("minDaysToGrow");
         maxDaysToGrow = serializedObject.FindProperty("maxDaysToGrow");
@@ -100,11 +103,30 @@ public class SO_AlienEditor : Editor
 
         if (alien.m_AlienSprite != null)
         {
-            alien.m_AlienTexture = alien.m_AlienSprite.texture;
+            Rect spriteRect = alien.m_AlienSprite.rect;
+            if (alien.m_AlienSprite.texture.isReadable == false)
+            {
+
+                alien.m_AlienTexture = alien.m_AlienSprite.texture;
+            }
+            else
+            {
+                
+                //Make a texture from a set pixel range in a sprite
+
+                //Now get the pixels from the texture2D where the sprite is
+                Texture2D newTex = alien.m_AlienSprite.texture;
+                var tests = newTex.GetPixels((int)spriteRect.position.x, (int)spriteRect.position.y, (int)spriteRect.width, (int)spriteRect.height);
+
+                alien.m_AlienTexture = new Texture2D((int)spriteRect.width, (int)spriteRect.height);
+                alien.m_AlienTexture.SetPixels(tests);
+                alien.m_AlienTexture.Apply();
+            }
 
             GUI.DrawTexture(text, alien.m_AlienTexture);
-        }
 
+        }
+        
         GUILayout.EndVertical();
 
         GUILayout.BeginVertical();
@@ -113,13 +135,19 @@ public class SO_AlienEditor : Editor
         EditorGUILayout.PropertyField(_name, new GUIContent("Name  "));
         EditorGUILayout.PropertyField(_alienTier, new GUIContent("Tier  "));
         EditorGUILayout.PropertyField(alienSprite, new GUIContent("Sprite  "));
+
+        Rect IDRect = new Rect(Screen.width / 2 - 30, 140, Screen.width / 2, 15);
+        GUI.Label(IDRect, $"ID    {_alienID.intValue}");
+;
         EditorStyles.label.alignment = TextAnchor.MiddleLeft;
 
-
+      
+       
+   
         GUILayout.EndVertical();
 
         GUILayout.EndHorizontal();
-
+        
         GUILayout.Space(40f);
 
 
@@ -230,18 +258,26 @@ public class SO_AlienEditor : Editor
 
     private void RenameAlien(SO_Alien _alien)
     {
-        RemoveAlienInVisualDatabase(_alien);
-
-        //Find this in the dictionary, delete it, and then create a new alien with the name
-        if (_alien.m_Container.m_AlienDatabase.ContainsValue(_alien.m_ThisAlien))
+        //Find this in the AlienDatabase, delete it, and then create a new alien with the name
+        for (int i = 0; i < _alien.m_Container.m_AlienDatabase.Count; i++)
         {
-            _alien.m_Container.m_AlienDatabase.Remove(_alien.m_ThisAlien.name);
+            string strAlienName = _alien.m_Container.m_AlienDatabase[i].db_AlienName;
+            string thisAlienName = _alien.m_ThisAlien.name;
+
+            if (strAlienName.Equals($"[{_alien.m_AlienTier}] {_alien.m_Name}"))
+            {
+                Debug.LogWarning($"An alien named '{strAlienName}' already exists!");
+                return;
+            }
+
         }
+
+        RemoveAlienInVisualDatabase(_alien);
 
 
         //Change the asset's name to the name we have here
         _alien.m_ThisAlien.name = $"[{_alien.m_AlienTier}] {_alien.m_Name}";
-        _alien.m_Container.MakeNewAlien(_alien.m_ThisAlien.name);
+        _alien.m_Container.MakeNewAlien(_alien.m_ThisAlien.name, _alien.m_ThisAlien);
 
         AssetDatabase.SaveAssets();
         EditorUtility.SetDirty(_alien.m_ThisAlien);
@@ -251,12 +287,6 @@ public class SO_AlienEditor : Editor
     {
         RemoveAlienInVisualDatabase(_alien);
 
-        //Find this in the dictionary, delete it, and then create a new alien with the name
-        if (_alien.m_Container.m_AlienDatabase.ContainsValue(_alien.m_ThisAlien))
-        {
-            _alien.m_Container.m_AlienDatabase.Remove(_alien.m_ThisAlien.name);
-        }
-
         //Delete the asset
         Undo.DestroyObjectImmediate(_alien.m_ThisAlien);
         AssetDatabase.SaveAssets();
@@ -264,13 +294,17 @@ public class SO_AlienEditor : Editor
 
     private void RemoveAlienInVisualDatabase(SO_Alien _alien)
     {
-        for (int i = 0; i < _alien.m_Container.m_AliensInDatabase.Count; i++)
+        //Find this in the AlienDatabase, delete it, and then create a new alien with the name
+        for (int i = 0; i < _alien.m_Container.m_AlienDatabase.Count; i++)
         {
-            //Check to see if there's a match, if so, remove it from the list
-            if (_alien.m_Container.m_AliensInDatabase[i].Equals(_alien.m_ThisAlien.name))
+            string strAlienName = _alien.m_Container.m_AlienDatabase[i].db_AlienName;
+            string thisAlienName = _alien.m_ThisAlien.name;
+
+            if (strAlienName.Equals(thisAlienName))
             {
-                _alien.m_Container.m_AliensInDatabase.Remove(_alien.m_Container.m_AliensInDatabase[i]);
+                _alien.m_Container.m_AlienDatabase.RemoveAt(i);
             }
+        
         }
     }
 
@@ -282,8 +316,7 @@ public class SO_AlienEditor : Editor
         if (alien == null || alien.m_AlienTexture == null)
             return null;
 
-        // example.PreviewIcon must be a supported format: ARGB32, RGBA32, RGB24,
-        // Alpha8 or one of float formats
+        // The texture we create must be a supported format: ARGB32, RGBA32, RGB24
         Texture2D tex = new Texture2D(width, height, TextureFormat.RGBA32, false);
 
         EditorUtility.CopySerialized(alien.m_AlienTexture, tex);

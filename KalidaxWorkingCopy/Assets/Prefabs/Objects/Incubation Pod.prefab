@@ -1,5 +1,41 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4493503833904939804
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8073833303761328883}
+  m_Layer: 5
+  m_Name: Need Seed Spawn Location
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &8073833303761328883
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4493503833904939804}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 89.99967}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7376599304840943976}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 2.5999985, y: 6.1999903}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &7376599304375814043
 GameObject:
   m_ObjectHideFlags: 0
@@ -83,7 +119,7 @@ MonoBehaviour:
   isInteractPointVisible: 1
   isRequiredToLookAtTarget: 0
   freezePlayerMovement: 0
-  gameEvent: {fileID: 11400000, guid: 0f29efc5c19584e46922cdc2d9fef8eb, type: 2}
+  inventory: {fileID: 11400000, guid: aa44c2eee6c76bd438666289c0763e1a, type: 2}
   dataDayCycle: {fileID: 11400000, guid: 208eef33a987f0e4bb799b003df00a94, type: 2}
   incubationPodHUDPanel: {fileID: 7376599304840943977}
   addSeedButton: {fileID: 7376599304987843840}
@@ -91,13 +127,11 @@ MonoBehaviour:
   daysRemainingText: {fileID: 7376599305794949624}
   seedImage: {fileID: 7376599304557431232}
   incubationLight: {fileID: 4866254346615901721}
-  spawnLocation: {x: 3.809633, y: 2, z: -6.755166}
-  daysToIncubate: 2
-  T1alienPrefabs:
-  - {fileID: 528095055722476609, guid: 43d50266dfb98a146aefd71188ec2292, type: 3}
-  - {fileID: 528095055722476609, guid: e444055b20c877448a23b129eb1f4c9c, type: 3}
-  - {fileID: 528095055722476609, guid: abc2d9bed22f53542b1628d41ecbb656, type: 3}
-  - {fileID: 528095055722476609, guid: c014f222d4fda9243bcc4a9cb727b4c3, type: 3}
+  spawnLocation: {x: 0, y: 0, z: 0}
+  daysToIncubate: 7
+  T1alienPrefabs: []
+  needSeedText: {fileID: 870490339943867424, guid: 794f4fdfa27fc5347bb371c9a317eb9f, type: 3}
+  needSeedSpawnLocation: {fileID: 8073833303761328883}
   incubationColour_AddSeed: {r: 0.10136587, g: 1, b: 0.0047169924, a: 1}
   incubationColour_Incubating: {r: 1, g: 0.2216981, b: 0.22982088, a: 1}
   incubationColour_RemoveSeed: {r: 0.1728818, g: 0.31167355, b: 0.990566, a: 1}
@@ -210,6 +244,7 @@ RectTransform:
   m_Children:
   - {fileID: 7376599305741144359}
   - {fileID: 7376599305794949625}
+  - {fileID: 8073833303761328883}
   - {fileID: 7376599304987843841}
   m_Father: {fileID: 7376599304889730549}
   m_RootOrder: 0
@@ -475,7 +510,7 @@ RectTransform:
   m_Children:
   - {fileID: 7376599305193620954}
   m_Father: {fileID: 7376599304840943976}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -565,8 +600,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 7376599304375814047}
-        m_TargetAssemblyTypeName: InteractableObject_IncubationPod, Assembly-CSharp
-        m_MethodName: ChangeState
+        m_TargetAssemblyTypeName: InteractableObject_SeedPod, Assembly-CSharp
+        m_MethodName: CheckIfSeedInInventory
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -651,8 +686,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
