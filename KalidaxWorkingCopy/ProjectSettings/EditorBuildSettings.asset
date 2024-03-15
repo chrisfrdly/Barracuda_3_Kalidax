@@ -6,9 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
     path: Assets/Scenes/MainScene-Playtest 1.unity
     guid: a4caa8fc69c4f874783ece26e83d9add
   - enabled: 1
@@ -26,13 +23,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainScene.unity
     guid: 1e7e5899eb1f0dc459facde9b7c3f511
-  - enabled: 0
-    path: Assets/Scenes/PersonalScenes/LucasScene.unity
-    guid: dc336a5fb630e16418a8103044bda1a7
   - enabled: 1
     path: Assets/Scenes/MENU/MainMenu.unity
     guid: ac8fa9157bf2126458af3fe2bc1fc7ff
   - enabled: 1
-    path: Assets/Scenes/PersonalScenes/AshtonScene_Update.unity
-    guid: 9361a22bd0d844f429f3f3f050e80b5a
+    path: Assets/Scenes/PersonalScenes/AshtonScene.unity
+    guid: 620e5b8be37b7ed478d45c890117e093
   m_configObjects: {}

@@ -10,7 +10,6 @@ public class UpgradeCheck : MonoBehaviour
 
     private SpriteRenderer[] spriteRenderers;
     private Collider2D[] colliders; // Array to hold the colliders of the upgrade objects
-    private PlayerWallet playerWallet;
     private bool[] isBought;
     private int nextToBuyIndex = 0; // Start interaction from the second object
     private Color[] originalColors;
@@ -78,8 +77,6 @@ public class UpgradeCheck : MonoBehaviour
             ResetColorAndCollider(i);
 
         }
-
-        playerWallet = PlayerWallet.instance;
     }
 
     private void Update()
@@ -87,7 +84,7 @@ public class UpgradeCheck : MonoBehaviour
         for (int i = 0; i < upgradeObjects.Length; i++)
         {
             bool playerInRange = IsPlayerInRange(upgradeObjects[i].transform);
-            bool canAfford = playerWallet.walletAmount >= upgradeCost;
+            bool canAfford = PlayerWallet.Instance.walletAmount >= upgradeCost;
 
             if (playerInRange && !isBought[i] && i == nextToBuyIndex)
             {
@@ -113,7 +110,7 @@ public class UpgradeCheck : MonoBehaviour
         // Buying logic
         if (canAfford && Input.GetKeyDown(KeyCode.B))
         {
-            playerWallet.SubtractValue(upgradeCost); // Subtract the cost from the player's wallet
+            PlayerWallet.Instance.SubtractValue(upgradeCost, "You've Purchased an upgrade"); // Subtract the cost from the player's wallet
             isBought[index] = true; // Mark the object as bought
             
             nextToBuyIndex = Mathf.Min(nextToBuyIndex + 1, upgradeObjects.Length - 1); // Move to the next object in the list
@@ -166,11 +163,11 @@ public class UpgradeCheck : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F))
         {
-            playerWallet.PutValueInWallet(100); // Add 100 money to the player's wallet
+            PlayerWallet.Instance.PutValueInWallet(100, "You've Added Funds [Debug]"); // Add 100 money to the player's walletf
         }
         else if (Input.GetKeyDown(KeyCode.G))
         {
-            playerWallet.SubtractValue(100); // Subtract 100 money from the player's wallet
+            PlayerWallet.Instance.SubtractValue(100, "You've Removed Funds [Debug]"); // Subtract 100 money from the player's wallet
         }
     }
 }

@@ -98,7 +98,7 @@ public class WorldAlien : MonoBehaviour
 
     private void SellAlien()
     {
-        PlayerWallet.instance.amountToPutInWallet += alienContainer.sellValue;
+        PlayerWallet.Instance.amountToPutInWallet += alienContainer.sellValue;
         aliensInWorldListSO.worldAliens.Remove(alienContainer);
         Destroy(gameObject);
     }

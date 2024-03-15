@@ -1,44 +1,67 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
-
 
 public class PlayerWallet : MonoBehaviour
 {
-    public int walletAmount; //how much money you got
-    public static PlayerWallet instance;
-    public TextMeshProUGUI walletAmountText;
-    public int amountToPutInWallet; // this is the total amount of money that the player will make in a day we will use this amount in the PutValueInWallet here
+    private static PlayerWallet _instance;
+    public int amountToPutInWallet; // Used to accumulate daily earnings
+    public int walletAmount;
+    public delegate void WalletAmountChanged();
+    public event WalletAmountChanged OnWalletAmountChanged;
+
+    public static PlayerWallet Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = FindObjectOfType<PlayerWallet>();
+                DontDestroyOnLoad(_instance.gameObject);
+            }
+            return _instance;
+        }
+    }
 
     private void Awake()
     {
-        //Turning this script into a singleton
-        if (instance == null)
+        if (_instance == null)
         {
-            instance = this;
-            walletAmount = 0;
-            amountToPutInWallet = 0;
+            _instance = this;
             DontDestroyOnLoad(gameObject);
+            Debug.Log("[PlayerWallet] Instance assigned and set to DontDestroyOnLoad.", this);
         }
-        else
+        else if (_instance != this)
         {
+            Debug.Log("[PlayerWallet] Duplicate instance detected, destroying this one.", this);
             Destroy(gameObject);
         }
     }
 
-    //this is how you put more money into the wallet
-    public void PutValueInWallet(int amount)
+
+    // Call this method to add earnings throughout the day
+    public void AddToAmountToPutInWallet(int amount)
+    {
+        amountToPutInWallet += amount;
+    }
+
+    public void TransferToWallet(string reason)
+    {
+        walletAmount += amountToPutInWallet;
+        amountToPutInWallet = 0;
+        Debug.Log($"Transferring {amountToPutInWallet} to wallet due to: {reason}. New Total: {walletAmount}");
+        OnWalletAmountChanged?.Invoke();
+    }
+
+    public void PutValueInWallet(int amount, string reason)
     {
         walletAmount += amount;
-        amountToPutInWallet = 0;
+        Debug.Log($"Adding {amount} to wallet due to: {reason}. New Total: {walletAmount}");
+        OnWalletAmountChanged?.Invoke();
     }
 
-    //this is how you take money out
-    public void SubtractValue(int amount)
+    public void SubtractValue(int amount, string reason)
     {
         walletAmount -= amount;
+        Debug.Log($"Subtracting {amount} from wallet due to: {reason}. New Total: {walletAmount}");
+        OnWalletAmountChanged?.Invoke();
     }
-    
-
 }

@@ -80,7 +80,7 @@ public class SO_Inventory : ScriptableObject, ISerializationCallbackReceiver
 
         if(_item.sellable)
         {
-            PlayerWallet.instance.amountToPutInWallet += _item.sellValue * amount;
+            PlayerWallet.Instance.amountToPutInWallet += _item.sellValue * amount;
             RemoveItem(_item);
         }
         else
