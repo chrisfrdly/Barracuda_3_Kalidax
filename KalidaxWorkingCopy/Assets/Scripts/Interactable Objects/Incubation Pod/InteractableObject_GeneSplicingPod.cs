@@ -137,6 +137,8 @@ public class InteractableObject_GeneSplicingPod : InteractableObject
 
     public void AttemptGeneSplice()
     {
+        Debug.Log(IsMergePossible(aliensAdded[0], aliensAdded[1]));
+
         if(IsMergePossible(aliensAdded[0], aliensAdded[1]))
         {
             GameObject[] alienToSpawnArray = AlienArrayToReturn(aliensAdded[0].m_AlienFamily.ToString());
@@ -172,6 +174,7 @@ public class InteractableObject_GeneSplicingPod : InteractableObject
             if((int)alienScript.m_AlienContainer.m_AlienTier == tier)
             {
                 GameObject newAlien = Instantiate(spawningArray[i], alienSpawnPoint.position, Quaternion.identity);
+                Debug.Log(newAlien.name);
                 
             }
         }
@@ -180,9 +183,11 @@ public class InteractableObject_GeneSplicingPod : InteractableObject
         for(int i = 0; i < spawningArray.Length; i++)
         {
             WorldAlien alienScript = spawningArray[i].GetComponent<WorldAlien>();
+            spawningArray[i] = null;
             alienScript.DestroyAlien();
         }
     }
+
 
     public override bool IsInteractable() { return isInteractable; }
     public override bool IsTargetPointVisible() { return isInteractPointVisible; }

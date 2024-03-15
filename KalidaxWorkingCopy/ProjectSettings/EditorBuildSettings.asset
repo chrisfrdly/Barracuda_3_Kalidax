@@ -35,4 +35,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PersonalScenes/AshtonScene_Update.unity
     guid: 9361a22bd0d844f429f3f3f050e80b5a
+  - enabled: 1
+    path: Assets/Scenes/PersonalScenes/SebasScene.unity
+    guid: 09d9307233975dd49ac7009faeab52f0
   m_configObjects: {}

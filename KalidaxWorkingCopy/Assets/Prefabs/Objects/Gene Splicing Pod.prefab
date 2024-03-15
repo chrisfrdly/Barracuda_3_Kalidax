@@ -529,7 +529,8 @@ MonoBehaviour:
   aliensAdded:
   - {fileID: 0}
   - {fileID: 0}
-  sprogPrefabs: []
+  sprogPrefabs:
+  - {fileID: 7484337346399641151, guid: 03cc4febb0d6c5040beca1b72f27be09, type: 3}
   longstriderPrefabs: []
   alienSpawnPoint: {fileID: 1938665853892549602}
 --- !u!1 &7376599304840943977
