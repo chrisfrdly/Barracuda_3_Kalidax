@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-8740800442844138521
+--- !u!114 &-8227899319984742307
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 16ea780a6e7e52e4790b222f05ac24e5, type: 3}
-  m_Name: '[Tier_3] The Legendary2'
+  m_Name: '[Tier_3] The Supera'
   m_EditorClassIdentifier: 
-  _name: The Legendary2
+  _name: The Supera
   _alienTier: 2
-  _alienID: 8
+  _alienID: 10
   alien1: {fileID: 0}
   alien2: {fileID: 0}
   costValue: 0
@@ -24,60 +24,8 @@ MonoBehaviour:
   alienArt:
     idleAnim: {fileID: 0}
     wallkingAnim: {fileID: 0}
-  alienSprite: {fileID: 0}
-  alienTexture: {fileID: 0}
---- !u!114 &-3375198270645254139
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16ea780a6e7e52e4790b222f05ac24e5, type: 3}
-  m_Name: '[Tier_3] w'
-  m_EditorClassIdentifier: 
-  _name: w
-  _alienTier: 2
-  _alienID: 4
-  alien1: {fileID: 0}
-  alien2: {fileID: 0}
-  costValue: 0
-  sellValue: 0
-  minDaysToGrow: 0
-  maxDaysToGrow: 0
-  alienArt:
-    idleAnim: {fileID: 0}
-    wallkingAnim: {fileID: 0}
-  alienSprite: {fileID: 21300000, guid: 7fd3cda14282bb7429b8eeb6c121e5bb, type: 3}
-  alienTexture: {fileID: 2800000, guid: 7fd3cda14282bb7429b8eeb6c121e5bb, type: 3}
---- !u!114 &-2311369166291993069
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16ea780a6e7e52e4790b222f05ac24e5, type: 3}
-  m_Name: '[Tier_4] The Legendary3'
-  m_EditorClassIdentifier: 
-  _name: The Legendary3
-  _alienTier: 3
-  _alienID: 9
-  alien1: {fileID: 0}
-  alien2: {fileID: 0}
-  costValue: 0
-  sellValue: 0
-  minDaysToGrow: 0
-  maxDaysToGrow: 0
-  alienArt:
-    idleAnim: {fileID: 0}
-    wallkingAnim: {fileID: 0}
-  alienSprite: {fileID: 0}
-  alienTexture: {fileID: 0}
+  alienSprite: {fileID: 21300000, guid: dae33700bd23f76409a80bf78fdb8a42, type: 3}
+  alienTexture: {fileID: 2800000, guid: dae33700bd23f76409a80bf78fdb8a42, type: 3}
 --- !u!114 &-1475243430701218012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,7 +90,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 186670bb6c47acc41a667bf475ea57fa, type: 3}
   m_Name: Aliens Container
   m_EditorClassIdentifier: 
-  alienName: The Legendary3
+  alienName: The Legendary
   alienTier: 3
   searchAlien: 
   alienDatabase:
@@ -150,22 +98,16 @@ MonoBehaviour:
     db_SO_Alien: {fileID: -97970078883399077}
   - db_AlienName: '[Tier_1] The cool'
     db_SO_Alien: {fileID: 5280296950761304937}
+  - db_AlienName: '[Tier_1] The Superaa'
+    db_SO_Alien: {fileID: 4445503770323271104}
   - db_AlienName: '[Tier_2] sssssss02aaa'
     db_SO_Alien: {fileID: -1475243430701218012}
-  - db_AlienName: '[Tier_2] a'
-    db_SO_Alien: {fileID: 3418974762204060270}
-  - db_AlienName: '[Tier_3] w'
-    db_SO_Alien: {fileID: -3375198270645254139}
+  - db_AlienName: '[Tier_3] The Supera'
+    db_SO_Alien: {fileID: -8227899319984742307}
   - db_AlienName: '[Tier_4] d'
     db_SO_Alien: {fileID: 761015070144132607}
   - db_AlienName: '[Tier_4] The Legendary'
     db_SO_Alien: {fileID: 5569891902721389971}
-  - db_AlienName: '[Tier_3] The Legendary'
-    db_SO_Alien: {fileID: 6503267901691807323}
-  - db_AlienName: '[Tier_3] The Legendary2'
-    db_SO_Alien: {fileID: -8740800442844138521}
-  - db_AlienName: '[Tier_4] The Legendary3'
-    db_SO_Alien: {fileID: -2311369166291993069}
 --- !u!114 &761015070144132607
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -192,7 +134,7 @@ MonoBehaviour:
     wallkingAnim: {fileID: 0}
   alienSprite: {fileID: 21300000, guid: 13e7e6fe43a8aa049bcd610bbc1f5ff8, type: 3}
   alienTexture: {fileID: 2800000, guid: 13e7e6fe43a8aa049bcd610bbc1f5ff8, type: 3}
---- !u!114 &3418974762204060270
+--- !u!114 &4445503770323271104
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -202,11 +144,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 16ea780a6e7e52e4790b222f05ac24e5, type: 3}
-  m_Name: '[Tier_2] a'
+  m_Name: '[Tier_1] The Superaa'
   m_EditorClassIdentifier: 
-  _name: a
-  _alienTier: 1
-  _alienID: 1
+  _name: The Superaa
+  _alienTier: 0
+  _alienID: 11
   alien1: {fileID: 0}
   alien2: {fileID: 0}
   costValue: 0
@@ -216,8 +158,8 @@ MonoBehaviour:
   alienArt:
     idleAnim: {fileID: 0}
     wallkingAnim: {fileID: 0}
-  alienSprite: {fileID: 21300000, guid: ec03f79379868c642b48ae5ddc821b6d, type: 3}
-  alienTexture: {fileID: 2800000, guid: ec03f79379868c642b48ae5ddc821b6d, type: 3}
+  alienSprite: {fileID: 21300000, guid: 2b37044fd2fb3d84a9a95d2d2741be3a, type: 3}
+  alienTexture: {fileID: 2800000, guid: 2b37044fd2fb3d84a9a95d2d2741be3a, type: 3}
 --- !u!114 &5280296950761304937
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -270,29 +212,3 @@ MonoBehaviour:
     wallkingAnim: {fileID: 0}
   alienSprite: {fileID: 21300000, guid: 08c91a7677e66844281a99aaf6ea36f1, type: 3}
   alienTexture: {fileID: 2800000, guid: 08c91a7677e66844281a99aaf6ea36f1, type: 3}
---- !u!114 &6503267901691807323
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16ea780a6e7e52e4790b222f05ac24e5, type: 3}
-  m_Name: '[Tier_3] The Legendary'
-  m_EditorClassIdentifier: 
-  _name: The Legendary
-  _alienTier: 2
-  _alienID: 7
-  alien1: {fileID: 0}
-  alien2: {fileID: 0}
-  costValue: 0
-  sellValue: 0
-  minDaysToGrow: 0
-  maxDaysToGrow: 0
-  alienArt:
-    idleAnim: {fileID: 0}
-    wallkingAnim: {fileID: 0}
-  alienSprite: {fileID: 0}
-  alienTexture: {fileID: 0}
