@@ -18,14 +18,16 @@ public class InteractableObject_GeneSplicingPod : InteractableObject
 
     [Header("Incubation Pod Buttons")]
     [SerializeField] private Button[] addAlienButton = new Button[2];
+    [SerializeField] private Button spliceButton;
     private int buttonModified;
 
     //aliens that are assigned to the buttons
     [SerializeField] private SO_Alien[] aliensAdded = new SO_Alien[2];
 
     [Header("Alien Prefabs")]
-    public GameObject[] alienPrefabs_Tier2;
-    public GameObject[] alienPrefabs_Tier3;
+    public GameObject[] sprogPrefabs;
+    public GameObject[] longstriderPrefabs;
+    [SerializeField] private Transform alienSpawnPoint;
 
 
     //Properties
@@ -115,14 +117,14 @@ public class InteractableObject_GeneSplicingPod : InteractableObject
         addAlienButton[buttonModified].GetComponentInChildren<TextMeshProUGUI>().text = "";
 
 
-        if (aliensAdded[0] == null && aliensAdded[1] == null)
+        if (aliensAdded[0] == null || aliensAdded[1] == null)
         {
+            spliceButton.gameObject.SetActive(false);
             return;
         }
-
-        if(IsMergePossible(aliensAdded[0], aliensAdded[1]))
+        else
         {
-
+            spliceButton.gameObject.SetActive(true);
         }
     }
 
@@ -133,17 +135,53 @@ public class InteractableObject_GeneSplicingPod : InteractableObject
         return false;
     }
 
-    private GameObject[] AlienArrayToReturn(int tier)
+    public void AttemptGeneSplice()
     {
-        switch(tier)
+        if(IsMergePossible(aliensAdded[0], aliensAdded[1]))
         {
-            case 0:
-                return alienPrefabs_Tier2;
-            case 1:
-                return alienPrefabs_Tier3;
+            GameObject[] alienToSpawnArray = AlienArrayToReturn(aliensAdded[0].m_AlienFamily.ToString());
+            SpawnNewAlien(alienToSpawnArray);
+        }
+        else
+        {
+            Debug.Log("Merge not possible");
+            return;
+        }
+    }
+
+    private GameObject[] AlienArrayToReturn(string familyName)
+    {
+        switch(familyName)
+        {
+            case "Sprogs":
+                return sprogPrefabs;
+            case "LongStriders":
+                return longstriderPrefabs;
+            default:
+                return null;
+        }
+    }
+
+    private void SpawnNewAlien(GameObject[] spawningArray)
+    {
+        int tier = (int)aliensAdded[0].m_AlienTier + 1;
+
+        for(int i = 0; i < spawningArray.Length; i++)
+        {
+            WorldAlien alienScript = spawningArray[i].GetComponent<WorldAlien>();
+            if((int)alienScript.m_AlienContainer.m_AlienTier == tier)
+            {
+                GameObject newAlien = Instantiate(spawningArray[i], alienSpawnPoint.position, Quaternion.identity);
+                
+            }
         }
 
-        return null;
+        //for deleting the aliens afterwards
+        for(int i = 0; i < spawningArray.Length; i++)
+        {
+            WorldAlien alienScript = spawningArray[i].GetComponent<WorldAlien>();
+            alienScript.DestroyAlien();
+        }
     }
 
     public override bool IsInteractable() { return isInteractable; }
