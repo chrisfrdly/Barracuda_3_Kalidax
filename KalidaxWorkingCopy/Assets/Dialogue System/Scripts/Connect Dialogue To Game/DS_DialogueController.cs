@@ -25,25 +25,12 @@ public class DS_DialogueController : MonoBehaviour
     [SerializeField] private RectTransform buttonParentPanel;
     [SerializeField] private Button buttonPrefab;
 
-    private VerticalLayoutGroup layoutGroup;
-    private float spacing;
-    private float topPadding;
-
-    private Vector2 buttonParentPanelSize;
-    private Vector2 buttonPrefabSize;
 
     private void Awake()
     {
         ShowDialogueUI(false);
 
-        //Setting up button parameters
-        layoutGroup = buttonParentPanel.GetComponent<VerticalLayoutGroup>();
-
-        spacing = layoutGroup.spacing;
-        topPadding = layoutGroup.padding.top;
-
-        buttonParentPanelSize = buttonParentPanel.sizeDelta;
-        buttonPrefabSize = buttonPrefab.GetComponent<RectTransform>().sizeDelta;
+       
     }
 
     public void ShowDialogueUI(bool _show)
@@ -64,35 +51,10 @@ public class DS_DialogueController : MonoBehaviour
     //change the image in the UI
     public void SetImage(Sprite _image, DS_DialogueSpriteImageType _dialogueSpriteImageType)
     {
-        leftImageGO.SetActive(false);
-        rightImageGO.SetActive(false);
 
         if (_image == null)
             return;
 
-        if(_dialogueSpriteImageType == DS_DialogueSpriteImageType.Left)
-        {
-            leftImage.sprite = _image;
-            leftImageGO.SetActive(true);
-
-            //if it's an image on the right we want the dialogue text box to be anchored on the right
-            textBoxParent.pivot = new Vector2(1, 0);
-            textBoxParent.anchorMin = new Vector2(1, 0);
-            textBoxParent.anchorMax = new Vector2(1, 0);
-
-            
-        }
-        else
-        {
-            rightImage.sprite = _image;
-            rightImageGO.SetActive(true);
-
-            //if it's an image on the right we want the dialogue text box to be anchored on the left
-            textBoxParent.pivot = new Vector2(0, 0);
-            textBoxParent.anchorMin = new Vector2(0, 0);
-            textBoxParent.anchorMax = new Vector2(0, 0);
-        }
-        textBoxParent.anchoredPosition = Vector2.zero;
     }
 
 
@@ -115,8 +77,7 @@ public class DS_DialogueController : MonoBehaviour
 
         }
 
-        buttonParentPanel.sizeDelta = new Vector2(buttonParentPanelSize.x, 
-                                                  buttonPrefabSize.y * _buttonTexts.Count + spacing * _buttonTexts.Count + (topPadding + spacing));
+        
     }
 
     private void DeleteButtons()
