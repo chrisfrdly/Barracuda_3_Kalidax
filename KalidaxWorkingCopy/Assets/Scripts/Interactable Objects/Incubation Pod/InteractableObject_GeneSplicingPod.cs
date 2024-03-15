@@ -115,10 +115,22 @@ public class InteractableObject_GeneSplicingPod : InteractableObject
         addAlienButton[buttonModified].GetComponentInChildren<TextMeshProUGUI>().text = "";
 
 
-        if (aliensAdded[0] != null && aliensAdded[1] != null)
+        if (aliensAdded[0] == null && aliensAdded[1] == null)
         {
-            
+            return;
         }
+
+        if(IsMergePossible(aliensAdded[0], aliensAdded[1]))
+        {
+
+        }
+    }
+
+    private bool IsMergePossible(SO_Alien alien1, SO_Alien alien2)
+    {
+        if(alien1.m_AlienID == alien2.m_AlienID)
+            return true;
+        return false;
     }
 
     private GameObject[] AlienArrayToReturn(int tier)
