@@ -113,6 +113,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SO_interactableObject: {fileID: 11400000, guid: 240158fe63e954d4987742c9255c4afb, type: 2}
   SO_controlSchemeHUD: {fileID: 11400000, guid: c96593ae77af13148925d72ab4bf9b19, type: 2}
+  tweenTime: 0.5
   interactPromptPanel: {fileID: 7376599305240077197}
   interactButtonSprite: {fileID: 7376599305528637408}
   isInteractable: 1
