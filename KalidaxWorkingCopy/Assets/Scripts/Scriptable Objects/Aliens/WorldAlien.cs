@@ -112,7 +112,7 @@ public class WorldAlien : MonoBehaviour
     public void DestroyAlien()
     {
         aliensInWorldListSO.worldAliens.Remove(alienContainer);
-        //Destroy(gameObject);
+        Destroy(gameObject);
     }
 
 }

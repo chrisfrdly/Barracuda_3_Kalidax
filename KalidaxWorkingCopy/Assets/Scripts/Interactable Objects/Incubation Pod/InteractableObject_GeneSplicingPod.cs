@@ -174,17 +174,16 @@ public class InteractableObject_GeneSplicingPod : InteractableObject
             if((int)alienScript.m_AlienContainer.m_AlienTier == tier)
             {
                 GameObject newAlien = Instantiate(spawningArray[i], alienSpawnPoint.position, Quaternion.identity);
-                Debug.Log(newAlien.name);
-                
             }
         }
 
         //for deleting the aliens afterwards
         for(int i = 0; i < spawningArray.Length; i++)
         {
-            WorldAlien alienScript = spawningArray[i].GetComponent<WorldAlien>();
-            spawningArray[i] = null;
-            alienScript.DestroyAlien();
+            //The reason that we cannot destroy this is because it gets the script of the alien we just spawned.
+
+/*            WorldAlien alienScript = spawningArray[i].GetComponent<WorldAlien>();
+            Debug.Log(alienScript.gameObject.name)*/;
         }
     }
 
