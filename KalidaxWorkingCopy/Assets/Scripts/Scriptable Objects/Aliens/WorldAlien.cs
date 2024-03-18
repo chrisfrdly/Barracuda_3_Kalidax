@@ -12,6 +12,7 @@ public class WorldAlien : MonoBehaviour
     //References
     [SerializeField] private SO_Alien alienContainer;
     [SerializeField] private SO_AliensInWorld aliensInWorldListSO;
+    [SerializeField] private AliensInWorld_Mono objectListScript;
     public GameObject provisionDroneObject;
     private int alienInList; //mainly for OnValidate to remove the previous one no-longer there
 
@@ -29,6 +30,7 @@ public class WorldAlien : MonoBehaviour
     private void Awake()
     {
         provisionDroneObject = FindObjectOfType<InteractableObject_Provisions_Drone>().gameObject;
+        objectListScript = FindObjectOfType<AliensInWorld_Mono>();
         moveSpeed = 0.01f;
         isBeingSold = false;
         sr = GetComponent<SpriteRenderer>();
@@ -37,6 +39,7 @@ public class WorldAlien : MonoBehaviour
 
     private void Start()
     {
+        objectListScript.aliensInWorld_GO.Add(gameObject);
         AddAlienToList();
         UpdateAlienInGame();
     }
@@ -81,8 +84,8 @@ public class WorldAlien : MonoBehaviour
         //Add this alien to the aliens in the world for the Incubation Pod UI
         aliensInWorldListSO.worldAliens.Add(alienContainer);
         alienInList = aliensInWorldListSO.worldAliens.Count - 1;
-
-
+        
+        
     }
 
     //this method gets the allien close to the drone and sells it after
@@ -112,6 +115,7 @@ public class WorldAlien : MonoBehaviour
     public void DestroyAlien()
     {
         aliensInWorldListSO.worldAliens.Remove(alienContainer);
+        objectListScript.aliensInWorld_GO.Remove(gameObject);
         Destroy(gameObject);
     }
 

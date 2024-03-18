@@ -8074,6 +8074,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2212100057303225420, guid: d4e2fdff1944a3746874c83621a1d205, type: 3}
   m_PrefabInstance: {fileID: 1920473796}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1679405648 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2212100057303225423, guid: d4e2fdff1944a3746874c83621a1d205, type: 3}
+  m_PrefabInstance: {fileID: 1920473796}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d3578ab145dfd4409c58193fef3ad03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1691066483 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8075052001810662464, guid: 6fb02f626fe3aa54183d87ea74a7919b, type: 3}
@@ -9116,12 +9127,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventoryScript: {fileID: 11400000, guid: aa44c2eee6c76bd438666289c0763e1a, type: 2}
   alienToSell:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1679405648}
   - {fileID: 8750283390649116279}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   amount: 0
 --- !u!4 &1899897662
 Transform:
