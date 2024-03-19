@@ -23,7 +23,7 @@ public class InteractableObject_ShelterPod : InteractableObject
         UIController.Instance.ShowEndOfDayConfirmationUI();
     }
 
-    public override bool IsInteractable() { return isInteractable; }
+    public override bool CheckIsInteractable() { return isInteractable; }
     public override bool IsTargetPointVisible() { return isInteractPointVisible; }
     public override bool FreezePlayerMovement() { return freezePlayerMovement; }
     public override bool IsRequiredToLookAtTarget() { return isRequiredToLookAtTarget; }

@@ -29,11 +29,13 @@ public class DS_InteractableObject_InteractPointConversation : InteractableObjec
             Debug.LogError("This Interaction Point doesn't have a conversation attached to it! Please attach one for the interaction to work");
             return;
         }
-        
+
+        if (!CheckIsInteractable()) return;
+
         dialogueTalk.StartDialogue(conversation,freezePlayerMovement);
     }
 
-    public override bool IsInteractable() { return isInteractable; }
+    public override bool CheckIsInteractable() { return isInteractable; }
     public override bool IsTargetPointVisible() { return isInteractPointVisible; }
     public override bool FreezePlayerMovement() { return freezePlayerMovement; }
     public override bool IsRequiredToLookAtTarget() { return isRequiredToLookAtTarget; }
