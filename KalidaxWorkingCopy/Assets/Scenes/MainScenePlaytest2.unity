@@ -4539,6 +4539,51 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6fb02f626fe3aa54183d87ea74a7919b, type: 3}
+--- !u!1 &1011764118
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1011764120}
+  - component: {fileID: 1011764119}
+  m_Layer: 0
+  m_Name: Aliens In World Mono
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1011764119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1011764118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95f25cf0cff34be46b370c63d6446ab3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aliensInWorld_GO: []
+--- !u!4 &1011764120
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1011764118}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.5309978, y: -3.2663994, z: -0.08372609}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1014946870
 GameObject:
   m_ObjectHideFlags: 0
@@ -5163,6 +5208,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1120937306}
   - component: {fileID: 1120937305}
+  - component: {fileID: 1120937307}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -5200,6 +5246,18 @@ Transform:
   m_Father: {fileID: 78940944}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1120937307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1120937304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18c3cb7f77677654da447bf631d7afa0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1121505758 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 528095055722476609, guid: 43d50266dfb98a146aefd71188ec2292, type: 3}
@@ -7207,6 +7265,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 672016082745021283, guid: 3d9ff093ddacd9a418d4ebf8fbd38733, type: 3}
+      propertyPath: bgSounds.Array.data[1].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 4b42fd4498f45cf45ab27508680e17b6, type: 3}
+    - target: {fileID: 672016082745021283, guid: 3d9ff093ddacd9a418d4ebf8fbd38733, type: 3}
+      propertyPath: bgSounds.Array.data[1].volume
+      value: 0.717
+      objectReference: {fileID: 0}
     - target: {fileID: 672016082745021293, guid: 3d9ff093ddacd9a418d4ebf8fbd38733, type: 3}
       propertyPath: m_Name
       value: AudioManager
@@ -7994,7 +8060,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4075410610750858666, guid: 601ed4e6eb6ba0046a87845146fdcb1e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -369.34995
+      value: -369.34998
       objectReference: {fileID: 0}
     - target: {fileID: 4075410612173051810, guid: 601ed4e6eb6ba0046a87845146fdcb1e, type: 3}
       propertyPath: m_Name
