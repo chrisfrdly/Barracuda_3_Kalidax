@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 528095055722476614}
   - component: {fileID: 528095055722476615}
   - component: {fileID: 528095055722476608}
+  - component: {fileID: 676034800839282396}
   m_Layer: 0
   m_Name: The Peace [T1]
   m_TagString: Untagged
@@ -48,6 +49,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   alienContainer: {fileID: -2792530730457353341, guid: c5184fa4d3a7c4d40a419acbd5ea6e83, type: 2}
   aliensInWorldListSO: {fileID: 11400000, guid: 72364da5f673e9e40a6c8574ac06e771, type: 2}
+  provisionDroneObject: {fileID: 0}
+  moveSpeed: 0
+  isBeingSold: 0
 --- !u!212 &528095055722476615
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -120,3 +124,15 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &676034800839282396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 528095055722476609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acbeee7ac0197334f8773b88017b9a39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

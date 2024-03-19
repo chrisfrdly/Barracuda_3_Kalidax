@@ -367,7 +367,7 @@ public class InteractableObject_SeedPod : InteractableObject
         incubationLight.color = new Color(0, 0, 1);
     }
 
-    public override bool IsInteractable() { return isInteractable; }
+    public override bool CheckIsInteractable() { return isInteractable; }
     public override bool IsTargetPointVisible() { return isInteractPointVisible; }
     public override bool FreezePlayerMovement() { return freezePlayerMovement; }
     public override bool IsRequiredToLookAtTarget() { return isRequiredToLookAtTarget; }
