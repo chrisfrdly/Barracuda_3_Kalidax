@@ -15,11 +15,11 @@ MonoBehaviour:
   NodeLinkDatas:
   - BaseNodeGUID: a07bcab9-d45a-4b9b-9194-05bd2d286e88
     TargetNodeGUID: 06a951bf-c07a-49d5-aa8c-c0c1b4b734f6
-  - BaseNodeGUID: 06a951bf-c07a-49d5-aa8c-c0c1b4b734f6
+  - BaseNodeGUID: 53224331-831f-4237-a2c2-069e64f71eb7
     TargetNodeGUID: 9ec6059c-0447-4cc0-9738-a93f68196f4a
   - BaseNodeGUID: 06a951bf-c07a-49d5-aa8c-c0c1b4b734f6
     TargetNodeGUID: 53224331-831f-4237-a2c2-069e64f71eb7
-  - BaseNodeGUID: 53224331-831f-4237-a2c2-069e64f71eb7
+  - BaseNodeGUID: 06a951bf-c07a-49d5-aa8c-c0c1b4b734f6
     TargetNodeGUID: 9ec6059c-0447-4cc0-9738-a93f68196f4a
   DialogueNodeDatas:
   - NodeGUID: 06a951bf-c07a-49d5-aa8c-c0c1b4b734f6
