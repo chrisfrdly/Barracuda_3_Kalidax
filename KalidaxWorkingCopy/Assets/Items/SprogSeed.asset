@@ -9,14 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8aba14e7e2285334b8df4e1c76d9c762, type: 3}
-  m_Name: Equip
+  m_Script: {fileID: 11500000, guid: 998f90381012433418968f5f0f4b0212, type: 3}
+  m_Name: SprogSeed
   m_EditorClassIdentifier: 
-  Id: 2
-  uiDisplay: {fileID: 21300000, guid: 65126ef445bddd646876f1c7942a01ab, type: 3}
-  sellValue: 0
-  sellable: 0
+  Id: 0
+  uiDisplay: {fileID: 21300000, guid: dbc863030a0157044adbc4c6516d1c4d, type: 3}
+  sellValue: 2
+  sellable: 1
   isPlaceable: 0
-  type: 1
+  type: 0
   buffs: []
   description: 

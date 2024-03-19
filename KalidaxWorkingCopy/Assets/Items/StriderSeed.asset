@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 998f90381012433418968f5f0f4b0212, type: 3}
-  m_Name: Seed
+  m_Name: StriderSeed
   m_EditorClassIdentifier: 
   Id: 0
-  uiDisplay: {fileID: 21300000, guid: dbc863030a0157044adbc4c6516d1c4d, type: 3}
+  uiDisplay: {fileID: 0}
   sellValue: 2
   sellable: 1
   isPlaceable: 0
