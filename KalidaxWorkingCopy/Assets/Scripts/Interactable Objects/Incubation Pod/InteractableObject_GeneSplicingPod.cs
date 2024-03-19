@@ -201,7 +201,11 @@ public class InteractableObject_GeneSplicingPod : InteractableObject
 
         for(int i = 0; i < allAliensToDestroy.Count; i++)
         {
-            allAliensToDestroy[i].DestroyAlien();
+            if (i < aliensAdded.Length)
+            {
+                allAliensToDestroy[i].DestroyAlien();
+            }
+
         }
 
         aliensAdded = new SO_Alien[2];
