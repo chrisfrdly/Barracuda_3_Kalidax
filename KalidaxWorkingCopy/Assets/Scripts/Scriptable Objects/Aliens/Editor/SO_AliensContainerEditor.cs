@@ -9,6 +9,7 @@ public class SO_AliensContainerEditor : Editor
 {
     private SerializedProperty alienName;
     private SerializedProperty alienTier;
+    private SerializedProperty alienFamily;
     private SerializedProperty alienDatabase;
     private SerializedProperty searchAlien;
 
@@ -33,6 +34,7 @@ public class SO_AliensContainerEditor : Editor
     {
         alienName = serializedObject.FindProperty("alienName");
         alienTier = serializedObject.FindProperty("alienTier");
+        alienFamily = serializedObject.FindProperty("alienFamily");
         alienDatabase = serializedObject.FindProperty("alienDatabase");
         searchAlien = serializedObject.FindProperty("searchAlien");
 
@@ -69,7 +71,7 @@ public class SO_AliensContainerEditor : Editor
         //-- Alien Information --//
         EditorGUILayout.PropertyField(alienName);
         EditorGUILayout.PropertyField(alienTier);
-
+        EditorGUILayout.PropertyField(alienFamily);
         GUILayout.Space(10f);
 
         //loop through the database and see if there's an alien with the same name and tier
@@ -129,7 +131,7 @@ public class SO_AliensContainerEditor : Editor
         GUILayout.Label("Alien Database", header);
 
         //Separator Line
-        Rect separatorLine = new Rect((Screen.width / 2) - (width / 2), 220 + extraYLogWarning, width, 1);
+        Rect separatorLine = new Rect((Screen.width / 2) - (width / 2), 237 + extraYLogWarning, width, 1);
         EditorGUI.DrawRect(separatorLine, Color.white);
 
 
@@ -210,9 +212,11 @@ public class SO_AliensContainerEditor : Editor
 
             EditorGUI.DrawRect(alienTextureRect, Color.black);
 
-            if (a.m_AlienSprite != null)
+            if (a.m_AlienSprite != null && a.m_AlienTexture != null)
             {
-               GUI.DrawTexture(alienTextureRect, a.m_AlienTexture);
+              
+                    GUI.DrawTexture(alienTextureRect, a.m_AlienTexture);
+          
               
             }
           
@@ -331,8 +335,8 @@ public class SO_AliensContainerEditor : Editor
         
         alien.m_Name = _aliens.m_AlienName;
         alien.m_AlienTier = _aliens.m_AlienTier;
-        alien.m_AlienID = _aliens.CurrentAlienID;
-
+        alien.m_AlienID = _aliens.m_CurrentAlienID;
+        alien.m_AlienFamily = _aliens.m_AlienFamily;
 
         alien.Initialize(_aliens.m_ThisContainer);
 
@@ -342,7 +346,7 @@ public class SO_AliensContainerEditor : Editor
         //Making the alien a parent of this object
         AssetDatabase.AddObjectToAsset(alien, _aliens.m_ThisContainer);
 
-        _aliens.CurrentAlienID++;
+        _aliens.m_CurrentAlienID++;
 
 
         EditorUtility.SetDirty(_aliens.m_ThisContainer);
@@ -357,7 +361,7 @@ public class SO_AliensContainerEditor : Editor
     //Delets all the Aliens we created under this asset
     private void DeleteAllAliens(SO_AliensContainer _aliens)
     {
-        _aliens.CurrentAlienID = 0;
+        _aliens.m_CurrentAlienID = 0;
 
         Undo.RecordObject(_aliens, "Deleting Aleins");
         var a = AssetDatabase.LoadAllAssetRepresentationsAtPath(_aliens.m_FilePath);

@@ -48,6 +48,7 @@ public abstract class InteractableObject : MonoBehaviour
 
     //Properties
     public bool InPlayerRange { get => inPlayerRange; }
+    public bool m_IsInteractable { get => isInteractable; set => isInteractable = value; }
 
     /// <summary>
     /// In the "PlayerInteractWithObjects.cs" script, it checks if the player clicked the "interact" button on Update
@@ -89,7 +90,7 @@ public abstract class InteractableObject : MonoBehaviour
     #region Player In Range
     public virtual void OnPlayerEnterRange(float _a)
     {
-
+        if (!CheckIsInteractable()) return;
         inPlayerRange = true;
         ShowUI();
 
@@ -135,7 +136,7 @@ public abstract class InteractableObject : MonoBehaviour
 
     public abstract void OnInteract(GameObject _interactedActor); //Determines what happens when the object is interacted with
     public abstract bool IsTargetPointVisible(); //If we want the UI to appear or not. Like animal Crossing if false, where they can still interact, but no UI
-    public abstract bool IsInteractable(); //In case the user has missions to make them interactable
+    public abstract bool CheckIsInteractable(); //In case the user has missions to make them interactable
     public abstract bool FreezePlayerMovement(); //If we want to allow the player to move or not when in a conversation 
     public abstract bool IsRequiredToLookAtTarget(); //If we want the player to look at the interact point for it to display
                                                      //If true, we must look at it within a certain degrees

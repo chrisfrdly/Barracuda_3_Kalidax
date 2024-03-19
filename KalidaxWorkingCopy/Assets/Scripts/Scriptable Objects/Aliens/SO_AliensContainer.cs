@@ -19,6 +19,7 @@ public class SO_AliensContainer : ScriptableObject
     //have a string field for the name of the alien
     [SerializeField] private string alienName;
     [SerializeField] private AlienTierType alienTier;
+    [SerializeField] private AlienFamilyType alienFamily;
 
     //Create a List of strings so we can visually see the Dictionary contents
     
@@ -31,7 +32,8 @@ public class SO_AliensContainer : ScriptableObject
     public string m_FilePath { get => filePath; }
     public string m_AlienName { get => alienName; }
     public AlienTierType m_AlienTier { get => alienTier; }
-    public int CurrentAlienID { get => currentAlienID; set => currentAlienID = value; }
+    public int m_CurrentAlienID { get => currentAlienID; set => currentAlienID = value; }
+    public AlienFamilyType m_AlienFamily { get => alienFamily; set => alienFamily = value; }
 
 
     //public List<string> m_AliensInDatabase { get => aliensInDatabase; set => aliensInDatabase = value; }

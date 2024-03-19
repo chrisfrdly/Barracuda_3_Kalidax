@@ -13,6 +13,7 @@ public class SO_AlienEditor : Editor
     private SerializedProperty _name;
     private SerializedProperty _alienTier;
     private SerializedProperty _alienID;
+    private SerializedProperty _alienFamily;
 
     private SerializedProperty minDaysToGrow;
     private SerializedProperty maxDaysToGrow;
@@ -30,6 +31,7 @@ public class SO_AlienEditor : Editor
     {
         _name = serializedObject.FindProperty("_name");
         _alienTier = serializedObject.FindProperty("_alienTier");
+        _alienFamily = serializedObject.FindProperty("_alienFamily");
         _alienID = serializedObject.FindProperty("_alienID");
 
         minDaysToGrow = serializedObject.FindProperty("minDaysToGrow");
@@ -134,9 +136,10 @@ public class SO_AlienEditor : Editor
         EditorStyles.label.alignment = TextAnchor.MiddleRight;
         EditorGUILayout.PropertyField(_name, new GUIContent("Name  "));
         EditorGUILayout.PropertyField(_alienTier, new GUIContent("Tier  "));
+        EditorGUILayout.PropertyField(_alienFamily, new GUIContent("Family  "));
         EditorGUILayout.PropertyField(alienSprite, new GUIContent("Sprite  "));
 
-        Rect IDRect = new Rect(Screen.width / 2 - 30, 140, Screen.width / 2, 15);
+        Rect IDRect = new Rect(Screen.width / 2 - 30, 155, Screen.width / 2, 15);
         GUI.Label(IDRect, $"ID    {_alienID.intValue}");
 ;
         EditorStyles.label.alignment = TextAnchor.MiddleLeft;

@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 528095055722476614}
   - component: {fileID: 528095055722476615}
   - component: {fileID: 528095055722476608}
+  - component: {fileID: 5099967187461211368}
+  - component: {fileID: -3104709243973935540}
   m_Layer: 0
   m_Name: The Epic [T1]
   m_TagString: Untagged
@@ -123,3 +125,27 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &5099967187461211368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 528095055722476609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acbeee7ac0197334f8773b88017b9a39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-3104709243973935540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 528095055722476609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acbeee7ac0197334f8773b88017b9a39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
