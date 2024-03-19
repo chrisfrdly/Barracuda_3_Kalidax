@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Seedpod
   - UI
+  - QuotaDisplay
   layers:
   - Default
   - TransparentFX

@@ -14,7 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/EndOfDayScene.unity
     guid: 35a0528ea894ff64d9d5e2332b46f574
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MainScenePlaytest2.unity
     guid: 9b9f7b15ada8a3047b6c63c9f975da9a
   - enabled: 1
@@ -24,7 +24,7 @@ EditorBuildSettings:
     path: Assets/Scenes/MENU/Tutorial.unity
     guid: ee3505354b7dd8542803b934f00feded
   - enabled: 1
-    path: Assets/Scenes/MainScene.unity
+    path: Assets/Scenes/MainScene_FirstIteration.unity
     guid: 1e7e5899eb1f0dc459facde9b7c3f511
   - enabled: 0
     path: Assets/Scenes/PersonalScenes/LucasScene.unity
@@ -32,10 +32,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MENU/MainMenu.unity
     guid: ac8fa9157bf2126458af3fe2bc1fc7ff
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/PersonalScenes/AshtonScene_Update.unity
     guid: 9361a22bd0d844f429f3f3f050e80b5a
   - enabled: 1
     path: Assets/Scenes/PersonalScenes/SebasScene.unity
     guid: 09d9307233975dd49ac7009faeab52f0
+  - enabled: 1
+    path: Assets/Scenes/MainScene_Playtest3.unity
+    guid: 396616bc90f7489438305dfd894dca56
   m_configObjects: {}

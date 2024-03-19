@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SprogSeed
   m_EditorClassIdentifier: 
   Id: 0
-  uiDisplay: {fileID: 21300000, guid: dbc863030a0157044adbc4c6516d1c4d, type: 3}
+  uiDisplay: {fileID: 21300000, guid: 64a1c6f3e7a44254f9674290a91af946, type: 3}
   sellValue: 2
   sellable: 1
   isPlaceable: 0
