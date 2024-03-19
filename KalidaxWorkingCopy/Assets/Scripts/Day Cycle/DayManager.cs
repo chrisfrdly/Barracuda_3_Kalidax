@@ -126,7 +126,6 @@ public class DayManager : MonoBehaviour
         }
     }
 
-
     public int GetCurrentDay()
     {
         return SO_Data_dayCycle.currentDay;

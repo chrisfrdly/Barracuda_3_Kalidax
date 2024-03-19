@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class QuotaManager : MonoBehaviour
 {
@@ -10,10 +11,7 @@ public class QuotaManager : MonoBehaviour
     [SerializeField] private SO_Data_CurrentQuota currentQuotaData;
     [SerializeField] private TextMeshProUGUI quotaDisplayText;
 
-    public delegate void QuotaFailure();
-    public static event QuotaFailure OnQuotaFailure;
-
-    private int lastCheckedDay = -1;  // Track the last day a quota check was performed
+    private int lastCheckedDay = -1; // Track the last day a quota check was performed
 
     private void Awake()
     {
@@ -24,6 +22,48 @@ public class QuotaManager : MonoBehaviour
         }
         Instance = this;
         DontDestroyOnLoad(gameObject);
+
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // Attempt to find the GameObject that contains your quota display text
+        GameObject quotaTextObj = GameObject.FindGameObjectWithTag("QuotaDisplay");
+
+        // Check if the GameObject was found
+        if (quotaTextObj != null)
+        {
+            // Get the TextMeshProUGUI component
+            quotaDisplayText = quotaTextObj.GetComponent<TextMeshProUGUI>();
+
+            // Update the quota display text
+            if (quotaDisplayText != null)
+            {
+                UpdateQuotaDisplay();
+            }
+            else
+            {
+                Debug.LogWarning("QuotaManager: TextMeshProUGUI component for quota display not found.");
+            }
+        }
+        else
+        {
+            Debug.LogWarning("QuotaManager: No GameObject with the 'QuotaDisplay' tag found.");
+        }
+    }
+
+
+    private void OnEnable()
+    {
+        // If there are any events to subscribe to, do it here
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+
+        // Unsubscribe from any events to avoid memory leaks
     }
 
     private void Update()
@@ -48,7 +88,6 @@ public class QuotaManager : MonoBehaviour
 
     private void UpdateQuotaDisplay()
     {
-        // Use dayCycleData.currentDay as the argument for GetQuotaForDay
         int quotaForToday = GetQuotaForDay(dayCycleData.currentDay);
         if (quotaForToday > 0)
         {

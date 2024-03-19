@@ -215,7 +215,7 @@ MonoBehaviour:
   inventory: {fileID: 11400000, guid: aa44c2eee6c76bd438666289c0763e1a, type: 2}
   startPosition_x: -245
   startPosition_y: 95
-  numberOfColumn: 3
+  numberOfColumn: 8
   spaceBetweenItem_x: 60
   spaceBetweenItem_y: 60
 --- !u!1 &4075410610750858667
