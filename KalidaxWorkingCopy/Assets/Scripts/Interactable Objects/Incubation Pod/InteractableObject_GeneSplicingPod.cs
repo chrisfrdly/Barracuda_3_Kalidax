@@ -10,7 +10,9 @@ public class InteractableObject_GeneSplicingPod : InteractableObject
 {
     [Separator()]
     [SerializeField] private SO_AliensInWorld aliens;
+
     [SerializeField] private UIAlienGridList UIalienGridList;
+    private AliensInWorld_Mono aliensListMono;
 
     [Header("Incubation Pod HUD Panel")]
     [SerializeField] private GameObject incubationPodHUDPanel;
@@ -18,14 +20,18 @@ public class InteractableObject_GeneSplicingPod : InteractableObject
 
     [Header("Incubation Pod Buttons")]
     [SerializeField] private Button[] addAlienButton = new Button[2];
+    [SerializeField] private Button spliceButton;
     private int buttonModified;
+    [SerializeField] private Sprite addButtonUISprite;
+
 
     //aliens that are assigned to the buttons
     [SerializeField] private SO_Alien[] aliensAdded = new SO_Alien[2];
 
     [Header("Alien Prefabs")]
-    public GameObject[] alienPrefabs_Tier2;
-    public GameObject[] alienPrefabs_Tier3;
+    public GameObject[] sprogPrefabs;
+    public GameObject[] longstriderPrefabs;
+    [SerializeField] private Transform alienSpawnPoint;
 
 
     //Properties
@@ -43,6 +49,7 @@ public class InteractableObject_GeneSplicingPod : InteractableObject
     {
         base.Awake();
 
+        aliensListMono = FindObjectOfType<AliensInWorld_Mono>();
         SO_interactableObject.clickedCancelButtonEvent.AddListener(CloseInteractionPrompt);
 
         addAlienButton[0].onClick.AddListener(() => ButtonClicked(0));
@@ -86,6 +93,7 @@ public class InteractableObject_GeneSplicingPod : InteractableObject
     private void CloseInteractionPrompt()
     {
         incubationPodHUDPanel.SetActive(false);
+        spliceButton.gameObject.SetActive(false);
 
     }
 
@@ -115,14 +123,14 @@ public class InteractableObject_GeneSplicingPod : InteractableObject
         addAlienButton[buttonModified].GetComponentInChildren<TextMeshProUGUI>().text = "";
 
 
-        if (aliensAdded[0] == null && aliensAdded[1] == null)
+        if (aliensAdded[0] == null || aliensAdded[1] == null)
         {
+            spliceButton.gameObject.SetActive(false);
             return;
         }
-
-        if(IsMergePossible(aliensAdded[0], aliensAdded[1]))
+        else
         {
-
+            spliceButton.gameObject.SetActive(true);
         }
     }
 
@@ -133,20 +141,80 @@ public class InteractableObject_GeneSplicingPod : InteractableObject
         return false;
     }
 
-    private GameObject[] AlienArrayToReturn(int tier)
+    public void AttemptGeneSplice()
     {
-        switch(tier)
-        {
-            case 0:
-                return alienPrefabs_Tier2;
-            case 1:
-                return alienPrefabs_Tier3;
-        }
+        Debug.Log(IsMergePossible(aliensAdded[0], aliensAdded[1]));
 
-        return null;
+        if(IsMergePossible(aliensAdded[0], aliensAdded[1]))
+        {
+            GameObject[] alienToSpawnArray = AlienArrayToReturn(aliensAdded[0].m_AlienFamily.ToString());
+            SpawnNewAlien(alienToSpawnArray);
+        }
+        else
+        {
+            Debug.Log("Merge not possible");
+            return;
+        }
     }
 
-    public override bool CheckIsInteractable() { return isInteractable; }
+    private GameObject[] AlienArrayToReturn(string familyName)
+    {
+        switch(familyName)
+        {
+            case "Sprogs":
+                return sprogPrefabs;
+            case "LongStriders":
+                return longstriderPrefabs;
+            default:
+                return null;
+        }
+    }
+
+    private void SpawnNewAlien(GameObject[] spawningArray)
+    {
+        int tier = (int)aliensAdded[0].m_AlienTier + 1;
+
+        for(int i = 0; i < spawningArray.Length; i++)
+        {
+            WorldAlien alienScript = spawningArray[i].GetComponent<WorldAlien>();
+            if((int)alienScript.m_AlienContainer.m_AlienTier == tier)
+            {
+                GameObject newAlien = Instantiate(spawningArray[i], alienSpawnPoint.position, Quaternion.identity);
+            }
+        }
+
+        List<WorldAlien> allAliensToDestroy = new List<WorldAlien>();
+
+        //for deleting the aliens afterwards
+        for(int i = 0; i < aliensAdded.Length; i++)
+        {
+            for(int j = 0; j < aliensListMono.aliensInWorld_GO.Count; j++)
+            {
+                WorldAlien alienScript = aliensListMono.aliensInWorld_GO[j].GetComponent<WorldAlien>();
+                if(alienScript.m_AlienContainer.m_Name == aliensAdded[i].m_Name)
+                {
+                    allAliensToDestroy.Add(alienScript);
+                }
+            }
+            addAlienButton[i].GetComponent<Image>().sprite = addButtonUISprite;
+        }
+
+        for(int i = 0; i < allAliensToDestroy.Count; i++)
+        {
+            if (i < aliensAdded.Length)
+            {
+                allAliensToDestroy[i].DestroyAlien();
+            }
+
+        }
+
+        aliensAdded = new SO_Alien[2];
+        spliceButton.gameObject.SetActive(false);
+    }
+
+    
+
+    public override bool IsInteractable() { return isInteractable; }
     public override bool IsTargetPointVisible() { return isInteractPointVisible; }
     public override bool FreezePlayerMovement() { return freezePlayerMovement; }
     public override bool IsRequiredToLookAtTarget() { return isRequiredToLookAtTarget; }

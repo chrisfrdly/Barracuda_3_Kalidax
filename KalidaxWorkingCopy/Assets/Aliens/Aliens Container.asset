@@ -77,7 +77,7 @@ MonoBehaviour:
   alienArt:
     idleAnim: {fileID: 0}
     wallkingAnim: {fileID: 0}
-  alienSprite: {fileID: 0}
+  alienSprite: {fileID: 21300000, guid: 7554342c57eee4f4cb4bfa8c1811ddd6, type: 3}
   alienTexture: {fileID: 0}
 --- !u!114 &7142501719165922696
 MonoBehaviour:
