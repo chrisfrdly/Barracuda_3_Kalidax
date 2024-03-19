@@ -143,7 +143,6 @@ public class InteractableObject_GeneSplicingPod : InteractableObject
 
     public void AttemptGeneSplice()
     {
-        Debug.Log(IsMergePossible(aliensAdded[0], aliensAdded[1]));
 
         if(IsMergePossible(aliensAdded[0], aliensAdded[1]))
         {
