@@ -67,19 +67,42 @@ public class DayManager : MonoBehaviour
         SO_Data_dayCycle.grassTilesList = new bool[grassTiles.Length];
 
         RandomizeGrassRegrowth();
-        PlayerWallet.instance.PutValueInWallet(PlayerWallet.instance.amountToPutInWallet);
 
+        if (!DeductQuota()) return;
+        
+        PlayerWallet.Instance.PutValueInWallet(PlayerWallet.Instance.amountToPutInWallet, "End of Day");
+
+        //Saving cut data into the scriptable object
         //Saving cut data into the scriptable object
         for (int i = 0; i < SO_Data_dayCycle.grassTilesList.Length; i++)
         {
             SO_Data_dayCycle.grassTilesList[i] = grassTiles[i].m_IsCut;
         }
 
-
+        
         SceneManager.LoadScene("EndOfDayScene");
     }
 
-
+    private bool DeductQuota()
+    {
+        int currentDay = GetCurrentDay();
+        int quotaForToday = QuotaManager.Instance.GetQuotaForDay(currentDay -1);
+        Debug.Log("Day: " + currentDay + " " + QuotaManager.Instance.GetQuotaForDay(currentDay -1));
+        if (PlayerWallet.Instance.walletAmount >= quotaForToday)
+        {
+            // Deduct quota from player's wallet because they can afford it
+            PlayerWallet.Instance.SubtractValue(quotaForToday, "End of Day Quota");
+            Debug.Log($"Quota of {quotaForToday} has been deducted. New wallet amount: {PlayerWallet.Instance.walletAmount}");
+            return true;
+        }
+        else
+        {
+            // Handle the scenario when the player cannot meet the quota
+            Debug.Log("Player cannot afford the end-of-day quota. Game Over.");
+            SceneManager.LoadScene("MainMenu");
+            return false;
+        }
+    }
     private void RandomizeGrassRegrowth()
     {
    
@@ -107,10 +130,8 @@ public class DayManager : MonoBehaviour
         }
     }
 
-
     public int GetCurrentDay()
     {
         return SO_Data_dayCycle.currentDay;
     }
-
 }
