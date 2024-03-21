@@ -184,6 +184,8 @@ public class InteractableObject_SeedPod : InteractableObject
 
     private void OpenInteractionPanel()
     {
+        AudioManager.instance.Play("Positive Interact");
+
         if (PlayerInputHandler.Instance.GetCurrentControlScheme() == "Controller")
         {
             PlayerInputHandler.Instance.SwitchActionMap(true);
@@ -239,6 +241,8 @@ public class InteractableObject_SeedPod : InteractableObject
         {
             if (inventory.container.items[i].id > -1 && inventory.container.items[i].amount > 0)
             {
+                AudioManager.instance.Play("Insert 1");
+
                 inventory.AddItem(inventory.container.items[i].item, -1);
                 if(inventory.container.items[i].amount <= 0)
                 {
@@ -299,7 +303,6 @@ public class InteractableObject_SeedPod : InteractableObject
         switch(incubationState)
         {
             case IncubationState.OBJ_AddSeed:
-                
                 ShowAddSeedUI();
                 break;
 
