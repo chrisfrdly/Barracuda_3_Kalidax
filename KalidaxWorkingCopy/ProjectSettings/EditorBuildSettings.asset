@@ -23,19 +23,19 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MENU/Tutorial.unity
     guid: ee3505354b7dd8542803b934f00feded
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MainScene_FirstIteration.unity
     guid: 1e7e5899eb1f0dc459facde9b7c3f511
   - enabled: 0
-    path: Assets/Scenes/PersonalScenes/LucasScene.unity
-    guid: dc336a5fb630e16418a8103044bda1a7
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/MENU/MainMenu.unity
     guid: ac8fa9157bf2126458af3fe2bc1fc7ff
   - enabled: 0
-    path: Assets/Scenes/PersonalScenes/AshtonScene_Update.unity
-    guid: 9361a22bd0d844f429f3f3f050e80b5a
-  - enabled: 1
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
     path: Assets/Scenes/PersonalScenes/SebasScene.unity
     guid: 09d9307233975dd49ac7009faeab52f0
   - enabled: 1
