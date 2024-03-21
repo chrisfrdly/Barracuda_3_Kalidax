@@ -58,7 +58,6 @@ public class WalletUIUpdater : MonoBehaviour
         if (walletAmountText != null)
         {
             walletAmountText.text = "Wallet: $" + PlayerWallet.Instance.walletAmount.ToString();
-            Debug.Log("Updating wallet UI to " + PlayerWallet.Instance.walletAmount);
         }
     }
 }
