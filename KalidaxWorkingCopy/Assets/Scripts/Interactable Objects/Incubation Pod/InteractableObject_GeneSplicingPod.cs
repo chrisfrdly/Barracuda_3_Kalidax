@@ -178,7 +178,7 @@ public class InteractableObject_GeneSplicingPod : InteractableObject
             WorldAlien alienScript = spawningArray[i].GetComponent<WorldAlien>();
             if((int)alienScript.m_AlienContainer.m_AlienTier == tier)
             {
-                GameObject newAlien = Instantiate(spawningArray[i], alienSpawnPoint.position, Quaternion.identity);
+                GameObject newAlien = Instantiate(spawningArray[i], alienSpawnPoint.position, Quaternion.identity, AliensInWorld_Mono.instance.gameObject.transform);
             }
         }
 
