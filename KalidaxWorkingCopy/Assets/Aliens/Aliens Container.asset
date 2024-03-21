@@ -19,7 +19,7 @@ MonoBehaviour:
   alien1: {fileID: 0}
   alien2: {fileID: 0}
   costValue: 0
-  sellValue: 0
+  sellValue: 50
   minDaysToGrow: 0
   maxDaysToGrow: 0
   alienArt:
