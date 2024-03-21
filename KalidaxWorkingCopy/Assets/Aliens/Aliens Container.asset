@@ -77,8 +77,8 @@ MonoBehaviour:
   alienArt:
     idleAnim: {fileID: 0}
     wallkingAnim: {fileID: 0}
-  alienSprite: {fileID: 21300000, guid: 7554342c57eee4f4cb4bfa8c1811ddd6, type: 3}
-  alienTexture: {fileID: 0}
+  alienSprite: {fileID: 21300000, guid: d439ee1a9647cda43859dd55d5aac667, type: 3}
+  alienTexture: {fileID: 2800000, guid: d439ee1a9647cda43859dd55d5aac667, type: 3}
 --- !u!114 &7142501719165922696
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131,5 +131,5 @@ MonoBehaviour:
   alienArt:
     idleAnim: {fileID: 0}
     wallkingAnim: {fileID: 0}
-  alienSprite: {fileID: 0}
-  alienTexture: {fileID: 0}
+  alienSprite: {fileID: 21300000, guid: ee84edaa93e0e564cbf920c6df3de68b, type: 3}
+  alienTexture: {fileID: 2800000, guid: ee84edaa93e0e564cbf920c6df3de68b, type: 3}
