@@ -15,7 +15,7 @@ public enum IncubationState
 
 public class InteractableObject_SeedPod : InteractableObject
 {
-    
+
     private IncubationState incubationState = IncubationState.OBJ_NotPurchased;
 
     [Separator()]
@@ -35,13 +35,14 @@ public class InteractableObject_SeedPod : InteractableObject
     [SerializeField] private Image seedImage;
     [SerializeField] private SpriteRenderer incubationLight;
     [SerializeField] private Vector3 spawnLocation;
+    public SO_Inventory inventory;
 
     [Header("Incubation Parameters")]
     [SerializeField] private int daysToIncubate = 7;
     private int daysLeft;
 
     [Header("Prefab Instantiation")]
-    [SerializeField] private List<GameObject> T1alienPrefabs; 
+    [SerializeField] private List<GameObject> T1alienPrefabs;
 
     [SerializeField] private Color incubationColour_AddSeed;
     [SerializeField] private Color incubationColour_Incubating;
@@ -68,7 +69,7 @@ public class InteractableObject_SeedPod : InteractableObject
         base.Awake();
         SO_interactableObject.clickedCancelButtonEvent.AddListener(CloseInteractionPrompt);
         daysLeft = daysToIncubate;
-        
+
 
     }
     private void Start()
@@ -79,7 +80,7 @@ public class InteractableObject_SeedPod : InteractableObject
     private void UpdateData()
     {
         //Now update the pod with the new Day's Data
-        
+
         if (dataDayCycle.incubationPodData[thisIndex].index == -1)
         {
             //add this object to that list if it's not already in the list
@@ -88,13 +89,13 @@ public class InteractableObject_SeedPod : InteractableObject
 
             //set the first incubation pod to already purchased
             bool purchased = dataDayCycle.incubationPodPurchased[thisIndex];
-    
+
             if (purchased)
             {
                 dataDayCycle.incubationPodData[thisIndex].incubationState = IncubationState.OBJ_AddSeed;
                 incubationState = IncubationState.OBJ_AddSeed;
             }
-               
+
 
             dataDayCycle.incubationPodData[thisIndex].incubationState = incubationState;
             dataDayCycle.incubationPodData[thisIndex].daysLeft = daysLeft;
@@ -103,7 +104,7 @@ public class InteractableObject_SeedPod : InteractableObject
         //If we already have this object's data stored, retrieve the data
         else
         {
-       
+
             incubationState = dataDayCycle.incubationPodData[thisIndex].incubationState;
 
 
@@ -183,7 +184,7 @@ public class InteractableObject_SeedPod : InteractableObject
 
     private void OpenInteractionPanel()
     {
-        if(PlayerInputHandler.Instance.GetCurrentControlScheme() == "Controller")
+        if (PlayerInputHandler.Instance.GetCurrentControlScheme() == "Controller")
         {
             PlayerInputHandler.Instance.SwitchActionMap(true);
             addSeedButton.Select();
@@ -206,6 +207,48 @@ public class InteractableObject_SeedPod : InteractableObject
 
     }
 
+
+    public void HandleAllChecks()
+    {
+        if(incubationState == IncubationState.OBJ_AddSeed)
+        {
+            Incubate();
+        }
+        else
+        {
+            ChangeState();
+        }
+    }
+
+    public void Incubate()
+    {
+        if(CheckIfSeedInInventory())
+        {
+            ChangeState();
+        }
+        else
+        {
+            return;
+        }
+    }
+
+    //this is a temporary fix for our issue
+    private bool CheckIfSeedInInventory()
+    {
+        for (int i = 0; i < inventory.container.items.Length; i++)
+        {
+            if (inventory.container.items[i].id > -1 && inventory.container.items[i].amount > 0)
+            {
+                inventory.AddItem(inventory.container.items[i].item, -1);
+                if(inventory.container.items[i].amount <= 0)
+                {
+                    inventory.RemoveItem(inventory.container.items[i].item);
+                }
+                return true;
+            }
+        }
+        return false;
+    }
     //This function is called on the button in the inspector
     public void ChangeState()
     {
@@ -224,11 +267,15 @@ public class InteractableObject_SeedPod : InteractableObject
         incubationState = (IncubationState)i;
       
         DisplayIncubationHUDContents();
-        if (i == 0) daysLeft = daysToIncubate;
+        if (i == 0)
+        {
+            daysLeft = daysToIncubate;
+            incubationState = IncubationState.OBJ_AddSeed;
+        } 
 
 
         //Update the data
-        Debug.Log("Updating Data");
+        Debug.Log(i);
         dataDayCycle.incubationPodData[thisIndex].incubationState = incubationState;
         dataDayCycle.incubationPodData[thisIndex].daysLeft = daysLeft;
         
