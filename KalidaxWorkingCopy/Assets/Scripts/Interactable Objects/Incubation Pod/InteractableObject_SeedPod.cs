@@ -289,7 +289,7 @@ public class InteractableObject_SeedPod : InteractableObject
             GameObject prefabToInstantiate = T1alienPrefabs[index]; // Get the prefab at the random index
 
             // Instantiate the prefab at a desired location and rotation
-            Instantiate(prefabToInstantiate, spawnLocation, Quaternion.identity);
+            Instantiate(prefabToInstantiate, spawnLocation, Quaternion.identity, AliensInWorld_Mono.instance.gameObject.transform);
         }
     }
 
