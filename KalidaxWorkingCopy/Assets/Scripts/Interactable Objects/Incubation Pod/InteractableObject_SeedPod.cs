@@ -29,6 +29,7 @@ public class InteractableObject_SeedPod : InteractableObject
     [Header("Button")]
     [SerializeField] private Button addSeedButton;
     [SerializeField] private TextMeshProUGUI buttonText;
+    [SerializeField] private GameObject needSeedPrefab;
 
     [Header("Other Contents")]
     [SerializeField] private TextMeshProUGUI daysRemainingText;
@@ -230,6 +231,8 @@ public class InteractableObject_SeedPod : InteractableObject
         }
         else
         {
+            AudioManager.instance.Play("Negative Interact");
+            Instantiate(needSeedPrefab, new Vector2(transform.position.x, transform.position.y + 2), Quaternion.identity, incubationPodHUDPanel.transform);
             return;
         }
     }
@@ -279,7 +282,6 @@ public class InteractableObject_SeedPod : InteractableObject
 
 
         //Update the data
-        Debug.Log(i);
         dataDayCycle.incubationPodData[thisIndex].incubationState = incubationState;
         dataDayCycle.incubationPodData[thisIndex].daysLeft = daysLeft;
         

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b1fe0ef9c96c36a4b9d18930c67917ca, type: 3}
-  m_Name: My Conversation
+  m_Name: Srpog Conversation
   m_EditorClassIdentifier: 
   NodeLinkDatas:
   - BaseNodeGUID: a07bcab9-d45a-4b9b-9194-05bd2d286e88
@@ -42,7 +42,7 @@ MonoBehaviour:
     DialogueSpriteImageType: 0
     AudioClips:
     - LanguageType: 0
-      LanguageGenericType: {fileID: 0}
+      LanguageGenericType: {fileID: 8300000, guid: fc6e86223a932714e8782ac4c92e3031, type: 3}
     Name: 'SPROG: '
   EndNodeDatas:
   - NodeGUID: b5a356e9-ad44-42c3-8637-effffcebdfae

@@ -11,6 +11,7 @@ public class UIController : MonoBehaviour
     /// holds the necessary information for the current UI being displayed for any HUD
     /// </summary>
     [Header("Event Sender")]
+    [SerializeField] private SO_AliensInWorld aliensInWorld; //need to send event that new scene was loaded
     [SerializeField] private SO_InteractableObject SO_interactObject;
     public static UIController Instance;
 
@@ -36,7 +37,7 @@ public class UIController : MonoBehaviour
         yesButton.onClick.AddListener(() => ConfirmedDayReset());
         noButton.onClick.AddListener(() => CancelDayReset());
         SO_interactObject.clickedCancelButtonEvent.AddListener(CancelButtonPressed);
-
+        aliensInWorld.NewSceneLoadedEventSend();
 
     }
 
@@ -62,7 +63,7 @@ public class UIController : MonoBehaviour
     private void ConfirmedDayReset()
     {
         //Now the Day Manager class will handle switching to the new day!
-
+        aliensInWorld.SceneExittedEventSend();
         DayManager.Instance.NewDay();
     }
 

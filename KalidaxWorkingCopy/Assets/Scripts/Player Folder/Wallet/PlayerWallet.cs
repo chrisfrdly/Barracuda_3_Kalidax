@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class PlayerWallet : MonoBehaviour
 {
+    [SerializeField] private SO_AliensInWorld sceneEvents; //onscene loaded we want to set the amount put in wallet to 0
+
     private static PlayerWallet _instance;
     public int amountToPutInWallet; // Used to accumulate daily earnings
     public int walletAmount;
@@ -23,6 +25,7 @@ public class PlayerWallet : MonoBehaviour
 
     private void Awake()
     {
+        sceneEvents.newSceneLoadedEvent.AddListener(ResetWalletAmountToAdd);
         if (_instance == null)
         {
             _instance = this;
@@ -34,8 +37,14 @@ public class PlayerWallet : MonoBehaviour
             Debug.Log("[PlayerWallet] Duplicate instance detected, destroying this one.", this);
             Destroy(gameObject);
         }
+
+
     }
 
+    void ResetWalletAmountToAdd()
+    {
+        amountToPutInWallet = 0;
+    }
 
     // Call this method to add earnings throughout the day
     public void AddToAmountToPutInWallet(int amount)
@@ -54,6 +63,7 @@ public class PlayerWallet : MonoBehaviour
     public void PutValueInWallet(int amount, string reason)
     {
         walletAmount += amount;
+        
         Debug.Log($"Adding {amount} to wallet due to: {reason}. New Total: {walletAmount}");
         OnWalletAmountChanged?.Invoke();
     }
@@ -61,6 +71,7 @@ public class PlayerWallet : MonoBehaviour
     public void SubtractValue(int amount, string reason)
     {
         walletAmount -= amount;
+        
         Debug.Log($"Subtracting {amount} from wallet due to: {reason}. New Total: {walletAmount}");
         OnWalletAmountChanged?.Invoke();
     }

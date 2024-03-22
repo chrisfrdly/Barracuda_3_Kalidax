@@ -140,7 +140,7 @@ public class PlayerInteractWithObjects : MonoBehaviour
 
        
         //Check to see if we're already showing the UI and if not, then show it
-        if (closestIO != null && !closestIO.InPlayerRange && closestIO.CheckIsInteractable())
+        if (closestIO != null && !closestIO.m_InPlayerRange && closestIO.CheckIsInteractable())
         {
             closestIO.OnPlayerEnterRange(0);
         }

@@ -73,15 +73,17 @@ public class UIAlienGridList : MonoBehaviour
 
 
             //Check to see if this alien is selected already. If so, then colour it darker
+            //Check to see the Game Object
             SO_Alien worldAlien = aliensInWorldSO.worldAliens[i].m_ThisAlien;
 
-            for(int j = 0; j < io.m_AliensAdded.Length; j++)
+            if (i > 1) continue;
+            if (io.m_AliensAdded[i] == worldAlien && io.m_AddAlienColour[i] == true)
             {
-                if (io.m_AliensAdded[j] == worldAlien)
-                {
-                    buttonImg.color = new Color(0.4f, 0.4f, 0.4f);
-                }
+                buttonImg.color = new Color(0.4f, 0.4f, 0.4f);
             }
+           
+           
+            
 
         }
     }

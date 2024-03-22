@@ -31,10 +31,10 @@ public class WorldAlien : MonoBehaviour
     {
         provisionDroneObject = FindObjectOfType<InteractableObject_Provisions_Drone>().gameObject;
         objectListScript = FindObjectOfType<AliensInWorld_Mono>();
-        moveSpeed = 0.01f;
         isBeingSold = false;
         sr = GetComponent<SpriteRenderer>();
         a = GetComponent<Animator>();
+        aliensInWorldListSO.newSceneLoadedEvent.AddListener(InitializeAlien);
     }
 
     private void Start()
@@ -43,7 +43,11 @@ public class WorldAlien : MonoBehaviour
         AddAlienToList();
         UpdateAlienInGame();
     }
-
+    private void InitializeAlien()
+    {
+        provisionDroneObject = FindObjectOfType<InteractableObject_Provisions_Drone>().gameObject;
+        objectListScript = FindObjectOfType<AliensInWorld_Mono>();
+    }
     private void Update()
     {
         if (isBeingSold)
@@ -91,7 +95,7 @@ public class WorldAlien : MonoBehaviour
     //this method gets the allien close to the drone and sells it after
     private void MoveToProvisionsDrone()
     {
-        transform.position = Vector3.MoveTowards(transform.position, provisionDroneObject.transform.position, moveSpeed);
+        transform.position = Vector3.MoveTowards(transform.position, provisionDroneObject.transform.position, moveSpeed * Time.deltaTime);
 
         if(Vector3.Distance(provisionDroneObject.transform.position, transform.position) < distanceToDrone)
         {
@@ -102,6 +106,7 @@ public class WorldAlien : MonoBehaviour
     private void SellAlien()
     {
         PlayerWallet.Instance.amountToPutInWallet += alienContainer.sellValue;
+        Debug.Log("Is Being Sold");
         DestroyAlien();
     }
 

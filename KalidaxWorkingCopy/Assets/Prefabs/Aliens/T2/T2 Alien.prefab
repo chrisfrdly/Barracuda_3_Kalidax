@@ -28,7 +28,7 @@ RectTransform:
   m_GameObject: {fileID: 4076109242418597160}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.001192529, y: 0.0019719128, z: 0.0029877464}
+  m_LocalScale: {x: 0.00085772155, y: 0.0014182902, z: 0.0021489242}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3245513919957918262}
@@ -37,7 +37,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -0.13, y: 0.95}
   m_SizeDelta: {x: 1146, y: 645}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &1329079724170710903
@@ -59,7 +59,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 12
   m_TargetDisplay: 0
 --- !u!114 &375459144894168065
 MonoBehaviour:
@@ -112,7 +112,6 @@ GameObject:
   - component: {fileID: 2911852416777761243}
   - component: {fileID: 8870371291039532927}
   - component: {fileID: 3093806359954628410}
-  - component: {fileID: 5667083843182854828}
   m_Layer: 6
   m_Name: Interact Button Image
   m_TagString: Untagged
@@ -129,16 +128,16 @@ RectTransform:
   m_GameObject: {fileID: 4690203489471285129}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 8.192802, y: 4.7123, z: 4.712299}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3245513919957918262}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -0.000039458275}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8870371291039532927
 CanvasRenderer:
@@ -178,26 +177,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!95 &5667083843182854828
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4690203489471285129}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 5903f69d39a13ba4799a608cbdd6f9eb, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &7484337346399641151
 GameObject:
   m_ObjectHideFlags: 0
@@ -208,12 +187,12 @@ GameObject:
   m_Component:
   - component: {fileID: 2212100057303225420}
   - component: {fileID: 2212100057303225423}
+  - component: {fileID: -6199190337953149337}
   - component: {fileID: 2212100057303225415}
   - component: {fileID: 2212100057303225414}
   - component: {fileID: 2212100057303225413}
   - component: {fileID: 2212100057303225412}
   - component: {fileID: 2212100057303225410}
-  - component: {fileID: -6199190337953149337}
   m_Layer: 6
   m_Name: T2 Alien
   m_TagString: Untagged
@@ -253,8 +232,21 @@ MonoBehaviour:
   aliensInWorldListSO: {fileID: 11400000, guid: 72364da5f673e9e40a6c8574ac06e771, type: 2}
   objectListScript: {fileID: 0}
   provisionDroneObject: {fileID: 0}
-  moveSpeed: 0
+  moveSpeed: 2.61
   isBeingSold: 0
+--- !u!114 &-6199190337953149337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7484337346399641151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acbeee7ac0197334f8773b88017b9a39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alienInWorld: {fileID: 11400000, guid: 72364da5f673e9e40a6c8574ac06e771, type: 2}
 --- !u!114 &2212100057303225415
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -272,11 +264,12 @@ MonoBehaviour:
   tweenTime: 0.2
   interactPromptPanel: {fileID: 8188042966839912650}
   interactButtonSprite: {fileID: 3093806359954628410}
+  isTalkingTo: 0
   isInteractable: 1
   isInteractPointVisible: 1
   isRequiredToLookAtTarget: 0
   freezePlayerMovement: 0
-  conversation: {fileID: 11400000, guid: 7a562d8cbea99154c8a4d8c93d5fb886, type: 2}
+  conversation: {fileID: 11400000, guid: 87d229a586b27f049a52bbbcb9fc5293, type: 2}
 --- !u!212 &2212100057303225414
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -374,10 +367,10 @@ AudioSource:
   m_GameObject: {fileID: 7484337346399641151}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 4278654887805117937, guid: 2c6c62f5feb37ea44b1b9cdac92f88a7, type: 2}
+  m_audioClip: {fileID: 8300000, guid: e992965b84b131643b804d8af4951aff, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.95
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -461,18 +454,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &-6199190337953149337
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7484337346399641151}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: acbeee7ac0197334f8773b88017b9a39, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &8188042966839912650
 GameObject:
   m_ObjectHideFlags: 0

@@ -87,7 +87,7 @@ public class DayManager : MonoBehaviour
     {
         int currentDay = GetCurrentDay();
         int quotaForToday = QuotaManager.Instance.GetQuotaForDay(currentDay -1);
-        Debug.Log("Day: " + currentDay + " " + QuotaManager.Instance.GetQuotaForDay(currentDay -1));
+        //Debug.Log("Day: " + currentDay + " " + QuotaManager.Instance.GetQuotaForDay(currentDay -1));
         if (PlayerWallet.Instance.walletAmount >= quotaForToday)
         {
             // Deduct quota from player's wallet because they can afford it

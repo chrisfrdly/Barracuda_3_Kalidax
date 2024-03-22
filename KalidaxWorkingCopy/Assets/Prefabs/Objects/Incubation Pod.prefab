@@ -89,6 +89,7 @@ MonoBehaviour:
   incubationPodHUDPanel: {fileID: 7376599304840943977}
   addSeedButton: {fileID: 7376599304987843840}
   buttonText: {fileID: 7376599305193620953}
+  needSeedPrefab: {fileID: 374158101537632099, guid: 794f4fdfa27fc5347bb371c9a317eb9f, type: 3}
   daysRemainingText: {fileID: 7376599305794949624}
   seedImage: {fileID: 7376599304557431232}
   incubationLight: {fileID: 4866254346615901721}

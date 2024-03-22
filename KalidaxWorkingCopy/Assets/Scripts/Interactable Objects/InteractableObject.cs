@@ -22,6 +22,9 @@ public abstract class InteractableObject : MonoBehaviour
     [SerializeField] protected float tweenTime = 0.5f;
     [SerializeField] private GameObject interactPromptPanel; //The "Click E" button
     [SerializeField] private Image interactButtonSprite;
+    [SerializeField] private bool isTalkingTo = false;
+
+
     protected GameObject interactedActor; //the object that interacted with this interact point
 
     [Separator()]
@@ -44,10 +47,11 @@ public abstract class InteractableObject : MonoBehaviour
 
     private bool inPlayerRange; //Keeps track if the player is in range or not
 
+    public bool m_IsTalkingTo { get => isTalkingTo; set => isTalkingTo = value; }
 
 
     //Properties
-    public bool InPlayerRange { get => inPlayerRange; }
+    public bool m_InPlayerRange { get => inPlayerRange; set => inPlayerRange = value; }
     public bool m_IsInteractable { get => isInteractable; set => isInteractable = value; }
 
     /// <summary>
@@ -99,13 +103,13 @@ public abstract class InteractableObject : MonoBehaviour
     private void ShowUI()
     {
         if (!IsTargetPointVisible()) return;
-
+        LeanTween.scale(interactButtonSprite.rectTransform, Vector3.zero, 0);
         //The UI is only shown if the child class declares the "IsTargetPointVisible" bool method true.
         interactPromptPanel.SetActive(true);
 
         //Tween animation
-
-        LeanTween.scale(interactPromptPanel, Vector3.one, tweenTime);
+        
+        LeanTween.scale(interactButtonSprite.rectTransform, Vector3.one, tweenTime);
 
     }
 
@@ -115,12 +119,15 @@ public abstract class InteractableObject : MonoBehaviour
     #region Player Out of Range
     public virtual void OnPlayerExitRange()
     {
+
         inPlayerRange = false;
+        isTalkingTo = false;
+
         UIController.Instance.HideCurrentUI();
         if (IsTargetPointVisible())
         {
             //Play Animation
-            LeanTween.scale(interactPromptPanel, Vector3.zero, tweenTime).setOnComplete(HideUI);
+            LeanTween.scale(interactButtonSprite.rectTransform, Vector3.zero, tweenTime).setOnComplete(HideUI);
         }
     }
 

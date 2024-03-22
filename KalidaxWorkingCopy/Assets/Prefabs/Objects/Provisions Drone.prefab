@@ -305,6 +305,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SO_interactableObject: {fileID: 11400000, guid: 240158fe63e954d4987742c9255c4afb, type: 2}
   SO_controlSchemeHUD: {fileID: 11400000, guid: c96593ae77af13148925d72ab4bf9b19, type: 2}
+  tweenTime: 0.5
   interactPromptPanel: {fileID: 5823475596694514845}
   interactButtonSprite: {fileID: 5823475594703599856}
   isInteractable: 1
@@ -315,6 +316,7 @@ MonoBehaviour:
   sellButton: {fileID: 5823475596309172752}
   buttonText: {fileID: 5823475596649171657}
   itemImage: {fileID: 0}
+  needSeedText: {fileID: 374158101537632099, guid: 794f4fdfa27fc5347bb371c9a317eb9f, type: 3}
   inventory: {fileID: 11400000, guid: aa44c2eee6c76bd438666289c0763e1a, type: 2}
   sellAmount: 0
 --- !u!1 &5823475596028253817
@@ -789,8 +791,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
