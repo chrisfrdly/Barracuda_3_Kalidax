@@ -25,7 +25,7 @@ public class PlayerProgressUI : MonoBehaviour
     {
         stateMessages[ProgressState.None] = "Let's Collect a seed, go over to the grass on the left side of the map";
         stateMessages[ProgressState.SeedCollected] = "Good work on those fields! You should have one pod functional, Place the seed in the pod, wait for incubation.";
-        stateMessages[ProgressState.SeedPlaced] = "Wait for incubation to complete. Should take 7 days, pass some time in the shelter pod";
+        stateMessages[ProgressState.SeedPlaced] = "Wait for incubation to complete. Should take 2 days, pass some time in the shelter pod";
         stateMessages[ProgressState.Incubating] = "It's still got some time in the oven, in the meantime; you can either farm or keep waiting. Don't forget to get some rest in the pod.";
         stateMessages[ProgressState.IncubationComplete] = "Take the seed out of the pod! Let's see what you've accomplished.";
     }

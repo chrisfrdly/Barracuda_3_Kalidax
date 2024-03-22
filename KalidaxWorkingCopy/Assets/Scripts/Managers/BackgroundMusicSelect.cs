@@ -27,7 +27,8 @@ public class BackgroundMusicSelect : MonoBehaviour
         else
         {
             //Play Background Music
-            audioManager[0].BgPlay(backgroundMusicSelector);
+            audioManager[0].BgPlayOnAwake(backgroundMusicSelector, 0.4f);
+
         }
 
         
@@ -36,6 +37,7 @@ public class BackgroundMusicSelect : MonoBehaviour
     private void TryFindingAgain()
     {
         AudioManager audioManager = FindObjectOfType<AudioManager>();
-        audioManager.BgPlay(backgroundMusicSelector);
+        audioManager.BgPlayOnAwake(backgroundMusicSelector, 0.4f);
+
     }
 }

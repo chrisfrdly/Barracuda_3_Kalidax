@@ -19,7 +19,7 @@ public class SellAlienEvent : MonoBehaviour
     }
     private void Start()
     {
-        //InitializeAlienSelling();
+        InitializeAlienSelling();
     }
 
     private void OnDisable()
