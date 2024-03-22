@@ -65,10 +65,11 @@ public class SpriteOutlineGenerator : MonoBehaviour
             
             
         }
-      
+
         //now tell Unity to save the prefab once complete
+#if UNITY_EDITOR
         EditorUtility.SetDirty(objectToOutline.gameObject);
-       
+#endif
     }
 
 }
