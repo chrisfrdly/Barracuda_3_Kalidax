@@ -19,7 +19,7 @@ public class SellAlienEvent : MonoBehaviour
     }
     private void Start()
     {
-        InitializeAlienSelling();
+        //InitializeAlienSelling();
     }
 
     private void OnDisable()
@@ -31,6 +31,20 @@ public class SellAlienEvent : MonoBehaviour
     {
         worldAlienScript = GetComponent<WorldAlien>();
         conversation = GetComponent<DS_InteractableObject_InteractPointConversation>();
+        if(DS_GameEvents.Instance == null)
+        {
+            Invoke("SubscribeToEvent", 0.1f);
+            return;
+        }
+        SubscribeToEvent();
+
+
+    }
+
+    //When the scene loads from the main menu, for some reason the DS_GameEvents is null
+    //I hope that It can be found after a few seconds
+    private void SubscribeToEvent()
+    {
         DS_GameEvents.Instance.m_SellAlienAction += SellThisAlien;
     }
     private void DeInitializeAlienSelling()

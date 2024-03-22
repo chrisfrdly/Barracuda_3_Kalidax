@@ -4382,18 +4382,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 733938f37f72497449bde7ef7c09403d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &972957413
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 972957403}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18c3cb7f77677654da447bf631d7afa0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &978102221 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8075052001810662464, guid: 6fb02f626fe3aa54183d87ea74a7919b, type: 3}
@@ -5273,6 +5261,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1120937306}
   - component: {fileID: 1120937305}
+  - component: {fileID: 1120937307}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -5310,6 +5299,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1120937307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1120937304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18c3cb7f77677654da447bf631d7afa0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1125698553
 GameObject:
   m_ObjectHideFlags: 0
@@ -7256,30 +7257,6 @@ PrefabInstance:
     - target: {fileID: 672016082745021282, guid: 3d9ff093ddacd9a418d4ebf8fbd38733, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 672016082745021283, guid: 3d9ff093ddacd9a418d4ebf8fbd38733, type: 3}
-      propertyPath: sounds.Array.data[0].pitch
-      value: 1.01
-      objectReference: {fileID: 0}
-    - target: {fileID: 672016082745021283, guid: 3d9ff093ddacd9a418d4ebf8fbd38733, type: 3}
-      propertyPath: sounds.Array.data[1].pitch
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 672016082745021283, guid: 3d9ff093ddacd9a418d4ebf8fbd38733, type: 3}
-      propertyPath: sounds.Array.data[2].pitch
-      value: 0.87
-      objectReference: {fileID: 0}
-    - target: {fileID: 672016082745021283, guid: 3d9ff093ddacd9a418d4ebf8fbd38733, type: 3}
-      propertyPath: sounds.Array.data[3].pitch
-      value: 0.87
-      objectReference: {fileID: 0}
-    - target: {fileID: 672016082745021283, guid: 3d9ff093ddacd9a418d4ebf8fbd38733, type: 3}
-      propertyPath: bgSounds.Array.data[1].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 4b42fd4498f45cf45ab27508680e17b6, type: 3}
-    - target: {fileID: 672016082745021283, guid: 3d9ff093ddacd9a418d4ebf8fbd38733, type: 3}
-      propertyPath: bgSounds.Array.data[1].volume
-      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 672016082745021293, guid: 3d9ff093ddacd9a418d4ebf8fbd38733, type: 3}
       propertyPath: m_Name

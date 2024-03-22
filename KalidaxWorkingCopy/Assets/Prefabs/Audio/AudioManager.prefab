@@ -24,7 +24,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 672016082745021293}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -52,7 +52,7 @@ MonoBehaviour:
     clip:
     - {fileID: 8300000, guid: eab8d0c948f62104bbf53fd563ddcfbc, type: 3}
     volume: 1
-    pitch: 1
+    pitch: 1.01
     loop: 0
     source: {fileID: 0}
   - name: Positive Interact
@@ -66,14 +66,14 @@ MonoBehaviour:
     clip:
     - {fileID: 8300000, guid: 9dce7b2d7224b3e48b7dccdf7bf34cbb, type: 3}
     volume: 1
-    pitch: 1
+    pitch: 0.87
     loop: 0
     source: {fileID: 0}
   - name: Insert 2
     clip:
     - {fileID: 8300000, guid: 4f873f8bf936408418d4cdbdfe96b943, type: 3}
     volume: 1
-    pitch: 1
+    pitch: 0.87
     loop: 0
     source: {fileID: 0}
   bgSounds:
@@ -84,8 +84,8 @@ MonoBehaviour:
     loop: 1
     source: {fileID: 0}
   - backgroundMusic: 2
-    clip: {fileID: 8300000, guid: 27a45b8e84bc56d459ba7febf53f5a9d, type: 3}
-    volume: 0.165
+    clip: {fileID: 8300000, guid: 4b42fd4498f45cf45ab27508680e17b6, type: 3}
+    volume: 0.75
     pitch: 1
     loop: 0
     source: {fileID: 0}
