@@ -78,7 +78,7 @@ MonoBehaviour:
     source: {fileID: 0}
   bgSounds:
   - backgroundMusic: 1
-    clip: {fileID: 8300000, guid: cd93747adb68fd54b851437e7e14feaa, type: 3}
+    clip: {fileID: 8300000, guid: cf264175d1b1b064c80187bc57c824bd, type: 3}
     volume: 0.422
     pitch: 1
     loop: 1
@@ -87,7 +87,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 4b42fd4498f45cf45ab27508680e17b6, type: 3}
     volume: 0.75
     pitch: 1
-    loop: 0
+    loop: 1
     source: {fileID: 0}
   - backgroundMusic: 0
     clip: {fileID: 8300000, guid: a9254369cb964e94e9b7896a38f50409, type: 3}

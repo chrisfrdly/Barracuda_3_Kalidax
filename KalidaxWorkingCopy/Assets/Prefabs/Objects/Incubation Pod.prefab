@@ -80,6 +80,7 @@ MonoBehaviour:
   tweenTime: 0.2
   interactPromptPanel: {fileID: 7376599305240077197}
   interactButtonSprite: {fileID: 7376599305528637408}
+  isTalkingTo: 0
   isInteractable: 1
   isInteractPointVisible: 1
   isRequiredToLookAtTarget: 0
@@ -93,7 +94,7 @@ MonoBehaviour:
   daysRemainingText: {fileID: 7376599305794949624}
   seedImage: {fileID: 7376599304557431232}
   incubationLight: {fileID: 4866254346615901721}
-  spawnLocation: {x: 3.809633, y: 2, z: -6.755166}
+  spawnLocation: {x: 3.809633, y: 2, z: 0}
   inventory: {fileID: 11400000, guid: aa44c2eee6c76bd438666289c0763e1a, type: 2}
   daysToIncubate: 2
   T1alienPrefabs:

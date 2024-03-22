@@ -1377,6 +1377,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: cf264175d1b1b064c80187bc57c824bd, type: 3}
     - target: {fileID: 672016082745021283, guid: 3d9ff093ddacd9a418d4ebf8fbd38733, type: 3}
+      propertyPath: bgSounds.Array.data[1].loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 672016082745021283, guid: 3d9ff093ddacd9a418d4ebf8fbd38733, type: 3}
       propertyPath: bgSounds.Array.data[0].volume
       value: 0.504
       objectReference: {fileID: 0}

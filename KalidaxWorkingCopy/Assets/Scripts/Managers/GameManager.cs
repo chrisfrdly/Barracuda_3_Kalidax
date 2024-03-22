@@ -62,6 +62,7 @@ public class GameManager : MonoBehaviour
 
     private void PauseTheGame()
     {
+        playerInput = GameObject.FindObjectOfType<PlayerInput>();
         playerInput.SwitchCurrentActionMap("Menu");
    
         //Spawn in the pause menu ONLY IF IT'S THE FIRST TIME

@@ -2,7 +2,6 @@ using UnityEngine.Audio;
 using System;
 using UnityEngine;
 using Random = UnityEngine.Random;
-using Unity.VisualScripting;
 using System.Collections;
 
 public class AudioManager : MonoBehaviour
@@ -12,8 +11,8 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioMixerGroup sfxMixerGroup;
     [SerializeField] private AudioMixerGroup musicMixerGroup;
     [SerializeField] private readonly float startingVolume = 0.5f;
-    private float prevMusicVolume;
-
+    private float dafaultMusicVolume;
+ 
 
     [Space()]
     public Sounds[] sounds;
@@ -87,11 +86,13 @@ public class AudioManager : MonoBehaviour
         PlayerPrefs.SetFloat("MasterVolume", startingVolume);
         PlayerPrefs.SetFloat("SFXVolume", startingVolume);
         PlayerPrefs.SetFloat("MusicVolume", startingVolume);
+
+        dafaultMusicVolume = GetMusicVolume();
     }
 
 
     #region SFX Play, Pause, and Stop Methods
-    public void Play(string name, float fadeTime = 0)
+    public void Play(string name, float fadeTime = 0, float waitTilStart = 0)
     {
         //randomize all the sounds that have multiple clips
         foreach (Sounds a in sounds)
@@ -109,7 +110,7 @@ public class AudioManager : MonoBehaviour
             return;
         }
 
-        fadeAudioCoroutine = IEPlay(s.source, fadeTime);
+        fadeAudioCoroutine = IEPlay(s.source, fadeTime, waitTilStart);
         StartCoroutine(fadeAudioCoroutine);
     }
 
@@ -150,11 +151,16 @@ public class AudioManager : MonoBehaviour
     #endregion
 
     #region Background Music Play, Pause, Stop Methods
+
     /// <summary>
     /// You should use this method only in the Background Music Selector classor when you want to stop all other
     /// background audios from playing
     /// </summary>
-    public void BgPlayOnAwake(BackgroundMusicSelector backgroundMusic, float fadeInTime = 0)
+    /// <param name="backgroundMusic" >The music track you'd like to select</param> 
+    /// <param name="fadeInTime">How long (in seconds) that this audio track will fade in for</param> 
+    /// <param name="waitTilStart">The time (in seconds) that this audio will start playing after</param> 
+    /// /// <param name="fadeOutTime">How long (in seconds) that all the other background sounds should stop playing</param> 
+    public void BgPlayOnAwake(BackgroundMusicSelector backgroundMusic, float fadeInTime = 0, float waitTilStart = 0, float fadeOutTime = 0)
     {
 
         //find a sound in the sounds array where sound.name == name the name inputted
@@ -171,7 +177,7 @@ public class AudioManager : MonoBehaviour
 
             if (bg.source.isPlaying)
             {
-                fadeBgAudioCoroutine = IEStop(bg.source, 0, false);
+                fadeBgAudioCoroutine = IEStop(bg.source, fadeOutTime, false);
                 StartCoroutine(fadeBgAudioCoroutine);
 
             }
@@ -179,13 +185,13 @@ public class AudioManager : MonoBehaviour
             
         }
 
-        fadeAudioCoroutine = IEPlay(s.source, fadeInTime);
+        fadeAudioCoroutine = IEPlay(s.source, fadeInTime, waitTilStart);
         StartCoroutine(fadeAudioCoroutine);
 
 
     }
 
-    public void BgPlay(BackgroundMusicSelector backgroundMusic, float fadeInTime = 0)
+    public void BgPlay(BackgroundMusicSelector backgroundMusic, float fadeInTime = 0, float waitTilStart = 0)
     {
 
         //find a sound in the sounds array where sound.name == name the name inputted
@@ -195,7 +201,7 @@ public class AudioManager : MonoBehaviour
         if (s.source.isPlaying) return;
 
         //if it's not the same than the current one then stop all other bg musics and play this one
-        fadeAudioCoroutine = IEPlay(s.source, fadeInTime);
+        fadeAudioCoroutine = IEPlay(s.source, fadeInTime, waitTilStart);
         StartCoroutine(fadeAudioCoroutine);
 
 
@@ -225,8 +231,9 @@ public class AudioManager : MonoBehaviour
     #endregion
 
     #region IEnumerators for Playing and Stopping Audio
-    private IEnumerator IEPlay(AudioSource a, float fadeTime)
+    private IEnumerator IEPlay(AudioSource a, float fadeTime, float waitTime)
     {
+        yield return new WaitForSeconds(waitTime);
         //Store the current audio
         float initialVolume = a.volume;
 
@@ -328,10 +335,9 @@ public class AudioManager : MonoBehaviour
 
         float currentLevel = GetMusicVolume();
 
-        prevMusicVolume = currentLevel;
-
         while (currentTime < waitTime)
         {
+            if (!GameManager.isGamePaused) yield break;
 
             float newVol = Mathf.Lerp(currentLevel, _targetLevel, currentTime / waitTime);
 
@@ -358,7 +364,7 @@ public class AudioManager : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         //It can't be set to 0 for this math equation or else we'll get infinity
 
-        prevMusicVolume = Mathf.Clamp(prevMusicVolume, 0.0001f, 1f);
+        dafaultMusicVolume = Mathf.Clamp(dafaultMusicVolume, 0.0001f, 1f);
 
         float waitTime = 0.5f;
         float currentTime = 0;
@@ -367,8 +373,8 @@ public class AudioManager : MonoBehaviour
 
         while (currentTime < waitTime)
         {
-
-            float newVol = Mathf.Lerp(currentLevel, prevMusicVolume, currentTime / waitTime);
+            if (GameManager.isGamePaused) yield break;
+            float newVol = Mathf.Lerp(currentLevel, dafaultMusicVolume, currentTime / waitTime);
 
             audioMixer.SetFloat("MusicLowered", Mathf.Log10(newVol) * 20);
 

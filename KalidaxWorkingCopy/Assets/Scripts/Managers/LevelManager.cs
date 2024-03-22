@@ -14,7 +14,7 @@ public class LevelManager : MonoBehaviour
     public void LoadMainMenu()
     {
         SceneManager.LoadScene("MainMenu");
-        AudioManager.instance.Play("Positive Interact");
+        AudioManager.instance.Play("Negative Interact");
     }
 
     public void LoadCredits()

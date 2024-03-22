@@ -5219,7 +5219,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7376599304375814047, guid: 5acdf902b2155e441a573cb0942e0362, type: 3}
       propertyPath: spawnLocation.z
-      value: -6.755166
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7376599304375814047, guid: 5acdf902b2155e441a573cb0942e0362, type: 3}
       propertyPath: seedPods.Array.size
@@ -7375,7 +7375,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4075410610750858666, guid: 601ed4e6eb6ba0046a87845146fdcb1e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -369.34982
+      value: -369.34985
+      objectReference: {fileID: 0}
+    - target: {fileID: 4075410610750858667, guid: 601ed4e6eb6ba0046a87845146fdcb1e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4075410611424517987, guid: 601ed4e6eb6ba0046a87845146fdcb1e, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -8294,7 +8298,7 @@ MonoBehaviour:
   interactableMask:
     serializedVersion: 2
     m_Bits: 64
-  angleToLookAtTarget: 50
+  closestCollider: {fileID: 0}
 --- !u!212 &1771525810
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9878,7 +9882,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2049039960}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.0304201, y: 6.4805307, z: -0.15534408}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10016,7 +10020,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7376599304375814047, guid: 5acdf902b2155e441a573cb0942e0362, type: 3}
       propertyPath: spawnLocation.z
-      value: -6.755166
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7376599304375814047, guid: 5acdf902b2155e441a573cb0942e0362, type: 3}
       propertyPath: seedPods.Array.size
@@ -10427,7 +10431,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7376599304375814047, guid: 5acdf902b2155e441a573cb0942e0362, type: 3}
       propertyPath: spawnLocation.z
-      value: -6.755166
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7376599304840943977, guid: 5acdf902b2155e441a573cb0942e0362, type: 3}
       propertyPath: m_IsActive

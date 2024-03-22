@@ -43,7 +43,7 @@ public class UIController : MonoBehaviour
 
     private void CancelButtonPressed()
     {
-        Debug.Log("Pressed Cancel Button");
+        AudioManager.instance.Play("Negative Interact");
         SetActionMapInGame();
         endOfDayConfirmationUI.SetActive(false);
     }
@@ -63,6 +63,7 @@ public class UIController : MonoBehaviour
     private void ConfirmedDayReset()
     {
         //Now the Day Manager class will handle switching to the new day!
+        AudioManager.instance.Play("Positive Interact");
         aliensInWorld.SceneExittedEventSend();
         DayManager.Instance.NewDay();
     }
