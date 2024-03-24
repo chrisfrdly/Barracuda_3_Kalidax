@@ -6,7 +6,6 @@ public class PlayerProgressUI : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI messageText;
     [SerializeField] private SO_GameEvent gameEvents;
-
     private Dictionary<ProgressState, string> stateMessages = new Dictionary<ProgressState, string>();
     private static HashSet<ProgressState> shownMessages = new HashSet<ProgressState>(); 
 

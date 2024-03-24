@@ -6,6 +6,7 @@ public class PlayerInventoryManager : MonoBehaviour
 {
     public SO_Inventory inventory;
     public SO_GameEvent gameEvent;
+    private bool hasInitialized = false;
 
     private void Update()
     {
@@ -16,6 +17,15 @@ public class PlayerInventoryManager : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.KeypadEnter))
         {
             inventory.Load();
+        }
+    }
+
+    private void Start()
+    {
+        if (!hasInitialized)
+        {
+            gameEvent.RaiseProgressChanged(ProgressState.None);
+            hasInitialized = true;
         }
     }
 
