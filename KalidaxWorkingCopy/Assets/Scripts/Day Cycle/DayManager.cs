@@ -16,6 +16,11 @@ public class DayManager : MonoBehaviour
     [SerializeField] private SO_GrassTileParameters SO_grassTileParams; //so we can access the respawn rate of broken grass
     public GrassTile[] grassTiles; //keep track of all grass tiles in scene so we can alter them
 
+    [Header("Events")]
+    [SerializeField] InteractableObject_SeedPod sp;
+    [SerializeField] private SO_GameEvent gameEvent;
+
+
 
     [Header("CURRENT DAY")]
 
@@ -59,6 +64,12 @@ public class DayManager : MonoBehaviour
 
     public void NewDay()
     {
+        if (sp.incubationCompleteTriggered)
+        {
+            Debug.Log("status of incubation" + sp.incubationCompleteTriggered);
+            gameEvent.RaiseProgressChanged(ProgressState.PostIncubation);
+        }
+
         //Increase the day counter
         SO_Data_dayCycle.currentDay++;
         currentDay = SO_Data_dayCycle.currentDay;

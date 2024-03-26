@@ -20,6 +20,7 @@ public class InteractableObject_SeedPod : InteractableObject
 
     [Separator()]
     [SerializeField] private SO_GameEvent gameEvent;
+    public bool incubationCompleteTriggered = false;
     [Separator()]
     [SerializeField] private SO_Data_DayCycle dataDayCycle;
 
@@ -128,6 +129,7 @@ public class InteractableObject_SeedPod : InteractableObject
                 incubationState = IncubationState.OBJ_RemoveSeed;
                 dataDayCycle.incubationPodData[thisIndex].incubationState = incubationState;
                 gameEvent.RaiseProgressChanged(ProgressState.IncubationComplete);
+                incubationCompleteTriggered = true;
             }
 
 

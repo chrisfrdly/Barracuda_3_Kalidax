@@ -1358,6 +1358,8 @@ MonoBehaviour:
   SO_Data_dayCycle: {fileID: 11400000, guid: 208eef33a987f0e4bb799b003df00a94, type: 2}
   SO_grassTileParams: {fileID: 11400000, guid: 5152f242cb409774083e1f0976e1a24a, type: 2}
   grassTiles: []
+  sp: {fileID: 1669869764}
+  gameEvent: {fileID: 11400000, guid: 0f29efc5c19584e46922cdc2d9fef8eb, type: 2}
 --- !u!4 &335845907
 Transform:
   m_ObjectHideFlags: 0
@@ -7988,6 +7990,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7376599304375814040, guid: 5acdf902b2155e441a573cb0942e0362, type: 3}
   m_PrefabInstance: {fileID: 2145201569}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1669869764 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7376599304375814047, guid: 5acdf902b2155e441a573cb0942e0362, type: 3}
+  m_PrefabInstance: {fileID: 2145201569}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1669869760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d56c51c00345e744aaa6edf575ec2774, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1691066483 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8075052001810662464, guid: 6fb02f626fe3aa54183d87ea74a7919b, type: 3}
@@ -8345,8 +8358,24 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5597367468877090647, guid: 0cfdd9cdfde645841b94fe8e5a0565c9, type: 3}
+      propertyPath: m_uvLineOffset
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597367468877090647, guid: 0cfdd9cdfde645841b94fe8e5a0565c9, type: 3}
+      propertyPath: m_verticalMapping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597367468877090647, guid: 0cfdd9cdfde645841b94fe8e5a0565c9, type: 3}
+      propertyPath: m_horizontalMapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597367468877090647, guid: 0cfdd9cdfde645841b94fe8e5a0565c9, type: 3}
+      propertyPath: m_enableWordWrapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597367468877090647, guid: 0cfdd9cdfde645841b94fe8e5a0565c9, type: 3}
       propertyPath: m_HorizontalAlignment
-      value: 16
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0cfdd9cdfde645841b94fe8e5a0565c9, type: 3}
@@ -10433,6 +10462,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7376599304375814047, guid: 5acdf902b2155e441a573cb0942e0362, type: 3}
       propertyPath: spawnLocation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7376599304375814047, guid: 5acdf902b2155e441a573cb0942e0362, type: 3}
+      propertyPath: incubationCompleteTriggered
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7376599304840943977, guid: 5acdf902b2155e441a573cb0942e0362, type: 3}
