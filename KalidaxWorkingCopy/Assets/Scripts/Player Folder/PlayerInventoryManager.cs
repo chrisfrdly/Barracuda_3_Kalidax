@@ -11,7 +11,7 @@ public class PlayerInventoryManager : MonoBehaviour
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.Space))
-        {
+        { 
             inventory.Save();
         }
         if(Input.GetKeyDown(KeyCode.KeypadEnter))

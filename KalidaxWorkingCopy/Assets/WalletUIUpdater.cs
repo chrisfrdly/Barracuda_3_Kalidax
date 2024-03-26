@@ -36,7 +36,7 @@ public class WalletUIUpdater : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("WalletUIUpdater: No GameObject with tag 'UI' found in the scene.");
+            Debug.LogWarning("WalletUIUpdater: No GameObject with tag 'Wallet' found in the scene.");
         }
     }
 

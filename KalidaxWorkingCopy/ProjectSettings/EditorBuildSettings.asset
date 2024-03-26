@@ -6,9 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
     path: Assets/Scenes/MainScene-Playtest 1.unity
     guid: a4caa8fc69c4f874783ece26e83d9add
   - enabled: 0
@@ -32,12 +29,6 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/MainScene_FirstIteration.unity
     guid: 1e7e5899eb1f0dc459facde9b7c3f511
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
   - enabled: 0
     path: Assets/Scenes/PersonalScenes/SebasScene.unity
     guid: 09d9307233975dd49ac7009faeab52f0
