@@ -19,7 +19,7 @@ public class SellAlienEvent : MonoBehaviour
     }
     private void Start()
     {
-        InitializeAlienSelling();
+        InitializeAlienSelling("");
     }
 
     private void OnDisable()
@@ -27,7 +27,7 @@ public class SellAlienEvent : MonoBehaviour
         DeInitializeAlienSelling();
     }
 
-    private void InitializeAlienSelling()
+    private void InitializeAlienSelling(string _sceneName)
     {
         worldAlienScript = GetComponent<WorldAlien>();
         conversation = GetComponent<DS_InteractableObject_InteractPointConversation>();

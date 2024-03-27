@@ -339,6 +339,8 @@ public class InteractableObject_SeedPod : InteractableObject
     }
     private void ShowIncubatingUI()
     {
+        //Set the text for the amount of days left
+        daysRemainingText.text = daysLeft.ToString() + " days left \n to incubate";
         incubationState = IncubationState.OBJ_Incubating;
         gameEvent.RaiseProgressChanged(ProgressState.SeedPlaced);
         addSeedButton.gameObject.SetActive(false);

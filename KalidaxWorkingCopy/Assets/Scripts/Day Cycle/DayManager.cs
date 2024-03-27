@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 using System.Linq;
 using System;
 using UnityEngine.UI;
+using TMPro;
 
 public class DayManager : MonoBehaviour
 {
@@ -14,7 +15,7 @@ public class DayManager : MonoBehaviour
 
     //Variables
     [SerializeField] private SO_GrassTileParameters SO_grassTileParams; //so we can access the respawn rate of broken grass
-    public GrassTile[] grassTiles; //keep track of all grass tiles in scene so we can alter them
+    [HideInInspector] public GrassTile[] grassTiles; //keep track of all grass tiles in scene so we can alter them
 
 
     [Header("CURRENT DAY")]
@@ -31,12 +32,14 @@ public class DayManager : MonoBehaviour
     {
         Instance = this;
 
+        
+
     }
     private void Start()
     {
-        LoadGrassStates();
-
+         LoadGrassStates();
     }
+
 
     private void LoadGrassStates()
     {
@@ -67,10 +70,10 @@ public class DayManager : MonoBehaviour
         SO_Data_dayCycle.grassTilesList = new bool[grassTiles.Length];
 
         RandomizeGrassRegrowth();
-
-        if (!DeductQuota()) return;
         
         PlayerWallet.Instance.PutValueInWallet(PlayerWallet.Instance.amountToPutInWallet, "End of Day");
+
+        if (!DeductQuota()) return;
 
         //Saving cut data into the scriptable object
         //Saving cut data into the scriptable object
@@ -87,6 +90,7 @@ public class DayManager : MonoBehaviour
     {
         int currentDay = GetCurrentDay();
         int quotaForToday = QuotaManager.Instance.GetQuotaForDay(currentDay -1);
+        
         //Debug.Log("Day: " + currentDay + " " + QuotaManager.Instance.GetQuotaForDay(currentDay -1));
         if (PlayerWallet.Instance.walletAmount >= quotaForToday)
         {

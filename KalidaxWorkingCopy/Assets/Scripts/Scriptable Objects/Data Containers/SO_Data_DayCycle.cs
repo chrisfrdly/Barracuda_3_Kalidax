@@ -29,7 +29,7 @@ public class SO_Data_DayCycle : ScriptableObject
         incubationPodPurchased[0] = true;
         currentDay = 0;
     }
-    private void OnEnable()
+    public void OnEnable()
     {
         Initialize();
     }

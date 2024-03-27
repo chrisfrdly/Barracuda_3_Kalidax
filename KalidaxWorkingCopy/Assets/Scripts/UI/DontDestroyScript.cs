@@ -4,10 +4,20 @@ using UnityEngine;
 
 public class DontDestroyScript : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] private SO_AliensInWorld aliensInWorld;
+
+    private void Awake()
+    {
+        aliensInWorld.newSceneLoadedEvent.AddListener(DestroyOnMainMenuLoaded);
+    }
     void Start()
     {
         DontDestroyOnLoad(gameObject);        
+    }
+
+    void DestroyOnMainMenuLoaded(string _sceneName)
+    {
+        Destroy(gameObject);
     }
 
 }

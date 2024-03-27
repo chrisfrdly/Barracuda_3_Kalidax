@@ -21,11 +21,11 @@ public class SO_AliensInWorld : ScriptableObject
     //Called from the DayCyle 
     //Recieved from the Aliens In World that are under the DoNotDestroyOnLoad();
     [System.NonSerialized]
-    public UnityEvent newSceneLoadedEvent = new UnityEvent();
+    public NewSceneEvent newSceneLoadedEvent = new NewSceneEvent();
 
-    public void NewSceneLoadedEventSend()
+    public void NewSceneLoadedEventSend(string _sceneName)
     {
-        newSceneLoadedEvent.Invoke();
+        newSceneLoadedEvent.Invoke(_sceneName);
     }
 
     //Called from the DayCyle 
@@ -40,3 +40,6 @@ public class SO_AliensInWorld : ScriptableObject
 }
 [System.Serializable]
 public class AlienInGridClickedEvent : UnityEvent<SO_Alien> { }
+
+[System.Serializable]
+public class NewSceneEvent : UnityEvent<string> { }

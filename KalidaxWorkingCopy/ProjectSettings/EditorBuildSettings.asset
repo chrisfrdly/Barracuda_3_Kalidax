@@ -41,4 +41,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/PersonalScenes/SebasScene.unity
     guid: 09d9307233975dd49ac7009faeab52f0
+  - enabled: 1
+    path: Assets/Scenes/PersonalScenes/Lucas Scene.unity
+    guid: 47c2ea16e31ffa8418e7f6bb4f76c0b7
   m_configObjects: {}

@@ -37,7 +37,7 @@ public class UIController : MonoBehaviour
         yesButton.onClick.AddListener(() => ConfirmedDayReset());
         noButton.onClick.AddListener(() => CancelDayReset());
         SO_interactObject.clickedCancelButtonEvent.AddListener(CancelButtonPressed);
-        aliensInWorld.NewSceneLoadedEventSend();
+        
 
     }
 
