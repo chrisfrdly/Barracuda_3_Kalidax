@@ -30,7 +30,18 @@ public class InteractableWall : InteractableObject
                 wallet.SubtractValue(RemoveWallCost, "Removed Wall");
                 Destroy(gameObject);
             }
+            else
+            {
+                StartCoroutine(CannotRemove());
+            }
         }
+
+    IEnumerator CannotRemove()
+    {
+        spriteRenderer.color = Color.red;
+        yield return new WaitForSeconds(0.2f);
+        spriteRenderer.color = Color.white;
+    }
 
         public override bool CheckIsInteractable() { return isInteractable; }
         public override bool IsTargetPointVisible() { return isInteractPointVisible; }
