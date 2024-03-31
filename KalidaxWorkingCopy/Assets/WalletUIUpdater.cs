@@ -15,7 +15,7 @@ public class WalletUIUpdater : MonoBehaviour
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         // Attempt to find the GameObject tagged "UI"
-        GameObject walletTextObj = GameObject.FindGameObjectWithTag("UI");
+        GameObject walletTextObj = GameObject.FindGameObjectWithTag("Wallet");
 
         // Check if the GameObject was found
         if (walletTextObj != null)
@@ -36,7 +36,7 @@ public class WalletUIUpdater : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("WalletUIUpdater: No GameObject with tag 'UI' found in the scene.");
+            Debug.LogWarning("WalletUIUpdater: No GameObject with tag 'Wallet' found in the scene.");
         }
     }
 

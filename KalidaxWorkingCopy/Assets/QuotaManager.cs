@@ -69,17 +69,9 @@ public class QuotaManager : MonoBehaviour
         }
     }
 
-
-    private void OnEnable()
-    {
-        // If there are any events to subscribe to, do it here
-    }
-
     private void OnDisable()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
-
-        // Unsubscribe from any events to avoid memory leaks
     }
 
     private void Update()

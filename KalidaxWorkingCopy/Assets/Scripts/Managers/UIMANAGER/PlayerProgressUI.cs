@@ -6,15 +6,12 @@ public class PlayerProgressUI : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI messageText;
     [SerializeField] private SO_GameEvent gameEvents;
-
-
     private Dictionary<ProgressState, string> stateMessages = new Dictionary<ProgressState, string>();
     private static HashSet<ProgressState> shownMessages = new HashSet<ProgressState>(); 
 
     private void Awake()
     {
         InitializeStateMessages();
-
     }
 
     // Call this method to reset progress flags when starting a new game session
@@ -25,11 +22,12 @@ public class PlayerProgressUI : MonoBehaviour
 
     private void InitializeStateMessages()
     {
-        stateMessages[ProgressState.None] = "Let's Collect a seed, go over to the grass on the left side of the map";
-        stateMessages[ProgressState.SeedCollected] = "Good work on those fields! You should have one pod functional, Place the seed in the pod, wait for incubation.";
-        stateMessages[ProgressState.SeedPlaced] = "Wait for incubation to complete. Should take 2 days, pass some time in the shelter pod";
-        stateMessages[ProgressState.Incubating] = "It's still got some time in the oven, in the meantime; you can either farm or keep waiting. Don't forget to get some rest in the pod.";
-        stateMessages[ProgressState.IncubationComplete] = "Take the seed out of the pod! Let's see what you've accomplished.";
+        stateMessages[ProgressState.None] = "Proceed to the designated area on the left for seed collection. Compliance is expected.";
+        stateMessages[ProgressState.SeedCollected] = "Seed acquisition confirmed. Utilize the allocated pod for seed incubation immediately. Further instructions will follow.";
+        stateMessages[ProgressState.SeedPlaced] = "Seed placement acknowledged. Incubation period is two days. Utilize shelter pod facilities as necessary during this interval.";
+        stateMessages[ProgressState.Incubating] = "Incubation in progress. Allocate your time between auxiliary tasks or mandatory rest periods in the shelter pod. Further disturbance is not advised.";
+        stateMessages[ProgressState.IncubationComplete] = "Incubation phase concluded. Extract the seed from the pod for assessment. Your compliance will be noted.";
+        stateMessages[ProgressState.PostIncubation] = "Initiate further splicing operations to ensure continuous profit generation. \n Failure to contribute to profit margins will result in termination of your position.";
     }
 
     private void OnEnable()
