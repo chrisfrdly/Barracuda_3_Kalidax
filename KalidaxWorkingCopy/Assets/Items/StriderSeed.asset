@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 998f90381012433418968f5f0f4b0212, type: 3}
   m_Name: StriderSeed
   m_EditorClassIdentifier: 
-  Id: 0
-  uiDisplay: {fileID: 0}
+  Id: 1
+  uiDisplay: {fileID: 21300000, guid: 43a0dd3a85421f7448c07861f712b1b0, type: 3}
   sellValue: 2
   sellable: 1
   isPlaceable: 0

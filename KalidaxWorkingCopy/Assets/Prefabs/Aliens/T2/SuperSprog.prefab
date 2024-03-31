@@ -194,7 +194,7 @@ GameObject:
   - component: {fileID: 2212100057303225412}
   - component: {fileID: 2212100057303225410}
   m_Layer: 6
-  m_Name: T2 Alien
+  m_Name: SuperSprog
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -311,7 +311,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 7554342c57eee4f4cb4bfa8c1811ddd6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d439ee1a9647cda43859dd55d5aac667, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
