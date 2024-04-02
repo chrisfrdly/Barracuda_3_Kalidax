@@ -16,6 +16,7 @@ public class InteractableObject_Provisions_Drone : InteractableObject
 
     [Header("Other Contents")]
     [SerializeField] private Image itemImage;
+    [SerializeField] private GameObject needSeedText;
 
     public SO_Inventory inventory; //this is so you can sell your seeds
     [SerializeField] private int sellAmount; //this is how many seeds you will sell
@@ -47,6 +48,7 @@ public class InteractableObject_Provisions_Drone : InteractableObject
     //eventually we want the player to select how many seeds they sell but we can backlog all of this for now 
     public void SellAllSeeds()
     {
+        bool soldSomething = false;
         for (int i = 0; i < inventory.container.items.Length; i++)
         {
             if (inventory.container.items[i].id > -1)
@@ -54,8 +56,26 @@ public class InteractableObject_Provisions_Drone : InteractableObject
                 sellAmount += inventory.container.items[i].amount;
                 inventory.SellItem(inventory.container.items[i].item, sellAmount);
                 sellAmount = 0;
+                soldSomething = true;
+            }
+            else if (i == 0 && inventory.container.items[i].id < 1)
+            {
+                //They don't have any seeds
+                Instantiate(needSeedText, new Vector2(transform.position.x, transform.position.y + 2), Quaternion.identity, pDroneHUDPanel.transform);
+                soldSomething = false;
             }
         }
+
+        //now play the corresponding audio if we sold an item or not
+        if(soldSomething)
+        {
+            AudioManager.instance.Play("Positive Interact");
+        }
+        else
+        {
+            AudioManager.instance.Play("Negative Interact");
+        }
+        
     }
 
 

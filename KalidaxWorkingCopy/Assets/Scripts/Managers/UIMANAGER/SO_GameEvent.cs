@@ -22,6 +22,8 @@ public class SO_GameEvent : ScriptableObject
     [System.NonSerialized]
     public ProgressEvent onIncubationComplete = new ProgressEvent();
     [System.NonSerialized]
+    public ProgressEvent postComplete = new ProgressEvent();
+    [System.NonSerialized]
     public ProgressChangedEvent onProgressChanged = new ProgressChangedEvent();
 
 
@@ -49,6 +51,9 @@ public class SO_GameEvent : ScriptableObject
             case ProgressState.IncubationComplete:
                 onIncubationComplete.Invoke(state);
                 break;
+            case ProgressState.PostIncubation:
+                postComplete.Invoke(state);
+                break;
             default:
                 Debug.LogWarning("Unhandled ProgressState: " + state);
                 break;
@@ -63,5 +68,6 @@ public enum ProgressState
     SeedCollected,
     SeedPlaced,
     Incubating,
-    IncubationComplete
+    IncubationComplete,
+    PostIncubation
 }

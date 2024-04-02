@@ -20,6 +20,8 @@ public class InteractableObject_GeneSplicingPod : InteractableObject
 
     [Header("Incubation Pod Buttons")]
     [SerializeField] private Button[] addAlienButton = new Button[2];
+    [SerializeField] private bool[] addAlienColour = new bool[2]; //to determine if the alien is already selected (UI colour only)
+
     [SerializeField] private Button spliceButton;
     private int buttonModified;
     [SerializeField] private Sprite addButtonUISprite;
@@ -36,6 +38,7 @@ public class InteractableObject_GeneSplicingPod : InteractableObject
 
     //Properties
     public SO_Alien[] m_AliensAdded { get => aliensAdded;}
+    public bool[] m_AddAlienColour { get => addAlienColour;}
 
 
     /// <summary>
@@ -55,10 +58,6 @@ public class InteractableObject_GeneSplicingPod : InteractableObject
         addAlienButton[0].onClick.AddListener(() => ButtonClicked(0));
         addAlienButton[1].onClick.AddListener(() => ButtonClicked(1));
 
-        //Need to clear the List every awake or else will stack with every play.
-        //Cannot clear in the "UIAlienGrisList" since it's awake is called after
-        //the aliens are added to the list, so they will be removed
-        aliens.worldAliens.Clear();
 
     }
 
@@ -84,12 +83,24 @@ public class InteractableObject_GeneSplicingPod : InteractableObject
 
         //Activate the panel and make it the currentVisible UI
         incubationPodHUDPanel.SetActive(true);
+        alienGridPanel.SetActive(false);
         UIController.Instance.m_CurrentUIVisible = incubationPodHUDPanel;
 
-        //set an event for the buttons. If a button is clicked, reveal the grid panel
-
-
+        RefreshHUD();
     }
+
+    private void RefreshHUD()
+    {
+        for (int i = 0; i < 2; i++)
+        {
+            aliensAdded[i] = null;
+            addAlienColour[i] = false;
+            addAlienButton[i].GetComponent<Image>().sprite = null;
+            addAlienButton[i].GetComponentInChildren<TextMeshProUGUI>().text = "+";
+        }
+        spliceButton.gameObject.SetActive(false);
+    }
+
     private void CloseInteractionPrompt()
     {
         incubationPodHUDPanel.SetActive(false);
@@ -122,7 +133,7 @@ public class InteractableObject_GeneSplicingPod : InteractableObject
         //Remove the "+" Text on the button if an alien is already slotted 
         addAlienButton[buttonModified].GetComponentInChildren<TextMeshProUGUI>().text = "";
 
-
+        addAlienColour[buttonModified] = true;
         if (aliensAdded[0] == null || aliensAdded[1] == null)
         {
             spliceButton.gameObject.SetActive(false);
@@ -178,13 +189,18 @@ public class InteractableObject_GeneSplicingPod : InteractableObject
             WorldAlien alienScript = spawningArray[i].GetComponent<WorldAlien>();
             if((int)alienScript.m_AlienContainer.m_AlienTier == tier)
             {
-                GameObject newAlien = Instantiate(spawningArray[i], alienSpawnPoint.position, Quaternion.identity);
+                GameObject newAlien = Instantiate(spawningArray[i], alienSpawnPoint.position, Quaternion.identity, AliensInWorld_Mono.instance.gameObject.transform);
             }
         }
 
         List<WorldAlien> allAliensToDestroy = new List<WorldAlien>();
 
         //for deleting the aliens afterwards
+        if(aliensListMono == null)
+        {
+            aliensListMono = FindObjectOfType<AliensInWorld_Mono>();
+        }
+
         for(int i = 0; i < aliensAdded.Length; i++)
         {
             for(int j = 0; j < aliensListMono.aliensInWorld_GO.Count; j++)
@@ -208,7 +224,9 @@ public class InteractableObject_GeneSplicingPod : InteractableObject
         }
 
         aliensAdded = new SO_Alien[2];
-        spliceButton.gameObject.SetActive(false);
+        
+
+        RefreshHUD();
     }
 
     

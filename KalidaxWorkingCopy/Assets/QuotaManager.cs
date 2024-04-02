@@ -10,6 +10,7 @@ public class QuotaManager : MonoBehaviour
     [SerializeField] private SO_Data_DayCycle dayCycleData;
     [SerializeField] private SO_Data_CurrentQuota currentQuotaData;
     [SerializeField] private TextMeshProUGUI quotaDisplayText;
+    [SerializeField] private SO_AliensInWorld sceneEvents;
 
     private int lastCheckedDay = -1; // Track the last day a quota check was performed
 
@@ -23,11 +24,26 @@ public class QuotaManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
 
+        sceneEvents.newSceneLoadedEvent.AddListener(CheckIfMainMenuLoaded);
+
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
+    private void CheckIfMainMenuLoaded(string _sceneName)
+    {
+        //If we go back to the main scene then destroy this object
+
+        if (_sceneName == "MainMenu")
+        {
+            Destroy(gameObject);
+            return;
+        }
+    }
+
+
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+
         // Attempt to find the GameObject that contains your quota display text
         GameObject quotaTextObj = GameObject.FindGameObjectWithTag("QuotaDisplay");
 
@@ -53,17 +69,9 @@ public class QuotaManager : MonoBehaviour
         }
     }
 
-
-    private void OnEnable()
-    {
-        // If there are any events to subscribe to, do it here
-    }
-
     private void OnDisable()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
-
-        // Unsubscribe from any events to avoid memory leaks
     }
 
     private void Update()

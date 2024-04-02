@@ -15,5 +15,5 @@ MonoBehaviour:
   chanceToRegrow_EndOfDay: 50
   chanceToGetSeed: 80
   grassColours:
-  - {r: 0.3529412, g: 0.7725491, b: 0.2901961, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
   - {r: 0.07609471, g: 0.3584906, b: 0.19205372, a: 1}

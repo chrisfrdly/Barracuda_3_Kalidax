@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private SO_GameEvent gameEvent;
     [SerializeField] private SO_PauseMenuEventSender pauseMenuEvent;
     [SerializeField] private GameObject pauseMenuPrefab;
+    [SerializeField] private SO_AliensInWorld aliensInWorld; //on scene loaded reset List and calculate it again
+
     public static bool isGameInitialized = false;
 
     public static bool isGamePaused;
@@ -27,6 +29,8 @@ public class GameManager : MonoBehaviour
 
         Instance = this;
         DontDestroyOnLoad(gameObject);
+
+        aliensInWorld.newSceneLoadedEvent.AddListener(ResetWalletAmountToAdd);
 
         if (!isGameInitialized)
         {
@@ -47,6 +51,14 @@ public class GameManager : MonoBehaviour
         //Set Audio
 
     }
+    void ResetWalletAmountToAdd(string _sceneName)
+    {
+        if (_sceneName == "MainMenu")
+        {
+            Destroy(gameObject);
+            return;
+        }
+    }
 
     private void Start()
     {
@@ -62,6 +74,7 @@ public class GameManager : MonoBehaviour
 
     private void PauseTheGame()
     {
+        playerInput = GameObject.FindObjectOfType<PlayerInput>();
         playerInput.SwitchCurrentActionMap("Menu");
    
         //Spawn in the pause menu ONLY IF IT'S THE FIRST TIME

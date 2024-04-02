@@ -32,7 +32,12 @@ public class DS_InteractableObject_InteractPointConversation : InteractableObjec
 
         if (!CheckIsInteractable()) return;
 
+        //Now set isTalking to true
+        m_IsTalkingTo = true;
+
         dialogueTalk.StartDialogue(conversation,freezePlayerMovement);
+        
+
     }
 
     public override bool CheckIsInteractable() { return isInteractable; }

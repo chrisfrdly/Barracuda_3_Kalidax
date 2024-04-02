@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1fe0ef9c96c36a4b9d18930c67917ca, type: 3}
+  m_Name: Super Sprog Conversation
+  m_EditorClassIdentifier: 
+  NodeLinkDatas:
+  - BaseNodeGUID: 6b7462b1-8e86-43ee-884f-d43f7e381796
+    TargetNodeGUID: a3b026a3-63f2-4d8e-a890-728454c5c999
+  - BaseNodeGUID: dc5d7c0a-c271-4d50-84b1-aeb9d7136e25
+    TargetNodeGUID: debb40d4-1545-49d2-846c-5f4e48881f83
+  - BaseNodeGUID: a3b026a3-63f2-4d8e-a890-728454c5c999
+    TargetNodeGUID: dc5d7c0a-c271-4d50-84b1-aeb9d7136e25
+  - BaseNodeGUID: a3b026a3-63f2-4d8e-a890-728454c5c999
+    TargetNodeGUID: debb40d4-1545-49d2-846c-5f4e48881f83
+  DialogueNodeDatas:
+  - NodeGUID: a3b026a3-63f2-4d8e-a890-728454c5c999
+    Pos: {x: 350, y: 233}
+    TextType:
+    - LanguageType: 0
+      LanguageGenericType: Murp...
+    DialogueNodePorts:
+    - InputGUID: dc5d7c0a-c271-4d50-84b1-aeb9d7136e25
+      OutputGUID: a3b026a3-63f2-4d8e-a890-728454c5c999
+      TextLanguages:
+      - LanguageType: 0
+        LanguageGenericType: Yes
+    - InputGUID: debb40d4-1545-49d2-846c-5f4e48881f83
+      OutputGUID: a3b026a3-63f2-4d8e-a890-728454c5c999
+      TextLanguages:
+      - LanguageType: 0
+        LanguageGenericType: No
+    Sprite: {fileID: 0}
+    DialogueSpriteImageType: 0
+    AudioClips:
+    - LanguageType: 0
+      LanguageGenericType: {fileID: 8300000, guid: e992965b84b131643b804d8af4951aff, type: 3}
+    Name: 'SUPER SPROG:'
+  EndNodeDatas:
+  - NodeGUID: debb40d4-1545-49d2-846c-5f4e48881f83
+    Pos: {x: 1026, y: 262}
+    EndNodeType: 0
+  StartNodeDatas:
+  - NodeGUID: 6b7462b1-8e86-43ee-884f-d43f7e381796
+    Pos: {x: 169, y: 233}
+  EventNodeDatas:
+  - NodeGUID: dc5d7c0a-c271-4d50-84b1-aeb9d7136e25
+    Pos: {x: 616, y: 165}
+    DialogueEventSO: {fileID: 11400000, guid: 6d8fea79877094a45aaeacb780904f16, type: 2}

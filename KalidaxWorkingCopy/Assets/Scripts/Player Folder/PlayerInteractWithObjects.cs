@@ -25,10 +25,10 @@ public class PlayerInteractWithObjects : MonoBehaviour
     [SerializeField] private float interactRadius;
     [SerializeField] private LayerMask grassMask;
     [SerializeField] private LayerMask interactableMask;
-    [SerializeField] private float angleToLookAtTarget = 50f;
+
 
     private RaycastHit2D hit;
-    private Collider2D closestCollider = null;
+    [SerializeField] private Collider2D closestCollider = null;
     private GameObject prevGrassTile = null;
 
 
@@ -39,7 +39,13 @@ public class PlayerInteractWithObjects : MonoBehaviour
     private Transform objTransform;
     private float closestDistance = Mathf.Infinity;
 
-
+    private Color[] debugLineColours =
+    {
+        Color.red,
+        Color.green,
+        Color.cyan,
+        Color.magenta
+    };
     private void Awake()
     {
         playerMovement = GetComponent<PlayerMovement>();
@@ -87,7 +93,7 @@ public class PlayerInteractWithObjects : MonoBehaviour
             return;
         }
 
-        Debug.DrawLine(transform.position, colliders[0].transform.position, Color.blue);
+        
 
         // -- GET THE CLOSEST COLLIDER -- //
 
@@ -102,11 +108,11 @@ public class PlayerInteractWithObjects : MonoBehaviour
             Vector3 directionToTarget = colPos - objTransform.position;
             float distanceFromPlayer = directionToTarget.sqrMagnitude;
 
-          
+            
             //if this collider is the closest one to the player AND it's not already the closest...
             if (distanceFromPlayer < closestDistance - 0.1f && closestCollider != col)
             {
-
+                
                 //if there was a collider before, then Hide it's UI and say it's out of range
                 if (closestCollider != null && closestIO != null)
                 {
@@ -116,13 +122,17 @@ public class PlayerInteractWithObjects : MonoBehaviour
                 //then set this collider as the closest
                 closestCollider = col;
             }
+
+
+             Debug.DrawLine(transform.position, col.transform.position, debugLineColours[i]);
+ 
             
         }
-
+        
 
 
         if (closestCollider == null) return;
-
+        
 
 
         // -- NOW ACTIVATE THE CLOSEST COLLIDER -- //
@@ -140,10 +150,12 @@ public class PlayerInteractWithObjects : MonoBehaviour
 
        
         //Check to see if we're already showing the UI and if not, then show it
-        if (closestIO != null && !closestIO.InPlayerRange && closestIO.CheckIsInteractable())
+        if (closestIO != null && !closestIO.m_InPlayerRange && closestIO.CheckIsInteractable())
         {
             closestIO.OnPlayerEnterRange(0);
         }
+
+
 
     }
 

@@ -88,7 +88,6 @@ GameObject:
   - component: {fileID: 5501898529609756139}
   - component: {fileID: 2246084993551473487}
   - component: {fileID: 5682761705964438282}
-  - component: {fileID: 3069158535343480476}
   m_Layer: 6
   m_Name: Interact Button Image
   m_TagString: Untagged
@@ -154,26 +153,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!95 &3069158535343480476
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2676443225039788985}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 5903f69d39a13ba4799a608cbdd6f9eb, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &3895773403004463258
 GameObject:
   m_ObjectHideFlags: 0

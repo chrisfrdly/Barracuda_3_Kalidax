@@ -108,7 +108,7 @@ public class UpgradeCheck : MonoBehaviour
         spriteRenderers[index].color = canAfford ? Color.green : new Color(1f, 0f, 0f, 0.5f);
 
         // Buying logic
-        if (canAfford && Input.GetKeyDown(KeyCode.B))
+        if (canAfford && Input.GetKeyDown(KeyCode.E))
         {
             PlayerWallet.Instance.SubtractValue(upgradeCost, "You've Purchased an upgrade"); // Subtract the cost from the player's wallet
             isBought[index] = true; // Mark the object as bought

@@ -13,29 +13,10 @@ public class BackgroundMusicSelect : MonoBehaviour
     private void Start()
     {
 
-        AudioManager[] audioManager = FindObjectsOfType<AudioManager>();
-
-        if (audioManager.Length == 0)
-            return;
-
-        if(audioManager.Length>1)
-        {
-            //play the audio delayed. Work around because right now it is trying to find the audio manager in the scene
-            //instead of the DontDestroyOnLoad One
-            Invoke("TryFindingAgain", 0.1f);
-        }
-        else
-        {
-            //Play Background Music
-            audioManager[0].BgPlay(backgroundMusicSelector);
-        }
+        //Play Background Music
+        AudioManager.instance.BgPlayOnAwake(backgroundMusicSelector, 0.05f, 0.4f, 0.2f);
+    }
 
         
-    }
-
-    private void TryFindingAgain()
-    {
-        AudioManager audioManager = FindObjectOfType<AudioManager>();
-        audioManager.BgPlay(backgroundMusicSelector);
-    }
 }
+

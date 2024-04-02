@@ -36,6 +36,7 @@ public class DS_DialogueController : MonoBehaviour
     public void ShowDialogueUI(bool _show)
     {
         dialogueUI.SetActive(_show);
+        UIController.Instance.m_CurrentUIVisible = dialogueUI;
     }
 
     //change the name and the text in the UI

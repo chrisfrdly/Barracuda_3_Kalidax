@@ -8,6 +8,7 @@ using UnityEngine.Events;
 public class SO_AliensInWorld : ScriptableObject
 {
     public List<SO_Alien> worldAliens = new List<SO_Alien>();
+
     //Recieved from the UIAlienButton and sent to the UIAlienGridList
     [System.NonSerialized]
     public AlienInGridClickedEvent alienInGridClickedEvent = new AlienInGridClickedEvent();
@@ -16,6 +17,29 @@ public class SO_AliensInWorld : ScriptableObject
     {
         alienInGridClickedEvent.Invoke(_alien);
     }
+
+    //Called from the DayCyle 
+    //Recieved from the Aliens In World that are under the DoNotDestroyOnLoad();
+    [System.NonSerialized]
+    public NewSceneEvent newSceneLoadedEvent = new NewSceneEvent();
+
+    public void NewSceneLoadedEventSend(string _sceneName)
+    {
+        newSceneLoadedEvent.Invoke(_sceneName);
+    }
+
+    //Called from the DayCyle 
+    //Recieved from the Aliens In World that are under the DoNotDestroyOnLoad();
+    [System.NonSerialized]
+    public UnityEvent sceneExittedEvent = new UnityEvent();
+
+    public void SceneExittedEventSend()
+    {
+        sceneExittedEvent.Invoke();
+    }
 }
 [System.Serializable]
 public class AlienInGridClickedEvent : UnityEvent<SO_Alien> { }
+
+[System.Serializable]
+public class NewSceneEvent : UnityEvent<string> { }

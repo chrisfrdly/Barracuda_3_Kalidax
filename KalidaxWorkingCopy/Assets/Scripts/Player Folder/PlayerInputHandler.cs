@@ -107,10 +107,20 @@ public class PlayerInputHandler : MonoBehaviour
 
     public void OnPaused(InputAction.CallbackContext context)
     {
+        
+        
+        if (!context.performed) return;
+
+        //Check to see if we have a current UI active. If so, then hide it instead of activating the paused
+        if (UIController.Instance.m_CurrentUIVisible != null)
+        {
+            UIController.Instance.HideCurrentUI();
+            return;
+        }
+
         //Send event to pause the game and switch input action maps 
         //NEW ONE
-        if (context.performed)
-            pauseMenuEvent.PauseGameEventSend();
+        pauseMenuEvent.PauseGameEventSend();
     }
 
     public void OnResumeGame(InputAction.CallbackContext context)
