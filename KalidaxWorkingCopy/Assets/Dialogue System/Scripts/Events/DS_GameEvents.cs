@@ -18,9 +18,19 @@ namespace DS_Events
 
         public Action m_SellAlienAction { get => sellAlienAction; set => sellAlienAction = value;}
 
+
+        //new action event for the intro sequence
+        private event Action introScriptAction;
+        public Action m_IntroScriptAction { get => introScriptAction; set => introScriptAction = value; }
+
         private void Awake()
         {
             Instance = this; 
+        }
+
+        public void CallIntroScriptAction()
+        {
+            introScriptAction?.Invoke();
         }
 
         public void CallSellAlienAction()
