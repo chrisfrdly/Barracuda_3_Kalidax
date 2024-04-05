@@ -489,8 +489,7 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 2630290332206181227, guid: c6f07a22abcb1b44ab2a3568e232e909, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c6f07a22abcb1b44ab2a3568e232e909, type: 3}
 --- !u!1 &1273198659 stripped
 GameObject:
@@ -598,6 +597,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 601ed4e6eb6ba0046a87845146fdcb1e, type: 3}
+--- !u!1 &1333078569 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4075410612173051810, guid: 601ed4e6eb6ba0046a87845146fdcb1e, type: 3}
+  m_PrefabInstance: {fileID: 1333078568}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1333078570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1333078569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f6cdc8977f121f4fb161013a540d2cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueUI: {fileID: 20317438}
+  textName: {fileID: 1487871806}
+  textBoxParent: {fileID: 956568255}
+  dialogueTextBox: {fileID: 1598698880}
+  leftImage: {fileID: 1447401379}
+  leftImageGO: {fileID: 1273198659}
+  rightImage: {fileID: 1672840645}
+  rightImageGO: {fileID: 1811780600}
+  buttonParentPanel: {fileID: 929767657}
+  buttonPrefab: {fileID: 3543639863355779286, guid: d808b8723b857d148b91282f47d22f82, type: 3}
 --- !u!114 &1447401379 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2630290332307668309, guid: c6f07a22abcb1b44ab2a3568e232e909, type: 3}
@@ -856,30 +882,3 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2630290333341004880, guid: c6f07a22abcb1b44ab2a3568e232e909, type: 3}
   m_PrefabInstance: {fileID: 1140952990}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1874073680 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2630290332206181229, guid: c6f07a22abcb1b44ab2a3568e232e909, type: 3}
-  m_PrefabInstance: {fileID: 1140952990}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1874073682
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1874073680}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f6cdc8977f121f4fb161013a540d2cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogueUI: {fileID: 20317438}
-  textName: {fileID: 1487871806}
-  textBoxParent: {fileID: 956568255}
-  dialogueTextBox: {fileID: 1598698880}
-  leftImage: {fileID: 1447401379}
-  leftImageGO: {fileID: 1273198659}
-  rightImage: {fileID: 1672840645}
-  rightImageGO: {fileID: 1811780600}
-  buttonParentPanel: {fileID: 929767657}
-  buttonPrefab: {fileID: 3543639863355779286, guid: d808b8723b857d148b91282f47d22f82, type: 3}
