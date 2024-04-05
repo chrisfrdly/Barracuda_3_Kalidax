@@ -8,7 +8,7 @@ using Unity.VisualScripting;
 
 public class DS_DialogueControllerAsh : DS_DialogueController // Inherit from DS_DialogueController
 {
-    private VerticalLayoutGroup layoutGroup;
+    private HorizontalLayoutGroup layoutGroup;
     private float spacing;
     private float topPadding;
 
@@ -20,7 +20,7 @@ public class DS_DialogueControllerAsh : DS_DialogueController // Inherit from DS
         base.Awake(); // Call the base class Awake method
 
         // Setting up additional parameters specific to DS_DialogueControllerAsh
-        layoutGroup = buttonParentPanel.GetComponent<VerticalLayoutGroup>();
+        layoutGroup = buttonParentPanel.GetComponent<HorizontalLayoutGroup>();
         spacing = layoutGroup.spacing;
         topPadding = layoutGroup.padding.top;
         buttonParentPanelSize = buttonParentPanel.sizeDelta;
@@ -96,8 +96,7 @@ public class DS_DialogueControllerAsh : DS_DialogueController // Inherit from DS
 
         }
 
-        buttonParentPanel.sizeDelta = new Vector2(buttonParentPanelSize.x, 
-                                                  buttonPrefabSize.y * _buttonTexts.Count + spacing * _buttonTexts.Count + (topPadding + spacing));
+        
     }
 
     private void DeleteButtons()
