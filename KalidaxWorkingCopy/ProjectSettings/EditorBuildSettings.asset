@@ -47,4 +47,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PersonalScenes/SebasScene.unity
     guid: 25fce3ad0f221a84a8d83d030782e699
+  - enabled: 1
+    path: Assets/Scenes/IntroScene.unity
+    guid: 08ff18823d1c7c946a141d381a09c956
   m_configObjects: {}

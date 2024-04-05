@@ -103,6 +103,8 @@ public class WorldAlien : MonoBehaviour
     //this method gets the allien close to the drone and sells it after
     private void MoveToProvisionsDrone()
     {
+        if(provisionDroneObject == null) return;
+
         transform.position = Vector3.MoveTowards(transform.position, provisionDroneObject.transform.position, moveSpeed * Time.deltaTime);
 
         if(Vector3.Distance(provisionDroneObject.transform.position, transform.position) < distanceToDrone)

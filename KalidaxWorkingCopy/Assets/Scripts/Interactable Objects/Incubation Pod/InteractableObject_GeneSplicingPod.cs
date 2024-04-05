@@ -14,17 +14,21 @@ public class InteractableObject_GeneSplicingPod : InteractableObject
     [SerializeField] private UIAlienGridList UIalienGridList;
     private AliensInWorld_Mono aliensListMono;
 
-    [Header("Incubation Pod HUD Panel")]
-    [SerializeField] private GameObject incubationPodHUDPanel;
+    [Header("Gene Splicing HUD Panel")]
+    [SerializeField] private GameObject geneSplicingHUDPanel;
     [SerializeField] private GameObject alienGridPanel;
 
-    [Header("Incubation Pod Buttons")]
+    [Header("Gene Splicing Buttons")]
     [SerializeField] private Button[] addAlienButton = new Button[2];
     [SerializeField] private bool[] addAlienColour = new bool[2]; //to determine if the alien is already selected (UI colour only)
 
     [SerializeField] private Button spliceButton;
     private int buttonModified;
     [SerializeField] private Sprite addButtonUISprite;
+
+    [Header("Error Text")]
+    [SerializeField] private GameObject mergeNotPossibleText;
+    [SerializeField] private GameObject alienMaxTierText;
 
 
     //aliens that are assigned to the buttons
@@ -82,9 +86,9 @@ public class InteractableObject_GeneSplicingPod : InteractableObject
         }
 
         //Activate the panel and make it the currentVisible UI
-        incubationPodHUDPanel.SetActive(true);
+        geneSplicingHUDPanel.SetActive(true);
         alienGridPanel.SetActive(false);
-        UIController.Instance.m_CurrentUIVisible = incubationPodHUDPanel;
+        UIController.Instance.m_CurrentUIVisible = geneSplicingHUDPanel;
 
         RefreshHUD();
     }
@@ -99,12 +103,14 @@ public class InteractableObject_GeneSplicingPod : InteractableObject
             addAlienButton[i].GetComponentInChildren<TextMeshProUGUI>().text = "+";
         }
         spliceButton.gameObject.SetActive(false);
+        alienGridPanel.SetActive(false);
     }
 
     private void CloseInteractionPrompt()
     {
-        incubationPodHUDPanel.SetActive(false);
+        geneSplicingHUDPanel.SetActive(false);
         spliceButton.gameObject.SetActive(false);
+        alienGridPanel.SetActive(false);
 
     }
 
@@ -145,10 +151,28 @@ public class InteractableObject_GeneSplicingPod : InteractableObject
         }
     }
 
+    private void DisplayErrorText(GameObject _gameObject)
+    {
+        Instantiate(_gameObject, new Vector2(transform.position.x, transform.position.y + 2), Quaternion.identity, geneSplicingHUDPanel.transform);
+    }
+
     private bool IsMergePossible(SO_Alien alien1, SO_Alien alien2)
     {
         if(alien1.m_AlienID == alien2.m_AlienID)
-            return true;
+        {
+            if((int)alien1.m_AlienTier < 2 && (int)alien2.m_AlienTier < 2)
+            {
+                return true;
+            }
+            else
+            {
+                DisplayErrorText(alienMaxTierText);
+                return false;
+            }
+            
+        }
+
+        DisplayErrorText(mergeNotPossibleText);
         return false;
     }
 
@@ -160,11 +184,8 @@ public class InteractableObject_GeneSplicingPod : InteractableObject
             GameObject[] alienToSpawnArray = AlienArrayToReturn(aliensAdded[0].m_AlienFamily.ToString());
             SpawnNewAlien(alienToSpawnArray);
         }
-        else
-        {
-            Debug.Log("Merge not possible");
-            return;
-        }
+        else return;
+       
     }
 
     private GameObject[] AlienArrayToReturn(string familyName)

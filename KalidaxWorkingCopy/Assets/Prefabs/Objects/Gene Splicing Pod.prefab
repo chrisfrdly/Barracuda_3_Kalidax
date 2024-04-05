@@ -292,7 +292,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5169956640510495363}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.36, y: -1.38, z: -0.027922973}
+  m_LocalPosition: {x: 2.36, y: -1.38, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -511,7 +511,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SO_interactableObject: {fileID: 11400000, guid: 240158fe63e954d4987742c9255c4afb, type: 2}
   SO_controlSchemeHUD: {fileID: 11400000, guid: c96593ae77af13148925d72ab4bf9b19, type: 2}
-  tweenTime: 0.5
+  tweenTime: 0.2
   interactPromptPanel: {fileID: 7376599305240077197}
   interactButtonSprite: {fileID: 7376599305528637408}
   isTalkingTo: 0
@@ -521,7 +521,7 @@ MonoBehaviour:
   freezePlayerMovement: 0
   aliens: {fileID: 11400000, guid: 72364da5f673e9e40a6c8574ac06e771, type: 2}
   UIalienGridList: {fileID: 1962606633222329810}
-  incubationPodHUDPanel: {fileID: 7376599304840943977}
+  geneSplicingHUDPanel: {fileID: 7376599304840943977}
   alienGridPanel: {fileID: 7376599305741144352}
   addAlienButton:
   - {fileID: 7376599304987843840}
@@ -529,13 +529,17 @@ MonoBehaviour:
   addAlienColour: 0000
   spliceButton: {fileID: 3773572419619150621}
   addButtonUISprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  mergeNotPossibleText: {fileID: 374158101537632099, guid: 08b9a430c3c96a142a846809ad0f1f18, type: 3}
+  alienMaxTierText: {fileID: 374158101537632099, guid: 0ca1450603d0be64fab3a248b350c910, type: 3}
   aliensAdded:
   - {fileID: 0}
   - {fileID: 0}
   sprogPrefabs:
   - {fileID: 7484337346399641151, guid: 03cc4febb0d6c5040beca1b72f27be09, type: 3}
+  - {fileID: 7484337346399641151, guid: 5428e6ec0819fd844bd8b07b1028cb9d, type: 3}
   longstriderPrefabs:
   - {fileID: 7484337346399641151, guid: 626aa84525ed7f74387af2f8f728a5ab, type: 3}
+  - {fileID: 7484337346399641151, guid: 2867c65b53045a645975c5b149aa71c5, type: 3}
   alienSpawnPoint: {fileID: 1938665853892549602}
 --- !u!1 &7376599304840943977
 GameObject:

@@ -57,6 +57,7 @@ public class UIAlienGridList : MonoBehaviour
             //Spawn button object
             buttonList.Add(Instantiate(alienButtonPrefab, gridParent));
 
+
             //Select the first alien in the list for controllers
             if (i == 0 && PlayerInputHandler.Instance.GetCurrentControlScheme() == "Controller")
                 buttonList[i].GetComponent<Button>().Select();
@@ -65,25 +66,31 @@ public class UIAlienGridList : MonoBehaviour
             Image buttonImg = buttonList[i].GetComponentInChildren<Image>();
             buttonImg.sprite = aliensInWorldSO.worldAliens[i].m_AlienSprite;
 
+   
             //Get the button text and set it to the alien's tier 
             TextMeshProUGUI txt = buttonList[i].GetComponentInChildren<TextMeshProUGUI>();
             txt.text = aliensInWorldSO.worldAliens[i].m_AlienTier.ToString();
 
-            buttonList[i].GetComponent<UIAlienButton>().m_ThisButtonAlien = aliensInWorldSO.worldAliens[i];
+            UIAlienButton alienButton = buttonList[i].GetComponent<UIAlienButton>();
+            alienButton.m_ThisButtonAlien = aliensInWorldSO.worldAliens[i];
+
 
 
             //Check to see if this alien is selected already. If so, then colour it darker
             //Check to see the Game Object
             SO_Alien worldAlien = aliensInWorldSO.worldAliens[i].m_ThisAlien;
+            alienButton.m_DisableButton = false;
 
             if (i > 1) continue;
             if (io.m_AliensAdded[i] == worldAlien && io.m_AddAlienColour[i] == true)
             {
                 buttonImg.color = new Color(0.4f, 0.4f, 0.4f);
+                alienButton.m_DisableButton = true;
             }
-           
-           
-            
+
+
+
+
 
         }
     }

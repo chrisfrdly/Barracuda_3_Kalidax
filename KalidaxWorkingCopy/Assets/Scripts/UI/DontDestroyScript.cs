@@ -17,7 +17,12 @@ public class DontDestroyScript : MonoBehaviour
 
     void DestroyOnMainMenuLoaded(string _sceneName)
     {
-        Destroy(gameObject);
+        if(_sceneName == "MainMenu")
+        {
+            Destroy(gameObject);
+            return;
+        }
+        
     }
 
 }

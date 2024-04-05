@@ -193,6 +193,7 @@ GameObject:
   - component: {fileID: 2212100057303225413}
   - component: {fileID: 2212100057303225412}
   - component: {fileID: 2212100057303225410}
+  - component: {fileID: 963242721607703868}
   m_Layer: 6
   m_Name: SuperSprog
   m_TagString: Untagged
@@ -454,6 +455,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &963242721607703868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7484337346399641151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43c98a7eadbf48142a76e1b465f73d48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8188042966839912650
 GameObject:
   m_ObjectHideFlags: 0

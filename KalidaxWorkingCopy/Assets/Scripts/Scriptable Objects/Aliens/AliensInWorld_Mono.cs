@@ -13,8 +13,6 @@ public class AliensInWorld_Mono : MonoBehaviour
     private void Awake()
     {
 
-       
-
         if (instance == null)
         {
             instance = this;
@@ -45,16 +43,17 @@ public class AliensInWorld_Mono : MonoBehaviour
             return;
         }
 
-
         //Need to clear the List every awake or else will stack with every play.
         //Cannot clear in the "UIAlienGrisList" since it's awake is called after
         //the aliens are added to the list, so they will be removed
+
         aliensInWorld.worldAliens.Clear();
         aliensInWorld_GO.Clear();
+     
 
-        
 
-        for(int i = 0; i < gameObject.transform.childCount; i++)
+
+        for (int i = 0; i < gameObject.transform.childCount; i++)
         {
             GameObject alienChild = transform.GetChild(i).gameObject;
             aliensInWorld_GO.Add(alienChild);
@@ -62,6 +61,7 @@ public class AliensInWorld_Mono : MonoBehaviour
             SO_Alien alienContainer = alienChild.GetComponent<WorldAlien>().m_AlienContainer;
             aliensInWorld.worldAliens.Add(alienContainer);
         }
+
     }
 
     public void SetAllItemsInactive()

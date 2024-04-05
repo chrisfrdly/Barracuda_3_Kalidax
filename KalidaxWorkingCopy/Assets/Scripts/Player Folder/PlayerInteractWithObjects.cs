@@ -65,6 +65,7 @@ public class PlayerInteractWithObjects : MonoBehaviour
         if (pressedInteract && closestIO != null)
         {
             interactableObject.ClickedInteractButtonEventSend();
+            
             closestIO.OnInteract(gameObject);
             
         }

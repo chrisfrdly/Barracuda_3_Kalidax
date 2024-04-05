@@ -20,7 +20,7 @@ public class DayManager : MonoBehaviour
     [Header("Events")]
     [SerializeField] InteractableObject_SeedPod sp;
     [SerializeField] private SO_GameEvent gameEvent;
-
+    [SerializeField] private SO_AliensInWorld newSceneEvent;
 
 
     [Header("CURRENT DAY")]
@@ -37,7 +37,6 @@ public class DayManager : MonoBehaviour
     {
         Instance = this;
 
-        
 
     }
     private void Start()
