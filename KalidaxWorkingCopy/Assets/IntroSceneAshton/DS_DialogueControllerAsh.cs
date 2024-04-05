@@ -99,11 +99,4 @@ public class DS_DialogueControllerAsh : DS_DialogueController // Inherit from DS
         
     }
 
-    private void DeleteButtons()
-    {
-        for(int i = buttonParentPanel.childCount - 1; i >= 0 ; i--)
-        {
-            Destroy(buttonParentPanel.GetChild(i).gameObject);
-        }
-    }
 }

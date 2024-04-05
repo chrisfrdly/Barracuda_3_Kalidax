@@ -1302,8 +1302,9 @@ MonoBehaviour:
   SO_Data_dayCycle: {fileID: 11400000, guid: 208eef33a987f0e4bb799b003df00a94, type: 2}
   SO_grassTileParams: {fileID: 11400000, guid: 5152f242cb409774083e1f0976e1a24a, type: 2}
   grassTiles: []
-  sp: {fileID: 0}
-  gameEvent: {fileID: 0}
+  sp: {fileID: 1669869764}
+  gameEvent: {fileID: 11400000, guid: 0f29efc5c19584e46922cdc2d9fef8eb, type: 2}
+  newSceneEvent: {fileID: 11400000, guid: 72364da5f673e9e40a6c8574ac06e771, type: 2}
 --- !u!4 &335845907
 Transform:
   m_ObjectHideFlags: 0
@@ -3801,6 +3802,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &943346025 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2630290333227150102, guid: c6f07a22abcb1b44ab2a3568e232e909, type: 3}
+  m_PrefabInstance: {fileID: 323823116}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &943346030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 943346025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 733938f37f72497449bde7ef7c09403d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aliensInWorld: {fileID: 11400000, guid: 72364da5f673e9e40a6c8574ac06e771, type: 2}
 --- !u!1 &946257896
 GameObject:
   m_ObjectHideFlags: 0
@@ -7982,6 +8001,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7376599304375814040, guid: 5acdf902b2155e441a573cb0942e0362, type: 3}
   m_PrefabInstance: {fileID: 2145201569}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1669869764 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7376599304375814047, guid: 5acdf902b2155e441a573cb0942e0362, type: 3}
+  m_PrefabInstance: {fileID: 2145201569}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1669869760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d56c51c00345e744aaa6edf575ec2774, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1691066483 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8075052001810662464, guid: 6fb02f626fe3aa54183d87ea74a7919b, type: 3}

@@ -81,8 +81,9 @@ public class DS_DialogueController : MonoBehaviour
         
     }
 
-    private void DeleteButtons()
+    protected virtual void DeleteButtons()
     {
+        Debug.Log(buttonParentPanel);
         for(int i = buttonParentPanel.childCount - 1; i >= 0 ; i--)
         {
             Destroy(buttonParentPanel.GetChild(i).gameObject);
