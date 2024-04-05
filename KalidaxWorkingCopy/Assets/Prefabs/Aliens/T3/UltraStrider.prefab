@@ -193,9 +193,9 @@ GameObject:
   - component: {fileID: 2212100057303225413}
   - component: {fileID: 2212100057303225412}
   - component: {fileID: 2212100057303225410}
-  - component: {fileID: 4011011970511158874}
+  - component: {fileID: 7786120199258717736}
   m_Layer: 6
-  m_Name: SuperStrider
+  m_Name: UltraStrider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -229,7 +229,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d3578ab145dfd4409c58193fef3ad03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  alienContainer: {fileID: 7290162825301215066, guid: d307c286794932149ba0597d57085900, type: 2}
+  alienContainer: {fileID: -7213682176724243034, guid: d307c286794932149ba0597d57085900, type: 2}
   aliensInWorldListSO: {fileID: 11400000, guid: 72364da5f673e9e40a6c8574ac06e771, type: 2}
   objectListScript: {fileID: 0}
   provisionDroneObject: {fileID: 0}
@@ -312,7 +312,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: ee84edaa93e0e564cbf920c6df3de68b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fe7a023a97700574f95bbcc559c57d9b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -356,9 +356,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.23037493}
+  m_Offset: {x: 0.029762268, y: -0.27873904}
   serializedVersion: 2
-  m_Radius: 1.0871028
+  m_Radius: 0.8899264
 --- !u!82 &2212100057303225410
 AudioSource:
   m_ObjectHideFlags: 0
@@ -369,7 +369,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 4278654887805117937, guid: 2c6c62f5feb37ea44b1b9cdac92f88a7, type: 2}
-  m_audioClip: {fileID: 8300000, guid: b6eca71fbb6868643ba99b0f087a7b51, type: 3}
+  m_audioClip: {fileID: 8300000, guid: e992965b84b131643b804d8af4951aff, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.95
   m_Pitch: 1
@@ -455,7 +455,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &4011011970511158874
+--- !u!114 &7786120199258717736
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
