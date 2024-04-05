@@ -40,8 +40,9 @@ public class InteractableObject_SeedPod : InteractableObject
     public SO_Inventory inventory;
 
     [Header("Incubation Parameters")]
-    [SerializeField] private int daysToIncubate = 7;
+    [SerializeField]private int daysToIncubate = 2;
     private int daysLeft;
+    private int seedIndex;
 
     [Header("Prefab Instantiation")]
     [SerializeField] private List<GameObject> T1alienPrefabs;
@@ -71,7 +72,6 @@ public class InteractableObject_SeedPod : InteractableObject
         base.Awake();
         SO_interactableObject.clickedCancelButtonEvent.AddListener(CloseInteractionPrompt);
         daysLeft = daysToIncubate;
-
 
     }
     private void Start()
@@ -114,6 +114,7 @@ public class InteractableObject_SeedPod : InteractableObject
             {
                 daysLeft = dataDayCycle.incubationPodData[thisIndex].daysLeft - 1;
                 dataDayCycle.incubationPodData[thisIndex].daysLeft = daysLeft;
+                seedIndex = dataDayCycle.incubationPodData[thisIndex].seedIndex;
             }
 
             // Check if still incubating
@@ -133,7 +134,7 @@ public class InteractableObject_SeedPod : InteractableObject
             }
 
 
-
+            Debug.Log(seedIndex);
             //now we check to see if this incubation pod has been purchased and if so, then set the state to green
         }
 
@@ -247,9 +248,9 @@ public class InteractableObject_SeedPod : InteractableObject
             if (inventory.container.items[i].id > -1 && inventory.container.items[i].amount > 0)
             {
                 AudioManager.instance.Play("Insert 1");
-
+                SetSeedData(inventory.container.items[i].id);
                 inventory.AddItem(inventory.container.items[i].item, -1);
-                if(inventory.container.items[i].amount <= 0)
+                if (inventory.container.items[i].amount <= 0)
                 {
                     inventory.RemoveItem(inventory.container.items[i].item);
                 }
@@ -258,6 +259,16 @@ public class InteractableObject_SeedPod : InteractableObject
         }
         return false;
     }
+
+    private void SetSeedData(int index)
+    {
+        Debug.Log(index);
+        AudioManager.instance.Play("Insert 1");
+        seedIndex = index;
+        dataDayCycle.incubationPodData[thisIndex].seedIndex = seedIndex;
+    }
+
+    
     //This function is called on the button in the inspector
     public void ChangeState()
     {
@@ -269,7 +280,7 @@ public class InteractableObject_SeedPod : InteractableObject
         i %= 3;
         if (incubationState == IncubationState.OBJ_RemoveSeed)
         {
-            InstantiateRandomPrefab();
+            SpawnAlien();
         }
 
      
@@ -289,15 +300,16 @@ public class InteractableObject_SeedPod : InteractableObject
         
     }
 
-    private void InstantiateRandomPrefab()
+    private void SpawnAlien()
     {
         if (T1alienPrefabs.Count > 0)
         {
-            int index = UnityEngine.Random.Range(0, T1alienPrefabs.Count); // Select a random index
-            GameObject prefabToInstantiate = T1alienPrefabs[index]; // Get the prefab at the random index
+            GameObject prefabToInstantiate = T1alienPrefabs[seedIndex]; // Get the prefab at the set index
 
             // Instantiate the prefab at a desired location and rotation
             Instantiate(prefabToInstantiate, spawnLocation, Quaternion.identity, AliensInWorld_Mono.instance.gameObject.transform);
+            Debug.Log(prefabToInstantiate.name);
+            seedIndex = -1;
         }
     }
 
@@ -341,6 +353,8 @@ public class InteractableObject_SeedPod : InteractableObject
     }
     private void ShowIncubatingUI()
     {
+        //Set the text for the amount of days left
+        daysRemainingText.text = daysLeft.ToString() + " days left \n to incubate";
         incubationState = IncubationState.OBJ_Incubating;
         gameEvent.RaiseProgressChanged(ProgressState.SeedPlaced);
         addSeedButton.gameObject.SetActive(false);

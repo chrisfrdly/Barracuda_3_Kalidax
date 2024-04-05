@@ -43,8 +43,16 @@ public class WorldAlien : MonoBehaviour
         AddAlienToList();
         UpdateAlienInGame();
     }
-    private void InitializeAlien()
+    private void InitializeAlien(string _sceneName)
     {
+        //If the alien is going towards a provisions drone and we go to the main menu, we'd get an error. 
+        //This code makes sure we get rid of the alien when going to the main menu
+        if(_sceneName == "MainMenu")
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         provisionDroneObject = FindObjectOfType<InteractableObject_Provisions_Drone>().gameObject;
         objectListScript = FindObjectOfType<AliensInWorld_Mono>();
     }

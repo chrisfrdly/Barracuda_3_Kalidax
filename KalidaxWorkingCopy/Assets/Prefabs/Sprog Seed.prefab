@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3415721363785456047}
   - component: {fileID: 3385918023943827210}
   m_Layer: 0
-  m_Name: Seed Object
+  m_Name: Sprog Seed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

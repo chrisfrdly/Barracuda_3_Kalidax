@@ -29,7 +29,7 @@ public class SO_Data_DayCycle : ScriptableObject
         incubationPodPurchased[0] = true;
         currentDay = 0;
     }
-    private void OnEnable()
+    public void OnEnable()
     {
         Initialize();
     }
@@ -42,4 +42,5 @@ public class IncubationPodData
     public int index = -1; //I set it to -1 since it should never happen and we can update the incubation pods
     public IncubationState incubationState = IncubationState.OBJ_AddSeed;
     public int daysLeft;
+    public int seedIndex; //this is so that it can spawn the correct aliens
 }

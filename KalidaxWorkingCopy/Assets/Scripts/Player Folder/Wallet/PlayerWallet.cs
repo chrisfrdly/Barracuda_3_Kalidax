@@ -38,12 +38,20 @@ public class PlayerWallet : MonoBehaviour
             Destroy(gameObject);
         }
 
-
+        
     }
 
-    void ResetWalletAmountToAdd()
+    void ResetWalletAmountToAdd(string _sceneName)
     {
         amountToPutInWallet = 0;
+
+        if (_sceneName == "MainMenu")
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        
     }
 
     // Call this method to add earnings throughout the day
