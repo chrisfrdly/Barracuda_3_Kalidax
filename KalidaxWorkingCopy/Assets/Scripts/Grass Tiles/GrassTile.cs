@@ -84,6 +84,8 @@ public class GrassTile : MonoBehaviour
         }
         else
         {
+            AudioManager.instance.Play("Seed Harvest");
+
             spriteRenderer.color = SO_grassTileParams.grassColours[1];
             boxCollider.enabled = false;
             
