@@ -23,10 +23,10 @@ MonoBehaviour:
     TargetNodeGUID: 9ec6059c-0447-4cc0-9738-a93f68196f4a
   DialogueNodeDatas:
   - NodeGUID: 06a951bf-c07a-49d5-aa8c-c0c1b4b734f6
-    Pos: {x: 332, y: 214}
+    Pos: {x: 254, y: 214}
     TextType:
     - LanguageType: 0
-      LanguageGenericType: I SURE LOVE BEING ALIVE...
+      LanguageGenericType: KINSHIP UNITES US. LIFE'S A DELIGHT.
     DialogueNodePorts:
     - InputGUID: 53224331-831f-4237-a2c2-069e64f71eb7
       OutputGUID: 06a951bf-c07a-49d5-aa8c-c0c1b4b734f6
@@ -43,7 +43,7 @@ MonoBehaviour:
     AudioClips:
     - LanguageType: 0
       LanguageGenericType: {fileID: 8300000, guid: fc6e86223a932714e8782ac4c92e3031, type: 3}
-    Name: 'SPROG: '
+    Name: 'LONGSTRIDER:'
   EndNodeDatas:
   - NodeGUID: b5a356e9-ad44-42c3-8637-effffcebdfae
     Pos: {x: 2848, y: 289}

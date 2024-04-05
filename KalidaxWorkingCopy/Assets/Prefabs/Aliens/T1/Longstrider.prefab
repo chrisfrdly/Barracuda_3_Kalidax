@@ -270,7 +270,7 @@ MonoBehaviour:
   isInteractPointVisible: 1
   isRequiredToLookAtTarget: 0
   freezePlayerMovement: 0
-  conversation: {fileID: 11400000, guid: 7a562d8cbea99154c8a4d8c93d5fb886, type: 2}
+  conversation: {fileID: 11400000, guid: a8418c307e6c38340b6c2770437931f9, type: 2}
 --- !u!212 &2212100057303225414
 SpriteRenderer:
   m_ObjectHideFlags: 0

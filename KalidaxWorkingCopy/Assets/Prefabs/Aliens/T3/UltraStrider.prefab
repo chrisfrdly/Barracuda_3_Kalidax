@@ -208,7 +208,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7484337346399641151}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 10.405109, y: -1.9918394, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -270,7 +270,7 @@ MonoBehaviour:
   isInteractPointVisible: 1
   isRequiredToLookAtTarget: 0
   freezePlayerMovement: 0
-  conversation: {fileID: 11400000, guid: 87d229a586b27f049a52bbbcb9fc5293, type: 2}
+  conversation: {fileID: 11400000, guid: 2ad57e956310a74449265cab24134262, type: 2}
 --- !u!212 &2212100057303225414
 SpriteRenderer:
   m_ObjectHideFlags: 0
