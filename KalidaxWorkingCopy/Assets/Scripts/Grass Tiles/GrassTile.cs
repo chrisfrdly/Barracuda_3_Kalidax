@@ -10,6 +10,8 @@ public class GrassTile : MonoBehaviour
     [SerializeField] private SO_GrassTileParameters SO_grassTileParams;
 
     [SerializeField] private List<GameObject> seeds = new List<GameObject>();
+    [SerializeField] private Sprite cutSprite;
+    [SerializeField] private Color cutColour;
 
     //Components
     private SpriteRenderer spriteRenderer;
@@ -79,12 +81,13 @@ public class GrassTile : MonoBehaviour
     {
         if(!isCut)
         {
-            spriteRenderer.color = SO_grassTileParams.grassColours[0];
+            spriteRenderer.color = Color.white;
             boxCollider.enabled = true;
         }
         else
         {
-            spriteRenderer.color = SO_grassTileParams.grassColours[1];
+            spriteRenderer.sprite = cutSprite;
+            spriteRenderer.color = cutColour;
             boxCollider.enabled = false;
             
         }

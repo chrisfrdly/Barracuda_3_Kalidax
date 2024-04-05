@@ -26,7 +26,7 @@ public class LevelManager : MonoBehaviour
 
     public void LoadPlay(int sceneBuildIndex)
     {
-        SceneManager.LoadScene("Lucas Scene");
+        SceneManager.LoadScene("IntroScene");
         AudioManager.instance.Play("Positive Interact");
     }
 

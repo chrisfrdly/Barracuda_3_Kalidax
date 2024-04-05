@@ -99,12 +99,14 @@ public class InteractableObject_GeneSplicingPod : InteractableObject
             addAlienButton[i].GetComponentInChildren<TextMeshProUGUI>().text = "+";
         }
         spliceButton.gameObject.SetActive(false);
+        alienGridPanel.SetActive(false);
     }
 
     private void CloseInteractionPrompt()
     {
         incubationPodHUDPanel.SetActive(false);
         spliceButton.gameObject.SetActive(false);
+        alienGridPanel.SetActive(false);
 
     }
 
