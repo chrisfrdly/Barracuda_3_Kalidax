@@ -42,7 +42,7 @@ MonoBehaviour:
     DialogueSpriteImageType: 0
     AudioClips:
     - LanguageType: 0
-      LanguageGenericType: {fileID: 8300000, guid: e992965b84b131643b804d8af4951aff, type: 3}
+      LanguageGenericType: {fileID: 8300000, guid: 1de7bed09b1847446aabd25fec674c8f, type: 3}
     Name: 'AMPHIBIOIL:'
   EndNodeDatas:
   - NodeGUID: debb40d4-1545-49d2-846c-5f4e48881f83
