@@ -27,6 +27,8 @@ public class InteractableWall : InteractableObject
         {
             if(wallet.walletAmount >= RemoveWallCost)
             {
+                AudioManager.instance.Play("Item Purchased Coins");
+
                 wallet.SubtractValue(RemoveWallCost, "Removed Wall");
                 Destroy(gameObject);
             }

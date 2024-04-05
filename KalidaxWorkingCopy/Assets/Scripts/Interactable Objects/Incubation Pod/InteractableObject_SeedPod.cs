@@ -94,6 +94,8 @@ public class InteractableObject_SeedPod : InteractableObject
 
             if (purchased)
             {
+                AudioManager.instance.Play("Item Purchased Coins");
+
                 dataDayCycle.incubationPodData[thisIndex].incubationState = IncubationState.OBJ_AddSeed;
                 incubationState = IncubationState.OBJ_AddSeed;
             }

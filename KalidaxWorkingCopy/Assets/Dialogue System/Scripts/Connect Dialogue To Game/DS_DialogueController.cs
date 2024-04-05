@@ -42,7 +42,6 @@ public class DS_DialogueController : MonoBehaviour
     //change the name and the text in the UI
     public void SetText(string _textName, string _textBox)
     {
-        
         textName.text = _textName;
         dialogueTextBox.text = _textBox;
 

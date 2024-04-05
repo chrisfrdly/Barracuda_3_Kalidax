@@ -63,6 +63,8 @@ public class SellAlienEvent : MonoBehaviour
         conversation.m_IsInteractable = false;
         conversation.OnPlayerExitRange();
 
+        AudioManager.instance.Play("Item Sold Coins");
+
         //set the sellAlien to true
         worldAlienScript.SetSellToTrue();
     }
