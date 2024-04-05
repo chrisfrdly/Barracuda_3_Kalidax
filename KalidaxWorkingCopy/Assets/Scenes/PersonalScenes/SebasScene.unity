@@ -1228,34 +1228,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2630290332367492519, guid: c6f07a22abcb1b44ab2a3568e232e909, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2630290332837201248, guid: c6f07a22abcb1b44ab2a3568e232e909, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2630290333045248020, guid: c6f07a22abcb1b44ab2a3568e232e909, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2630290333045248021, guid: c6f07a22abcb1b44ab2a3568e232e909, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2630290333045248021, guid: c6f07a22abcb1b44ab2a3568e232e909, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 317
-      objectReference: {fileID: 0}
-    - target: {fileID: 2630290333045248021, guid: c6f07a22abcb1b44ab2a3568e232e909, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2630290333045248021, guid: c6f07a22abcb1b44ab2a3568e232e909, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2630290333227150098, guid: c6f07a22abcb1b44ab2a3568e232e909, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1344,10 +1316,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dialogue Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 2630290333227150102, guid: c6f07a22abcb1b44ab2a3568e232e909, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2630290333978538149, guid: c6f07a22abcb1b44ab2a3568e232e909, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1393,30 +1361,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2630290334154407236, guid: c6f07a22abcb1b44ab2a3568e232e909, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4115683202709694754, guid: c6f07a22abcb1b44ab2a3568e232e909, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4115683202709694754, guid: c6f07a22abcb1b44ab2a3568e232e909, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4115683202709694754, guid: c6f07a22abcb1b44ab2a3568e232e909, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4115683202709694754, guid: c6f07a22abcb1b44ab2a3568e232e909, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4115683202709694754, guid: c6f07a22abcb1b44ab2a3568e232e909, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4115683202709694754, guid: c6f07a22abcb1b44ab2a3568e232e909, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
@@ -3806,24 +3750,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 946257896}
   m_CullTransparentMesh: 1
---- !u!1 &972957403 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2630290333227150102, guid: c6f07a22abcb1b44ab2a3568e232e909, type: 3}
-  m_PrefabInstance: {fileID: 323823116}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &972957408
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 972957403}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 733938f37f72497449bde7ef7c09403d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  aliensInWorld: {fileID: 11400000, guid: 72364da5f673e9e40a6c8574ac06e771, type: 2}
 --- !u!4 &976851404 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8075052001810662464, guid: 69b3a66aa189865458ab8b9cddad4b5a, type: 3}
