@@ -193,6 +193,7 @@ GameObject:
   - component: {fileID: 2212100057303225413}
   - component: {fileID: 2212100057303225412}
   - component: {fileID: 2212100057303225410}
+  - component: {fileID: 5579341160835296609}
   m_Layer: 6
   m_Name: Longstrider
   m_TagString: Untagged
@@ -269,7 +270,7 @@ MonoBehaviour:
   isInteractPointVisible: 1
   isRequiredToLookAtTarget: 0
   freezePlayerMovement: 0
-  conversation: {fileID: 11400000, guid: 7a562d8cbea99154c8a4d8c93d5fb886, type: 2}
+  conversation: {fileID: 11400000, guid: a8418c307e6c38340b6c2770437931f9, type: 2}
 --- !u!212 &2212100057303225414
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -454,6 +455,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5579341160835296609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7484337346399641151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43c98a7eadbf48142a76e1b465f73d48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8188042966839912650
 GameObject:
   m_ObjectHideFlags: 0

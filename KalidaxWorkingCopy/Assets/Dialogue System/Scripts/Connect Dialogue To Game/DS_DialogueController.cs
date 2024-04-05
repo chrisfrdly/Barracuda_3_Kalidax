@@ -8,39 +8,39 @@ using Unity.VisualScripting;
 
 public class DS_DialogueController : MonoBehaviour
 {
-    [SerializeField] private GameObject dialogueUI;
+    [SerializeField] protected GameObject dialogueUI;
 
     [Header("Text")]
-    [SerializeField] private TextMeshProUGUI textName;
-    [SerializeField] private RectTransform textBoxParent;
-    [SerializeField] private TextMeshProUGUI dialogueTextBox;
+    [SerializeField] protected TextMeshProUGUI textName;
+    [SerializeField] protected RectTransform textBoxParent;
+    [SerializeField] protected TextMeshProUGUI dialogueTextBox;
 
     [Header("Images")]
-    [SerializeField] private Image leftImage; //the image we want to change
-    [SerializeField] private GameObject leftImageGO; //hiding and unhiding image. We're using a mask so we need 2 different variables
-    [SerializeField] private Image rightImage;
-    [SerializeField] private GameObject rightImageGO;
+    [SerializeField] protected Image leftImage; //the image we want to change
+    [SerializeField] protected GameObject leftImageGO; //hiding and unhiding image. We're using a mask so we need 2 different variables
+    [SerializeField] protected Image rightImage;
+    [SerializeField] protected GameObject rightImageGO;
 
     [Header("Buttons")]
-    [SerializeField] private RectTransform buttonParentPanel;
-    [SerializeField] private Button buttonPrefab;
+    [SerializeField] protected RectTransform buttonParentPanel;
+    [SerializeField] protected Button buttonPrefab;
 
 
-    private void Awake()
+    protected virtual void Awake()
     {
         ShowDialogueUI(false);
 
        
     }
 
-    public void ShowDialogueUI(bool _show)
+    public virtual void ShowDialogueUI(bool _show)
     {
         dialogueUI.SetActive(_show);
         UIController.Instance.m_CurrentUIVisible = dialogueUI;
     }
 
     //change the name and the text in the UI
-    public void SetText(string _textName, string _textBox)
+    public virtual void SetText(string _textName, string _textBox)
     {
         textName.text = _textName;
         dialogueTextBox.text = _textBox;
@@ -49,7 +49,7 @@ public class DS_DialogueController : MonoBehaviour
 
 
     //change the image in the UI
-    public void SetImage(Sprite _image, DS_DialogueSpriteImageType _dialogueSpriteImageType)
+    public virtual void SetImage(Sprite _image, DS_DialogueSpriteImageType _dialogueSpriteImageType)
     {
 
         if (_image == null)
@@ -60,7 +60,7 @@ public class DS_DialogueController : MonoBehaviour
 
     //Unity Actions are an action. Add a new action to the button so when I click the button it does the action
     //Actions are the OnClick() events but we're doing it through code.
-    public void SetButtons(List<string> _buttonTexts, List<UnityAction> _unityActions)
+    public virtual void SetButtons(List<string> _buttonTexts, List<UnityAction> _unityActions)
     {
 
         DeleteButtons();
@@ -80,8 +80,9 @@ public class DS_DialogueController : MonoBehaviour
         
     }
 
-    private void DeleteButtons()
+    protected virtual void DeleteButtons()
     {
+        Debug.Log(buttonParentPanel);
         for(int i = buttonParentPanel.childCount - 1; i >= 0 ; i--)
         {
             Destroy(buttonParentPanel.GetChild(i).gameObject);

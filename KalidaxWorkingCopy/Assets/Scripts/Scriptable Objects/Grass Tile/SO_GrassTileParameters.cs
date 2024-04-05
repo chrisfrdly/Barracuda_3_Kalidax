@@ -13,7 +13,6 @@ public class SO_GrassTileParameters : ScriptableObject
     [Range(0f, 100f)]
     public int chanceToGetSeed;
 
-    public Color[] grassColours;
     /* UNITY EVENTS */
 
     //This method is called from the "PlayerMovement.cs" Script

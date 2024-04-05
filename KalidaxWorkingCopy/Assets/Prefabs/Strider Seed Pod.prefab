@@ -102,6 +102,8 @@ MonoBehaviour:
   SO_grassTileParams: {fileID: 11400000, guid: 5152f242cb409774083e1f0976e1a24a, type: 2}
   seeds:
   - {fileID: 1283314283460811411, guid: 35a72641591643f4cb92d8b48503ac4b, type: 3}
+  cutSprite: {fileID: 21300000, guid: 3707c9cc08019044bacc6f26bd2e729c, type: 3}
+  cutColour: {r: 0.4, g: 0.47058824, b: 0.6784314, a: 1}
   isCut: 0
 --- !u!61 &3192197123404599430
 BoxCollider2D:

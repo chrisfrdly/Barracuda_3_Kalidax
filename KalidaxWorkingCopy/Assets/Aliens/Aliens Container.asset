@@ -1,5 +1,32 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-7213682176724243034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16ea780a6e7e52e4790b222f05ac24e5, type: 3}
+  m_Name: '[Tier_3] Ultra Strider'
+  m_EditorClassIdentifier: 
+  _name: Ultra Strider
+  _alienTier: 2
+  _alienFamily: 1
+  _alienID: 5
+  alien1: {fileID: 0}
+  alien2: {fileID: 0}
+  costValue: 0
+  sellValue: 750
+  minDaysToGrow: 0
+  maxDaysToGrow: 0
+  alienArt:
+    idleAnim: {fileID: 0}
+    wallkingAnim: {fileID: 0}
+  alienSprite: {fileID: 21300000, guid: fe7a023a97700574f95bbcc559c57d9b, type: 3}
+  alienTexture: {fileID: 2800000, guid: fe7a023a97700574f95bbcc559c57d9b, type: 3}
 --- !u!114 &-6556436434877475135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39,9 +66,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 186670bb6c47acc41a667bf475ea57fa, type: 3}
   m_Name: Aliens Container
   m_EditorClassIdentifier: 
-  alienName: Super Sprogs
-  alienTier: 1
-  alienFamily: 0
+  alienName: Ultra Strider
+  alienTier: 2
+  alienFamily: 1
   searchAlien: 
   alienDatabase:
   - db_AlienName: '[Tier_1] Sprog'
@@ -52,6 +79,37 @@ MonoBehaviour:
     db_SO_Alien: {fileID: 7290162825301215066}
   - db_AlienName: '[Tier_2] Super Sprog'
     db_SO_Alien: {fileID: 3338381638968144536}
+  - db_AlienName: '[Tier_3] Ultra Sprog'
+    db_SO_Alien: {fileID: 921309157343782586}
+  - db_AlienName: '[Tier_3] Ultra Strider'
+    db_SO_Alien: {fileID: -7213682176724243034}
+--- !u!114 &921309157343782586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16ea780a6e7e52e4790b222f05ac24e5, type: 3}
+  m_Name: '[Tier_3] Ultra Sprog'
+  m_EditorClassIdentifier: 
+  _name: Ultra Sprog
+  _alienTier: 2
+  _alienFamily: 0
+  _alienID: 4
+  alien1: {fileID: 0}
+  alien2: {fileID: 0}
+  costValue: 0
+  sellValue: 750
+  minDaysToGrow: 0
+  maxDaysToGrow: 0
+  alienArt:
+    idleAnim: {fileID: 0}
+    wallkingAnim: {fileID: 0}
+  alienSprite: {fileID: 21300000, guid: faad2ce25dcdcbf4781cc02e1a18cf3e, type: 3}
+  alienTexture: {fileID: 2800000, guid: faad2ce25dcdcbf4781cc02e1a18cf3e, type: 3}
 --- !u!114 &3338381638968144536
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71,7 +129,7 @@ MonoBehaviour:
   alien1: {fileID: 0}
   alien2: {fileID: 0}
   costValue: 0
-  sellValue: 500
+  sellValue: 300
   minDaysToGrow: 0
   maxDaysToGrow: 0
   alienArt:
@@ -125,7 +183,7 @@ MonoBehaviour:
   alien1: {fileID: 0}
   alien2: {fileID: 0}
   costValue: 0
-  sellValue: 0
+  sellValue: 300
   minDaysToGrow: 0
   maxDaysToGrow: 0
   alienArt:

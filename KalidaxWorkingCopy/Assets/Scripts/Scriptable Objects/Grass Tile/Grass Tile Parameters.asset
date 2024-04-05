@@ -16,4 +16,4 @@ MonoBehaviour:
   chanceToGetSeed: 80
   grassColours:
   - {r: 1, g: 1, b: 1, a: 1}
-  - {r: 0.07609471, g: 0.3584906, b: 0.19205372, a: 1}
+  - {r: 0.40049842, g: 0.4711602, b: 0.6792453, a: 1}
