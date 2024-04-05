@@ -5339,6 +5339,18 @@ PrefabInstance:
       propertyPath: seedPods.Array.data[3]
       value: 
       objectReference: {fileID: 1364991865}
+    - target: {fileID: 7376599304557431232, guid: 5acdf902b2155e441a573cb0942e0362, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7376599304557431232, guid: 5acdf902b2155e441a573cb0942e0362, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7376599304557431232, guid: 5acdf902b2155e441a573cb0942e0362, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7376599304840943977, guid: 5acdf902b2155e441a573cb0942e0362, type: 3}
       propertyPath: m_IsActive
       value: 0
