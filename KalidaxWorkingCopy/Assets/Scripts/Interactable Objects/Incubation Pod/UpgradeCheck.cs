@@ -99,8 +99,6 @@ public class UpgradeCheck : MonoBehaviour
                 if (i == nextToBuyIndex) UpdateUpgradeText(i, false, canAfford); // Hide the text if out of range but it's the next purchasable upgrade
             }
         }
-
-        DebugTools();
     }
 
     private void HandleUpgradeInteraction(int index, bool canAfford)
@@ -182,6 +180,7 @@ public class UpgradeCheck : MonoBehaviour
         }
     }
 
+    
     private bool IsPlayerInRange(Transform objectTransform)
     {
         Vector2 playerPosition = playerTransform.position;
@@ -190,15 +189,4 @@ public class UpgradeCheck : MonoBehaviour
         return Vector2.Distance(playerPosition, objectPosition) <= interactionRange;
     }
 
-    private void DebugTools()
-    {
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            PlayerWallet.Instance.PutValueInWallet(100, "You've Added Funds [Debug]"); // Add 100 money to the player's walletf
-        }
-        else if (Input.GetKeyDown(KeyCode.G))
-        {
-            PlayerWallet.Instance.SubtractValue(100, "You've Removed Funds [Debug]"); // Subtract 100 money from the player's wallet
-        }
-    }
 }

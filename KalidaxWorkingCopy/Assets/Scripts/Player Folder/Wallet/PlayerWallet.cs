@@ -58,6 +58,7 @@ public class PlayerWallet : MonoBehaviour
     public void AddToAmountToPutInWallet(int amount)
     {
         amountToPutInWallet += amount;
+        OnWalletAmountChanged?.Invoke();
     }
 
     public void TransferToWallet(string reason)
@@ -68,19 +69,9 @@ public class PlayerWallet : MonoBehaviour
         OnWalletAmountChanged?.Invoke();
     }
 
-    public void PutValueInWallet(int amount, string reason)
-    {
-        walletAmount += amount;
-        
-        Debug.Log($"Adding {amount} to wallet due to: {reason}. New Total: {walletAmount}");
-        OnWalletAmountChanged?.Invoke();
-    }
-
     public void SubtractValue(int amount, string reason)
     {
         walletAmount -= amount;
-        
-        Debug.Log($"Subtracting {amount} from wallet due to: {reason}. New Total: {walletAmount}");
         OnWalletAmountChanged?.Invoke();
     }
 }
