@@ -69,7 +69,7 @@ public class InteractableObject_Provisions_Drone : InteractableObject
         //now play the corresponding audio if we sold an item or not
         if(soldSomething)
         {
-            AudioManager.instance.Play("Positive Interact");
+            AudioManager.instance.Play("Item Sold Coins");
         }
         else
         {

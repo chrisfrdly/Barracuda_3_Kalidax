@@ -1,3 +1,5 @@
+using System.Collections;
+using TMPro;
 using UnityEngine;
 
 public class UpgradeCheck : MonoBehaviour
@@ -7,6 +9,7 @@ public class UpgradeCheck : MonoBehaviour
     public GameObject[] upgradeObjects; // Reference to the GameObjects with the half-transparent sprite
     public int upgradeCost = 150; // Cost of the upgrade
     public Transform playerTransform; // Reference to the player's Transform
+    public TextMeshProUGUI[] upgradeTexts;
 
     private SpriteRenderer[] spriteRenderers;
     private Collider2D[] colliders; // Array to hold the colliders of the upgrade objects
@@ -88,17 +91,15 @@ public class UpgradeCheck : MonoBehaviour
 
             if (playerInRange && !isBought[i] && i == nextToBuyIndex)
             {
-                // Handle interaction and color indication for the next item to be bought
                 HandleUpgradeInteraction(i, canAfford);
+                UpdateUpgradeText(i, true, canAfford); // Only show the text for the next purchasable upgrade
             }
             else
             {
-                // Ensure the correct state for opacity and collider, regardless of range
-                ResetColorAndCollider(i);
+                if (i == nextToBuyIndex) UpdateUpgradeText(i, false, canAfford); // Hide the text if out of range but it's the next purchasable upgrade
             }
         }
 
-        // Debug tool to modify player's money
         DebugTools();
     }
 
@@ -108,25 +109,35 @@ public class UpgradeCheck : MonoBehaviour
         spriteRenderers[index].color = canAfford ? Color.green : new Color(1f, 0f, 0f, 0.5f);
 
         // Buying logic
-        if (canAfford && Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            PlayerWallet.Instance.SubtractValue(upgradeCost, "You've Purchased an upgrade"); // Subtract the cost from the player's wallet
-            isBought[index] = true; // Mark the object as bought
-            
-            nextToBuyIndex = Mathf.Min(nextToBuyIndex + 1, upgradeObjects.Length - 1); // Move to the next object in the list
+            if (canAfford)
+            {
+                {
+                    PlayerWallet.Instance.SubtractValue(upgradeCost, "You've Purchased an upgrade"); // Subtract the cost from the player's wallet
+                    isBought[index] = true; // Mark the object as bought
+                    nextToBuyIndex = Mathf.Min(nextToBuyIndex + 1, upgradeObjects.Length - 1); // Move to the next object in the list
 
-            //Save the data when we purchased one
-            dataDayCycle.incubationPodPurchased[index] = true;
+                    //Save the data when we purchased one
+                    dataDayCycle.incubationPodPurchased[index] = true;
 
-            //Set isBought based on the save state
-            isBought[index] = true;
+                    //Set isBought based on the save state
+                    isBought[index] = true;
 
-            InteractableObject_SeedPod seedPod = upgradeObjects[index].GetComponent<InteractableObject_SeedPod>();
-            seedPod.m_IncubationState = IncubationState.OBJ_AddSeed;
-            dataDayCycle.incubationPodData[index].incubationState = IncubationState.OBJ_AddSeed;
-            seedPod.SetColourOfPodLight();
+                    InteractableObject_SeedPod seedPod = upgradeObjects[index].GetComponent<InteractableObject_SeedPod>();
+                    seedPod.m_IncubationState = IncubationState.OBJ_AddSeed;
+                    dataDayCycle.incubationPodData[index].incubationState = IncubationState.OBJ_AddSeed;
+                    seedPod.SetColourOfPodLight();
 
-            ResetColorAndCollider(index);
+                    ResetColorAndCollider(index);
+                }
+            }
+            else
+            {
+                // Show "Insufficient Funds" temporarily
+                upgradeTexts[index].text = "Insufficient Funds";
+                StartCoroutine(ResetUpgradeTextAfterDelay(index));
+            }
         }
     }
 
@@ -149,7 +160,27 @@ public class UpgradeCheck : MonoBehaviour
             colliders[index].enabled = isBought[index];
         }
     }
+    IEnumerator ResetUpgradeTextAfterDelay(int index)
+    {
+        yield return new WaitForSeconds(2f); // Adjust delay as needed
+        if (index == nextToBuyIndex) // Only reset text if it's still the next purchasable upgrade
+        {
+            UpdateUpgradeText(index, true, PlayerWallet.Instance.walletAmount >= upgradeCost);
+        }
+    }
 
+    private void UpdateUpgradeText(int index, bool inRange, bool canAfford)
+    {
+        if (inRange && index == nextToBuyIndex) // Only update text for the next purchasable upgrade
+        {
+            upgradeTexts[index].gameObject.SetActive(true);
+            upgradeTexts[index].text = $"Upgrade Cost: {upgradeCost}";
+        }
+        else
+        {
+            upgradeTexts[index].gameObject.SetActive(false);
+        }
+    }
 
     private bool IsPlayerInRange(Transform objectTransform)
     {
