@@ -44,6 +44,8 @@ public class PlayerProgressUI : MonoBehaviour
     {
         if (!shownMessages.Contains(state) && stateMessages.ContainsKey(state))
         {
+            AudioManager.instance.Play("Radio Pager Static");
+
             UpdateMessage(stateMessages[state]);
             shownMessages.Add(state); // Ensure this change is reflected across scenes by making 'shownMessages' static
         }

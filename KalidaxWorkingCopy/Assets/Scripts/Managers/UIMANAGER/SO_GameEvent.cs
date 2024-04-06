@@ -37,6 +37,7 @@ public class SO_GameEvent : ScriptableObject
     {
         switch (state)
         {
+
             case ProgressState.None:
                 break;
             case ProgressState.SeedCollected:
