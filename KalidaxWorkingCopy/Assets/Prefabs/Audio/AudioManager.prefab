@@ -76,6 +76,35 @@ MonoBehaviour:
     pitch: 0.87
     loop: 0
     source: {fileID: 0}
+  - name: Seed Harvest
+    clip:
+    - {fileID: 8300000, guid: 0d91a52e676f7ed46a0c98bd3970e86f, type: 3}
+    - {fileID: 8300000, guid: 94569d5b981fde54fbb53cc8121eaadf, type: 3}
+    volume: 0.56
+    pitch: 0.87
+    loop: 0
+    source: {fileID: 0}
+  - name: Radio Pager Static
+    clip:
+    - {fileID: 8300000, guid: 2c9d565dc164c1841bafc9a053b2ffd7, type: 3}
+    volume: 1
+    pitch: 0.89
+    loop: 0
+    source: {fileID: 0}
+  - name: Item Sold Coins
+    clip:
+    - {fileID: 8300000, guid: 4d0c855df94f5ce4ca2ca94ad99cd757, type: 3}
+    volume: 0.724
+    pitch: 0.87
+    loop: 0
+    source: {fileID: 0}
+  - name: Item Purchased Coins
+    clip:
+    - {fileID: 8300000, guid: 4d0c855df94f5ce4ca2ca94ad99cd757, type: 3}
+    volume: 0.724
+    pitch: 0.49
+    loop: 0
+    source: {fileID: 0}
   bgSounds:
   - backgroundMusic: 1
     clip: {fileID: 8300000, guid: cf264175d1b1b064c80187bc57c824bd, type: 3}
@@ -84,13 +113,13 @@ MonoBehaviour:
     loop: 1
     source: {fileID: 0}
   - backgroundMusic: 2
-    clip: {fileID: 8300000, guid: 4b42fd4498f45cf45ab27508680e17b6, type: 3}
+    clip: {fileID: 8300000, guid: 27bdbfcd70b7bf8468e63af508230706, type: 3}
     volume: 0.75
     pitch: 1
     loop: 1
     source: {fileID: 0}
   - backgroundMusic: 0
-    clip: {fileID: 8300000, guid: a9254369cb964e94e9b7896a38f50409, type: 3}
+    clip: {fileID: 8300000, guid: 6bc0a99124eb8ec4bbf4d28dbd97c180, type: 3}
     volume: 0.028
     pitch: 1
     loop: 1

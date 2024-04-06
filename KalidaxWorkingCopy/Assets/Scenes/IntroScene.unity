@@ -178,6 +178,14 @@ PrefabInstance:
       propertyPath: bgSounds.Array.data[0].volume
       value: 0.674
       objectReference: {fileID: 0}
+    - target: {fileID: 672016082745021283, guid: 3d9ff093ddacd9a418d4ebf8fbd38733, type: 3}
+      propertyPath: bgSounds.Array.data[2].volume
+      value: 0.856
+      objectReference: {fileID: 0}
+    - target: {fileID: 672016082745021283, guid: 3d9ff093ddacd9a418d4ebf8fbd38733, type: 3}
+      propertyPath: bgSounds.Array.data[2].backgroundMusic
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 672016082745021293, guid: 3d9ff093ddacd9a418d4ebf8fbd38733, type: 3}
       propertyPath: m_Name
       value: AudioManager
@@ -441,10 +449,6 @@ PrefabInstance:
     - target: {fileID: 6420194732515572267, guid: 70101356027a7c84587009c899b1288c, type: 3}
       propertyPath: m_Name
       value: Background Music Selector
-      objectReference: {fileID: 0}
-    - target: {fileID: 6420194732515572269, guid: 70101356027a7c84587009c899b1288c, type: 3}
-      propertyPath: backgroundMusicSelector
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 70101356027a7c84587009c899b1288c, type: 3}

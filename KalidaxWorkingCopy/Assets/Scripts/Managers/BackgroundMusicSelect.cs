@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 public enum BackgroundMusicSelector
 {
-    None, TitleTheme, GameTheme
+    None, TitleTheme, GameTheme, OpenerTheme
 }
 public class BackgroundMusicSelect : MonoBehaviour
 {
