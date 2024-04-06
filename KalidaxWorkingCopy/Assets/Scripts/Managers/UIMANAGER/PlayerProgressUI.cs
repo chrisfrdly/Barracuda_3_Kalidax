@@ -1,13 +1,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System.Collections;
 
 public class PlayerProgressUI : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI messageText;
+    [SerializeField] private CanvasGroup radioPagerCanvasGroup;
     public SO_GameEvent gameEvents;
     private Dictionary<ProgressState, string> stateMessages = new Dictionary<ProgressState, string>();
     private static HashSet<ProgressState> shownMessages = new HashSet<ProgressState>();
+
+
+    private IEnumerator fadeCoroutine;
 
     private void Awake()
     {
@@ -28,7 +33,8 @@ public class PlayerProgressUI : MonoBehaviour
         stateMessages[ProgressState.SeedPlaced] = "Seed placement acknowledged. Incubation period is two days. Sell the seeds you've collected at the provisions drone, then rest, compliance is necessary.";
         stateMessages[ProgressState.Incubating] = "Incubation in progress. Continue to gather seeds and sell them to the company. You will have more to sell soon.";
         stateMessages[ProgressState.IncubationComplete] = "Incubation phase concluded. Extract the seed from the pod for assessment. Your compliance will be noted.";
-        stateMessages[ProgressState.PostIncubation] = "Use the provided gene splicer to create new life. Continue to sell the life on Kalidax. \n Failure to maintain profit margins will result in termination of your position.";
+        stateMessages[ProgressState.PostIncubation] = "";
+        string prevPosIncubationText = "Use the provided gene splicer to create new life. Continue to sell the life on Kalidax. \n Failure to maintain profit margins will result in termination of your position. ";
     }
 
     private void OnEnable()
@@ -48,6 +54,16 @@ public class PlayerProgressUI : MonoBehaviour
             UpdateMessage(stateMessages[state]);
             shownMessages.Add(state); // Ensure this change is reflected across scenes by making 'shownMessages' static
         }
+ 
+        //we want to disable to radio pager
+        if(state == ProgressState.PostIncubation)
+        {
+
+            fadeCoroutine = FadeRadioPager();
+            StartCoroutine(fadeCoroutine);
+            radioPagerCanvasGroup.interactable = false;
+            radioPagerCanvasGroup.blocksRaycasts = false;
+        }
     }
 
     private void UpdateMessage(string message)
@@ -56,5 +72,18 @@ public class PlayerProgressUI : MonoBehaviour
             messageText.text = message;
         else
             Debug.LogWarning("Message Text UI component is not assigned in PlayerProgressUI.");
+    }
+
+    private IEnumerator FadeRadioPager()
+    {
+        float a = 1;
+
+        while(a > 0)
+        {
+            a -= Time.deltaTime;
+            radioPagerCanvasGroup.alpha = a;
+        }
+
+        yield return null;
     }
 }

@@ -11,7 +11,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject pauseMenuPrefab;
     [SerializeField] private SO_AliensInWorld aliensInWorld; //on scene loaded reset List and calculate it again
 
-    public static bool isGameInitialized = false;
+    //radio pager event variables
+
+    public bool hasCollectedSeedEvent = false;
+    public bool hasIncubatedAlienEvent = false;
+
 
     public static bool isGamePaused;
 
@@ -32,23 +36,14 @@ public class GameManager : MonoBehaviour
 
         aliensInWorld.newSceneLoadedEvent.AddListener(ResetWalletAmountToAdd);
 
-        if (!isGameInitialized)
-        {
-            //persistence (oops I made a dependancy)
-            DontDestroyOnLoad(gameObject);
-
-            // Initialize the game for the first time
-            InitializeGame();
-            isGameInitialized = true; // Set the flag to true to avoid re-initialization
-        }
-
         //Calls when a player presses the pause button
         pauseMenuEvent.pauseGameEvent.AddListener(PauseTheGame);
 
         //Calls whenever a player presses the resume button
         pauseMenuEvent.resumeGameEvent.AddListener(ResumeTheGame);
 
-        //Set Audio
+        hasCollectedSeedEvent = false;
+        hasIncubatedAlienEvent = false;
 
     }
     void ResetWalletAmountToAdd(string _sceneName)
@@ -65,11 +60,7 @@ public class GameManager : MonoBehaviour
         //find the playerInputHandler in the game.
         //May need to move inside function if errors when someone unpluggs controller
         playerInput = GameObject.FindObjectOfType<PlayerInput>();
-    }
-
-    private void InitializeGame()
-    {
-        gameEvent.RaiseProgressChanged(ProgressState.None); // Signal the game start event
+        gameEvent.RaiseProgressChanged(ProgressState.None);
     }
 
     private void PauseTheGame()

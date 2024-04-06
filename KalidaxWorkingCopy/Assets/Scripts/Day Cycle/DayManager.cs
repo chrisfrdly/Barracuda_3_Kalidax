@@ -37,11 +37,15 @@ public class DayManager : MonoBehaviour
     {
         Instance = this;
 
-
     }
     private void Start()
     {
          LoadGrassStates();
+
+        if (GameManager.Instance.hasIncubatedAlienEvent)
+        {
+            gameEvent.RaiseProgressChanged(ProgressState.PostIncubation);
+        }
     }
 
 
@@ -66,11 +70,7 @@ public class DayManager : MonoBehaviour
 
     public void NewDay()
     {
-        if (sp.incubationCompleteTriggered)
-        {
-            Debug.Log("status of incubation" + sp.incubationCompleteTriggered);
-            gameEvent.RaiseProgressChanged(ProgressState.PostIncubation);
-        }
+
 
         //Increase the day counter
         SO_Data_dayCycle.currentDay++;

@@ -193,6 +193,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6fb02f626fe3aa54183d87ea74a7919b, type: 3}
+--- !u!1 &52413090 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4982321039813154953, guid: 0cfdd9cdfde645841b94fe8e5a0565c9, type: 3}
+  m_PrefabInstance: {fileID: 1753472859}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &78940943
 GameObject:
   m_ObjectHideFlags: 0
@@ -909,6 +914,7 @@ MonoBehaviour:
   - {fileID: 1364991865}
   upgradeCost: 150
   playerTransform: {fileID: 1771525811}
+  upgradeTexts: []
 --- !u!1001 &311051000
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1965,6 +1971,18 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4982321039813154954, guid: 0cfdd9cdfde645841b94fe8e5a0565c9, type: 3}
   m_PrefabInstance: {fileID: 1753472859}
   m_PrefabAsset: {fileID: 0}
+--- !u!225 &555594405
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 52413090}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1001 &556259684
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7483,6 +7501,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 124
       objectReference: {fileID: 0}
+    - target: {fileID: 4075410610440543760, guid: 601ed4e6eb6ba0046a87845146fdcb1e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 20.919373
+      objectReference: {fileID: 0}
     - target: {fileID: 4075410610750858666, guid: 601ed4e6eb6ba0046a87845146fdcb1e, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -369.34985
@@ -8260,6 +8282,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TASKS HEADER
       objectReference: {fileID: 0}
+    - target: {fileID: 4982321039813154953, guid: 0cfdd9cdfde645841b94fe8e5a0565c9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4982321039813154954, guid: 0cfdd9cdfde645841b94fe8e5a0565c9, type: 3}
       propertyPath: m_Pivot.x
       value: 0.000000031664968
@@ -8343,6 +8369,14 @@ PrefabInstance:
     - target: {fileID: 4982321039813154954, guid: 0cfdd9cdfde645841b94fe8e5a0565c9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597367468877090647, guid: 0cfdd9cdfde645841b94fe8e5a0565c9, type: 3}
+      propertyPath: m_text
+      value: aaa
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597367468877090647, guid: 0cfdd9cdfde645841b94fe8e5a0565c9, type: 3}
+      propertyPath: m_fontSize
+      value: 72
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0cfdd9cdfde645841b94fe8e5a0565c9, type: 3}
