@@ -482,7 +482,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSpeed: 5
   waitTime: 5
-  changeDestinationRange: 0
+  changeDestinationRange: 0.5
 --- !u!1 &8188042966839912650
 GameObject:
   m_ObjectHideFlags: 0
