@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System;
+using static UnityEditor.Progress;
+
 public enum IncubationState
 {
     OBJ_AddSeed,
@@ -20,7 +22,7 @@ public class InteractableObject_SeedPod : InteractableObject
 
     [Separator()]
     [SerializeField] private SO_GameEvent gameEvent;
-    public bool incubationCompleteTriggered = false;
+
     [Separator()]
     [SerializeField] private SO_Data_DayCycle dataDayCycle;
 
@@ -37,10 +39,10 @@ public class InteractableObject_SeedPod : InteractableObject
     [SerializeField] private Image seedImage;
     [SerializeField] private SpriteRenderer incubationLight;
     [SerializeField] private Vector3 spawnLocation;
-    public SO_Inventory inventory;
+    [SerializeField] private SO_Inventory inventory;
 
     [Header("Incubation Parameters")]
-    [SerializeField]private int daysToIncubate = 2;
+    [SerializeField] private int daysToIncubate = 2;
     private int daysLeft;
     private int seedIndex;
 
@@ -131,12 +133,10 @@ public class InteractableObject_SeedPod : InteractableObject
             {
                 incubationState = IncubationState.OBJ_RemoveSeed;
                 dataDayCycle.incubationPodData[thisIndex].incubationState = incubationState;
+
                 gameEvent.RaiseProgressChanged(ProgressState.IncubationComplete);
-                incubationCompleteTriggered = true;
             }
 
-
-            Debug.Log(seedIndex);
             //now we check to see if this incubation pod has been purchased and if so, then set the state to green
         }
 
@@ -218,7 +218,7 @@ public class InteractableObject_SeedPod : InteractableObject
 
     public void HandleAllChecks()
     {
-        if(incubationState == IncubationState.OBJ_AddSeed)
+        if (incubationState == IncubationState.OBJ_AddSeed)
         {
             Incubate();
         }
@@ -230,7 +230,7 @@ public class InteractableObject_SeedPod : InteractableObject
 
     public void Incubate()
     {
-        if(CheckIfSeedInInventory())
+        if (CheckIfSeedInInventory())
         {
             ChangeState();
         }
@@ -252,6 +252,12 @@ public class InteractableObject_SeedPod : InteractableObject
                 AudioManager.instance.Play("Insert 1");
                 SetSeedData(inventory.container.items[i].id);
                 inventory.AddItem(inventory.container.items[i].item, -1);
+
+                //Displaying the seed image on the Incubation Pod UI
+                //Get the Id of the firs slot item
+                int itemID = inventory.container.items[0].id;
+                seedImage.sprite = inventory.database.getItem[itemID].uiDisplay;
+
                 if (inventory.container.items[i].amount <= 0)
                 {
                     inventory.RemoveItem(inventory.container.items[i].item);
@@ -270,7 +276,7 @@ public class InteractableObject_SeedPod : InteractableObject
         dataDayCycle.incubationPodData[thisIndex].seedIndex = seedIndex;
     }
 
-    
+
     //This function is called on the button in the inspector
     public void ChangeState()
     {
@@ -285,21 +291,21 @@ public class InteractableObject_SeedPod : InteractableObject
             SpawnAlien();
         }
 
-     
+
         incubationState = (IncubationState)i;
-      
+
         DisplayIncubationHUDContents();
         if (i == 0)
         {
             daysLeft = daysToIncubate;
             incubationState = IncubationState.OBJ_AddSeed;
-        } 
+        }
 
 
         //Update the data
         dataDayCycle.incubationPodData[thisIndex].incubationState = incubationState;
         dataDayCycle.incubationPodData[thisIndex].daysLeft = daysLeft;
-        
+
     }
 
     private void SpawnAlien()
@@ -313,12 +319,14 @@ public class InteractableObject_SeedPod : InteractableObject
             Debug.Log(prefabToInstantiate.name);
             seedIndex = -1;
         }
+
+        GameManager.Instance.hasIncubatedAlienEvent = true;
     }
 
     private void DisplayIncubationHUDContents()
     {
         //Hide Button
-        switch(incubationState)
+        switch (incubationState)
         {
             case IncubationState.OBJ_AddSeed:
                 ShowAddSeedUI();
@@ -361,7 +369,9 @@ public class InteractableObject_SeedPod : InteractableObject
         gameEvent.RaiseProgressChanged(ProgressState.SeedPlaced);
         addSeedButton.gameObject.SetActive(false);
 
+        seedImage.sprite = inventory.database.getItem[seedIndex].uiDisplay;
         seedImage.gameObject.SetActive(true);
+        
         daysRemainingText.gameObject.SetActive(true);
         incubationLight.color = new Color(1, 0, 0);
 
@@ -373,7 +383,9 @@ public class InteractableObject_SeedPod : InteractableObject
         addSeedButton.gameObject.SetActive(true);
         buttonText.text = "Remove Seed";
 
-        seedImage.gameObject.SetActive(false);
+        seedImage.sprite = inventory.database.getItem[seedIndex].uiDisplay;
+        seedImage.gameObject.SetActive(true);
+    
         daysRemainingText.gameObject.SetActive(false);
 
         incubationLight.color = new Color(0, 0, 1);
