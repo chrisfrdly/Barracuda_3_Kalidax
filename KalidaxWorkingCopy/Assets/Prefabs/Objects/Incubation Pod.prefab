@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &863904136165131045
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2871540429570063014}
+  m_Layer: 0
+  m_Name: AlienSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2871540429570063014
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 863904136165131045}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2.087, y: -1.51, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7376599304375814040}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4863320608289396542
 GameObject:
   m_ObjectHideFlags: 0
@@ -169,6 +200,7 @@ Transform:
   - {fileID: 7376599305150007313}
   - {fileID: 7376599304889730549}
   - {fileID: 6600747127537176033}
+  - {fileID: 2871540429570063014}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -229,15 +261,15 @@ MonoBehaviour:
   daysRemainingText: {fileID: 7376599305794949624}
   seedImage: {fileID: 7376599304557431232}
   incubationLight: {fileID: 4866254346615901721}
-  spawnLocation: {x: 3.809633, y: 2, z: 0}
   inventory: {fileID: 11400000, guid: aa44c2eee6c76bd438666289c0763e1a, type: 2}
   daysToIncubate: 2
   T1alienPrefabs:
   - {fileID: 7484337346399641151, guid: d4e2fdff1944a3746874c83621a1d205, type: 3}
   - {fileID: 7484337346399641151, guid: 8ef19b89e9562934791f266830b474d8, type: 3}
-  incubationColour_AddSeed: {r: 0.10136587, g: 1, b: 0.0047169924, a: 1}
-  incubationColour_Incubating: {r: 1, g: 0.2216981, b: 0.22982088, a: 1}
-  incubationColour_RemoveSeed: {r: 0.1728818, g: 0.31167355, b: 0.990566, a: 1}
+  spawnPoint: {fileID: 2871540429570063014}
+  incubationColour_AddSeed: {r: 1, g: 0.22352941, b: 0.23137255, a: 1}
+  incubationColour_Incubating: {r: 0.9555477, g: 1, b: 0.2235294, a: 1}
+  incubationColour_RemoveSeed: {r: 0.17254904, g: 0.99215686, b: 0.26936576, a: 1}
   incubationColour_NotPurchased: {r: 0.2264151, g: 0.19330722, b: 0.19330722, a: 1}
 --- !u!1 &7376599304557431234
 GameObject:

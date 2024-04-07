@@ -12,7 +12,6 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioMixerGroup musicMixerGroup;
     [SerializeField] private readonly float startingVolume = 0.5f;
     private float dafaultMusicVolume;
- 
 
     [Space()]
     public Sounds[] sounds;

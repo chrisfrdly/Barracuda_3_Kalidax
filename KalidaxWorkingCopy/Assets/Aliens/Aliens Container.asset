@@ -19,7 +19,7 @@ MonoBehaviour:
   alien1: {fileID: 0}
   alien2: {fileID: 0}
   costValue: 0
-  sellValue: 750
+  sellValue: 1860
   minDaysToGrow: 0
   maxDaysToGrow: 0
   alienArt:
@@ -46,7 +46,7 @@ MonoBehaviour:
   alien1: {fileID: 0}
   alien2: {fileID: 0}
   costValue: 0
-  sellValue: 150
+  sellValue: 135
   minDaysToGrow: 0
   maxDaysToGrow: 0
   alienArt:
@@ -102,7 +102,7 @@ MonoBehaviour:
   alien1: {fileID: 0}
   alien2: {fileID: 0}
   costValue: 0
-  sellValue: 750
+  sellValue: 1260
   minDaysToGrow: 0
   maxDaysToGrow: 0
   alienArt:
@@ -129,7 +129,7 @@ MonoBehaviour:
   alien1: {fileID: 0}
   alien2: {fileID: 0}
   costValue: 0
-  sellValue: 300
+  sellValue: 405
   minDaysToGrow: 0
   maxDaysToGrow: 0
   alienArt:
@@ -156,7 +156,7 @@ MonoBehaviour:
   alien1: {fileID: 0}
   alien2: {fileID: 0}
   costValue: 0
-  sellValue: 0
+  sellValue: 200
   minDaysToGrow: 0
   maxDaysToGrow: 0
   alienArt:
@@ -183,7 +183,7 @@ MonoBehaviour:
   alien1: {fileID: 0}
   alien2: {fileID: 0}
   costValue: 0
-  sellValue: 300
+  sellValue: 600
   minDaysToGrow: 0
   maxDaysToGrow: 0
   alienArt:

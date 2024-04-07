@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System;
-using static UnityEditor.Progress;
+//using static UnityEditor.Progress;
 
 public enum IncubationState
 {
@@ -38,7 +38,6 @@ public class InteractableObject_SeedPod : InteractableObject
     [SerializeField] private TextMeshProUGUI daysRemainingText;
     [SerializeField] private Image seedImage;
     [SerializeField] private SpriteRenderer incubationLight;
-    [SerializeField] private Vector3 spawnLocation;
     [SerializeField] private SO_Inventory inventory;
 
     [Header("Incubation Parameters")]
@@ -48,6 +47,7 @@ public class InteractableObject_SeedPod : InteractableObject
 
     [Header("Prefab Instantiation")]
     [SerializeField] private List<GameObject> T1alienPrefabs;
+    [SerializeField] private Transform spawnPoint;
 
     [SerializeField] private Color incubationColour_AddSeed;
     [SerializeField] private Color incubationColour_Incubating;
@@ -314,7 +314,7 @@ public class InteractableObject_SeedPod : InteractableObject
             GameObject prefabToInstantiate = T1alienPrefabs[seedIndex]; // Get the prefab at the set index
 
             // Instantiate the prefab at a desired location and rotation
-            Instantiate(prefabToInstantiate, spawnLocation, Quaternion.identity, AliensInWorld_Mono.instance.gameObject.transform);
+            Instantiate(prefabToInstantiate, spawnPoint.position, Quaternion.identity, AliensInWorld_Mono.instance.gameObject.transform);
             Debug.Log(prefabToInstantiate.name);
             seedIndex = -1;
         }

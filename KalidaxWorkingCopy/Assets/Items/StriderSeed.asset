@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Id: 1
   uiDisplay: {fileID: 21300000, guid: 43a0dd3a85421f7448c07861f712b1b0, type: 3}
-  sellValue: 2
+  sellValue: 5
   sellable: 1
   isPlaceable: 0
   type: 0

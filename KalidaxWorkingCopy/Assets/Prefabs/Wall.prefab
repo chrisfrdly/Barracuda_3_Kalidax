@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1488858584901454536}
   - component: {fileID: 1488858584901454543}
   - component: {fileID: 5296385113473591725}
+  - component: {fileID: 1288458281}
   m_Layer: 6
   m_Name: Wall
   m_TagString: Untagged
@@ -27,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 1488858584901454537}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.75, y: -1.54, z: -0.06021309}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.3450469, y: 1.3450469, z: 1.3450469}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1488858586243674902}
@@ -84,7 +85,18 @@ MonoBehaviour:
   isRequiredToLookAtTarget: 0
   freezePlayerMovement: 0
   spriteRenderer: {fileID: 1488858586243674901}
-  RemoveWallCost: 1000
+  RemoveWallCost: 500
+--- !u!210 &1288458281
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1488858584901454537}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 2
 --- !u!1 &1488858586243674903
 GameObject:
   m_ObjectHideFlags: 0
@@ -235,7 +247,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: $1000 to Remove
+  m_text: $500 to Remove
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
