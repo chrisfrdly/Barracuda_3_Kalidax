@@ -42,7 +42,7 @@ MonoBehaviour:
     DialogueSpriteImageType: 0
     AudioClips:
     - LanguageType: 0
-      LanguageGenericType: {fileID: 8300000, guid: fc6e86223a932714e8782ac4c92e3031, type: 3}
+      LanguageGenericType: {fileID: 8300000, guid: b0b3330faf9ec0341bbcf1d8bd3ffc50, type: 3}
     Name: 'LONGSTRIDER:'
   EndNodeDatas:
   - NodeGUID: b5a356e9-ad44-42c3-8637-effffcebdfae

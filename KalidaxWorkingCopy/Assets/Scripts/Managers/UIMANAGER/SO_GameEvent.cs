@@ -25,7 +25,7 @@ public class SO_GameEvent : ScriptableObject
     public ProgressEvent postComplete = new ProgressEvent();
     [System.NonSerialized]
     public ProgressChangedEvent onProgressChanged = new ProgressChangedEvent();
-
+    public ProgressState currentState;
 
     public void RaiseProgressChanged(ProgressState state)
     {
@@ -53,6 +53,7 @@ public class SO_GameEvent : ScriptableObject
                 onIncubationComplete.Invoke(state);
                 break;
             case ProgressState.PostIncubation:
+                currentState = ProgressState.PostIncubation;
                 postComplete.Invoke(state);
                 break;
             default:
@@ -70,5 +71,6 @@ public enum ProgressState
     SeedPlaced,
     Incubating,
     IncubationComplete,
-    PostIncubation
+    PostIncubation,
+    PostSplice
 }

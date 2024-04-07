@@ -81,7 +81,7 @@ public class DayManager : MonoBehaviour
 
         RandomizeGrassRegrowth();
         
-        PlayerWallet.Instance.PutValueInWallet(PlayerWallet.Instance.amountToPutInWallet, "End of Day");
+        PlayerWallet.Instance.TransferToWallet("End of Day");
 
         if (!DeductQuota()) return;
 

@@ -194,6 +194,7 @@ GameObject:
   - component: {fileID: 2212100057303225412}
   - component: {fileID: 2212100057303225410}
   - component: {fileID: 5579341160835296609}
+  - component: {fileID: -116433127227680254}
   m_Layer: 6
   m_Name: Longstrider
   m_TagString: Untagged
@@ -369,7 +370,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 4278654887805117937, guid: 2c6c62f5feb37ea44b1b9cdac92f88a7, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 747e6ef95074f8d45aafcf2a56076fac, type: 3}
+  m_audioClip: {fileID: 8300000, guid: b0b3330faf9ec0341bbcf1d8bd3ffc50, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.808
   m_Pitch: 1
@@ -467,6 +468,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43c98a7eadbf48142a76e1b465f73d48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-116433127227680254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7484337346399641151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ff12ae1d61baf04aaac027caa6873fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSpeed: 5
+  waitTime: 5
+  changeDestinationRange: 0
 --- !u!1 &8188042966839912650
 GameObject:
   m_ObjectHideFlags: 0

@@ -1044,7 +1044,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   verticalLayoutGroupGO: {fileID: 549264485}
-  sceneToTransitionTo: Lucas Scene
+  sceneToTransitionTo: SebasScene
 --- !u!1 &1599187625
 GameObject:
   m_ObjectHideFlags: 0

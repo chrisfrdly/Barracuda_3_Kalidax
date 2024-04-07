@@ -23,10 +23,10 @@ MonoBehaviour:
     TargetNodeGUID: debb40d4-1545-49d2-846c-5f4e48881f83
   DialogueNodeDatas:
   - NodeGUID: a3b026a3-63f2-4d8e-a890-728454c5c999
-    Pos: {x: 350, y: 233}
+    Pos: {x: 352, y: 233}
     TextType:
     - LanguageType: 0
-      LanguageGenericType: ' WE YEARN FOR  BLOODSHED. BRING US TO BATTLE.'
+      LanguageGenericType: UNITED MINDS. FADING HEARTS. WHY DO WE HURT?
     DialogueNodePorts:
     - InputGUID: dc5d7c0a-c271-4d50-84b1-aeb9d7136e25
       OutputGUID: a3b026a3-63f2-4d8e-a890-728454c5c999
@@ -42,8 +42,8 @@ MonoBehaviour:
     DialogueSpriteImageType: 0
     AudioClips:
     - LanguageType: 0
-      LanguageGenericType: {fileID: 8300000, guid: e992965b84b131643b804d8af4951aff, type: 3}
-    Name: 'STRIDE TITAN:'
+      LanguageGenericType: {fileID: 8300000, guid: 003eec509233cc8418bd5639f36f301d, type: 3}
+    Name: 'SHARPSTRIDER:'
   EndNodeDatas:
   - NodeGUID: debb40d4-1545-49d2-846c-5f4e48881f83
     Pos: {x: 1026, y: 262}

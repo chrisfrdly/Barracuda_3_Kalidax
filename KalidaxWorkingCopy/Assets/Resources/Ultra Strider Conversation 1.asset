@@ -42,7 +42,7 @@ MonoBehaviour:
     DialogueSpriteImageType: 0
     AudioClips:
     - LanguageType: 0
-      LanguageGenericType: {fileID: 8300000, guid: e992965b84b131643b804d8af4951aff, type: 3}
+      LanguageGenericType: {fileID: 8300000, guid: 378924babc3ddc34bb7e9a3d60f1bfb7, type: 3}
     Name: 'STRIDE TITAN:'
   EndNodeDatas:
   - NodeGUID: debb40d4-1545-49d2-846c-5f4e48881f83

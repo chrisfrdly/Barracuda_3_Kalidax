@@ -5,13 +5,14 @@ using TMPro;
 public class PlayerProgressUI : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI messageText;
-    [SerializeField] private SO_GameEvent gameEvents;
+    public SO_GameEvent gameEvents;
     private Dictionary<ProgressState, string> stateMessages = new Dictionary<ProgressState, string>();
-    private static HashSet<ProgressState> shownMessages = new HashSet<ProgressState>(); 
+    private static HashSet<ProgressState> shownMessages = new HashSet<ProgressState>();
 
     private void Awake()
     {
         InitializeStateMessages();
+
     }
 
     // Call this method to reset progress flags when starting a new game session
@@ -24,10 +25,10 @@ public class PlayerProgressUI : MonoBehaviour
     {
         stateMessages[ProgressState.None] = "Proceed to the designated area on the left for seed collection. Compliance is expected.";
         stateMessages[ProgressState.SeedCollected] = "Seed acquisition confirmed. Utilize the allocated pod for seed incubation immediately. Further instructions will follow.";
-        stateMessages[ProgressState.SeedPlaced] = "Seed placement acknowledged. Incubation period is two days. Utilize shelter pod facilities as necessary during this interval.";
-        stateMessages[ProgressState.Incubating] = "Incubation in progress. Allocate your time between auxiliary tasks or mandatory rest periods in the shelter pod. Further disturbance is not advised.";
+        stateMessages[ProgressState.SeedPlaced] = "Seed placement acknowledged. Incubation period is two days. Sell the seeds you've collected at the provisions drone, then rest, compliance is necessary.";
+        stateMessages[ProgressState.Incubating] = "Incubation in progress. Continue to gather seeds and sell them to the company. You will have more to sell soon.";
         stateMessages[ProgressState.IncubationComplete] = "Incubation phase concluded. Extract the seed from the pod for assessment. Your compliance will be noted.";
-        stateMessages[ProgressState.PostIncubation] = "Initiate further splicing operations to ensure continuous profit generation. \n Failure to contribute to profit margins will result in termination of your position.";
+        stateMessages[ProgressState.PostIncubation] = "Use the provided gene splicer to create new life. Continue to sell the life on Kalidax. \n Failure to maintain profit margins will result in termination of your position.";
     }
 
     private void OnEnable()
