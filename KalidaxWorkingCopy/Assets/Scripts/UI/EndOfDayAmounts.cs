@@ -42,7 +42,7 @@ public class EndOfDayAmounts : MonoBehaviour
                 break;
             }
 
-            string sign = i <= 1 ? "+ " : "- ";
+            string sign = i <= 1 ? "+" : "-";
             
             textList[i].text = $"{sign} ${amountsToShow[i]}.00";
         }
