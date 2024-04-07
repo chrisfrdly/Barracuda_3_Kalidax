@@ -36,7 +36,7 @@ public class EndOfDayResultsScreen : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
         }
 
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(2.5f);
 
         SceneManager.LoadScene(sceneToTransitionTo);
     }

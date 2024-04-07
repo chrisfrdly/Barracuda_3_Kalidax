@@ -97,6 +97,7 @@ public class UpgradeCheck : MonoBehaviour
             else
             {
                 if (i == nextToBuyIndex) UpdateUpgradeText(i, false, canAfford); // Hide the text if out of range but it's the next purchasable upgrade
+                ResetColorAndCollider(i);
             }
         }
     }

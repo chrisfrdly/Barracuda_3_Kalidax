@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class AlienWandering : MonoBehaviour
@@ -23,6 +24,13 @@ public class AlienWandering : MonoBehaviour
     private float m_topBorders;
     private float m_bottomBorders;
 
+    //Animating Movement
+    [SerializeField] string previouslyDirection;
+    
+    private int tweenScaleX = 0;
+    private string directionFacing = "";
+
+
     //reference to the dialogue script
     private DS_InteractableObject_InteractPointConversation conversation;
 
@@ -37,8 +45,14 @@ public class AlienWandering : MonoBehaviour
         destination = borderMidpointCoordinates;
         StartMoving();
         timer = waitTime;
+
     }
 
+    private void Start()
+    {
+        transform.GetChild(0).LeanScaleY(0.95f, 0.8f).setEaseInOutSine().setLoopPingPong();
+        transform.GetChild(0).LeanMoveLocalY(-0.05f, 0.8f).setEaseInOutSine().setLoopPingPong();
+    }
     private void FixedUpdate()
     {
         if (alienScript.isBeingSold)
@@ -107,6 +121,10 @@ public class AlienWandering : MonoBehaviour
                 
                 
         }
+        
+       
+
+        FlipAlienSprite();
     }
 
     //returns the conditions on when the alien is allowed to move
@@ -144,10 +162,53 @@ public class AlienWandering : MonoBehaviour
     private void StopMoving()
     {
         currentSpeed = 0;
+      
     }
     //this will be called whenever our alien can move again
     private void StartMoving()
     {
         currentSpeed = maxSpeed;
+       
+    }
+
+    private void FlipAlienSprite()
+    {
+       
+        //if the alien's x position is less than the target's x
+        //Ik it's spaghetti code :(
+
+        //Getting the direction facing
+        if(transform.position.x < destination.x)
+        {
+            directionFacing = "right";
+            
+        }
+        else if(transform.position.x > destination.x)
+        {
+            directionFacing = "left";
+        }
+
+        //Setting which X we should scale to
+        if (directionFacing == "right")
+        {
+            if (previouslyDirection == "right") return;
+            tweenScaleX = -1;
+        }
+        else if(directionFacing == "left")
+        {
+            if (previouslyDirection == "left") return;
+            tweenScaleX = 1;
+        }
+
+        //Lerping the scale
+        transform.GetChild(0).transform.LeanScaleX(tweenScaleX, 0.3f);
+        
+        //Setting previous direction
+        if (directionFacing == "right" || directionFacing == "left")
+        {
+            previouslyDirection = directionFacing;
+
+        }
+      
     }
 }
