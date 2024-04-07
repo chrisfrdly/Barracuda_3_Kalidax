@@ -15,6 +15,13 @@ public class InteractableWall : InteractableObject
     [Header("Cost")]
     public int RemoveWallCost;
 
+    private void Awake()
+    {
+        if(GameManager.Instance.hasPurchasedWall)
+        {
+            Destroy(gameObject);
+        }
+    }
     private void Start()
     {
         GameObject wallObj = GameObject.Find("Wallet Manager");
@@ -30,6 +37,7 @@ public class InteractableWall : InteractableObject
                 AudioManager.instance.Play("Item Purchased Coins");
 
                 wallet.SubtractValue(RemoveWallCost, "Removed Wall");
+                GameManager.Instance.hasPurchasedWall = true;
                 Destroy(gameObject);
             }
             else

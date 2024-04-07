@@ -512,7 +512,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ff12ae1d61baf04aaac027caa6873fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 3
+  maxSpeed: 4
   waitTime: 3
   changeDestinationRange: 0.5
   previouslyDirection: 

@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
 
     public bool hasCollectedSeedEvent = false;
     public bool hasIncubatedAlienEvent = false;
-
+    public bool hasPurchasedWall = false;
 
     public static bool isGamePaused;
 

@@ -428,8 +428,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ff12ae1d61baf04aaac027caa6873fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 5
-  waitTime: 5
+  maxSpeed: 2
+  waitTime: 1.2
   changeDestinationRange: 0.5
   previouslyDirection: 
 --- !u!1 &7800674918160761388

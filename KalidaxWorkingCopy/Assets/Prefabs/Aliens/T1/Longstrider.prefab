@@ -513,7 +513,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 5
-  waitTime: 5
+  waitTime: 0.5
   changeDestinationRange: 0.5
   previouslyDirection: 
 --- !u!1 &8188042966839912650

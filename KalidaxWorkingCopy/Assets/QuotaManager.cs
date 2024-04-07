@@ -103,7 +103,7 @@ public class QuotaManager : MonoBehaviour
         }
         else
         {
-            quotaDisplayText.text = "No Quota Today";
+            quotaDisplayText.text = "";
             DisplayNextQuotaCountdown();
         }
     }
