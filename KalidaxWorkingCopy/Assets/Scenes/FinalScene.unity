@@ -8595,6 +8595,10 @@ PrefabInstance:
       value: 124
       objectReference: {fileID: 0}
     - target: {fileID: 4075410610440543760, guid: 601ed4e6eb6ba0046a87845146fdcb1e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -58.433105
+      objectReference: {fileID: 0}
+    - target: {fileID: 4075410610440543760, guid: 601ed4e6eb6ba0046a87845146fdcb1e, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 20.919373
       objectReference: {fileID: 0}
@@ -9942,10 +9946,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e30442219d869f489cc9f9a8fb892ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leftBorders: -5.4
-  rightBorders: 3.47
-  topBorders: 5.84
-  bottomBorders: 0
+  leftBorders: -15.35
+  rightBorders: 1.7
+  topBorders: 4.17
+  bottomBorders: -4.86
 --- !u!4 &1668421982
 Transform:
   m_ObjectHideFlags: 0
@@ -11926,6 +11930,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1944282319}
+  - component: {fileID: 1944282320}
   m_Layer: 0
   m_Name: Strider Borders
   m_TagString: Untagged
@@ -11948,6 +11953,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1944282320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1944282318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e30442219d869f489cc9f9a8fb892ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftBorders: 10.4
+  rightBorders: 19.65
+  topBorders: 1.35
+  bottomBorders: -9.38
 --- !u!1 &1957075208
 GameObject:
   m_ObjectHideFlags: 0
