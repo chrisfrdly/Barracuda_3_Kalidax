@@ -4438,6 +4438,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall
       objectReference: {fileID: 0}
+    - target: {fileID: 8924417414144479138, guid: 27847322c34d2d5489b5d64701276855, type: 3}
+      propertyPath: m_text
+      value: $300 to Remove
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27847322c34d2d5489b5d64701276855, type: 3}
 --- !u!1 &793558256

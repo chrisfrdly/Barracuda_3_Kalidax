@@ -85,7 +85,7 @@ MonoBehaviour:
   isRequiredToLookAtTarget: 0
   freezePlayerMovement: 0
   spriteRenderer: {fileID: 1488858586243674901}
-  RemoveWallCost: 500
+  RemoveWallCost: 300
 --- !u!210 &1288458281
 SortingGroup:
   m_ObjectHideFlags: 0
