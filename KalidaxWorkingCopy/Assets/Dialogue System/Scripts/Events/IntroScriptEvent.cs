@@ -16,7 +16,6 @@ public class IntroScriptEvent : MonoBehaviour
     }
     private void ChangeScene()
     {
-        Debug.Log("WORKED");
-        SceneManager.LoadScene("SebasScene");
+        SceneManager.LoadScene("FinalScene");
     }
 }
