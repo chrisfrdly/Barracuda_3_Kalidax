@@ -111,24 +111,24 @@ public class UpgradeCheck : MonoBehaviour
         {
             if (canAfford)
             {
-                {
-                    PlayerWallet.Instance.SubtractValue(upgradeCost, "You've Purchased an upgrade"); // Subtract the cost from the player's wallet
-                    isBought[index] = true; // Mark the object as bought
-                    nextToBuyIndex = Mathf.Min(nextToBuyIndex + 1, upgradeObjects.Length - 1); // Move to the next object in the list
+                
+                PlayerWallet.Instance.SubtractValue(upgradeCost, "Incubation Pod Purchased"); // Subtract the cost from the player's wallet
+                isBought[index] = true; // Mark the object as bought
+                nextToBuyIndex = Mathf.Min(nextToBuyIndex + 1, upgradeObjects.Length - 1); // Move to the next object in the list
 
-                    //Save the data when we purchased one
-                    dataDayCycle.incubationPodPurchased[index] = true;
+                //Save the data when we purchased one
+                dataDayCycle.incubationPodPurchased[index] = true;
 
-                    //Set isBought based on the save state
-                    isBought[index] = true;
+                //Set isBought based on the save state
+                isBought[index] = true;
 
-                    InteractableObject_SeedPod seedPod = upgradeObjects[index].GetComponent<InteractableObject_SeedPod>();
-                    seedPod.m_IncubationState = IncubationState.OBJ_AddSeed;
-                    dataDayCycle.incubationPodData[index].incubationState = IncubationState.OBJ_AddSeed;
-                    seedPod.SetColourOfPodLight();
+                InteractableObject_SeedPod seedPod = upgradeObjects[index].GetComponent<InteractableObject_SeedPod>();
+                seedPod.m_IncubationState = IncubationState.OBJ_AddSeed;
+                dataDayCycle.incubationPodData[index].incubationState = IncubationState.OBJ_AddSeed;
+                seedPod.SetColourOfPodLight();
 
-                    ResetColorAndCollider(index);
-                }
+                ResetColorAndCollider(index);
+                
             }
             else
             {

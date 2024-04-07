@@ -18,7 +18,9 @@ public class InteractableObject_Provisions_Drone : InteractableObject
     [SerializeField] private Image itemImage;
     [SerializeField] private GameObject needSeedText;
 
-    public SO_Inventory inventory; //this is so you can sell your seeds
+
+
+    [SerializeField] private SO_Inventory inventory; //this is so you can sell your seeds
     [SerializeField] private int sellAmount; //this is how many seeds you will sell
 
 
@@ -29,11 +31,6 @@ public class InteractableObject_Provisions_Drone : InteractableObject
         SO_interactableObject.clickedCancelButtonEvent.AddListener(CloseInteractionPrompt);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     //this will run when the player interacts with this object
     public override void OnInteract(GameObject _interactedActor)
@@ -57,6 +54,7 @@ public class InteractableObject_Provisions_Drone : InteractableObject
                 inventory.SellItem(inventory.container.items[i].item, sellAmount);
                 sellAmount = 0;
                 soldSomething = true;
+                ClearItemImage();
             }
             else if (i == 0 && inventory.container.items[i].id < 1)
             {
@@ -91,11 +89,30 @@ public class InteractableObject_Provisions_Drone : InteractableObject
             sellButton.Select();
         }
 
+        //make the image based on what they have in their inventory
+        if (inventory.container.items[0].amount > 0)
+        {
+            itemImage.color = new Color(1, 1, 1, 1); //revealing the alpha
+
+            //Get the Id of the firs slot item
+            int itemID = inventory.container.items[0].id;
+            itemImage.sprite = inventory.database.getItem[itemID].uiDisplay;
+        }
+        else
+        {
+            ClearItemImage();
+        }
+
         //Activate the panel and make it the currentVisible UI
         pDroneHUDPanel.SetActive(true);
         UIController.Instance.m_CurrentUIVisible = pDroneHUDPanel;
     }
 
+    private void ClearItemImage()
+    {
+        itemImage.sprite = null;
+        itemImage.color = new Color(1, 1, 1, 0); //hiding the alpha
+    }
     private void CloseInteractionPrompt()
     {
         pDroneHUDPanel.SetActive(false);

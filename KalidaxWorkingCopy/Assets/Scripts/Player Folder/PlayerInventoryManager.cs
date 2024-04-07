@@ -6,7 +6,6 @@ public class PlayerInventoryManager : MonoBehaviour
 {
     public SO_Inventory inventory;
     public SO_GameEvent gameEvent;
-    private bool hasInitialized = false;
 
     private void Update()
     {
@@ -20,14 +19,6 @@ public class PlayerInventoryManager : MonoBehaviour
         }
     }
 
-    private void Start()
-    {
-        if (!hasInitialized)
-        {
-            gameEvent.RaiseProgressChanged(ProgressState.None);
-            hasInitialized = true;
-        }
-    }
 
     //will pick up any item that is on the ground and add it to the inventory 
     public void OnTriggerEnter2D(Collider2D collision)
@@ -37,7 +28,15 @@ public class PlayerInventoryManager : MonoBehaviour
         if(item)
         {
             inventory.AddItem(new Item(item.item), 1);
-            gameEvent.RaiseProgressChanged(ProgressState.SeedCollected);
+
+            if(!GameManager.Instance.hasCollectedSeedEvent)
+            {
+                gameEvent.RaiseProgressChanged(ProgressState.SeedCollected);
+                GameManager.Instance.hasCollectedSeedEvent = true;
+            }
+            
+
+
             Destroy(collision.gameObject);
         }
     }

@@ -221,7 +221,6 @@ MonoBehaviour:
   isRequiredToLookAtTarget: 0
   freezePlayerMovement: 0
   gameEvent: {fileID: 11400000, guid: 0f29efc5c19584e46922cdc2d9fef8eb, type: 2}
-  incubationCompleteTriggered: 0
   dataDayCycle: {fileID: 11400000, guid: 208eef33a987f0e4bb799b003df00a94, type: 2}
   incubationPodHUDPanel: {fileID: 7376599304840943977}
   addSeedButton: {fileID: 7376599304987843840}
@@ -299,7 +298,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9811321, g: 0.89473206, b: 0.28230685, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

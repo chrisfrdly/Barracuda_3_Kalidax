@@ -52,6 +52,7 @@ public class WorldAlien : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+        if (_sceneName == "EndOfDayScene") return;
 
         provisionDroneObject = FindObjectOfType<InteractableObject_Provisions_Drone>().gameObject;
         objectListScript = FindObjectOfType<AliensInWorld_Mono>();
@@ -116,6 +117,8 @@ public class WorldAlien : MonoBehaviour
     private void SellAlien()
     {
         PlayerWallet.Instance.amountToPutInWallet += alienContainer.sellValue;
+        PlayerWallet.Instance.AddToAmountToPutInWallet(alienContainer.sellValue, "Sold Alien");
+
         Debug.Log("Is Being Sold");
         DestroyAlien();
     }
