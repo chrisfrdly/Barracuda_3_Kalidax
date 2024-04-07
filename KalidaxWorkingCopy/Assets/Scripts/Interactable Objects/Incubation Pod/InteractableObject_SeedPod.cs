@@ -354,7 +354,7 @@ public class InteractableObject_SeedPod : InteractableObject
         seedImage.gameObject.SetActive(false);
         daysRemainingText.gameObject.SetActive(false);
 
-        incubationLight.color = new Color(0, 1, 0);
+        incubationLight.color = incubationColour_AddSeed;
 
         //Update the data
         incubationState = dataDayCycle.incubationPodData[thisIndex].incubationState;
@@ -372,7 +372,7 @@ public class InteractableObject_SeedPod : InteractableObject
         seedImage.gameObject.SetActive(true);
         
         daysRemainingText.gameObject.SetActive(true);
-        incubationLight.color = new Color(1, 0, 0);
+        incubationLight.color = incubationColour_Incubating;
 
     }
 
@@ -387,7 +387,7 @@ public class InteractableObject_SeedPod : InteractableObject
     
         daysRemainingText.gameObject.SetActive(false);
 
-        incubationLight.color = new Color(0, 0, 1);
+        incubationLight.color = incubationColour_RemoveSeed;
     }
 
     public override bool CheckIsInteractable() { return isInteractable; }
