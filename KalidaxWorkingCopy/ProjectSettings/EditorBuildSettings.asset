@@ -5,12 +5,6 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/MainScene-Playtest 1.unity
-    guid: a4caa8fc69c4f874783ece26e83d9add
-  - enabled: 0
-    path: Assets/Scenes/MainScenePlaytest2.unity
-    guid: 9b9f7b15ada8a3047b6c63c9f975da9a
   - enabled: 1
     path: Assets/Scenes/MENU/MainMenu.unity
     guid: ac8fa9157bf2126458af3fe2bc1fc7ff
@@ -21,24 +15,18 @@ EditorBuildSettings:
     path: Assets/Scenes/MENU/Tutorial.unity
     guid: ee3505354b7dd8542803b934f00feded
   - enabled: 1
-    path: Assets/Scenes/PersonalScenes/AshtonScene.unity
-    guid: 396616bc90f7489438305dfd894dca56
-  - enabled: 1
     path: Assets/Scenes/EndOfDayScene.unity
     guid: 35a0528ea894ff64d9d5e2332b46f574
-  - enabled: 0
-    path: Assets/Scenes/MainScene_FirstIteration.unity
-    guid: 1e7e5899eb1f0dc459facde9b7c3f511
-  - enabled: 1
-    path: Assets/Scenes/PersonalScenes/SebasScene.unity
-    guid: 25fce3ad0f221a84a8d83d030782e699
   - enabled: 1
     path: Assets/Scenes/IntroScene.unity
     guid: 08ff18823d1c7c946a141d381a09c956
   - enabled: 1
-    path: Assets/Scenes/PersonalScenes/LucasScene.unity
-    guid: 1b24bc643b822624f8aa474c5c8fb41f
-  - enabled: 1
     path: Assets/Scenes/FinalScene.unity
     guid: 0ec4e753984fe44458bc2e48ae8dbfe0
+  - enabled: 1
+    path: Assets/Scenes/GameOverScreen.unity
+    guid: 8738bd0307aebc44f88554642850951e
+  - enabled: 1
+    path: Assets/Scenes/WinScreen.unity
+    guid: 2e41ff8b992c24b44abbdc39d7b790c5
   m_configObjects: {}

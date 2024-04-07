@@ -118,9 +118,15 @@ MonoBehaviour:
     pitch: 1
     loop: 1
     source: {fileID: 0}
-  - backgroundMusic: 0
+  - backgroundMusic: 3
     clip: {fileID: 8300000, guid: 6bc0a99124eb8ec4bbf4d28dbd97c180, type: 3}
     volume: 0.028
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - backgroundMusic: 0
+    clip: {fileID: 8300000, guid: 6bc0a99124eb8ec4bbf4d28dbd97c180, type: 3}
+    volume: 0.17
     pitch: 1
     loop: 1
     source: {fileID: 0}

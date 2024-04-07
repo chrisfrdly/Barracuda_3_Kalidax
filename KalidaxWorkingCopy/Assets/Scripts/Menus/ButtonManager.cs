@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class ButtonManager : MonoBehaviour
 {
-    [SerializeField] private SO_PauseMenuEventSender pauseMenuEvent;
 
     public void QuitGame()
     {
@@ -13,7 +12,11 @@ public class ButtonManager : MonoBehaviour
         Application.Quit();
     }
 
-
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+        AudioManager.instance.Play("Positive Interact");
+    }
     public void Options()
     {
         //AudioManager.instance.Play("TestSound");

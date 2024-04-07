@@ -95,6 +95,11 @@ public class DayManager : MonoBehaviour
 
         LevelLoader.Instance.SetTrigger();
         
+
+        if(GetCurrentDay() > 16)
+        {
+            SceneManager.LoadScene("WinScreen");
+        }
     }
 
     private bool DeductQuota()
@@ -114,7 +119,7 @@ public class DayManager : MonoBehaviour
         {
             // Handle the scenario when the player cannot meet the quota
             Debug.Log("Player cannot afford the end-of-day quota. Game Over.");
-            SceneManager.LoadScene("MainMenu");
+            SceneManager.LoadScene("GameOverScreen");
             return false;
         }
     }

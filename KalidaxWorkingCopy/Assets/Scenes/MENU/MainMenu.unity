@@ -1384,6 +1384,10 @@ PrefabInstance:
       propertyPath: bgSounds.Array.data[0].volume
       value: 0.504
       objectReference: {fileID: 0}
+    - target: {fileID: 672016082745021283, guid: 3d9ff093ddacd9a418d4ebf8fbd38733, type: 3}
+      propertyPath: bgSounds.Array.data[2].volume
+      value: 0.558
+      objectReference: {fileID: 0}
     - target: {fileID: 672016082745021293, guid: 3d9ff093ddacd9a418d4ebf8fbd38733, type: 3}
       propertyPath: m_Name
       value: AudioManager

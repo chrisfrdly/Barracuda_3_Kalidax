@@ -128,7 +128,7 @@ public class QuotaManager : MonoBehaviour
         if (nextQuotaFound)
         {
             int nextQuota = currentQuotaData.quotaArray[currentDayIndex + daysUntilNextQuota];
-            quotaDisplayText.text += $"\nNext Quota: {nextQuota} in {daysUntilNextQuota} days";
+            quotaDisplayText.text += $"Next Quota: {nextQuota} in {daysUntilNextQuota} days";
         }
         else
         {

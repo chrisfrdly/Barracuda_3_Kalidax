@@ -62,10 +62,14 @@ public class UIController : MonoBehaviour
 
     private void ConfirmedDayReset()
     {
+        yesButton.gameObject.SetActive(false);
+        noButton.gameObject.SetActive(false);
         //Now the Day Manager class will handle switching to the new day!
         AudioManager.instance.Play("Positive Interact");
         aliensInWorld.SceneExittedEventSend();
         DayManager.Instance.NewDay();
+
+
     }
 
     public void CancelDayReset()

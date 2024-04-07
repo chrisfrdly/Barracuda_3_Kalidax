@@ -15,13 +15,6 @@ public class InteractableWall : InteractableObject
     [Header("Cost")]
     public int RemoveWallCost;
 
-    private void Awake()
-    {
-        if(GameManager.Instance.hasPurchasedWall)
-        {
-            Destroy(gameObject);
-        }
-    }
     private void Start()
     {
         GameObject wallObj = GameObject.Find("Wallet Manager");
@@ -29,6 +22,11 @@ public class InteractableWall : InteractableObject
 
         GameObject wallSprite = GameObject.Find("Wall Sprite");
         spriteRenderer = wallSprite.GetComponent<SpriteRenderer>();
+
+        if (GameManager.Instance.hasPurchasedWall)
+        {
+            Destroy(gameObject);
+        }
     }
     public override void OnInteract(GameObject _interactedActor)
         {
