@@ -93,8 +93,8 @@ public class DayManager : MonoBehaviour
             SO_Data_dayCycle.grassTilesList[i] = grassTiles[i].m_IsCut;
         }
 
+        LevelLoader.Instance.SetTrigger();
         
-        SceneManager.LoadScene("EndOfDayScene");
     }
 
     private bool DeductQuota()

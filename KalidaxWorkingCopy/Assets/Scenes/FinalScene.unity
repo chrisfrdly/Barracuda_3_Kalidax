@@ -2084,7 +2084,7 @@ MonoBehaviour:
   grassTiles: []
   sp: {fileID: 1669869764}
   gameEvent: {fileID: 11400000, guid: 0f29efc5c19584e46922cdc2d9fef8eb, type: 2}
-  newSceneEvent: {fileID: 0}
+  newSceneEvent: {fileID: 11400000, guid: 72364da5f673e9e40a6c8574ac06e771, type: 2}
 --- !u!4 &335845907
 Transform:
   m_ObjectHideFlags: 0

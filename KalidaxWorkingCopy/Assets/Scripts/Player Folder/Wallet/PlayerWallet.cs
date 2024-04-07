@@ -113,7 +113,7 @@ public class PlayerWallet : MonoBehaviour
         }
         else if (reason == "Removed Wall")
         {
-            amountsAddedThisDay[3] += amount;
+            amountsAddedThisDay[4] += amount;
         }
     }
 }
