@@ -60,6 +60,11 @@ public class PlayerProgressUI : MonoBehaviour
         {
 
             fadeCoroutine = FadeRadioPager();
+
+            if(radioPagerCanvasGroup == null)
+            {
+                radioPagerCanvasGroup = FindObjectOfType<CanvasGroup>();
+            }
             StartCoroutine(fadeCoroutine);
             radioPagerCanvasGroup.interactable = false;
             radioPagerCanvasGroup.blocksRaycasts = false;

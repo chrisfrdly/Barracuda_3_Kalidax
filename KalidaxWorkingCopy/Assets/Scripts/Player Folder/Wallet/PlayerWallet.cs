@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerWallet : MonoBehaviour
@@ -9,6 +10,9 @@ public class PlayerWallet : MonoBehaviour
     public int walletAmount;
     public delegate void WalletAmountChanged();
     public event WalletAmountChanged OnWalletAmountChanged;
+
+
+    private int[] amountsAddedThisDay = new int[6];
 
     public static PlayerWallet Instance
     {
@@ -44,6 +48,7 @@ public class PlayerWallet : MonoBehaviour
     void ResetWalletAmountToAdd(string _sceneName)
     {
         amountToPutInWallet = 0;
+        Debug.Log("NEW SCENE LOADED");
 
         if (_sceneName == "MainMenu")
         {
@@ -51,14 +56,38 @@ public class PlayerWallet : MonoBehaviour
             return;
         }
 
+        if(_sceneName == "EndOfDayScene")
+        {
+            //Then we will replace the gold filler text with the amounts they gained and lost
+
+            //Find the EndOfDay Amount
+            EndOfDayAmounts eod = FindObjectOfType<EndOfDayAmounts>();
+            eod.m_AmountsToShow = amountsAddedThisDay;
+            
+            foreach(int a in amountsAddedThisDay)
+            {
+                Debug.Log(a);
+            }
+           
+        }
+      
+        amountsAddedThisDay = new int[6];
+
         
     }
 
     // Call this method to add earnings throughout the day
-    public void AddToAmountToPutInWallet(int amount)
+    public void AddToAmountToPutInWallet(int amount, string reason)
     {
-        amountToPutInWallet += amount;
-        OnWalletAmountChanged?.Invoke();
+        if(reason == "Sold Item")
+        {
+            amountsAddedThisDay[0] += amount;
+        }
+        else if(reason == "Sold Alien")
+        {
+            amountsAddedThisDay[1] += amount;
+        }
+        
     }
 
     public void TransferToWallet(string reason)
@@ -73,5 +102,18 @@ public class PlayerWallet : MonoBehaviour
     {
         walletAmount -= amount;
         OnWalletAmountChanged?.Invoke();
+
+        if (reason == "End of Day Quota")
+        {
+            amountsAddedThisDay[2] += amount;
+        }
+        else if (reason == "Incubation Pod Purchased")
+        {
+            amountsAddedThisDay[3] += amount;
+        }
+        else if (reason == "Removed Wall")
+        {
+            amountsAddedThisDay[3] += amount;
+        }
     }
 }
