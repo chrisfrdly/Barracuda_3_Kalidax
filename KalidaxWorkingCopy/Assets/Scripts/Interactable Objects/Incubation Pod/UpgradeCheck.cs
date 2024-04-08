@@ -123,6 +123,8 @@ public class UpgradeCheck : MonoBehaviour
                 //Set isBought based on the save state
                 isBought[index] = true;
 
+                AudioManager.instance.Play("Item Purchased Coins");
+
                 InteractableObject_SeedPod seedPod = upgradeObjects[index].GetComponent<InteractableObject_SeedPod>();
                 seedPod.m_IncubationState = IncubationState.OBJ_AddSeed;
                 dataDayCycle.incubationPodData[index].incubationState = IncubationState.OBJ_AddSeed;
