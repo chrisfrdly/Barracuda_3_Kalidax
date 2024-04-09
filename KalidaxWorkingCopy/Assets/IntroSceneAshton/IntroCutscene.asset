@@ -17,14 +17,6 @@ MonoBehaviour:
     TargetNodeGUID: 41c981e0-c7cf-4c18-bf0e-1c34facd21f3
   - BaseNodeGUID: c7cced70-a29c-43c0-9e33-eb2a1ad28d7c
     TargetNodeGUID: f4580349-d7aa-4c05-bd88-a9a3ee0001b2
-  - BaseNodeGUID: fe1465ec-b96f-4bd1-b782-91c82c42a156
-    TargetNodeGUID: 3a3564df-a421-4ee9-955c-e5b0de0ec960
-  - BaseNodeGUID: 78ac24b8-d3ce-4cce-937d-f3d4fbb6ef8a
-    TargetNodeGUID: fe1465ec-b96f-4bd1-b782-91c82c42a156
-  - BaseNodeGUID: 3a3564df-a421-4ee9-955c-e5b0de0ec960
-    TargetNodeGUID: e732347c-302e-4492-9dbb-52d20b7683a0
-  - BaseNodeGUID: 41c981e0-c7cf-4c18-bf0e-1c34facd21f3
-    TargetNodeGUID: 78ac24b8-d3ce-4cce-937d-f3d4fbb6ef8a
   - BaseNodeGUID: e732347c-302e-4492-9dbb-52d20b7683a0
     TargetNodeGUID: efb6e607-2e5f-4a0d-8eb6-db7db3f25356
   - BaseNodeGUID: efb6e607-2e5f-4a0d-8eb6-db7db3f25356
@@ -37,203 +29,25 @@ MonoBehaviour:
     TargetNodeGUID: 1b67eac5-f806-40c0-86c4-349bfeaaf518
   - BaseNodeGUID: 1b67eac5-f806-40c0-86c4-349bfeaaf518
     TargetNodeGUID: 678f625c-ca91-4b53-b38b-a3bbd27e6b3e
+  - BaseNodeGUID: 463a95d6-429e-4ae4-8275-901e4962993c
+    TargetNodeGUID: 912c828e-32af-4a74-8623-cbb781964f32
+  - BaseNodeGUID: 912c828e-32af-4a74-8623-cbb781964f32
+    TargetNodeGUID: c7cced70-a29c-43c0-9e33-eb2a1ad28d7c
+  - BaseNodeGUID: 41c981e0-c7cf-4c18-bf0e-1c34facd21f3
+    TargetNodeGUID: 78ac24b8-d3ce-4cce-937d-f3d4fbb6ef8a
+  - BaseNodeGUID: 78ac24b8-d3ce-4cce-937d-f3d4fbb6ef8a
+    TargetNodeGUID: fe1465ec-b96f-4bd1-b782-91c82c42a156
+  - BaseNodeGUID: fe1465ec-b96f-4bd1-b782-91c82c42a156
+    TargetNodeGUID: 3a3564df-a421-4ee9-955c-e5b0de0ec960
+  - BaseNodeGUID: 3a3564df-a421-4ee9-955c-e5b0de0ec960
+    TargetNodeGUID: e732347c-302e-4492-9dbb-52d20b7683a0
   - BaseNodeGUID: 678f625c-ca91-4b53-b38b-a3bbd27e6b3e
     TargetNodeGUID: 09802034-dece-4be0-b63e-f8fb624f80cc
   - BaseNodeGUID: 09802034-dece-4be0-b63e-f8fb624f80cc
     TargetNodeGUID: b15ed774-4be6-4c54-bc4d-3d99e501f181
   - BaseNodeGUID: b15ed774-4be6-4c54-bc4d-3d99e501f181
     TargetNodeGUID: 463a95d6-429e-4ae4-8275-901e4962993c
-  - BaseNodeGUID: 463a95d6-429e-4ae4-8275-901e4962993c
-    TargetNodeGUID: 912c828e-32af-4a74-8623-cbb781964f32
-  - BaseNodeGUID: 912c828e-32af-4a74-8623-cbb781964f32
-    TargetNodeGUID: c7cced70-a29c-43c0-9e33-eb2a1ad28d7c
   DialogueNodeDatas:
-  - NodeGUID: e732347c-302e-4492-9dbb-52d20b7683a0
-    Pos: {x: 1685, y: 174}
-    TextType:
-    - LanguageType: 0
-      LanguageGenericType: 'A formidable figure exuding authority and wealth. His
-        large frame is nestled in a luxurious, oversized captain''s chair, contrasting
-        the stark surroundings. '
-    DialogueNodePorts:
-    - InputGUID: efb6e607-2e5f-4a0d-8eb6-db7db3f25356
-      OutputGUID: e732347c-302e-4492-9dbb-52d20b7683a0
-      TextLanguages:
-      - LanguageType: 0
-        LanguageGenericType: Next
-    Sprite: {fileID: 0}
-    DialogueSpriteImageType: 0
-    AudioClips:
-    - LanguageType: 0
-      LanguageGenericType: {fileID: 0}
-    Name: The Boss
-  - NodeGUID: efb6e607-2e5f-4a0d-8eb6-db7db3f25356
-    Pos: {x: 1536, y: 984}
-    TextType:
-    - LanguageType: 0
-      LanguageGenericType: His suit, rich and snug against his size, bears a gleaming
-        "UAF" badge.
-    DialogueNodePorts:
-    - InputGUID: 121ad2a8-3577-43ca-8108-46c3b4e21e54
-      OutputGUID: efb6e607-2e5f-4a0d-8eb6-db7db3f25356
-      TextLanguages:
-      - LanguageType: 0
-        LanguageGenericType: The Intercom Bellows
-    Sprite: {fileID: 0}
-    DialogueSpriteImageType: 0
-    AudioClips:
-    - LanguageType: 0
-      LanguageGenericType: {fileID: 0}
-    Name: The Boss
-  - NodeGUID: 121ad2a8-3577-43ca-8108-46c3b4e21e54
-    Pos: {x: 2014, y: 984}
-    TextType:
-    - LanguageType: 0
-      LanguageGenericType: "Attention, workers. We have arrived at Kalidax, the most
-        desolate planet in the Andromeda galaxy. Once a lush and fertile world, Kalidax
-        was ravaged by a mysterious cataclysm that turned it into a barren wasteland.
-        \n"
-    DialogueNodePorts:
-    - InputGUID: 8763f530-a9fa-4ab7-9e0b-64ea99d2fd37
-      OutputGUID: 121ad2a8-3577-43ca-8108-46c3b4e21e54
-      TextLanguages:
-      - LanguageType: 0
-        LanguageGenericType: Next
-    Sprite: {fileID: 0}
-    DialogueSpriteImageType: 0
-    AudioClips:
-    - LanguageType: 0
-      LanguageGenericType: {fileID: 0}
-    Name: The Boss
-  - NodeGUID: 8763f530-a9fa-4ab7-9e0b-64ea99d2fd37
-    Pos: {x: 3294, y: 984}
-    TextType:
-    - LanguageType: 0
-      LanguageGenericType: The only survivors are the alien creatures that dwell
-        in the depths of the planet, hiding from the harsh sun and the toxic air.
-    DialogueNodePorts:
-    - InputGUID: 789fa6eb-6599-4ad0-832a-ae6617b18e3a
-      OutputGUID: 8763f530-a9fa-4ab7-9e0b-64ea99d2fd37
-      TextLanguages:
-      - LanguageType: 0
-        LanguageGenericType: Next
-    Sprite: {fileID: 0}
-    DialogueSpriteImageType: 0
-    AudioClips:
-    - LanguageType: 0
-      LanguageGenericType: {fileID: 0}
-    Name: The Boss
-  - NodeGUID: 789fa6eb-6599-4ad0-832a-ae6617b18e3a
-    Pos: {x: 2908, y: 528}
-    TextType:
-    - LanguageType: 0
-      LanguageGenericType: Your job is to splice the alien DNA and create new crops
-        that can grow in the hostile environment. From this day on, You have no name,
-        no identity, no family. You are just an employee number.
-    DialogueNodePorts:
-    - InputGUID: 1b67eac5-f806-40c0-86c4-349bfeaaf518
-      OutputGUID: 789fa6eb-6599-4ad0-832a-ae6617b18e3a
-      TextLanguages:
-      - LanguageType: 0
-        LanguageGenericType: Next
-    Sprite: {fileID: 0}
-    DialogueSpriteImageType: 0
-    AudioClips:
-    - LanguageType: 0
-      LanguageGenericType: {fileID: 0}
-    Name: The Boss
-  - NodeGUID: 1b67eac5-f806-40c0-86c4-349bfeaaf518
-    Pos: {x: 4066, y: 528}
-    TextType:
-    - LanguageType: 0
-      LanguageGenericType: "You must work hard, follow the rules, and meet your daily
-        quota. \nIf you fail, you will lose everything. Your career, your life, your
-        soul."
-    DialogueNodePorts:
-    - InputGUID: 678f625c-ca91-4b53-b38b-a3bbd27e6b3e
-      OutputGUID: 1b67eac5-f806-40c0-86c4-349bfeaaf518
-      TextLanguages:
-      - LanguageType: 0
-        LanguageGenericType: People Stir Around you
-    Sprite: {fileID: 0}
-    DialogueSpriteImageType: 0
-    AudioClips:
-    - LanguageType: 0
-      LanguageGenericType: {fileID: 0}
-    Name: The Boss
-  - NodeGUID: 09802034-dece-4be0-b63e-f8fb624f80cc
-    Pos: {x: 4630, y: 110}
-    TextType:
-    - LanguageType: 0
-      LanguageGenericType: 'This is the last bastion of life on Kalidax, the only
-        place where you can breathe and grow food. But it is also a dangerous place,
-        full of unknown dangers and secrets. '
-    DialogueNodePorts:
-    - InputGUID: b15ed774-4be6-4c54-bc4d-3d99e501f181
-      OutputGUID: 09802034-dece-4be0-b63e-f8fb624f80cc
-      TextLanguages:
-      - LanguageType: 0
-        LanguageGenericType: The Door Shutters to Life
-    Sprite: {fileID: 0}
-    DialogueSpriteImageType: 0
-    AudioClips:
-    - LanguageType: 0
-      LanguageGenericType: {fileID: 0}
-    Name: The Boss
-  - NodeGUID: b15ed774-4be6-4c54-bc4d-3d99e501f181
-    Pos: {x: 5276, y: 611}
-    TextType:
-    - LanguageType: 0
-      LanguageGenericType: "Be careful, be vigilant, and be loyal. \nAnd remember,
-        the UAF is watching you"
-    DialogueNodePorts:
-    - InputGUID: 463a95d6-429e-4ae4-8275-901e4962993c
-      OutputGUID: b15ed774-4be6-4c54-bc4d-3d99e501f181
-      TextLanguages:
-      - LanguageType: 0
-        LanguageGenericType: Choice 1
-    Sprite: {fileID: 0}
-    DialogueSpriteImageType: 0
-    AudioClips:
-    - LanguageType: 0
-      LanguageGenericType: {fileID: 0}
-    Name: The Boss
-  - NodeGUID: 463a95d6-429e-4ae4-8275-901e4962993c
-    Pos: {x: 5562, y: 611}
-    TextType:
-    - LanguageType: 0
-      LanguageGenericType: "From what I\u2019ve heard most of these farms don\u2019t
-        make it, but it beats rotting on a nameless planet for nothing I guess\u2026 "
-    DialogueNodePorts:
-    - InputGUID: 912c828e-32af-4a74-8623-cbb781964f32
-      OutputGUID: 463a95d6-429e-4ae4-8275-901e4962993c
-      TextLanguages:
-      - LanguageType: 0
-        LanguageGenericType: 
-    Sprite: {fileID: 0}
-    DialogueSpriteImageType: 0
-    AudioClips:
-    - LanguageType: 0
-      LanguageGenericType: {fileID: 0}
-    Name: Worker that shushed the crowd
-  - NodeGUID: 912c828e-32af-4a74-8623-cbb781964f32
-    Pos: {x: 6267, y: 611}
-    TextType:
-    - LanguageType: 0
-      LanguageGenericType: this is where we part ways, I hear they normally split
-        us up once we land.
-    DialogueNodePorts:
-    - InputGUID: c7cced70-a29c-43c0-9e33-eb2a1ad28d7c
-      OutputGUID: 912c828e-32af-4a74-8623-cbb781964f32
-      TextLanguages:
-      - LanguageType: 0
-        LanguageGenericType: Time to Begin Your New Life
-    Sprite: {fileID: 0}
-    DialogueSpriteImageType: 0
-    AudioClips:
-    - LanguageType: 0
-      LanguageGenericType: {fileID: 0}
-    Name: Worker that shushed the crowd
   - NodeGUID: 41c981e0-c7cf-4c18-bf0e-1c34facd21f3
     Pos: {x: -202, y: 161}
     TextType:
@@ -315,13 +129,199 @@ MonoBehaviour:
       OutputGUID: 678f625c-ca91-4b53-b38b-a3bbd27e6b3e
       TextLanguages:
       - LanguageType: 0
-        LanguageGenericType: Choice 1
+        LanguageGenericType: You feel a shudder yourself.
     Sprite: {fileID: 21300000, guid: a825b94689d5a0349bae37a3ff6a8ee2, type: 3}
     DialogueSpriteImageType: 0
     AudioClips:
     - LanguageType: 0
       LanguageGenericType: {fileID: 0}
     Name: 5437
+  - NodeGUID: e732347c-302e-4492-9dbb-52d20b7683a0
+    Pos: {x: 1684, y: 174}
+    TextType:
+    - LanguageType: 0
+      LanguageGenericType: 'A formidable figure exuding authority and wealth. His
+        large frame is nestled in a luxurious, oversized captain''s chair, contrasting
+        the stark surroundings. '
+    DialogueNodePorts:
+    - InputGUID: efb6e607-2e5f-4a0d-8eb6-db7db3f25356
+      OutputGUID: e732347c-302e-4492-9dbb-52d20b7683a0
+      TextLanguages:
+      - LanguageType: 0
+        LanguageGenericType: His stature is large.
+    Sprite: {fileID: 21300000, guid: 9aebd705574f9e642aef1e5f59b3e4d8, type: 3}
+    DialogueSpriteImageType: 1
+    AudioClips:
+    - LanguageType: 0
+      LanguageGenericType: {fileID: 0}
+    Name: The Boss
+  - NodeGUID: efb6e607-2e5f-4a0d-8eb6-db7db3f25356
+    Pos: {x: 1536, y: 984}
+    TextType:
+    - LanguageType: 0
+      LanguageGenericType: His suit, rich and snug against his size, bears a gleaming
+        "UAF" badge.
+    DialogueNodePorts:
+    - InputGUID: 121ad2a8-3577-43ca-8108-46c3b4e21e54
+      OutputGUID: efb6e607-2e5f-4a0d-8eb6-db7db3f25356
+      TextLanguages:
+      - LanguageType: 0
+        LanguageGenericType: The Intercom Bellows
+    Sprite: {fileID: 21300000, guid: 9aebd705574f9e642aef1e5f59b3e4d8, type: 3}
+    DialogueSpriteImageType: 1
+    AudioClips:
+    - LanguageType: 0
+      LanguageGenericType: {fileID: 0}
+    Name: The Boss
+  - NodeGUID: 121ad2a8-3577-43ca-8108-46c3b4e21e54
+    Pos: {x: 2014, y: 984}
+    TextType:
+    - LanguageType: 0
+      LanguageGenericType: "Attention, workers. We have arrived at Kalidax, the most
+        desolate planet in the Andromeda galaxy. Once a lush and fertile world, Kalidax
+        was ravaged by a mysterious cataclysm that turned it into a barren wasteland.
+        \n"
+    DialogueNodePorts:
+    - InputGUID: 8763f530-a9fa-4ab7-9e0b-64ea99d2fd37
+      OutputGUID: 121ad2a8-3577-43ca-8108-46c3b4e21e54
+      TextLanguages:
+      - LanguageType: 0
+        LanguageGenericType: What could possibly live here?
+    Sprite: {fileID: 21300000, guid: 9aebd705574f9e642aef1e5f59b3e4d8, type: 3}
+    DialogueSpriteImageType: 1
+    AudioClips:
+    - LanguageType: 0
+      LanguageGenericType: {fileID: 0}
+    Name: The Boss
+  - NodeGUID: 8763f530-a9fa-4ab7-9e0b-64ea99d2fd37
+    Pos: {x: 3294, y: 984}
+    TextType:
+    - LanguageType: 0
+      LanguageGenericType: The only survivors are the alien creatures that dwell
+        in the depths of the planet, hiding from the harsh sun and the toxic air.
+    DialogueNodePorts:
+    - InputGUID: 789fa6eb-6599-4ad0-832a-ae6617b18e3a
+      OutputGUID: 8763f530-a9fa-4ab7-9e0b-64ea99d2fd37
+      TextLanguages:
+      - LanguageType: 0
+        LanguageGenericType: Abominations?
+    Sprite: {fileID: 21300000, guid: 9aebd705574f9e642aef1e5f59b3e4d8, type: 3}
+    DialogueSpriteImageType: 1
+    AudioClips:
+    - LanguageType: 0
+      LanguageGenericType: {fileID: 0}
+    Name: The Boss
+  - NodeGUID: 789fa6eb-6599-4ad0-832a-ae6617b18e3a
+    Pos: {x: 2908, y: 529}
+    TextType:
+    - LanguageType: 0
+      LanguageGenericType: Your job is to splice the alien DNA and create new crops
+        that can grow in the hostile environment. From this day on, You have no name,
+        no identity, no family. You are just an employee number.
+    DialogueNodePorts:
+    - InputGUID: 1b67eac5-f806-40c0-86c4-349bfeaaf518
+      OutputGUID: 789fa6eb-6599-4ad0-832a-ae6617b18e3a
+      TextLanguages:
+      - LanguageType: 0
+        LanguageGenericType: A terrible fate.
+    Sprite: {fileID: 21300000, guid: 0ac55f9f886d827408c102bdf33c5ff7, type: 3}
+    DialogueSpriteImageType: 1
+    AudioClips:
+    - LanguageType: 0
+      LanguageGenericType: {fileID: 0}
+    Name: The Boss
+  - NodeGUID: 1b67eac5-f806-40c0-86c4-349bfeaaf518
+    Pos: {x: 4066, y: 528}
+    TextType:
+    - LanguageType: 0
+      LanguageGenericType: "You must work hard, follow the rules, and meet your daily
+        quota. \nIf you fail, you will lose everything. Your career, your life, your
+        soul."
+    DialogueNodePorts:
+    - InputGUID: 678f625c-ca91-4b53-b38b-a3bbd27e6b3e
+      OutputGUID: 1b67eac5-f806-40c0-86c4-349bfeaaf518
+      TextLanguages:
+      - LanguageType: 0
+        LanguageGenericType: People stir Around you
+    Sprite: {fileID: 21300000, guid: 9aebd705574f9e642aef1e5f59b3e4d8, type: 3}
+    DialogueSpriteImageType: 1
+    AudioClips:
+    - LanguageType: 0
+      LanguageGenericType: {fileID: 0}
+    Name: The Boss
+  - NodeGUID: 09802034-dece-4be0-b63e-f8fb624f80cc
+    Pos: {x: 4630, y: 110}
+    TextType:
+    - LanguageType: 0
+      LanguageGenericType: 'This is the last bastion of life on Kalidax, the only
+        place where you can breathe and grow food. But it is also a dangerous place,
+        full of unknown dangers and secrets. '
+    DialogueNodePorts:
+    - InputGUID: b15ed774-4be6-4c54-bc4d-3d99e501f181
+      OutputGUID: 09802034-dece-4be0-b63e-f8fb624f80cc
+      TextLanguages:
+      - LanguageType: 0
+        LanguageGenericType: The Door sputters to life
+    Sprite: {fileID: 21300000, guid: 9aebd705574f9e642aef1e5f59b3e4d8, type: 3}
+    DialogueSpriteImageType: 1
+    AudioClips:
+    - LanguageType: 0
+      LanguageGenericType: {fileID: 0}
+    Name: The Boss
+  - NodeGUID: b15ed774-4be6-4c54-bc4d-3d99e501f181
+    Pos: {x: 5276, y: 611}
+    TextType:
+    - LanguageType: 0
+      LanguageGenericType: "Be careful, be vigilant, and be loyal. \nAnd remember,
+        the UAF is watching you"
+    DialogueNodePorts:
+    - InputGUID: 463a95d6-429e-4ae4-8275-901e4962993c
+      OutputGUID: b15ed774-4be6-4c54-bc4d-3d99e501f181
+      TextLanguages:
+      - LanguageType: 0
+        LanguageGenericType: The crowd salutes
+    Sprite: {fileID: 21300000, guid: 9aebd705574f9e642aef1e5f59b3e4d8, type: 3}
+    DialogueSpriteImageType: 1
+    AudioClips:
+    - LanguageType: 0
+      LanguageGenericType: {fileID: 0}
+    Name: The Boss
+  - NodeGUID: 463a95d6-429e-4ae4-8275-901e4962993c
+    Pos: {x: 5562, y: 611}
+    TextType:
+    - LanguageType: 0
+      LanguageGenericType: "From what I\u2019ve heard most of these farms don\u2019t
+        make it, but it beats rotting on a nameless planet for nothing I guess\u2026 "
+    DialogueNodePorts:
+    - InputGUID: 912c828e-32af-4a74-8623-cbb781964f32
+      OutputGUID: 463a95d6-429e-4ae4-8275-901e4962993c
+      TextLanguages:
+      - LanguageType: 0
+        LanguageGenericType: I guess so...
+    Sprite: {fileID: 21300000, guid: a825b94689d5a0349bae37a3ff6a8ee2, type: 3}
+    DialogueSpriteImageType: 1
+    AudioClips:
+    - LanguageType: 0
+      LanguageGenericType: {fileID: 0}
+    Name: Worker that shushed the crowd
+  - NodeGUID: 912c828e-32af-4a74-8623-cbb781964f32
+    Pos: {x: 6266, y: 611}
+    TextType:
+    - LanguageType: 0
+      LanguageGenericType: this is where we part ways, I hear they normally split
+        us up once we land.
+    DialogueNodePorts:
+    - InputGUID: c7cced70-a29c-43c0-9e33-eb2a1ad28d7c
+      OutputGUID: 912c828e-32af-4a74-8623-cbb781964f32
+      TextLanguages:
+      - LanguageType: 0
+        LanguageGenericType: Time to begin your new life
+    Sprite: {fileID: 21300000, guid: a825b94689d5a0349bae37a3ff6a8ee2, type: 3}
+    DialogueSpriteImageType: 1
+    AudioClips:
+    - LanguageType: 0
+      LanguageGenericType: {fileID: 0}
+    Name: Worker that shushed the crowd
   EndNodeDatas:
   - NodeGUID: f4580349-d7aa-4c05-bd88-a9a3ee0001b2
     Pos: {x: 6914, y: 165}

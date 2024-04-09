@@ -47,4 +47,11 @@ public class LevelManager : MonoBehaviour
         SceneManager.LoadScene("Tutorial");
         AudioManager.instance.Play("Positive Interact");
     }
+
+    public void LoadExit()
+    {
+        Application.Quit();
+        UnityEditor.EditorApplication.isPlaying = false;
+        AudioManager.instance.Play("Negative Interact");
+    }
 }
