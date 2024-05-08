@@ -29,6 +29,7 @@ public class WorldAlien : MonoBehaviour
 
     private void Awake()
     {
+        alienContainer.m_AlienGO = gameObject;
         provisionDroneObject = FindObjectOfType<InteractableObject_Provisions_Drone>().gameObject;
         objectListScript = FindObjectOfType<AliensInWorld_Mono>();
         isBeingSold = false;
@@ -85,7 +86,7 @@ public class WorldAlien : MonoBehaviour
 
     private void UpdateAlienInGame()
     {
-        sr = transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>();
+        sr = transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>();
         sr.sprite = alienContainer.m_AlienSprite;
 
         aliensInWorldListSO.worldAliens.RemoveAt(alienInList);

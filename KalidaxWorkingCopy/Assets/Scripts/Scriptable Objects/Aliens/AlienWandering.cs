@@ -36,6 +36,7 @@ public class AlienWandering : MonoBehaviour
 
     private void Awake()
     {
+
         alienScript = GetComponent<WorldAlien>();
         conversation = GetComponent<DS_InteractableObject_InteractPointConversation>();
         SO_Alien alien = alienScript.m_AlienContainer;
@@ -51,7 +52,6 @@ public class AlienWandering : MonoBehaviour
     private void Start()
     {
         transform.GetChild(0).LeanScaleY(0.95f, 0.8f).setEaseInOutSine().setLoopPingPong();
-        transform.GetChild(0).LeanMoveLocalY(-0.05f, 0.8f).setEaseInOutSine().setLoopPingPong();
     }
     private void FixedUpdate()
     {
