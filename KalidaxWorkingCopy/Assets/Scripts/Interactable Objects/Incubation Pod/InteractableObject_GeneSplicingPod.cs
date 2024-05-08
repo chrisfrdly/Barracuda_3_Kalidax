@@ -19,7 +19,6 @@ public class InteractableObject_GeneSplicingPod : InteractableObject
 
     [Header("Gene Splicing Buttons")]
     [SerializeField] private Button[] addAlienButton = new Button[2];
-    [SerializeField] private bool[] addAlienColour = new bool[2]; //to determine if the alien is already selected (UI colour only)
 
     [SerializeField] private Button spliceButton;
     private int buttonModified;
@@ -41,7 +40,6 @@ public class InteractableObject_GeneSplicingPod : InteractableObject
 
 
     //Properties
-    public bool[] m_AddAlienColour { get => addAlienColour;}
     public List<SO_Alien> m_AliensAdded { get => aliensAdded; set => aliensAdded = value; }
     public List<int> m_ButtonToDisable { get => buttonToDisable; set => buttonToDisable = value; }
 
@@ -100,8 +98,6 @@ public class InteractableObject_GeneSplicingPod : InteractableObject
         buttonToDisable.Clear();
         for (int i = 0; i < 2; i++)
         {
-            
-            addAlienColour[i] = false;
             addAlienButton[i].GetComponent<Image>().sprite = null;
             addAlienButton[i].GetComponentInChildren<TextMeshProUGUI>().text = "+";
         }
@@ -155,7 +151,6 @@ public class InteractableObject_GeneSplicingPod : InteractableObject
         //Remove the "+" Text on the button if an alien is already slotted 
         addAlienButton[buttonModified].GetComponentInChildren<TextMeshProUGUI>().text = "";
 
-        addAlienColour[buttonModified] = true;
         if (aliensAdded.Count < 2)
         {
             spliceButton.gameObject.SetActive(false);
