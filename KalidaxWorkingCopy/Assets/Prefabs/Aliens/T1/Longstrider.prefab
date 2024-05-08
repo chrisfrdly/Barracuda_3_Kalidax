@@ -58,7 +58,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
-  m_SortingLayerID: 0
+  m_SortingLayerID: -321515775
   m_SortingOrder: 3
   m_TargetDisplay: 0
 --- !u!114 &375459144894168065
@@ -338,8 +338,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.003791958, y: 0.24567235}
-  m_Size: {x: 1.2412429, y: 0.81049377}
+  m_Offset: {x: -0.009196259, y: 0.19372007}
+  m_Size: {x: 1.163315, y: 0.7065918}
   m_Direction: 1
 --- !u!1 &7484337346399641151
 GameObject:

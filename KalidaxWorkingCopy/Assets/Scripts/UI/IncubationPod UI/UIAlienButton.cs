@@ -20,6 +20,6 @@ public class UIAlienButton : MonoBehaviour
         //send event to AliensInWOrld which sends event to  UIAlienGridList
         //Huge workaround because I cant have an AddListener for a button created in a for loop
         
-        aliensInWorldSO.AlienInGridClickedEventSend(thisButtonAlien);
+        aliensInWorldSO.AlienInGridClickedEventSend(thisButtonAlien, transform.GetSiblingIndex());
     }
 }

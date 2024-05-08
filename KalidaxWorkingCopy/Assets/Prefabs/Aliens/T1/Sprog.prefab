@@ -90,7 +90,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
-  m_SortingLayerID: 0
+  m_SortingLayerID: -321515775
   m_SortingOrder: 3
   m_TargetDisplay: 0
 --- !u!114 &375459144894168065
@@ -205,7 +205,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 6
   m_Sprite: {fileID: 21300000, guid: 7554342c57eee4f4cb4bfa8c1811ddd6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -671,6 +671,6 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.112447344, y: -0.060878567}
-  m_Size: {x: 1.5135552, y: 0.63880235}
+  m_Offset: {x: -0.11806461, y: -0.105823785}
+  m_Size: {x: 1.2101779, y: 0.5489158}
   m_Direction: 1

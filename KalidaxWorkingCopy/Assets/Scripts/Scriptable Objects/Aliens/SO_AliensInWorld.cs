@@ -13,9 +13,9 @@ public class SO_AliensInWorld : ScriptableObject
     [System.NonSerialized]
     public AlienInGridClickedEvent alienInGridClickedEvent = new AlienInGridClickedEvent();
 
-    public void AlienInGridClickedEventSend(SO_Alien _alien)
+    public void AlienInGridClickedEventSend(SO_Alien _alien, int _childIndex)
     {
-        alienInGridClickedEvent.Invoke(_alien);
+        alienInGridClickedEvent.Invoke(_alien, _childIndex);
     }
 
     //Called from the DayCyle 
@@ -39,7 +39,7 @@ public class SO_AliensInWorld : ScriptableObject
     }
 }
 [System.Serializable]
-public class AlienInGridClickedEvent : UnityEvent<SO_Alien> { }
+public class AlienInGridClickedEvent : UnityEvent<SO_Alien, int> { }
 
 [System.Serializable]
 public class NewSceneEvent : UnityEvent<string> { }

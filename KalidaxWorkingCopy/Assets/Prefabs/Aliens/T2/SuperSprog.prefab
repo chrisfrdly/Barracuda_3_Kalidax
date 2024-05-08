@@ -142,8 +142,8 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
-  m_SortingLayerID: 0
-  m_SortingOrder: 12
+  m_SortingLayerID: -321515775
+  m_SortingOrder: 3
   m_TargetDisplay: 0
 --- !u!114 &375459144894168065
 MonoBehaviour:
@@ -339,8 +339,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.10485269, y: -0.00072191906}
-  m_Size: {x: 1.7573094, y: 1.3033007}
+  m_Offset: {x: -0.092069395, y: 0.010299695}
+  m_Size: {x: 1.6417959, y: 1.0872706}
   m_Direction: 1
 --- !u!58 &4383709858040645846
 CircleCollider2D:
@@ -355,9 +355,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.582067, y: -0.28567725}
+  m_Offset: {x: 0.582067, y: -0.24599737}
   serializedVersion: 2
-  m_Radius: 0.31073874
+  m_Radius: 0.27105886
 --- !u!1 &7484337346399641151
 GameObject:
   m_ObjectHideFlags: 0
