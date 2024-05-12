@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SO_Alien : ScriptableObject
 {
- 
+    private GameObject alienGO;
     private SO_AliensContainer _container;
     private SO_Alien _thisAlien;
 
@@ -34,6 +34,7 @@ public class SO_Alien : ScriptableObject
     [SerializeField] private Sprite alienSprite;
     [SerializeField] private Texture2D alienTexture;
 
+
     //Properties
     public SO_AliensContainer m_Container { get => _container; set => _container = value; }
     public SO_Alien m_ThisAlien { get => _thisAlien;}
@@ -43,6 +44,7 @@ public class SO_Alien : ScriptableObject
     public Texture2D m_AlienTexture { get => alienTexture; set => alienTexture = value; }
     public int m_AlienID { get => _alienID; set => _alienID = value; }
     public AlienFamilyType m_AlienFamily { get => _alienFamily; set => _alienFamily = value; }
+    public GameObject m_AlienGO { get => alienGO; set => alienGO = value; }
 
     //
 #if UNITY_EDITOR

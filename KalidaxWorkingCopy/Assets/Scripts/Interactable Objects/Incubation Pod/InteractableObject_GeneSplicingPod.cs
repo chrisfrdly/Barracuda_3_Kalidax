@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-
-
+using Unity.VisualScripting;
 
 public class InteractableObject_GeneSplicingPod : InteractableObject
 {
@@ -20,7 +19,6 @@ public class InteractableObject_GeneSplicingPod : InteractableObject
 
     [Header("Gene Splicing Buttons")]
     [SerializeField] private Button[] addAlienButton = new Button[2];
-    [SerializeField] private bool[] addAlienColour = new bool[2]; //to determine if the alien is already selected (UI colour only)
 
     [SerializeField] private Button spliceButton;
     private int buttonModified;
@@ -32,7 +30,8 @@ public class InteractableObject_GeneSplicingPod : InteractableObject
 
 
     //aliens that are assigned to the buttons
-    [SerializeField] private SO_Alien[] aliensAdded = new SO_Alien[2];
+    [SerializeField] private List<SO_Alien> aliensAdded = new List<SO_Alien>(); 
+    private List<int> buttonToDisable = new List<int>();
 
     [Header("Alien Prefabs")]
     public GameObject[] sprogPrefabs;
@@ -41,8 +40,8 @@ public class InteractableObject_GeneSplicingPod : InteractableObject
 
 
     //Properties
-    public SO_Alien[] m_AliensAdded { get => aliensAdded;}
-    public bool[] m_AddAlienColour { get => addAlienColour;}
+    public List<SO_Alien> m_AliensAdded { get => aliensAdded; set => aliensAdded = value; }
+    public List<int> m_ButtonToDisable { get => buttonToDisable; set => buttonToDisable = value; }
 
 
     /// <summary>
@@ -95,10 +94,10 @@ public class InteractableObject_GeneSplicingPod : InteractableObject
 
     private void RefreshHUD()
     {
+        aliensAdded.Clear();
+        buttonToDisable.Clear();
         for (int i = 0; i < 2; i++)
         {
-            aliensAdded[i] = null;
-            addAlienColour[i] = false;
             addAlienButton[i].GetComponent<Image>().sprite = null;
             addAlienButton[i].GetComponentInChildren<TextMeshProUGUI>().text = "+";
         }
@@ -124,23 +123,35 @@ public class InteractableObject_GeneSplicingPod : InteractableObject
     }
     
     //Called from the UIAlienGridList.cs
-    public void SetAlien(SO_Alien a)
+    public void SetAlien(SO_Alien a, int _childIndex)
     {
         //Call item select sound class
         AudioManager.instance.Play("Insert 2");
 
+        
         //Change the button to the sprite of the alien
         addAlienButton[buttonModified].GetComponent<Image>().sprite = a.m_AlienSprite;
-        aliensAdded[buttonModified] = a;
-
+        
+        //we replace
+        if(aliensAdded.Count > buttonModified)
+        {
+            aliensAdded[buttonModified] = a;
+            buttonToDisable[buttonModified] = _childIndex;
+        }
+        //we add
+        else
+        {
+            aliensAdded.Add(a);
+            buttonToDisable.Add(_childIndex);
+        }
+        
         //For controllers, we have to re-select the + button that they previously clicked
         addAlienButton[buttonModified].Select();
 
         //Remove the "+" Text on the button if an alien is already slotted 
         addAlienButton[buttonModified].GetComponentInChildren<TextMeshProUGUI>().text = "";
 
-        addAlienColour[buttonModified] = true;
-        if (aliensAdded[0] == null || aliensAdded[1] == null)
+        if (aliensAdded.Count < 2)
         {
             spliceButton.gameObject.SetActive(false);
             return;
@@ -203,9 +214,10 @@ public class InteractableObject_GeneSplicingPod : InteractableObject
 
     private void SpawnNewAlien(GameObject[] spawningArray)
     {
+        
         int tier = (int)aliensAdded[0].m_AlienTier + 1;
 
-        for(int i = 0; i < spawningArray.Length; i++)
+        for (int i = 0; i < spawningArray.Length; i++)
         {
             WorldAlien alienScript = spawningArray[i].GetComponent<WorldAlien>();
             if((int)alienScript.m_AlienContainer.m_AlienTier == tier)
@@ -222,7 +234,7 @@ public class InteractableObject_GeneSplicingPod : InteractableObject
             aliensListMono = FindObjectOfType<AliensInWorld_Mono>();
         }
 
-        for(int i = 0; i < aliensAdded.Length; i++)
+        for(int i = 0; i < aliensAdded.Count; i++)
         {
             for(int j = 0; j < aliensListMono.aliensInWorld_GO.Count; j++)
             {
@@ -237,16 +249,16 @@ public class InteractableObject_GeneSplicingPod : InteractableObject
 
         for(int i = 0; i < allAliensToDestroy.Count; i++)
         {
-            if (i < aliensAdded.Length)
+            if (i < aliensAdded.Count)
             {
                 allAliensToDestroy[i].DestroyAlien();
             }
 
         }
 
-        aliensAdded = new SO_Alien[2];
         
-
+        aliensAdded.Clear();
+        buttonToDisable.Clear();
         RefreshHUD();
     }
 
