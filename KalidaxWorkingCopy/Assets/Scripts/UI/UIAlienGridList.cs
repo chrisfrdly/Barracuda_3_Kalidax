@@ -19,7 +19,7 @@ public class UIAlienGridList : MonoBehaviour
     private List<GameObject> buttonList = new List<GameObject>();
 
     private InteractableObject_GeneSplicingPod io;
-
+ 
     //Properties
 
 
@@ -38,9 +38,8 @@ public class UIAlienGridList : MonoBehaviour
     private void OnEnable()
     {
 
-
         //delete all previous buttons
-        if(buttonList.Count !=0)
+        if (buttonList.Count !=0)
         {
             for (int i = buttonList.Count-1; i >= 0; i--)
             {
@@ -52,8 +51,6 @@ public class UIAlienGridList : MonoBehaviour
 
         for (int i = 0; i < aliensInWorldSO.worldAliens.Count; i++)
         {
-           
-            
             //Spawn button object
             buttonList.Add(Instantiate(alienButtonPrefab, gridParent));
 
@@ -74,33 +71,27 @@ public class UIAlienGridList : MonoBehaviour
             UIAlienButton alienButton = buttonList[i].GetComponent<UIAlienButton>();
             alienButton.m_ThisButtonAlien = aliensInWorldSO.worldAliens[i];
 
-
-
-            //Check to see if this alien is selected already. If so, then colour it darker
-            //Check to see the Game Object
-            SO_Alien worldAlien = aliensInWorldSO.worldAliens[i].m_ThisAlien;
-            alienButton.m_DisableButton = false;
-
-            if (i > 1) continue;
-            if (io.m_AliensAdded[i] == worldAlien && io.m_AddAlienColour[i] == true)
-            {
-                buttonImg.color = new Color(0.4f, 0.4f, 0.4f);
-                alienButton.m_DisableButton = true;
-            }
-
-
-
-
-
         }
+
+        //Now disabling buttons if already selected
+        for(int i = 0; i < io.m_AliensAdded.Count; i++)
+        {
+            
+            Image buttonImg = buttonList[io.m_ButtonToDisable[i]].GetComponentInChildren<Image>();
+            buttonImg.color = new Color(0.4f, 0.4f, 0.4f);
+
+            UIAlienButton alienButton = buttonList[io.m_ButtonToDisable[i]].GetComponent<UIAlienButton>();
+            alienButton.m_DisableButton = true;
+        }
+        
     }
 
 
-    public void HideAlienGridPanel(SO_Alien _alien)
+    public void HideAlienGridPanel(SO_Alien _alien, int _childIndex)
     {
         //Set the logic. Basically we'll set the button pressed 
        
-        io.SetAlien(_alien);
+        io.SetAlien(_alien, _childIndex);
         gameObject.SetActive(false);
         
         //When we click on the button, return the alien
