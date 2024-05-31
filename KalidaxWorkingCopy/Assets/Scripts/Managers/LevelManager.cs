@@ -51,7 +51,9 @@ public class LevelManager : MonoBehaviour
     public void LoadExit()
     {
         Application.Quit();
+#if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
+#endif
         AudioManager.instance.Play("Negative Interact");
     }
 }
